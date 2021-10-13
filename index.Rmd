@@ -8,7 +8,7 @@ site: bookdown::bookdown_site
 
 
 
-# Innledning {-}
+# Introduksjon {-}
 
 Denne boka gir en introduksjon til statistisk prosesskontroll (SPC) som element i kontinuerlig kvalitetsarbeid.
 
