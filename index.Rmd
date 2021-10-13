@@ -1,14 +1,13 @@
---- 
+---
 title: "Statistisk prosesskontroll"
 author: ""
 date: "Siste endring `r format(Sys.time(), '%d %B, %Y')`"
 site: bookdown::bookdown_site
+bibliography: references.bib
+csl: apa.csl
 ---
 
-
-
-
-# Introduksjon {-}
+# Introduksjon {.unnumbered}
 
 Denne boka gir en introduksjon til statistisk prosesskontroll (SPC) som element i kontinuerlig kvalitetsarbeid.
 
