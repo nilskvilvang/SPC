@@ -1,5 +1,7 @@
 ---
-bibliography: references.bib  
+bibliography: referanser.bib 
 ---
 
 # Hvorfor er tid viktig?
+
+La oss anta at et sykehus har en prosess der man har registrert antall avvik gjennom året ^[Eksempelet er modifisert fra @Carey2003. Se også @Anhøj2009 og @NHS2009]
