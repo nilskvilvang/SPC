@@ -1,9 +1,19 @@
 --- 
 title: "Statistisk prosesskontroll"
-author: "Nils Kvilvang"
-date: "`r Sys.Date()`"
+author: ""
+date: "Siste endring `r format(Sys.time(), '%d %B, %Y')`"
 site: bookdown::bookdown_site
 ---
 
-# Down the rabbit-hole
 
+
+
+# Innledning {-}
+
+Denne boka gir en introduksjon til statistisk prosesskontroll (SPC) som element i kontinuerlig kvalitetsarbeid.
+
+Innholdet er under kontinuerlig utvikling. Tilbakemeldinger og innspill bes gitt til [Nils Kvilvang](mailto:nils.kvilvang@inn.no)
+
+![Bilde: Colourbox.com](SPC_front_cover.JPG)
+
+Boka er laget i [R Markdown](http://rmarkdown.rstudio.com) ved hjelp av en rekke programmer og pakker til R, ikke minst [bookdown](http://https://bookdown.org/yihui/bookdown/).
