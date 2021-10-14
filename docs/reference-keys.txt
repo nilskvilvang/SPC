@@ -1,4 +1,9 @@
+fig:unnamed-chunk-1
+fig:unnamed-chunk-2
+fig:unnamed-chunk-3
+fig:unnamed-chunk-4
 hvorfor-denne-boka
 programvare
 hvorfor-er-tid-viktig
 hva-er-utgangspunktet-vi-skal-korrigere-fra
+variasjon

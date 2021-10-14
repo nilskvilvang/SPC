@@ -1,0 +1,7 @@
+# Variasjon
+
+Vi skal tilnærme oss begrepet variasjon gjennom å vise til et velkjent eksperiment – «The Funnel Experiment», eller trakteksperimentet som vi kan kalle det på norsk. Hensikten med trakteksperimentet var å vise at dersom vi ikke forstår variasjon, og introduserer korrigerende tiltak i prosesser som ikke trenger det, står vi i fare for å forverre resultatet (og ofte ha brukt mye tid og ressurser på å justere prosessen i den tro at resultatet vil bli bedre). Eksperimentet illustrerer at mange tiltak i organisasjoner for å «rette på feil» eller «forbedre kvaliteten» ender opp med å ha motsatt virkning.
+
+![Trakteksperimentet - oppsett](trakteksp.png)
+
+Trakteksperimentet ble designet av @demingFunnelExperiment for å beskrive de negative effektene prosessendringer kan ha hvis man ikke forstår årsakene til variasjonen i resultatene. 

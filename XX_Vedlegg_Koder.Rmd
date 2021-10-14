@@ -1,0 +1,98 @@
+---
+bibliography: referanser.bib 
+---
+
+# R kode {.unnumbered}
+
+## Kapittel 2 {.unnumbered}
+
+Sette opp nødvendige pakker:
+```{r echo = TRUE, eval=FALSE}
+pacman::p_load(ggplot2, readxl, tidyverse, ggpubr, dplyr, hrbrthemes)
+```
+
+Lage fig 2.1:
+```{r echo = TRUE, eval=FALSE}
+prepost_eksempel_long <- as_tibble(read_excel("prepost_eksempel_long.xlsx"))
+
+ggbarplot(prepost_eksempel_long, x = "Periode", y = "Verdi", add = c("mean"), color = "blue", fill = "lightblue")
+```
+
+Lage fig 2.2:
+```{r echo = TRUE, eval=FALSE}
+ggline(prepost_eksempel_long, x = "Periode", y = "Verdi", add = c("mean_se", "jitter"))
+```
+
+Lage fig 2.3:
+```{r echo = TRUE, eval=FALSE}
+t <- 1:24
+
+z <- c(prepost_eksempel_long$Verdi)
+  
+plot(t,z, type="l", col="blue", lwd=3, xlab="Periode", ylab="Antall", xaxt="n")
+axis(1, seq(0,24,2))
+
+abline(v=12, col="red", lwd = 3)
+text(15.5, 40, "Endring i prosedyre", col = "red")
+```
+
+
+Lage fig 2.4:
+```{r echo = TRUE, eval=FALSE}
+pacman::p_load(plotrix, imager)
+
+par(mfrow=c(2,2))
+
+plot(1:11, type = "n", main = "Ikke konsistent, ikke treffsikker", xlab = "", ylab = "")
+draw.circle(6,6,0.5)
+draw.circle(6,6,1)
+draw.circle(6,6,1.5)
+draw.circle(6,6,2)
+draw.circle(6,6,2.5)
+
+draw.circle(5,8,0.1,col="black")
+draw.circle(8,3,0.1,col="black")
+draw.circle(4.5,5,0.1,col="black")
+draw.circle(6,3.2,0.1,col="black")
+draw.circle(4.7,8,0.1,col="black")
+
+plot(1:11, type = "n", main = "Konsistent, men ikke treffsikker", xlab = "", ylab = "")
+draw.circle(6,6,0.5)
+draw.circle(6,6,1)
+draw.circle(6,6,1.5)
+draw.circle(6,6,2)
+draw.circle(6,6,2.5)
+
+draw.circle(5,5,0.1,col="black")
+draw.circle(5,6,0.1,col="black")
+draw.circle(4.5,5,0.1,col="black")
+draw.circle(4.8,5.2,0.1,col="black")
+draw.circle(4.7,4.5,0.1,col="black")
+
+plot(1:11, type = "n", main = "Ikke konsistent, men treffsikker", xlab = "", ylab = "")
+draw.circle(6,6,0.5)
+draw.circle(6,6,1)
+draw.circle(6,6,1.5)
+draw.circle(6,6,2)
+draw.circle(6,6,2.5)
+
+draw.circle(5.5,7.8,0.1,col="black")
+draw.circle(7,5.5,0.1,col="black")
+draw.circle(5,6,0.1,col="black")
+draw.circle(5.9,4.5,0.1,col="black")
+draw.circle(6.7,7.8,0.1,col="black")
+
+plot(1:11, type = "n", main = "Konsistent, og treffsikker", xlab = "", ylab = "")
+draw.circle(6,6,0.5)
+draw.circle(6,6,1)
+draw.circle(6,6,1.5)
+draw.circle(6,6,2)
+draw.circle(6,6,2.5)
+
+draw.circle(6,6,0.1,col="black")
+draw.circle(6,6.3,0.1,col="black")
+draw.circle(5.7,6,0.1,col="black")
+draw.circle(5.9,6.3,0.1,col="black")
+draw.circle(6.2,5.6,0.1,col="black")
+```
+

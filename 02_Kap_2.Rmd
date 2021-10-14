@@ -4,15 +4,9 @@ bibliography: referanser.bib
 
 # Hvorfor er tid viktig?
 
-La oss anta at et sykehus har en prosess der man har registrert antall avvik gjennom året [^kap_2-1]. I 2019 hadde man 30 avvik i snitt pr måned. Ledelsen mente mot slutten av 2019 at dette var for høyt og bestemte at man skulle innføre en ny prosedyre fra årsskiftet. Ved overgangen til 2021 så man at man gjennom 2020 hadde ca. 24 avvik pr måned i snitt:
+La oss anta at et sykehus har en prosess der man har registrert antall avvik gjennom året [^kap_2-1]. I 2019 hadde man 30 avvik i snitt pr måned. Ledelsen mente mot slutten av 2019 at dette var for høyt og bestemte at man skulle innføre en ny prosedyre fra årsskiftet. Ved overgangen til 2021 så man at man gjennom 2020 hadde ca. 24 avvik pr måned i snitt ^[Eksempelet er modifisert fra @Carey2003. Se også @anhojStatistiskProcesstyringSundhedsvaesenet2009 og @NHS2009] ^[Hvis du ønsker å bruke R og koden må du laste ned fila og lagre den i samme mappe som din R-fil/ditt R-prosjekt ligger - se forøvrig vedlegg om installasjon av R/RStudio for tips om organisering av filer]:
 
-[^kap_2-1]: Eksempelet er modifisert fra @Carey2003. Se også @Anhøj2009 og @NHS2009
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
-```{r}
+```{r echo = FALSE, fig.cap = "Eksempel på prosess over 2 år"}
 pacman::p_load(ggplot2, readxl, tidyverse, ggpubr, dplyr, hrbrthemes)
 
 xfun::embed_file('prepost_eksempel_long.xlsx')
@@ -24,20 +18,34 @@ ggbarplot(prepost_eksempel_long, x = "Periode", y = "Verdi", add = c("mean"), co
 
 Når man så nærmere på tallene kunne man også se at variasjonen mellom månedene var blitt mindre:
 
-```{r}
+```{r  echo = FALSE, fig.cap = "Prosess over 2 år - spredning"}
 ggline(prepost_eksempel_long, x = "Periode", y = "Verdi", add = c("mean_se", "jitter"))
 ```
 
 Dette er nok en kjent tilnærming og konklusjon for mange som har jobbet med eller i organisasjoner som gjør tiltak for å heve kvaliteten. Dessverre er det en tilnærming som i beste fall er unøyaktig, men som i verste fall tåkelegger hva som faktisk skjer og som over tid kan gi dårligere kvalitet. Problemet er at man ikke har sett dataene i et tidsperspektiv. Siden man har data for avvik hver eneste måned vil tidsperspektivet kunne gi helt andre innsikter og konklusjoner.
 
-![Bilde: Endring av prosedyre og utfall i prosess](prepost.png) I diagrammet over har vi plottet inn hver enkelt måned slik at vi får en blå linje som viser utvikling fra måned til måned. Den oransje horisontale streken angir snittet for året (tilsvarende histogrammet lenger opp). Den røde vertikale streken angir årsskiftet og tidspunktet for endring av rutinen. Rent visuelt vil vi nå ha problemer med å konkludere med at endringen av rutinen var en suksess. Vi vil heller tenke at utviklingen gjennom 2019 var veldig positiv, men at endringen ved årsskiftet 2019-2020 har gjort at trenden nå er klart negativ ift at avvikene øker jevnt og trutt igjen. Så kan man spekulere i at det kanskje er innføring av ny rutine som gjør at man igjen får flere avvik og at på litt lengre sikt vil man ha en positiv effekt. Kanskje, det vil vi ikke se før tallene for 2021 begynner å tikke inn. Men det er grunn til å si at dersom man kunne se denne trenden etter 1.kvartal i 2020 hadde man kanskje vurdert tiltak for å endre trenden (eller i det minste gjort en grundig analyse av rutiner og tiltak).
+```{r echo = FALSE, fig.cap = "Prosess over 2 år i et tidsperspektiv"}
+t <- 1:24
+
+z <- c(prepost_eksempel_long$Verdi)
+  
+plot(t,z, type="l", col="blue", lwd=3, xlab="Periode", ylab="Antall", xaxt="n")
+axis(1, seq(0,24,2))
+
+abline(v=12, col="red", lwd = 3)
+text(15.5, 40, "Endring i prosedyre", col = "red")
+
+```
+
+I diagrammet over har vi plottet inn hver enkelt måned slik at vi får en blå linje som viser utvikling fra måned til måned. Den oransje horisontale streken angir snittet for året (tilsvarende histogrammet lenger opp). Den røde vertikale streken angir årsskiftet og tidspunktet for endring av rutinen. Rent visuelt vil vi nå ha problemer med å konkludere med at endringen av rutinen var en suksess. Vi vil heller tenke at utviklingen gjennom 2019 var veldig positiv, men at endringen ved årsskiftet 2019-2020 har gjort at trenden nå er klart negativ ift at avvikene øker jevnt og trutt igjen. Så kan man spekulere i at det kanskje er innføring av ny rutine som gjør at man igjen får flere avvik og at på litt lengre sikt vil man ha en positiv effekt. Kanskje, det vil vi ikke se før tallene for 2021 begynner å tikke inn. Men det er grunn til å si at dersom man kunne se denne trenden etter 1.kvartal i 2020 hadde man kanskje vurdert tiltak for å endre trenden (eller i det minste gjort en grundig analyse av rutiner og tiltak).
 
 Eksempelet ovenfor er konstruert. Likevel er det grunn til å tro at det ikke er spesielt uvanlig. Mange vil nok kunne kjenne seg igjen i at det jobbes mye med kvalitet i ulike organisasjoner, men at man kanskje ikke har spesielt god kontroll på hva endringer gjør med prosesser, eller at man ikke klarer å fange opp tidsnok at utviklingen går i feil retning. Kanskje har man egentlig lite kontroll på selve prosessen *før* man starter en endringsprosess? Tidsaspektet er med andre ord et viktig aspekt å ha med seg, og helt essensielt i statistisk prosesskontroll som vi hevder bør ha en sentral plass i kvalitetsarbeid.
 
 ## Hva er utgangspunktet vi skal korrigere fra?
 
 Det kan kanskje virke selvsagt, men en forbedringsprosess vil ha små og tilfeldige sjanser for å lykkes hvis vi ikke kjenner utgangspunktet. Vi vil påstå at mange slike prosesser likevel starter opp med et noe svakt kjennskap til hva startstedet egentlig er. Kvalitetsarbeid -- forbedringsprosesser -- startes som regel fordi man har en oppfatning av at det man leverer ikke er like godt som det man mener man kan og bør levere. Men hva er egentlig problemet? Er det treffsikkerheten (treffer vi målet, det vi sikter mot) eller konsistensen (klarer vi å repetere hendelsen gang etter gang), eller begge deler?^[Illustrasjonen er modifisert fra @Montgomery2020, jfr. @Leavengood2015b]
-```{r}
+
+```{r  echo = FALSE, fig.cap = "Kjenne til utgangspunktet før vi gjør endringer"}
 pacman::p_load(plotrix, imager)
 
 par(mfrow=c(2,2))
@@ -95,3 +103,4 @@ draw.circle(5.9,6.3,0.1,col="black")
 draw.circle(6.2,5.6,0.1,col="black")
 ```
 
+Det er ganske innlysende at vi vil ha langt større sannsynlighet for å lykkes med en forbedringsprosess om vi har kontroll på hva startsituasjonen er. Her kommer statistisk prosesskontroll inn og kan være et viktig verktøy. Med unntak av den nedre høyre illustrasjonen, der både treffsikkerhet og konsistens er bra, viser alle målskivene en variasjon i hvordan treffene er. Variasjon er et essensielt begrep i statistisk prosesskontroll, og forståelse av variasjon vil følgelig være et viktig tema før vi gir oss i kast med selve analysene. Uten forståelse av prosess og variasjon er det fare for at man forsøker å justere en prosess på feil grunnlag, og i verste fall ville vi kommet bedre ut av endringsprosessen ved å ikke gjøre noe som helst.

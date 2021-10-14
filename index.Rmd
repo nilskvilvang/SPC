@@ -5,7 +5,6 @@ date: "Siste endring `r format(Sys.time(), '%d %B, %Y')`"
 site: bookdown::bookdown_site
 bibliography: referanser.bib
 csl: apa.csl
-code_folding: hide
 ---
 
 # Introduksjon {.unnumbered}
