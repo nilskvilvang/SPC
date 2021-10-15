@@ -53,70 +53,6 @@
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
-<style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
 
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
@@ -197,7 +133,28 @@ div.csl-indent {
 <img src="trakteksp.png" alt="" />
 <p class="caption">Trakteksperimentet - oppsett</p>
 </div>
-<p>Trakteksperimentet ble designet av <span class="citation">Deming (n.d.)</span> for å beskrive de negative effektene prosessendringer kan ha hvis man ikke forstår årsakene til variasjonen i resultatene.</p>
+<p>Trakteksperimentet ble popularisert av <span class="citation">Deming (1986)</span> for å beskrive de negative effektene prosessendringer kan ha hvis man ikke forstår årsakene til variasjonen i resultatene (Deming krediterer selv Lloyd Nelson for å ha designiet ekseperimentet, og enkelte kilder omtaler derfor dette som “the Deming-Nelson funnel experiment” <span class="citation">(Georgantzas &amp; Orsini, 2003)</span> . I trakteksperimentet lar vi en klinkekule falle gjennom en trakt vi har sentrert rett over et mål. Der kula treffer arket setter vi et merke. Kula vil aldri treffe nøyaktig på målet og aldri nøyaktig på samme sted fra gang til gang.</p>
+<p>La oss si at vi slipper kula gjennom trakta første gang. Trakta er plassert slik at senterlinja gjennom trakta treffer nøyaktig midt i målet. Så slipper vi kula og registerer treffpunktet.</p>
+<div class="figure">
+<img src="trakteksp2.png" alt="" />
+<p class="caption">Trakteksperimentet - oppsett</p>
+</div>
+<p>Deretter bruker vi 1 av 4 regler for korreksjon for å justere prosessen for å forsøke å få kula til å treffe nærmere målet (se f.eks. <span class="citation">(Sparks &amp; Field, 2000)</span>.</p>
+<p><strong>Regel 1</strong>
+Ingen justering. Selv om kula ikke treffer målet fortsetter vi med neste forsøk uten å gjøre noen justeringer. Vi holder trakta på nøyaktig samme sted.</p>
+<p><strong>Regel 2</strong>
+Trakta justeres etter forrige treffpunkt (treff 1). Hvis kula treffer i z avstand fra målets senterpunkt vil trakta justeres med -z før neste forsøk.
+<img src="trakteksp3.png" alt="Trakteksperimentet - treff etter første forsøk" />
+Så gjentar vi prosessen og korrigerer trakta fra traktas forrige posisjon etter hvert treffpunkt ut fra kulas avstand fra det nye treffpunktet til målets senterpunkt. Justering av trakta skjer etter følgende metode: Plassering av trakta starter i målsenteret (0,0) og justeres deretter slik at ny plassering blir målsenteret blir minus offset (retning og avstand) for forrige kule fra treffpunkt til målsenteret.</p>
+<p><span class="citation">Sparks &amp; Field (2000)</span> beskriver regelen slik: “At drop <em>i</em> (<em>i</em> = 1,2,3, .) the marble will come to rest at point y<sub>i</sub>, measured from the target. (In other words, y<sub>i</sub> is the error at drop <em>i</em>.) Move the funnel the distance -<em>y</em><sub>i</sub> from its last position to aim for the next drop.”</p>
+<p><span class="citation">Deming (1986)</span> gir noen eksempler på bruk av regel 2: feedback-mekanismer som reagerer på enkelttilfeller, endring av en policy, rutine e.l. på bakgrunn av (kun) siste kundeundersøkelse, bruke variasjon/avvik til å lage budsjetter og vurdering av en aksje basert på forrige måneds underskudd.</p>
+<p><strong>Regel 3</strong>
+Her registrerer vi treff 1 som i regel 2. Vi flytter trakta til et punkt nøyaktig motsatt av det punktet kula fikk. Vi beregner offset for kula på samme måte som i regel 2 – retning og avstand fra målsenteret til kulas treffpunkt. Før vi justerer flytter vi imidlertid trakta tilbake til (0,0) og justerer derfra (i motsetning til regel 2 da vi ikke flyttet trakta til (0,0) før vi begynte korreksjonen, men i stedet foretok justeringen fra det punktet trakta befant seg da kula ble sluppet). Her eksemplifiserer <span class="citation">Deming (1986)</span> ved å vise til hvordan mer effektiv narkotikabekjempelse fører til høyere priser på narkotika som stimulerer til smugling av mer narkotika, eller en gambler som høyner innsatsen for å dekke forrige tap.</p>
+<p><span class="citation">Sparks &amp; Field (2000)</span> beskriver regelen slik: “At drop <em>i</em> the marble comes to rest at point <em>y</em><sub>i</sub> from the target, then for the next drop aim the funnel over the point -<em>y</em><sub>i</sub> from the target.”</p>
+<p><strong>Regel 4</strong>
+Her flytter vi trakta hele tiden til siste treffpunkt og slipper ny kule der. Her viser <span class="citation">Deming (1986)</span> til eksempler som den kjente «hviskeleken» der et antall personer sitter i en ring og gjenforteller en historie ved å hviske den til neste person, som igjen hvisker den til neste osv til den kommer til siste person som forteller historien vedkommende nettopp hørte. Historien som til slutt blir fortalt er som regel ganske annerledes enn den opprinnelige. Et annet eksempel kan være produksjon av en gjenstand basert på forrige produserte gjenstands mål.</p>
+<p><span class="citation">Sparks &amp; Field (2000)</span> beskriver regelen slik: “At drop <em>i</em> the marble comes to rest at point <em>y</em><sub>i</sub> from the target, then for the next drop aim the funnel over the spot <em>y</em><sub>i</sub> where the marble last came to rest.”</p>
+<p>En kort og instruktiv video <span class="citation">(Crostic, 2015)</span> om gjennomføringen av trakteksperimentet vises kan dere se her: <img src="https://www.youtube.com/watch?v=t5DV69_2VeQ&amp;ab_channel=MichaelCrostic" /></p>
 
 </div>
             </section>
