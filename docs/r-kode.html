@@ -212,62 +212,6 @@ div.csl-indent {
 <span id="cb4-7"><a href="r-kode.html#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-8"><a href="r-kode.html#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="dv">12</span>, <span class="at">col=</span><span class="st">&quot;red&quot;</span>, <span class="at">lwd =</span> <span class="dv">3</span>)</span>
 <span id="cb4-9"><a href="r-kode.html#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="fl">15.5</span>, <span class="dv">40</span>, <span class="st">&quot;Endring i prosedyre&quot;</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span></code></pre></div>
-<p>Lage fig 2.4:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="r-kode.html#cb5-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(plotrix, imager)</span>
-<span id="cb5-2"><a href="r-kode.html#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="r-kode.html#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
-<span id="cb5-4"><a href="r-kode.html#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="r-kode.html#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">11</span>, <span class="at">type =</span> <span class="st">&quot;n&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Ikke konsistent, ikke treffsikker&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;&quot;</span>)</span>
-<span id="cb5-6"><a href="r-kode.html#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">draw.circle</span>(<span class="dv">6</span>,<span class="dv">6</span>,<span class="fl">0.5</span>)</span>
-<span id="cb5-7"><a href="r-kode.html#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fu">draw.circle</span>(<span class="dv">6</span>,<span class="dv">6</span>,<span class="dv">1</span>)</span>
-<span id="cb5-8"><a href="r-kode.html#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">draw.circle</span>(<span class="dv">6</span>,<span class="dv">6</span>,<span class="fl">1.5</span>)</span>
-<span id="cb5-9"><a href="r-kode.html#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="fu">draw.circle</span>(<span class="dv">6</span>,<span class="dv">6</span>,<span class="dv">2</span>)</span>
-<span id="cb5-10"><a href="r-kode.html#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="fu">draw.circle</span>(<span class="dv">6</span>,<span class="dv">6</span>,<span class="fl">2.5</span>)</span>
-<span id="cb5-11"><a href="r-kode.html#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-12"><a href="r-kode.html#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="fu">draw.circle</span>(<span class="dv">5</span>,<span class="dv">8</span>,<span class="fl">0.1</span>,<span class="at">col=</span><span class="st">&quot;black&quot;</span>)</span>
-<span id="cb5-13"><a href="r-kode.html#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="fu">draw.circle</span>(<span class="dv">8</span>,<span class="dv">3</span>,<span class="fl">0.1</span>,<span class="at">col=</span><span class="st">&quot;black&quot;</span>)</span>
-<span id="cb5-14"><a href="r-kode.html#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="fu">draw.circle</span>(<span class="fl">4.5</span>,<span class="dv">5</span>,<span class="fl">0.1</span>,<span class="at">col=</span><span class="st">&quot;black&quot;</span>)</span>
-<span id="cb5-15"><a href="r-kode.html#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="fu">draw.circle</span>(<span class="dv">6</span>,<span class="fl">3.2</span>,<span class="fl">0.1</span>,<span class="at">col=</span><span class="st">&quot;black&quot;</span>)</span>
-<span id="cb5-16"><a href="r-kode.html#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="fu">draw.circle</span>(<span class="fl">4.7</span>,<span class="dv">8</span>,<span class="fl">0.1</span>,<span class="at">col=</span><span class="st">&quot;black&quot;</span>)</span>
-<span id="cb5-17"><a href="r-kode.html#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-18"><a href="r-kode.html#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">11</span>, <span class="at">type =</span> <span class="st">&quot;n&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Konsistent, men ikke treffsikker&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;&quot;</span>)</span>
-<span id="cb5-19"><a href="r-kode.html#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="fu">draw.circle</span>(<span class="dv">6</span>,<span class="dv">6</span>,<span class="fl">0.5</span>)</span>
-<span id="cb5-20"><a href="r-kode.html#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="fu">draw.circle</span>(<span class="dv">6</span>,<span class="dv">6</span>,<span class="dv">1</span>)</span>
-<span id="cb5-21"><a href="r-kode.html#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="fu">draw.circle</span>(<span class="dv">6</span>,<span class="dv">6</span>,<span class="fl">1.5</span>)</span>
-<span id="cb5-22"><a href="r-kode.html#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="fu">draw.circle</span>(<span class="dv">6</span>,<span class="dv">6</span>,<span class="dv">2</span>)</span>
-<span id="cb5-23"><a href="r-kode.html#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="fu">draw.circle</span>(<span class="dv">6</span>,<span class="dv">6</span>,<span class="fl">2.5</span>)</span>
-<span id="cb5-24"><a href="r-kode.html#cb5-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-25"><a href="r-kode.html#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="fu">draw.circle</span>(<span class="dv">5</span>,<span class="dv">5</span>,<span class="fl">0.1</span>,<span class="at">col=</span><span class="st">&quot;black&quot;</span>)</span>
-<span id="cb5-26"><a href="r-kode.html#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="fu">draw.circle</span>(<span class="dv">5</span>,<span class="dv">6</span>,<span class="fl">0.1</span>,<span class="at">col=</span><span class="st">&quot;black&quot;</span>)</span>
-<span id="cb5-27"><a href="r-kode.html#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="fu">draw.circle</span>(<span class="fl">4.5</span>,<span class="dv">5</span>,<span class="fl">0.1</span>,<span class="at">col=</span><span class="st">&quot;black&quot;</span>)</span>
-<span id="cb5-28"><a href="r-kode.html#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="fu">draw.circle</span>(<span class="fl">4.8</span>,<span class="fl">5.2</span>,<span class="fl">0.1</span>,<span class="at">col=</span><span class="st">&quot;black&quot;</span>)</span>
-<span id="cb5-29"><a href="r-kode.html#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="fu">draw.circle</span>(<span class="fl">4.7</span>,<span class="fl">4.5</span>,<span class="fl">0.1</span>,<span class="at">col=</span><span class="st">&quot;black&quot;</span>)</span>
-<span id="cb5-30"><a href="r-kode.html#cb5-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-31"><a href="r-kode.html#cb5-31" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">11</span>, <span class="at">type =</span> <span class="st">&quot;n&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Ikke konsistent, men treffsikker&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;&quot;</span>)</span>
-<span id="cb5-32"><a href="r-kode.html#cb5-32" aria-hidden="true" tabindex="-1"></a><span class="fu">draw.circle</span>(<span class="dv">6</span>,<span class="dv">6</span>,<span class="fl">0.5</span>)</span>
-<span id="cb5-33"><a href="r-kode.html#cb5-33" aria-hidden="true" tabindex="-1"></a><span class="fu">draw.circle</span>(<span class="dv">6</span>,<span class="dv">6</span>,<span class="dv">1</span>)</span>
-<span id="cb5-34"><a href="r-kode.html#cb5-34" aria-hidden="true" tabindex="-1"></a><span class="fu">draw.circle</span>(<span class="dv">6</span>,<span class="dv">6</span>,<span class="fl">1.5</span>)</span>
-<span id="cb5-35"><a href="r-kode.html#cb5-35" aria-hidden="true" tabindex="-1"></a><span class="fu">draw.circle</span>(<span class="dv">6</span>,<span class="dv">6</span>,<span class="dv">2</span>)</span>
-<span id="cb5-36"><a href="r-kode.html#cb5-36" aria-hidden="true" tabindex="-1"></a><span class="fu">draw.circle</span>(<span class="dv">6</span>,<span class="dv">6</span>,<span class="fl">2.5</span>)</span>
-<span id="cb5-37"><a href="r-kode.html#cb5-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-38"><a href="r-kode.html#cb5-38" aria-hidden="true" tabindex="-1"></a><span class="fu">draw.circle</span>(<span class="fl">5.5</span>,<span class="fl">7.8</span>,<span class="fl">0.1</span>,<span class="at">col=</span><span class="st">&quot;black&quot;</span>)</span>
-<span id="cb5-39"><a href="r-kode.html#cb5-39" aria-hidden="true" tabindex="-1"></a><span class="fu">draw.circle</span>(<span class="dv">7</span>,<span class="fl">5.5</span>,<span class="fl">0.1</span>,<span class="at">col=</span><span class="st">&quot;black&quot;</span>)</span>
-<span id="cb5-40"><a href="r-kode.html#cb5-40" aria-hidden="true" tabindex="-1"></a><span class="fu">draw.circle</span>(<span class="dv">5</span>,<span class="dv">6</span>,<span class="fl">0.1</span>,<span class="at">col=</span><span class="st">&quot;black&quot;</span>)</span>
-<span id="cb5-41"><a href="r-kode.html#cb5-41" aria-hidden="true" tabindex="-1"></a><span class="fu">draw.circle</span>(<span class="fl">5.9</span>,<span class="fl">4.5</span>,<span class="fl">0.1</span>,<span class="at">col=</span><span class="st">&quot;black&quot;</span>)</span>
-<span id="cb5-42"><a href="r-kode.html#cb5-42" aria-hidden="true" tabindex="-1"></a><span class="fu">draw.circle</span>(<span class="fl">6.7</span>,<span class="fl">7.8</span>,<span class="fl">0.1</span>,<span class="at">col=</span><span class="st">&quot;black&quot;</span>)</span>
-<span id="cb5-43"><a href="r-kode.html#cb5-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-44"><a href="r-kode.html#cb5-44" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">11</span>, <span class="at">type =</span> <span class="st">&quot;n&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Konsistent, og treffsikker&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;&quot;</span>)</span>
-<span id="cb5-45"><a href="r-kode.html#cb5-45" aria-hidden="true" tabindex="-1"></a><span class="fu">draw.circle</span>(<span class="dv">6</span>,<span class="dv">6</span>,<span class="fl">0.5</span>)</span>
-<span id="cb5-46"><a href="r-kode.html#cb5-46" aria-hidden="true" tabindex="-1"></a><span class="fu">draw.circle</span>(<span class="dv">6</span>,<span class="dv">6</span>,<span class="dv">1</span>)</span>
-<span id="cb5-47"><a href="r-kode.html#cb5-47" aria-hidden="true" tabindex="-1"></a><span class="fu">draw.circle</span>(<span class="dv">6</span>,<span class="dv">6</span>,<span class="fl">1.5</span>)</span>
-<span id="cb5-48"><a href="r-kode.html#cb5-48" aria-hidden="true" tabindex="-1"></a><span class="fu">draw.circle</span>(<span class="dv">6</span>,<span class="dv">6</span>,<span class="dv">2</span>)</span>
-<span id="cb5-49"><a href="r-kode.html#cb5-49" aria-hidden="true" tabindex="-1"></a><span class="fu">draw.circle</span>(<span class="dv">6</span>,<span class="dv">6</span>,<span class="fl">2.5</span>)</span>
-<span id="cb5-50"><a href="r-kode.html#cb5-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-51"><a href="r-kode.html#cb5-51" aria-hidden="true" tabindex="-1"></a><span class="fu">draw.circle</span>(<span class="dv">6</span>,<span class="dv">6</span>,<span class="fl">0.1</span>,<span class="at">col=</span><span class="st">&quot;black&quot;</span>)</span>
-<span id="cb5-52"><a href="r-kode.html#cb5-52" aria-hidden="true" tabindex="-1"></a><span class="fu">draw.circle</span>(<span class="dv">6</span>,<span class="fl">6.3</span>,<span class="fl">0.1</span>,<span class="at">col=</span><span class="st">&quot;black&quot;</span>)</span>
-<span id="cb5-53"><a href="r-kode.html#cb5-53" aria-hidden="true" tabindex="-1"></a><span class="fu">draw.circle</span>(<span class="fl">5.7</span>,<span class="dv">6</span>,<span class="fl">0.1</span>,<span class="at">col=</span><span class="st">&quot;black&quot;</span>)</span>
-<span id="cb5-54"><a href="r-kode.html#cb5-54" aria-hidden="true" tabindex="-1"></a><span class="fu">draw.circle</span>(<span class="fl">5.9</span>,<span class="fl">6.3</span>,<span class="fl">0.1</span>,<span class="at">col=</span><span class="st">&quot;black&quot;</span>)</span>
-<span id="cb5-55"><a href="r-kode.html#cb5-55" aria-hidden="true" tabindex="-1"></a><span class="fu">draw.circle</span>(<span class="fl">6.2</span>,<span class="fl">5.6</span>,<span class="fl">0.1</span>,<span class="at">col=</span><span class="st">&quot;black&quot;</span>)</span></code></pre></div>
 
 <div id="refs" class="references csl-bib-body hanging-indent" line-spacing="2">
 <div class="csl-entry">
@@ -283,7 +227,13 @@ Anhøj, J. (2021). <em>Qicharts2: Quality <span>Improvement Charts</span></em>.
 Carey, R. G. (2003). <em>Improving healthcare with control charts. <span>Basic</span> and advanced <span>SPC</span> methods and case studies</em>. <span>ASQ Quality Press</span>.
 </div>
 <div class="csl-entry">
-Deming, W. E. (n.d.). The <span>Funnel Experiment</span>. In <em>The W. Edwards Deming Institute</em>. https://deming.org/explore/the-funnel-experiment/.
+Crostic, M. (2015). The funnel experiment. In <em>YouTube</em>.
+</div>
+<div class="csl-entry">
+Deming, W. E. (1986). <em>Out of the crisis</em>. <span>Institute of Technology Center for Advanced Engineering Study</span>.
+</div>
+<div class="csl-entry">
+Georgantzas, N. C., &amp; Orsini, J. N. (2003). Tampering dynamics. <em>Proceedings of the 21st <span>International System Dynamics Society Conference</span></em>.
 </div>
 <div class="csl-entry">
 Leavengood, S., &amp; Reeb, J. E. (2015). <em>Statistical process control. <span>Part</span> 2: How and why <span>SPC</span> works</em>. <span>Oregon State University</span>.
@@ -302,6 +252,9 @@ R Core Team. (2021). <em>R: A language and environment for statistical computing
 </div>
 <div class="csl-entry">
 Scrucca, L., Snow, G., &amp; Bloomfield, P. (2017). <em>Qcc: An <span>R</span> package for quality control charting and statistical process control</em>.
+</div>
+<div class="csl-entry">
+Sparks, R. S., &amp; Field, J. B. F. (2000). Using <span>Deming</span>’s <span>Funnel Experiment</span> to <span>Demonstrate Effects</span> of <span>Violating Assumptions Underlying Shewhart</span>’s <span>Control Charts</span>. <em>The American Statistician</em>, <em>54</em>(4), 291. <a href="https://doi.org/10.2307/2685781">https://doi.org/10.2307/2685781</a>
 </div>
 <div class="csl-entry">
 Team, R. S. (2021). <em><span>RStudio</span>: Integrated <span>Development</span> for <span>R</span></em>. RStudio Inc.
