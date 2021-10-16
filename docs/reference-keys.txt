@@ -17,3 +17,4 @@ hvorfor-er-tid-viktig
 hva-er-utgangspunktet-vi-skal-korrigere-fra
 variasjon
 simulering-av-trakteksperimentet-i-r
+datatyper-og-datafordelinger

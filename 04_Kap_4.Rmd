@@ -1,0 +1,13 @@
+# Datatyper og datafordelinger
+
+Ift statistisk prosesskontroll er det formålstjenlig å snakke om tre hovedtyper data: måledata, telledata og sjeldne hendelser. Måledata er kontinuerlige data – det vil si de kan måles på en skala som høyde, vekt og tid. Her kan en observasjon/et datapunkt innta en hvilken som helst verdi innenfor et gitt spenn. Høyden på en person kan være 178,34227809 cm eller 178,34227808 cm. 
+
+Telledata et kategoriske (også ofte omtalt som diskrete) data – det vil si et datapunkt (en observasjon) kan puttes inn i en klar kategori, som f.eks. antall avvik, antall hendelser, ja/nei, terningkast. Diskrete data har et begrenset antall mulige verdier som er gjensidig utelukkende. Et terningkast med en vanlig terning kan ikke både være 3 og 4 samtidig, en lysbryter kan ikke være av og på samtidig. Et terningkast kan heller ikke være 1,43. Med tanke på datafordeling er både binomial- og Poissonfordeling diskrete fordelinger, mens normalfordeling vil være kontinuerlig. 
+
+Når det gjelder sjeldne hendelser kan de være både telledata og måledata. For eksempel vil antall dager mellom en hendelse være en diskret data, mens tid kan måles og vil være kontinuerlige data. Det er spesielle utfordringer med det vi kaller sjeldne hendelser finnes det også egne måter å håndtere dette på i statistisk prosesskontroll, noe vi vil komme tilbake til. For sjeldne henselser vil både geometrisk og eksponensiell fordeling være relevant. Det finnes en god del flere fordelinger enn disse som nå er nevnt, men som @Benneyan1998 viser er normal-, binomial- og Poissonfordeling de tre vesentligste. For en god oversikt over flere fordelinger, se f.eks. @Mun2008.
+
+Hvorfor fokus på fordelinger?
+
+Fordelingene – normalfordeling, binomialfordeling, Poissionfordeling, geometrisk fordeling og eksponensiell fordeling – beskriver ulike fordelinger ut fra hvordan dataene ser ut. Vi bruker forventningene/sannsynlighetene for ulike verdier i statistisk prosesskontroll til å vurdere om en verdi av en observasjon eller måling er innenfor eller utenfor det vi vil kalle normal variasjon (jfr kapittelet om variasjon). Siden dataene kan være av ulik type – diskret eller kontinuerlig, binomial/ikke binomial osv – bruker vi ulike utregningsmetoder og diagrammer i statistisk prosesskontroll for å få et riktig resultat.  Det finnes et antall ulike diagrammer å velge mellom i statistisk prosesskontroll. For å gjøre valget sikrere og lettere kan man bruke følgende flytskjema for å orientere seg:
+
+![Flytdiagram for valg av analyse](Flytdiagram_valg.png)

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | Statistisk prosesskontroll</title>
-  <meta name="description" content="Page not found | Statistisk prosesskontroll" />
+  <title>4 Datatyper og datafordelinger | Statistisk prosesskontroll</title>
+  <meta name="description" content="4 Datatyper og datafordelinger | Statistisk prosesskontroll" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | Statistisk prosesskontroll" />
+  <meta property="og:title" content="4 Datatyper og datafordelinger | Statistisk prosesskontroll" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | Statistisk prosesskontroll" />
+  <meta name="twitter:title" content="4 Datatyper og datafordelinger | Statistisk prosesskontroll" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-
+<link rel="prev" href="variasjon.html"/>
+<link rel="next" href="r-kode.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -131,19 +131,26 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="datatyper-og-datafordelinger" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> Datatyper og datafordelinger</h1>
+<p>Ift statistisk prosesskontroll er det formålstjenlig å snakke om tre hovedtyper data: måledata, telledata og sjeldne hendelser. Måledata er kontinuerlige data – det vil si de kan måles på en skala som høyde, vekt og tid. Her kan en observasjon/et datapunkt innta en hvilken som helst verdi innenfor et gitt spenn. Høyden på en person kan være 178,34227809 cm eller 178,34227808 cm.</p>
+<p>Telledata et kategoriske (også ofte omtalt som diskrete) data – det vil si et datapunkt (en observasjon) kan puttes inn i en klar kategori, som f.eks. antall avvik, antall hendelser, ja/nei, terningkast. Diskrete data har et begrenset antall mulige verdier som er gjensidig utelukkende. Et terningkast med en vanlig terning kan ikke både være 3 og 4 samtidig, en lysbryter kan ikke være av og på samtidig. Et terningkast kan heller ikke være 1,43. Med tanke på datafordeling er både binomial- og Poissonfordeling diskrete fordelinger, mens normalfordeling vil være kontinuerlig.</p>
+<p>Når det gjelder sjeldne hendelser kan de være både telledata og måledata. For eksempel vil antall dager mellom en hendelse være en diskret data, mens tid kan måles og vil være kontinuerlige data. Det er spesielle utfordringer med det vi kaller sjeldne hendelser finnes det også egne måter å håndtere dette på i statistisk prosesskontroll, noe vi vil komme tilbake til. For sjeldne henselser vil både geometrisk og eksponensiell fordeling være relevant. Det finnes en god del flere fordelinger enn disse som nå er nevnt, men som <span class="citation">Benneyan (1998)</span> viser er normal-, binomial- og Poissonfordeling de tre vesentligste. For en god oversikt over flere fordelinger, se f.eks. <span class="citation">Mun (2008)</span>.</p>
+<p>Hvorfor fokus på fordelinger?</p>
+<p>Fordelingene – normalfordeling, binomialfordeling, Poissionfordeling, geometrisk fordeling og eksponensiell fordeling – beskriver ulike fordelinger ut fra hvordan dataene ser ut. Vi bruker forventningene/sannsynlighetene for ulike verdier i statistisk prosesskontroll til å vurdere om en verdi av en observasjon eller måling er innenfor eller utenfor det vi vil kalle normal variasjon (jfr kapittelet om variasjon). Siden dataene kan være av ulik type – diskret eller kontinuerlig, binomial/ikke binomial osv – bruker vi ulike utregningsmetoder og diagrammer i statistisk prosesskontroll for å få et riktig resultat. Det finnes et antall ulike diagrammer å velge mellom i statistisk prosesskontroll. For å gjøre valget sikrere og lettere kan man bruke følgende flytskjema for å orientere seg:</p>
+<div class="figure">
+<img src="Flytdiagram_valg.png" alt="" />
+<p class="caption">Flytdiagram for valg av analyse</p>
+</div>
+
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-
+<a href="variasjon.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="r-kode.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -174,7 +181,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/nilskvilvang/SPC/edit/master/%s",
+"link": "https://github.com/nilskvilvang/SPC/edit/master/04_Kap_4.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -182,7 +189,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/nilskvilvang/SPC/blob/master/%s",
+"link": "https://github.com/nilskvilvang/SPC/blob/master/04_Kap_4.Rmd",
 "text": null
 },
 "download": null,
