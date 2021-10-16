@@ -2,7 +2,7 @@
 bibliography: referanser.bib 
 ---
 
-# R kode {.unnumbered}
+# Vedlegg 1 - R kode {.unnumbered}
 
 ## Kapittel 2 {.unnumbered}
 
@@ -415,6 +415,39 @@ Lage fig 4.9:
 
 ```{r echo = TRUE, eval=FALSE}
 
+y.norm <- rnorm(n= 100000, mean = 0, sd = 1)
+h <- hist(y.norm, breaks = 100, plot = F)
+cuts <- cut(h$breaks, c(-Inf,-3,-2,-1,1,2,3,Inf), right = F) # right=False; sets intervals to be open on the right closed on the left
+plot(h, 
+     col = rep(c("white", "4","3","2","3","4", "white"))[cuts], 
+     main = 'Normalfordeling', 
+     xlab = '', 
+     freq = F, 
+     ylim = c(0,0.6))
+
+lwd = 3
+# horzintal lines
+lines(x = c(2,-2), y = c(0.48,0.48), type = "l", col=3, lwd = lwd)
+lines(x = c(3,-3), y = c(0.55,0.55), type = "l", col=4, lwd = lwd)
+lines(x = c(1,-1), y = c(0.41,0.41), type = "l", col=2, lwd = lwd)
+# vertical lines
+lines(x = c(1,1), y = c(0,0.41), type = "l", col=2, lwd = lwd)
+lines(x = c(-1,-1), y = c(0,0.41), type = "l", col=2, lwd = lwd)
+lines(x = c(2,2), y = c(0,0.48), type = "l", col=3, lwd = lwd)
+lines(x = c(-2,-2), y = c(0,0.48), type = "l", col=3, lwd = lwd)
+lines(x = c(3,3), y = c(0,0.55), type = "l", col=4, lwd = lwd)
+lines(x = c(-3,-3), y = c(0,0.55), type = "l", col=4, lwd = lwd)
+# text
+text(0, 0.44, "68%", cex = 1.5, col=2)
+text(0, 0.51, "95%", cex = 1.5, col=3)
+text(0, 0.58, "99.7%", cex = 1.5, col=4)
+
+```
+
+Lage fig 4.10:
+
+```{r echo = TRUE, eval=FALSE}
+
 success <- 0:20
 
 plot(success,dbinom(success,size=20,prob=.5),
@@ -426,7 +459,7 @@ plot(success,dbinom(success,size=20,prob=.5),
 
 ```
 
-Lage fig 4.10:
+Lage fig 4.11:
 
 ```{r echo = TRUE, eval=FALSE}
 
@@ -441,7 +474,7 @@ plot(success,dbinom(success,size=20,prob=.2),
 
 ```
 
-Lage fig 4.11:
+Lage fig 4.12:
 
 ```{r echo = TRUE, eval=FALSE}
 
@@ -454,7 +487,7 @@ stripchart(terning10, method = "stack", offset = .5, at = 0, pch = 19,
 
 ```
 
-Lage fig 4.12:
+Lage fig 4.13:
 
 ```{r echo = TRUE, eval=FALSE}
 
@@ -485,7 +518,7 @@ table(terning_runde3)
 
 ```
 
-Lage fig 4.13:
+Lage fig 4.14:
 
 ```{r echo = TRUE, eval=FALSE}
 
@@ -500,7 +533,7 @@ hist(minterning,
 
 ```
 
-Lage fig 4.14:
+Lage fig 4.15:
 
 ```{r echo = TRUE, eval=FALSE}
 
@@ -535,7 +568,7 @@ legend("topright", legend = c("5", "10", "20"),
 
 ```
 
-Lage fig 4.15:
+Lage fig 4.16:
 
 ```{r echo = TRUE, eval=FALSE}
 
@@ -574,7 +607,24 @@ dpois(x = 1, lambda = 2.5) + dpois(x=2, lambda = 2.5) + dpois(x=3, lambda = 2.5)
 
 ```
 
-Lage fig 4.16:
+Lage fig 4.17:
+
+```{r echo = TRUE, eval=FALSE}
+
+x_dgeom <- seq(1, 20, by = 1)
+
+y_dgeom <- dgeom(x_dgeom, prob = 0.4) 
+
+plot(y_dgeom,
+type="l",     
+main="Geometrisk fordeling for p = 0.4",
+ylab="f(x)",
+xlab = "x")
+
+```
+
+
+Lage fig 4.18:
 
 ```{r echo = TRUE, eval=FALSE}
 
@@ -607,3 +657,296 @@ dat4plot <- ggplot(dat4, aes(x=x, y=fx)) + geom_line() + ggtitle(expression( ~ l
 ggarrange(dat1plot, dat2plot, dat3plot, dat4plot + rremove("x.text"), ncol = 2, nrow = 2,  widths = c(1, 1))
 
 ```
+
+
+
+## Vedlegg 2 - Kritiske verdier i seriediagram {.unnumbered}
+
+```{r echo = TRUE, eval=FALSE}
+
+pacman::p_load(kableExtra)
+
+n <- 10:100
+hendelser <- data.frame(
+  "Antall observasjoner"                = n,
+  "Øvre grense for serie"               = round(log2(n) + 3),
+  "Nedre grense for antall krysninger"  = qbinom(0.05, n - 1, 0.5),
+  check.names = FALSE)
+
+kbl(hendelser, booktabs = T,  longtable = T, caption = "Kritiske verdier", align = 'c') %>%
+  kable_styling(latex_options = "striped") %>%
+  kable_styling(latex_options = "repeat_header") %>%
+  row_spec(0, bold = T)
+
+```
+
+
+## Vedlegg 3 - Chebyshevs teorem {.unnumbered}
+
+Lage generisk grafisk framstilling av Chebyshevs teorem
+
+```{r echo = TRUE, eval=FALSE}
+
+pacman::p_load(tidyverse)
+
+# For å lage eksempelet lager vi to normalfordelte datasett med ulik gjennomsnitt og standardavvik som vi slår sammen
+
+set.seed(10) 
+
+mode1 <- rnorm(1000,2,1)
+mode1 <- mode1[mode1 > 0] 
+mode2 <- rnorm(1000,6,2)
+mode2 <- mode2[mode2 > 0] 
+modex2 <- as_tibble(sort(c(mode1,mode2)))
+
+# Deretter setter vi dataene inn i et diagram
+
+ggplot(modex2, aes(x=value)) + 
+  geom_density() +
+  ggtitle("Eksempel: Bimodal distribusjon", subtitle = "Eksemplet er kun illustrativt, ikke nøyaktig eller basert på reelle data") +
+  labs(x = "", y = "") +
+  theme_classic() +
+  theme(legend.position = "none") + 
+  
+  scale_x_discrete(labels = NULL, breaks = NULL) +
+  labs(x = "") +
+  xlim(-0.02, 8) +
+  ylim(-0.02,0.3) +
+ 
+  annotate("segment", x = 4, y = 0, xend = 4, yend = 0.15, linetype = "dashed", color = "red") + 
+  annotate('text', x = 4, y = -0.015, label = "bar(x)", parse = TRUE, size = 5) +
+  
+  annotate("segment", x = 7.8, y = 0, xend = 7.8, yend = 0.275, color = "darkgreen") + 
+  annotate('text', x = 7.8, y = -0.015, label = "bar(x) ~ + ~ 3 ~ sd", parse = TRUE, size = 5) +
+  
+  annotate("segment", x = 0.2, y = 0, xend = 0.2, yend = 0.275, color = "darkgreen") + 
+  annotate('text', x = 0.3, y = -0.015, label = "bar(x)~-~3~sd", parse = TRUE, size = 5) +
+  
+  annotate("segment", x = 2.1, y = 0, xend = 2.1, yend = 0.235, color = "blue") + 
+  annotate('text', x = 2.1, y = -0.015, label = "bar(x)~-~2~sd", parse = TRUE, size = 5) +
+  
+  annotate("segment", x = 5.9, y = 0, xend = 5.9, yend = 0.235, color = "blue") + 
+  annotate('text', x = 5.9, y = -0.015, label = "bar(x)~+~2~sd", parse = TRUE, size = 5) +
+  
+  annotate("text", x=4, y=0.23, label="Minst 75 %", color = "blue") +
+  annotate("segment", x = 3.35, y = 0.23, xend = 2.25, yend = 0.23, color = "blue") + 
+  annotate("segment", x = 4.6, y = 0.23, xend = 5.8, yend = 0.23, color = "blue") +
+  
+  annotate("text", x=4, y=0.27, label="Minst 88.89 %", color = "darkgreen") +
+  annotate("segment",x = 0.3, y = 0.27, xend = 3.2, yend = 0.27, color = "darkgreen") +
+  annotate("segment", x = 4.8, y = 0.27, xend = 7.7, yend = 0.27, color = "darkgreen")
+
+```
+
+Lage tabell over *k* og prosent
+
+```{r echo = TRUE, eval=FALSE}
+
+pacman::p_load(tidyverse, kableExtra, knitr)
+k <- seq(1,4,by = 0.1)
+auc <- 1-(1/k^2)
+auc.percent <- round(auc*100)
+cheb_table <- as_tibble(cbind(k,auc.percent))
+
+kbl(cheb_table) %>%
+  kable_styling(bootstrap_options = "striped", full_width = F) %>%
+  kable_paper() %>%
+  scroll_box(height = "200px")
+```
+
+Lage graf over *k* og prosent
+
+```{r echo = TRUE, eval=FALSE}
+
+plot(k, 
+     auc.percent, 
+     col = 'blue', 
+     pch = 10, 
+     xlab = 'k', 
+     ylab = 'Prosent', 
+     main = 'Chebyshevs teorem' )
+
+abline(v=2, col="red", lwd = 1)
+abline(h=75, col="red", lwd = 1)
+```
+
+## Vedlegg 4 - Central Limit Theorem {.unnumbered}
+
+Lage ikke-normalfordelte data og plotte Q-Q plott
+
+```{r echo = TRUE, eval=FALSE}
+
+pacman::p_load(ggplot2, tidyverse, magrittr, dplyr, truncnorm)
+
+nn <- 1e4
+set.seed(1)
+sims <- as_tibble(c(rtruncnorm(nn/2, a=1, b=5, mean=2, sd=.5),
+                    rtruncnorm(nn/2, a=1, b=5, mean=4, sd=.5)))
+
+ggplot(sims, aes(sample=value)) + stat_qq() + stat_qq_line(col = "red")
+
+```
+
+Lage første histogram (populasjonen)
+
+```{r echo = TRUE, eval=FALSE}
+
+pacman::p_load(ggplot2, tidyverse, magrittr, dplyr, truncnorm)
+
+nn <- 1e4
+set.seed(1)
+sims <- c(rtruncnorm(nn/2, a=1, b=5, mean=2, sd=.5),
+                    rtruncnorm(nn/2, a=1, b=5, mean=4, sd=.5))
+
+mySD <- as.character(abs(as.integer((sims - mean(sims)) / sd(sims))))
+myDF <- data.frame(sims, mySD)
+xAxis <- as.integer(max(abs(sims)))
+mu <- round(mean(sims),2)
+sd <- round(sd(sims),2)
+myBin <- sd/10
+ggplot(myDF, aes(sims)) +
+  geom_histogram(aes(fill = mySD), binwidth = myBin, col="black", size=.1) +  # change binwidth
+  labs(x="x", y="Frequency") + 
+  labs(title="Histogram av generert bimodal distribusjon",subtitle=paste0(  "Gj.snitt = ", mu, ", sd = ", sd)) +
+  scale_x_continuous(breaks = seq(mu-sd*5, mu+sd*5, sd)) +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  guides(fill=guide_legend(expression(sigma))) 
+
+```
+
+Lage histogram over 100 utvalg av 30
+
+```{r echo = TRUE, eval=FALSE}
+
+n <- 100
+sampSize <- 30
+xbar <- rep(NA, n)
+for (i in 1:n) {
+  mysamp <- sample(sims, size = sampSize)
+  xbar[i] <- mean(mysamp)
+}
+
+mySD<-as.character( abs(as.integer((xbar - mean(xbar)) / sd(xbar) )))
+myDF<-data.frame(xbar,mySD)
+xAxis<-as.integer(max(abs(xbar)))
+mu<-round(mean(xbar),2)
+sd<-round(sd(xbar),2)
+myBin<-sd/10
+ggplot(myDF, aes(xbar)) +
+  geom_histogram(aes(fill = mySD), binwidth = myBin, col="black", size=.1) +  # change binwidth
+  labs(x="x", y="Frequency") + 
+  labs(title="Histogram for genererte utvalg",
+  subtitle=paste0(  "mean = ", mu, ", sd = ", sd, ", Utvalgsstørrelse = ",sampSize,", Antall utvalg = ",n))+
+  scale_x_continuous(breaks = seq(mu-sd*5, mu+sd*5, sd))+
+  theme_bw()+
+  theme(plot.title = element_text(hjust = 0.5))+
+  guides(fill=guide_legend(expression(sigma)))+
+  geom_density(aes(y=..count../90))
+
+```
+
+Lage histogram over 1000 utvalg av 30
+
+```{r echo = TRUE, eval=FALSE}
+
+n<-1000
+sampSize<-30
+xbar <- rep(NA, n)
+for (i in 1:n) {
+  mysamp <- sample(sims, size = sampSize)
+  xbar[i] <- mean(mysamp)
+}
+
+mySD<-as.character( abs(as.integer((xbar - mean(xbar)) / sd(xbar) )))
+myDF<-data.frame(xbar,mySD)
+xAxis<-as.integer(max(abs(xbar)))
+mu<-round(mean(xbar),2)
+sd<-round(sd(xbar),2)
+myBin<-sd/10
+ggplot(myDF, aes(xbar)) +
+  geom_histogram(aes(fill = mySD), binwidth = myBin, col="black", size=.1) +  # change binwidth
+  labs(x="x", y="Frequency") + 
+  labs(title="Histogram for genererte utvalg",
+  subtitle=paste0(  "Gj.snitt = ", mu, ", sd = ", sd, ", Utvalgsstørrelse = ",sampSize,", Antall utvalg = ",n))+
+  scale_x_continuous(breaks = seq(mu-sd*5, mu+sd*5, sd))+
+  theme_bw()+
+  theme(plot.title = element_text(hjust = 0.5))+
+  guides(fill=guide_legend(expression(sigma)))+
+  geom_density(aes(y=..count../90))
+
+```
+
+Lage histogram over 1000 utvalg av 30
+
+```{r echo = TRUE, eval=FALSE}
+
+n<-10000
+sampSize<-30
+xbar <- rep(NA, n)
+for (i in 1:n) {
+  mysamp <- sample(sims, size = sampSize)
+  xbar[i] <- mean(mysamp)
+}
+
+mySD<-as.character( abs(as.integer((xbar - mean(xbar)) / sd(xbar) )))
+myDF<-data.frame(xbar,mySD)
+xAxis<-as.integer(max(abs(xbar)))
+mu<-round(mean(xbar),2)
+sd<-round(sd(xbar),2)
+myBin<-sd/10
+ggplot(myDF, aes(xbar)) +
+  geom_histogram(aes(fill = mySD), binwidth = myBin, col="black", size=.1) +  # change binwidth
+  labs(x="x", y="Frequency") + 
+  labs(title="Histogram for genererte utvalg",
+  subtitle=paste0(  "Gj.snitt = ", mu, ", sd = ", sd, ", Utvalgsstørrelsee = ",sampSize,", Antall utvalg = ",n))+
+  scale_x_continuous(breaks = seq(mu-sd*5, mu+sd*5, sd))+
+  theme_bw()+
+  theme(plot.title = element_text(hjust = 0.5))+
+  guides(fill=guide_legend(expression(sigma)))+
+  geom_density(aes(y=..count../90))
+
+```
+
+## Vedlegg 5 - Konstanter for kontrolldiagram {.unnumbered}
+
+```{r echo = TRUE, eval=FALSE}
+
+pacman::p_load(flextable, SixSigma, officer, magrittr)
+
+nmax <- 25
+n <- 2:nmax
+
+d2 <- sapply(2:nmax, ss.cc.getd2)
+d3 <- sapply(2:nmax, ss.cc.getd3)
+c4 <- sapply(2:nmax, ss.cc.getc4)
+A2 <- 3/(d2*sqrt(n))
+D3 <- sapply(1:(nmax-1), function(x){
+max(c(0, 1 - 3*(d3[x]/d2[x])))})
+D4 <- (1 + 3*(d3/d2))
+B3 <- sapply(1:(nmax-1), function(x){
+max(0, 1 - 3*(sqrt(1-c4[x]^2)/c4[x]))})
+B4 <- 1 + 3*(sqrt(1-c4^2)/c4)
+
+constdf <- data.frame(n, A2, d2, d3, c4, 
+D3, D4, B3, B4)
+
+set_flextable_defaults(big.mark = " ", 
+  font.size = 10, 
+  theme_fun = theme_vanilla,
+  padding.bottom = 6, 
+  padding.top = 6,
+  padding.left = 6,
+  padding.right = 6,
+  background.color = "#EFEFEF")
+
+constdf1 <- flextable(constdf)
+
+constdf1 <- align(constdf1, align = "center", part = "all")
+
+constdf1 <- add_header_lines(constdf1, values = "Tabell med konstanter for kontrolldiagram")
+
+constdf1
+
+```
+

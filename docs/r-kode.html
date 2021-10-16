@@ -30,7 +30,7 @@
   
   
 <link rel="prev" href="datatyper-og-datafordelinger.html"/>
-
+<link rel="next" href="chebyshevs-teorem.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -171,12 +171,25 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="3.1" data-path="variasjon.html"><a href="variasjon.html#simulering-av-trakteksperimentet-i-r"><i class="fa fa-check"></i><b>3.1</b> Simulering av trakteksperimentet i R</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="datatyper-og-datafordelinger.html"><a href="datatyper-og-datafordelinger.html"><i class="fa fa-check"></i><b>4</b> Datatyper og datafordelinger</a></li>
+<li class="chapter" data-level="4" data-path="datatyper-og-datafordelinger.html"><a href="datatyper-og-datafordelinger.html"><i class="fa fa-check"></i><b>4</b> Datatyper og datafordelinger</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="datatyper-og-datafordelinger.html"><a href="datatyper-og-datafordelinger.html#normalfordeling"><i class="fa fa-check"></i><b>4.1</b> Normalfordeling</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="datatyper-og-datafordelinger.html"><a href="datatyper-og-datafordelinger.html#varians-og-standardavvik"><i class="fa fa-check"></i><b>4.1.1</b> Varians og standardavvik</a></li>
+<li class="chapter" data-level="4.1.2" data-path="datatyper-og-datafordelinger.html"><a href="datatyper-og-datafordelinger.html#normalfordeling-standardavvik-og-forventninger"><i class="fa fa-check"></i><b>4.1.2</b> Normalfordeling, standardavvik og forventninger</a></li>
+<li class="chapter" data-level="4.1.3" data-path="datatyper-og-datafordelinger.html"><a href="datatyper-og-datafordelinger.html#binomialfordeling"><i class="fa fa-check"></i><b>4.1.3</b> Binomialfordeling</a></li>
+<li class="chapter" data-level="4.1.4" data-path="datatyper-og-datafordelinger.html"><a href="datatyper-og-datafordelinger.html#poissonfordeling"><i class="fa fa-check"></i><b>4.1.4</b> Poissonfordeling</a></li>
+<li class="chapter" data-level="4.1.5" data-path="datatyper-og-datafordelinger.html"><a href="datatyper-og-datafordelinger.html#geometrisk-fordeling"><i class="fa fa-check"></i><b>4.1.5</b> Geometrisk fordeling</a></li>
+<li class="chapter" data-level="4.1.6" data-path="datatyper-og-datafordelinger.html"><a href="datatyper-og-datafordelinger.html#eksponensiell-fordeling"><i class="fa fa-check"></i><b>4.1.6</b> Eksponensiell fordeling</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="r-kode.html"><a href="r-kode.html"><i class="fa fa-check"></i>R kode</a>
 <ul>
 <li class="chapter" data-level="" data-path="r-kode.html"><a href="r-kode.html#kapittel-2"><i class="fa fa-check"></i>Kapittel 2</a></li>
 <li class="chapter" data-level="" data-path="r-kode.html"><a href="r-kode.html#kapittel-3"><i class="fa fa-check"></i>Kapittel 3</a></li>
+<li class="chapter" data-level="" data-path="r-kode.html"><a href="r-kode.html#kapittel-4"><i class="fa fa-check"></i>Kapittel 4</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="chebyshevs-teorem.html"><a href="chebyshevs-teorem.html"><i class="fa fa-check"></i>Chebyshevs teorem</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 </ul>
@@ -201,273 +214,449 @@ div.csl-indent {
 <div id="kapittel-2" class="section level2 unnumbered">
 <h2>Kapittel 2</h2>
 <p>Sette opp nødvendige pakker:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="r-kode.html#cb1-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(ggplot2, readxl, tidyverse, ggpubr, dplyr, hrbrthemes)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="r-kode.html#cb5-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(ggplot2, readxl, tidyverse, ggpubr, dplyr, hrbrthemes)</span></code></pre></div>
 <p>Lage fig 2.1:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="r-kode.html#cb2-1" aria-hidden="true" tabindex="-1"></a>prepost_eksempel_long <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(<span class="fu">read_excel</span>(<span class="st">&quot;prepost_eksempel_long.xlsx&quot;</span>))</span>
-<span id="cb2-2"><a href="r-kode.html#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="r-kode.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggbarplot</span>(prepost_eksempel_long, <span class="at">x =</span> <span class="st">&quot;Periode&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Verdi&quot;</span>, <span class="at">add =</span> <span class="fu">c</span>(<span class="st">&quot;mean&quot;</span>), <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;lightblue&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="r-kode.html#cb6-1" aria-hidden="true" tabindex="-1"></a>prepost_eksempel_long <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(<span class="fu">read_excel</span>(<span class="st">&quot;prepost_eksempel_long.xlsx&quot;</span>))</span>
+<span id="cb6-2"><a href="r-kode.html#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="r-kode.html#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggbarplot</span>(prepost_eksempel_long, <span class="at">x =</span> <span class="st">&quot;Periode&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Verdi&quot;</span>, <span class="at">add =</span> <span class="fu">c</span>(<span class="st">&quot;mean&quot;</span>), <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;lightblue&quot;</span>)</span></code></pre></div>
 <p>Lage fig 2.2:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="r-kode.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggline</span>(prepost_eksempel_long, <span class="at">x =</span> <span class="st">&quot;Periode&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Verdi&quot;</span>, <span class="at">add =</span> <span class="fu">c</span>(<span class="st">&quot;mean_se&quot;</span>, <span class="st">&quot;jitter&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="r-kode.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggline</span>(prepost_eksempel_long, <span class="at">x =</span> <span class="st">&quot;Periode&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Verdi&quot;</span>, <span class="at">add =</span> <span class="fu">c</span>(<span class="st">&quot;mean_se&quot;</span>, <span class="st">&quot;jitter&quot;</span>))</span></code></pre></div>
 <p>Lage fig 2.3:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="r-kode.html#cb4-1" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">24</span></span>
-<span id="cb4-2"><a href="r-kode.html#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="r-kode.html#cb4-3" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">c</span>(prepost_eksempel_long<span class="sc">$</span>Verdi)</span>
-<span id="cb4-4"><a href="r-kode.html#cb4-4" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb4-5"><a href="r-kode.html#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(t,z, <span class="at">type=</span><span class="st">&quot;l&quot;</span>, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>, <span class="at">lwd=</span><span class="dv">3</span>, <span class="at">xlab=</span><span class="st">&quot;Periode&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;Antall&quot;</span>, <span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>)</span>
-<span id="cb4-6"><a href="r-kode.html#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">24</span>,<span class="dv">2</span>))</span>
-<span id="cb4-7"><a href="r-kode.html#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-8"><a href="r-kode.html#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="dv">12</span>, <span class="at">col=</span><span class="st">&quot;red&quot;</span>, <span class="at">lwd =</span> <span class="dv">3</span>)</span>
-<span id="cb4-9"><a href="r-kode.html#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="fl">15.5</span>, <span class="dv">40</span>, <span class="st">&quot;Endring i prosedyre&quot;</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="r-kode.html#cb8-1" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">24</span></span>
+<span id="cb8-2"><a href="r-kode.html#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="r-kode.html#cb8-3" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">c</span>(prepost_eksempel_long<span class="sc">$</span>Verdi)</span>
+<span id="cb8-4"><a href="r-kode.html#cb8-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-5"><a href="r-kode.html#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(t,z, <span class="at">type=</span><span class="st">&quot;l&quot;</span>, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>, <span class="at">lwd=</span><span class="dv">3</span>, <span class="at">xlab=</span><span class="st">&quot;Periode&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;Antall&quot;</span>, <span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>)</span>
+<span id="cb8-6"><a href="r-kode.html#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">24</span>,<span class="dv">2</span>))</span>
+<span id="cb8-7"><a href="r-kode.html#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="r-kode.html#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="dv">12</span>, <span class="at">col=</span><span class="st">&quot;red&quot;</span>, <span class="at">lwd =</span> <span class="dv">3</span>)</span>
+<span id="cb8-9"><a href="r-kode.html#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="fl">15.5</span>, <span class="dv">40</span>, <span class="st">&quot;Endring i prosedyre&quot;</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span></code></pre></div>
 </div>
 <div id="kapittel-3" class="section level2 unnumbered">
 <h2>Kapittel 3</h2>
 <p>Lage fig 3.1:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="r-kode.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Genererer tilfeldig tall for regel 1:</span></span>
-<span id="cb5-2"><a href="r-kode.html#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="r-kode.html#cb5-3" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(xlsx, ggplot2, tidyverse, ggpubr)</span>
-<span id="cb5-4"><a href="r-kode.html#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="r-kode.html#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">91</span>)</span>
-<span id="cb5-6"><a href="r-kode.html#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="r-kode.html#cb5-7" aria-hidden="true" tabindex="-1"></a>regel1_x <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(<span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb5-8"><a href="r-kode.html#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">x =</span> value) <span class="sc">%&gt;%</span></span>
-<span id="cb5-9"><a href="r-kode.html#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_column</span>(<span class="at">nr =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb5-10"><a href="r-kode.html#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(nr)</span>
-<span id="cb5-11"><a href="r-kode.html#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-12"><a href="r-kode.html#cb5-12" aria-hidden="true" tabindex="-1"></a>regel1_y <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(<span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb5-13"><a href="r-kode.html#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">y =</span> value) <span class="sc">%&gt;%</span></span>
-<span id="cb5-14"><a href="r-kode.html#cb5-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_column</span>(<span class="at">nr =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb5-15"><a href="r-kode.html#cb5-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(nr)</span>
-<span id="cb5-16"><a href="r-kode.html#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-17"><a href="r-kode.html#cb5-17" aria-hidden="true" tabindex="-1"></a>regel1 <span class="ot">&lt;-</span> <span class="fu">merge</span>(regel1_x,regel1_y,<span class="at">by=</span><span class="st">&quot;nr&quot;</span>)</span>
-<span id="cb5-18"><a href="r-kode.html#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-19"><a href="r-kode.html#cb5-19" aria-hidden="true" tabindex="-1"></a>regel1_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(regel1, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
-<span id="cb5-20"><a href="r-kode.html#cb5-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;x&quot;</span>, <span class="at">y =</span> <span class="st">&quot;y&quot;</span>, <span class="at">title =</span> <span class="st">&quot;Regel 1&quot;</span>) <span class="sc">+</span> <span class="fu">xlim</span>(<span class="sc">-</span><span class="dv">5</span>,<span class="dv">5</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">5</span>,<span class="dv">5</span>)<span class="sc">+</span> <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span> <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
-<span id="cb5-21"><a href="r-kode.html#cb5-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-22"><a href="r-kode.html#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Genererer tilfeldig tall for regel 2:</span></span>
-<span id="cb5-23"><a href="r-kode.html#cb5-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-24"><a href="r-kode.html#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">92</span>)</span>
-<span id="cb5-25"><a href="r-kode.html#cb5-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-26"><a href="r-kode.html#cb5-26" aria-hidden="true" tabindex="-1"></a>regel2_x <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(<span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">2</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb5-27"><a href="r-kode.html#cb5-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">x =</span> value) <span class="sc">%&gt;%</span></span>
-<span id="cb5-28"><a href="r-kode.html#cb5-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_column</span>(<span class="at">nr =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb5-29"><a href="r-kode.html#cb5-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(nr)</span>
-<span id="cb5-30"><a href="r-kode.html#cb5-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-31"><a href="r-kode.html#cb5-31" aria-hidden="true" tabindex="-1"></a><span class="do">## Setter sd = 2 fordi variasjonen med regel 2 er dobbel av regel 1 (jfr SPC for Excel)</span></span>
-<span id="cb5-32"><a href="r-kode.html#cb5-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-33"><a href="r-kode.html#cb5-33" aria-hidden="true" tabindex="-1"></a>regel2_y <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(<span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">2</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb5-34"><a href="r-kode.html#cb5-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">y =</span> value) <span class="sc">%&gt;%</span></span>
-<span id="cb5-35"><a href="r-kode.html#cb5-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_column</span>(<span class="at">nr =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb5-36"><a href="r-kode.html#cb5-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(nr)</span>
-<span id="cb5-37"><a href="r-kode.html#cb5-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-38"><a href="r-kode.html#cb5-38" aria-hidden="true" tabindex="-1"></a>regel2 <span class="ot">&lt;-</span> <span class="fu">merge</span>(regel2_x,regel2_y,<span class="at">by=</span><span class="st">&quot;nr&quot;</span>)</span>
-<span id="cb5-39"><a href="r-kode.html#cb5-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-40"><a href="r-kode.html#cb5-40" aria-hidden="true" tabindex="-1"></a>regel2_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(regel2, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
-<span id="cb5-41"><a href="r-kode.html#cb5-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;x&quot;</span>, <span class="at">y =</span> <span class="st">&quot;y&quot;</span>, <span class="at">title =</span> <span class="st">&quot;Regel 2&quot;</span>) <span class="sc">+</span> <span class="fu">xlim</span>(<span class="sc">-</span><span class="dv">5</span>,<span class="dv">5</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">5</span>,<span class="dv">5</span>) <span class="sc">+</span> <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span> <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
-<span id="cb5-42"><a href="r-kode.html#cb5-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-43"><a href="r-kode.html#cb5-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Henter tall fra Excel for regel 3:</span></span>
-<span id="cb5-44"><a href="r-kode.html#cb5-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-45"><a href="r-kode.html#cb5-45" aria-hidden="true" tabindex="-1"></a>regel3 <span class="ot">&lt;-</span> <span class="fu">read.xlsx</span>(<span class="st">&quot;Funnel_blankedata_regel3.xlsx&quot;</span>, <span class="dv">1</span>)</span>
-<span id="cb5-46"><a href="r-kode.html#cb5-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-47"><a href="r-kode.html#cb5-47" aria-hidden="true" tabindex="-1"></a>regel3_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(regel3, <span class="fu">aes</span>(<span class="at">x =</span> Regel_3_x, <span class="at">y =</span> Regel_3_y)) <span class="sc">+</span></span>
-<span id="cb5-48"><a href="r-kode.html#cb5-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;x&quot;</span>, <span class="at">y =</span> <span class="st">&quot;y&quot;</span>, <span class="at">title =</span> <span class="st">&quot;Regel 3&quot;</span>) <span class="sc">+</span> <span class="fu">xlim</span>(<span class="sc">-</span><span class="dv">5</span>,<span class="dv">5</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">5</span>,<span class="dv">5</span>)<span class="sc">+</span> <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span> <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
-<span id="cb5-49"><a href="r-kode.html#cb5-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-50"><a href="r-kode.html#cb5-50" aria-hidden="true" tabindex="-1"></a><span class="co"># Henter tall fra Excel for regel 4:</span></span>
-<span id="cb5-51"><a href="r-kode.html#cb5-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-52"><a href="r-kode.html#cb5-52" aria-hidden="true" tabindex="-1"></a>regel4 <span class="ot">&lt;-</span> <span class="fu">read.xlsx</span>(<span class="st">&quot;Funnel_blankedata_regel4.xlsx&quot;</span>, <span class="dv">1</span>)</span>
-<span id="cb5-53"><a href="r-kode.html#cb5-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-54"><a href="r-kode.html#cb5-54" aria-hidden="true" tabindex="-1"></a>regel4_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(regel4, <span class="fu">aes</span>(<span class="at">x =</span> Regel_4_x, <span class="at">y =</span> Regel_4_y)) <span class="sc">+</span></span>
-<span id="cb5-55"><a href="r-kode.html#cb5-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;x&quot;</span>, <span class="at">y =</span> <span class="st">&quot;y&quot;</span>, <span class="at">title =</span> <span class="st">&quot;Regel 4&quot;</span>) <span class="sc">+</span> <span class="fu">xlim</span>(<span class="sc">-</span><span class="dv">5</span>,<span class="dv">5</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">5</span>,<span class="dv">5</span>)<span class="sc">+</span> <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span> <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
-<span id="cb5-56"><a href="r-kode.html#cb5-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-57"><a href="r-kode.html#cb5-57" aria-hidden="true" tabindex="-1"></a><span class="co"># Setter plottene sammen:</span></span>
-<span id="cb5-58"><a href="r-kode.html#cb5-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-59"><a href="r-kode.html#cb5-59" aria-hidden="true" tabindex="-1"></a><span class="fu">ggarrange</span>(regel1_plot, regel2_plot, regel3_plot, regel4_plot </span>
-<span id="cb5-60"><a href="r-kode.html#cb5-60" aria-hidden="true" tabindex="-1"></a> <span class="sc">+</span> <span class="fu">rremove</span>(<span class="st">&quot;x.text&quot;</span>), <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">nrow =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p>Lage fig 3.2:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="r-kode.html#cb6-1" aria-hidden="true" tabindex="-1"></a>regel3_2 <span class="ot">&lt;-</span> <span class="fu">read.xlsx</span>(<span class="st">&quot;Funnel_blankedata_regel3_2.xlsx&quot;</span>, <span class="dv">1</span>)</span>
-<span id="cb6-2"><a href="r-kode.html#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="r-kode.html#cb6-3" aria-hidden="true" tabindex="-1"></a>regel3_2_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(regel3_2, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
-<span id="cb6-4"><a href="r-kode.html#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;x&quot;</span>, <span class="at">y =</span> <span class="st">&quot;y&quot;</span>, <span class="at">title =</span> <span class="st">&quot;Regel 3 - annet førstetreff&quot;</span>) <span class="sc">+</span> <span class="fu">xlim</span>(<span class="sc">-</span><span class="dv">5</span>,<span class="dv">5</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">5</span>,<span class="dv">5</span>)<span class="sc">+</span> <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span> <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
-<span id="cb6-5"><a href="r-kode.html#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-6"><a href="r-kode.html#cb6-6" aria-hidden="true" tabindex="-1"></a>regel3_2_plot </span></code></pre></div>
-<p>Lage fig 3.3:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="r-kode.html#cb7-1" aria-hidden="true" tabindex="-1"></a>regel4_2 <span class="ot">&lt;-</span> <span class="fu">read.xlsx</span>(<span class="st">&quot;Funnel_blankedata_regel4_2.xlsx&quot;</span>, <span class="dv">1</span>)</span>
-<span id="cb7-2"><a href="r-kode.html#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="r-kode.html#cb7-3" aria-hidden="true" tabindex="-1"></a>regel4_2_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(regel4_2, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
-<span id="cb7-4"><a href="r-kode.html#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;x&quot;</span>, <span class="at">y =</span> <span class="st">&quot;y&quot;</span>, <span class="at">title =</span> <span class="st">&quot;Regel 4 - annet førstetreff&quot;</span>) <span class="sc">+</span> <span class="fu">xlim</span>(<span class="sc">-</span><span class="dv">2</span>,<span class="dv">10</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">10</span>,<span class="dv">2</span>)<span class="sc">+</span> <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span> <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
-<span id="cb7-5"><a href="r-kode.html#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-6"><a href="r-kode.html#cb7-6" aria-hidden="true" tabindex="-1"></a>regel4_2_plot</span></code></pre></div>
-<p>Lage fig 3.4:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="r-kode.html#cb8-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(qicharts2)</span>
-<span id="cb8-2"><a href="r-kode.html#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="r-kode.html#cb8-3" aria-hidden="true" tabindex="-1"></a>regel1x <span class="ot">&lt;-</span> regel1 <span class="sc">%&gt;%</span> <span class="fu">pull</span>(<span class="dv">2</span>)</span>
-<span id="cb8-4"><a href="r-kode.html#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-5"><a href="r-kode.html#cb8-5" aria-hidden="true" tabindex="-1"></a>regel1y <span class="ot">&lt;-</span> regel1 <span class="sc">%&gt;%</span> <span class="fu">pull</span>(<span class="dv">3</span>)</span>
-<span id="cb8-6"><a href="r-kode.html#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-7"><a href="r-kode.html#cb8-7" aria-hidden="true" tabindex="-1"></a>regel1xrun <span class="ot">&lt;-</span> <span class="fu">qic</span>(regel1x, <span class="at">title =</span> <span class="st">&#39;x-verdi ved regel 1&#39;</span>, <span class="at">ylab =</span> <span class="st">&quot;verdi&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Forsøk nr.&quot;</span>)</span>
-<span id="cb8-8"><a href="r-kode.html#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-9"><a href="r-kode.html#cb8-9" aria-hidden="true" tabindex="-1"></a>regel1yrun <span class="ot">&lt;-</span> <span class="fu">qic</span>(regel1y, <span class="at">title =</span> <span class="st">&#39;y-verdi ved regel 1&#39;</span>, <span class="at">ylab =</span> <span class="st">&quot;verdi&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Forsøk nr.&quot;</span>)</span>
-<span id="cb8-10"><a href="r-kode.html#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-11"><a href="r-kode.html#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggarrange</span>(regel1xrun, regel1yrun <span class="sc">+</span> <span class="fu">rremove</span>(<span class="st">&quot;x.text&quot;</span>), <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">nrow =</span> <span class="dv">1</span>,  <span class="at">widths =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span></code></pre></div>
-<p>Lage fig 3.5:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="r-kode.html#cb9-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(qicharts2)</span>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="r-kode.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Genererer tilfeldig tall for regel 1:</span></span>
 <span id="cb9-2"><a href="r-kode.html#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="r-kode.html#cb9-3" aria-hidden="true" tabindex="-1"></a>regel2x <span class="ot">&lt;-</span> regel2 <span class="sc">%&gt;%</span> <span class="fu">pull</span>(<span class="dv">2</span>)</span>
+<span id="cb9-3"><a href="r-kode.html#cb9-3" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(xlsx, ggplot2, tidyverse, ggpubr)</span>
 <span id="cb9-4"><a href="r-kode.html#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-5"><a href="r-kode.html#cb9-5" aria-hidden="true" tabindex="-1"></a>regel2y <span class="ot">&lt;-</span> regel2 <span class="sc">%&gt;%</span> <span class="fu">pull</span>(<span class="dv">3</span>)</span>
+<span id="cb9-5"><a href="r-kode.html#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">91</span>)</span>
 <span id="cb9-6"><a href="r-kode.html#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-7"><a href="r-kode.html#cb9-7" aria-hidden="true" tabindex="-1"></a>regel2xrun <span class="ot">&lt;-</span> <span class="fu">qic</span>(regel2x, <span class="at">title =</span> <span class="st">&#39;x-verdi ved regel 2&#39;</span>, <span class="at">ylab =</span> <span class="st">&quot;verdi&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Forsøk nr.&quot;</span>)</span>
-<span id="cb9-8"><a href="r-kode.html#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-9"><a href="r-kode.html#cb9-9" aria-hidden="true" tabindex="-1"></a>regel2yrun <span class="ot">&lt;-</span> <span class="fu">qic</span>(regel2y, <span class="at">title =</span> <span class="st">&#39;y-verdi ved regel 2&#39;</span>, <span class="at">ylab =</span> <span class="st">&quot;verdi&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Forsøk nr.&quot;</span>)</span>
-<span id="cb9-10"><a href="r-kode.html#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-11"><a href="r-kode.html#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggarrange</span>(regel2xrun, regel2yrun <span class="sc">+</span> <span class="fu">rremove</span>(<span class="st">&quot;x.text&quot;</span>), <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">nrow =</span> <span class="dv">1</span>,  <span class="at">widths =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span></code></pre></div>
-<p>Lage fig 3.6:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="r-kode.html#cb10-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(qicharts2)</span>
+<span id="cb9-7"><a href="r-kode.html#cb9-7" aria-hidden="true" tabindex="-1"></a>regel1_x <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(<span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb9-8"><a href="r-kode.html#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">x =</span> value) <span class="sc">%&gt;%</span></span>
+<span id="cb9-9"><a href="r-kode.html#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_column</span>(<span class="at">nr =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-10"><a href="r-kode.html#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(nr)</span>
+<span id="cb9-11"><a href="r-kode.html#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-12"><a href="r-kode.html#cb9-12" aria-hidden="true" tabindex="-1"></a>regel1_y <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(<span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb9-13"><a href="r-kode.html#cb9-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">y =</span> value) <span class="sc">%&gt;%</span></span>
+<span id="cb9-14"><a href="r-kode.html#cb9-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_column</span>(<span class="at">nr =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-15"><a href="r-kode.html#cb9-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(nr)</span>
+<span id="cb9-16"><a href="r-kode.html#cb9-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-17"><a href="r-kode.html#cb9-17" aria-hidden="true" tabindex="-1"></a>regel1 <span class="ot">&lt;-</span> <span class="fu">merge</span>(regel1_x,regel1_y,<span class="at">by=</span><span class="st">&quot;nr&quot;</span>)</span>
+<span id="cb9-18"><a href="r-kode.html#cb9-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-19"><a href="r-kode.html#cb9-19" aria-hidden="true" tabindex="-1"></a>regel1_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(regel1, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
+<span id="cb9-20"><a href="r-kode.html#cb9-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;x&quot;</span>, <span class="at">y =</span> <span class="st">&quot;y&quot;</span>, <span class="at">title =</span> <span class="st">&quot;Regel 1&quot;</span>) <span class="sc">+</span> <span class="fu">xlim</span>(<span class="sc">-</span><span class="dv">5</span>,<span class="dv">5</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">5</span>,<span class="dv">5</span>)<span class="sc">+</span> <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span> <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb9-21"><a href="r-kode.html#cb9-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-22"><a href="r-kode.html#cb9-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Genererer tilfeldig tall for regel 2:</span></span>
+<span id="cb9-23"><a href="r-kode.html#cb9-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-24"><a href="r-kode.html#cb9-24" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">92</span>)</span>
+<span id="cb9-25"><a href="r-kode.html#cb9-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-26"><a href="r-kode.html#cb9-26" aria-hidden="true" tabindex="-1"></a>regel2_x <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(<span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">2</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb9-27"><a href="r-kode.html#cb9-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">x =</span> value) <span class="sc">%&gt;%</span></span>
+<span id="cb9-28"><a href="r-kode.html#cb9-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_column</span>(<span class="at">nr =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-29"><a href="r-kode.html#cb9-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(nr)</span>
+<span id="cb9-30"><a href="r-kode.html#cb9-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-31"><a href="r-kode.html#cb9-31" aria-hidden="true" tabindex="-1"></a><span class="do">## Setter sd = 2 fordi variasjonen med regel 2 er dobbel av regel 1 (jfr SPC for Excel)</span></span>
+<span id="cb9-32"><a href="r-kode.html#cb9-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-33"><a href="r-kode.html#cb9-33" aria-hidden="true" tabindex="-1"></a>regel2_y <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(<span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">2</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb9-34"><a href="r-kode.html#cb9-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">y =</span> value) <span class="sc">%&gt;%</span></span>
+<span id="cb9-35"><a href="r-kode.html#cb9-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_column</span>(<span class="at">nr =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-36"><a href="r-kode.html#cb9-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(nr)</span>
+<span id="cb9-37"><a href="r-kode.html#cb9-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-38"><a href="r-kode.html#cb9-38" aria-hidden="true" tabindex="-1"></a>regel2 <span class="ot">&lt;-</span> <span class="fu">merge</span>(regel2_x,regel2_y,<span class="at">by=</span><span class="st">&quot;nr&quot;</span>)</span>
+<span id="cb9-39"><a href="r-kode.html#cb9-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-40"><a href="r-kode.html#cb9-40" aria-hidden="true" tabindex="-1"></a>regel2_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(regel2, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
+<span id="cb9-41"><a href="r-kode.html#cb9-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;x&quot;</span>, <span class="at">y =</span> <span class="st">&quot;y&quot;</span>, <span class="at">title =</span> <span class="st">&quot;Regel 2&quot;</span>) <span class="sc">+</span> <span class="fu">xlim</span>(<span class="sc">-</span><span class="dv">5</span>,<span class="dv">5</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">5</span>,<span class="dv">5</span>) <span class="sc">+</span> <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span> <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb9-42"><a href="r-kode.html#cb9-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-43"><a href="r-kode.html#cb9-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Henter tall fra Excel for regel 3:</span></span>
+<span id="cb9-44"><a href="r-kode.html#cb9-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-45"><a href="r-kode.html#cb9-45" aria-hidden="true" tabindex="-1"></a>regel3 <span class="ot">&lt;-</span> <span class="fu">read.xlsx</span>(<span class="st">&quot;Funnel_blankedata_regel3.xlsx&quot;</span>, <span class="dv">1</span>)</span>
+<span id="cb9-46"><a href="r-kode.html#cb9-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-47"><a href="r-kode.html#cb9-47" aria-hidden="true" tabindex="-1"></a>regel3_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(regel3, <span class="fu">aes</span>(<span class="at">x =</span> Regel_3_x, <span class="at">y =</span> Regel_3_y)) <span class="sc">+</span></span>
+<span id="cb9-48"><a href="r-kode.html#cb9-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;x&quot;</span>, <span class="at">y =</span> <span class="st">&quot;y&quot;</span>, <span class="at">title =</span> <span class="st">&quot;Regel 3&quot;</span>) <span class="sc">+</span> <span class="fu">xlim</span>(<span class="sc">-</span><span class="dv">5</span>,<span class="dv">5</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">5</span>,<span class="dv">5</span>)<span class="sc">+</span> <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span> <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb9-49"><a href="r-kode.html#cb9-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-50"><a href="r-kode.html#cb9-50" aria-hidden="true" tabindex="-1"></a><span class="co"># Henter tall fra Excel for regel 4:</span></span>
+<span id="cb9-51"><a href="r-kode.html#cb9-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-52"><a href="r-kode.html#cb9-52" aria-hidden="true" tabindex="-1"></a>regel4 <span class="ot">&lt;-</span> <span class="fu">read.xlsx</span>(<span class="st">&quot;Funnel_blankedata_regel4.xlsx&quot;</span>, <span class="dv">1</span>)</span>
+<span id="cb9-53"><a href="r-kode.html#cb9-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-54"><a href="r-kode.html#cb9-54" aria-hidden="true" tabindex="-1"></a>regel4_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(regel4, <span class="fu">aes</span>(<span class="at">x =</span> Regel_4_x, <span class="at">y =</span> Regel_4_y)) <span class="sc">+</span></span>
+<span id="cb9-55"><a href="r-kode.html#cb9-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;x&quot;</span>, <span class="at">y =</span> <span class="st">&quot;y&quot;</span>, <span class="at">title =</span> <span class="st">&quot;Regel 4&quot;</span>) <span class="sc">+</span> <span class="fu">xlim</span>(<span class="sc">-</span><span class="dv">5</span>,<span class="dv">5</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">5</span>,<span class="dv">5</span>)<span class="sc">+</span> <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span> <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb9-56"><a href="r-kode.html#cb9-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-57"><a href="r-kode.html#cb9-57" aria-hidden="true" tabindex="-1"></a><span class="co"># Setter plottene sammen:</span></span>
+<span id="cb9-58"><a href="r-kode.html#cb9-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-59"><a href="r-kode.html#cb9-59" aria-hidden="true" tabindex="-1"></a><span class="fu">ggarrange</span>(regel1_plot, regel2_plot, regel3_plot, regel4_plot </span>
+<span id="cb9-60"><a href="r-kode.html#cb9-60" aria-hidden="true" tabindex="-1"></a> <span class="sc">+</span> <span class="fu">rremove</span>(<span class="st">&quot;x.text&quot;</span>), <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">nrow =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p>Lage fig 3.2:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="r-kode.html#cb10-1" aria-hidden="true" tabindex="-1"></a>regel3_2 <span class="ot">&lt;-</span> <span class="fu">read.xlsx</span>(<span class="st">&quot;Funnel_blankedata_regel3_2.xlsx&quot;</span>, <span class="dv">1</span>)</span>
 <span id="cb10-2"><a href="r-kode.html#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="r-kode.html#cb10-3" aria-hidden="true" tabindex="-1"></a>regel3x <span class="ot">&lt;-</span> regel3 <span class="sc">%&gt;%</span> <span class="fu">pull</span>(<span class="dv">2</span>)</span>
-<span id="cb10-4"><a href="r-kode.html#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-5"><a href="r-kode.html#cb10-5" aria-hidden="true" tabindex="-1"></a>regel3y <span class="ot">&lt;-</span> regel3 <span class="sc">%&gt;%</span> <span class="fu">pull</span>(<span class="dv">3</span>)</span>
-<span id="cb10-6"><a href="r-kode.html#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-7"><a href="r-kode.html#cb10-7" aria-hidden="true" tabindex="-1"></a>regel3xrun <span class="ot">&lt;-</span> <span class="fu">qic</span>(regel3x, <span class="at">title =</span> <span class="st">&#39;x-verdi ved regel 3&#39;</span>, <span class="at">ylab =</span> <span class="st">&quot;verdi&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Forsøk nr.&quot;</span>)</span>
-<span id="cb10-8"><a href="r-kode.html#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-9"><a href="r-kode.html#cb10-9" aria-hidden="true" tabindex="-1"></a>regel3yrun <span class="ot">&lt;-</span> <span class="fu">qic</span>(regel3y, <span class="at">title =</span> <span class="st">&#39;y-verdi ved regel 3&#39;</span>, <span class="at">ylab =</span> <span class="st">&quot;verdi&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Forsøk nr.&quot;</span>)</span>
-<span id="cb10-10"><a href="r-kode.html#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-11"><a href="r-kode.html#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggarrange</span>(regel3xrun, regel3yrun <span class="sc">+</span> <span class="fu">rremove</span>(<span class="st">&quot;x.text&quot;</span>), <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">nrow =</span> <span class="dv">1</span>,  <span class="at">widths =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span></code></pre></div>
-<p>Lage fig 3.7:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="r-kode.html#cb11-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(qicharts2)</span>
+<span id="cb10-3"><a href="r-kode.html#cb10-3" aria-hidden="true" tabindex="-1"></a>regel3_2_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(regel3_2, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
+<span id="cb10-4"><a href="r-kode.html#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;x&quot;</span>, <span class="at">y =</span> <span class="st">&quot;y&quot;</span>, <span class="at">title =</span> <span class="st">&quot;Regel 3 - annet førstetreff&quot;</span>) <span class="sc">+</span> <span class="fu">xlim</span>(<span class="sc">-</span><span class="dv">5</span>,<span class="dv">5</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">5</span>,<span class="dv">5</span>)<span class="sc">+</span> <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span> <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb10-5"><a href="r-kode.html#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="r-kode.html#cb10-6" aria-hidden="true" tabindex="-1"></a>regel3_2_plot </span></code></pre></div>
+<p>Lage fig 3.3:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="r-kode.html#cb11-1" aria-hidden="true" tabindex="-1"></a>regel4_2 <span class="ot">&lt;-</span> <span class="fu">read.xlsx</span>(<span class="st">&quot;Funnel_blankedata_regel4_2.xlsx&quot;</span>, <span class="dv">1</span>)</span>
 <span id="cb11-2"><a href="r-kode.html#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="r-kode.html#cb11-3" aria-hidden="true" tabindex="-1"></a>regel4x <span class="ot">&lt;-</span> regel4 <span class="sc">%&gt;%</span> <span class="fu">pull</span>(<span class="dv">2</span>)</span>
-<span id="cb11-4"><a href="r-kode.html#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-5"><a href="r-kode.html#cb11-5" aria-hidden="true" tabindex="-1"></a>regel4y <span class="ot">&lt;-</span> regel4 <span class="sc">%&gt;%</span> <span class="fu">pull</span>(<span class="dv">3</span>)</span>
-<span id="cb11-6"><a href="r-kode.html#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-7"><a href="r-kode.html#cb11-7" aria-hidden="true" tabindex="-1"></a>regel4xrun <span class="ot">&lt;-</span> <span class="fu">qic</span>(regel4x, <span class="at">title =</span> <span class="st">&#39;x-verdi ved regel 4&#39;</span>, <span class="at">ylab =</span> <span class="st">&quot;verdi&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Forsøk nr.&quot;</span>)</span>
-<span id="cb11-8"><a href="r-kode.html#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-9"><a href="r-kode.html#cb11-9" aria-hidden="true" tabindex="-1"></a>regel4yrun <span class="ot">&lt;-</span> <span class="fu">qic</span>(regel4y, <span class="at">title =</span> <span class="st">&#39;y-verdi ved regel 4&#39;</span>, <span class="at">ylab =</span> <span class="st">&quot;verdi&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Forsøk nr.&quot;</span>)</span>
-<span id="cb11-10"><a href="r-kode.html#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-11"><a href="r-kode.html#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggarrange</span>(regel4xrun, regel4yrun <span class="sc">+</span> <span class="fu">rremove</span>(<span class="st">&quot;x.text&quot;</span>), <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">nrow =</span> <span class="dv">1</span>,  <span class="at">widths =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span></code></pre></div>
-<p>Lage fig 3.8:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="r-kode.html#cb12-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(xlsx, qicharts2, tidyverse, ggplot2, ggpubr)</span>
+<span id="cb11-3"><a href="r-kode.html#cb11-3" aria-hidden="true" tabindex="-1"></a>regel4_2_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(regel4_2, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
+<span id="cb11-4"><a href="r-kode.html#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;x&quot;</span>, <span class="at">y =</span> <span class="st">&quot;y&quot;</span>, <span class="at">title =</span> <span class="st">&quot;Regel 4 - annet førstetreff&quot;</span>) <span class="sc">+</span> <span class="fu">xlim</span>(<span class="sc">-</span><span class="dv">2</span>,<span class="dv">10</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">10</span>,<span class="dv">2</span>)<span class="sc">+</span> <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span> <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb11-5"><a href="r-kode.html#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="r-kode.html#cb11-6" aria-hidden="true" tabindex="-1"></a>regel4_2_plot</span></code></pre></div>
+<p>Lage fig 3.4:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="r-kode.html#cb12-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(qicharts2)</span>
 <span id="cb12-2"><a href="r-kode.html#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="r-kode.html#cb12-3" aria-hidden="true" tabindex="-1"></a>toteam1 <span class="ot">&lt;-</span> <span class="fu">read.xlsx</span>(<span class="st">&quot;toteam.xlsx&quot;</span>, <span class="dv">1</span>)</span>
+<span id="cb12-3"><a href="r-kode.html#cb12-3" aria-hidden="true" tabindex="-1"></a>regel1x <span class="ot">&lt;-</span> regel1 <span class="sc">%&gt;%</span> <span class="fu">pull</span>(<span class="dv">2</span>)</span>
 <span id="cb12-4"><a href="r-kode.html#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-5"><a href="r-kode.html#cb12-5" aria-hidden="true" tabindex="-1"></a>team1 <span class="ot">&lt;-</span> <span class="fu">qic</span>(Team<span class="fl">.1</span>,</span>
-<span id="cb12-6"><a href="r-kode.html#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">data      =</span> toteam1, </span>
-<span id="cb12-7"><a href="r-kode.html#cb12-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">chart     =</span> <span class="st">&#39;i&#39;</span>,</span>
-<span id="cb12-8"><a href="r-kode.html#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">show.grid =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb12-9"><a href="r-kode.html#cb12-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">title     =</span> <span class="st">&quot;Team 1&quot;</span>,</span>
-<span id="cb12-10"><a href="r-kode.html#cb12-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">ylab      =</span> <span class="st">&quot;Antall defekter pr uke&quot;</span>,</span>
-<span id="cb12-11"><a href="r-kode.html#cb12-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">xlab      =</span> <span class="st">&quot;Uke #&quot;</span>)</span>
-<span id="cb12-12"><a href="r-kode.html#cb12-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-13"><a href="r-kode.html#cb12-13" aria-hidden="true" tabindex="-1"></a>team2 <span class="ot">&lt;-</span> <span class="fu">qic</span>(Team<span class="fl">.2</span>,</span>
-<span id="cb12-14"><a href="r-kode.html#cb12-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">data      =</span> toteam1, </span>
-<span id="cb12-15"><a href="r-kode.html#cb12-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">chart     =</span> <span class="st">&#39;i&#39;</span>,</span>
-<span id="cb12-16"><a href="r-kode.html#cb12-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">show.grid =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb12-17"><a href="r-kode.html#cb12-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">title     =</span> <span class="st">&quot;Team 2&quot;</span>,</span>
-<span id="cb12-18"><a href="r-kode.html#cb12-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">ylab      =</span> <span class="st">&quot;Antall defekter pr uke&quot;</span>,</span>
-<span id="cb12-19"><a href="r-kode.html#cb12-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">xlab      =</span> <span class="st">&quot;Uke #&quot;</span>)</span>
-<span id="cb12-20"><a href="r-kode.html#cb12-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-21"><a href="r-kode.html#cb12-21" aria-hidden="true" tabindex="-1"></a><span class="fu">ggarrange</span>(team1, team2 <span class="sc">+</span> <span class="fu">rremove</span>(<span class="st">&quot;x.text&quot;</span>), <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">nrow =</span> <span class="dv">1</span>,  <span class="at">widths =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span></code></pre></div>
-<p>Lage fig 3.9:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="r-kode.html#cb13-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(xlsx, qicharts2, tidyverse, ggplot2, ggpubr)</span>
+<span id="cb12-5"><a href="r-kode.html#cb12-5" aria-hidden="true" tabindex="-1"></a>regel1y <span class="ot">&lt;-</span> regel1 <span class="sc">%&gt;%</span> <span class="fu">pull</span>(<span class="dv">3</span>)</span>
+<span id="cb12-6"><a href="r-kode.html#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="r-kode.html#cb12-7" aria-hidden="true" tabindex="-1"></a>regel1xrun <span class="ot">&lt;-</span> <span class="fu">qic</span>(regel1x, <span class="at">title =</span> <span class="st">&#39;x-verdi ved regel 1&#39;</span>, <span class="at">ylab =</span> <span class="st">&quot;verdi&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Forsøk nr.&quot;</span>)</span>
+<span id="cb12-8"><a href="r-kode.html#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-9"><a href="r-kode.html#cb12-9" aria-hidden="true" tabindex="-1"></a>regel1yrun <span class="ot">&lt;-</span> <span class="fu">qic</span>(regel1y, <span class="at">title =</span> <span class="st">&#39;y-verdi ved regel 1&#39;</span>, <span class="at">ylab =</span> <span class="st">&quot;verdi&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Forsøk nr.&quot;</span>)</span>
+<span id="cb12-10"><a href="r-kode.html#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-11"><a href="r-kode.html#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggarrange</span>(regel1xrun, regel1yrun <span class="sc">+</span> <span class="fu">rremove</span>(<span class="st">&quot;x.text&quot;</span>), <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">nrow =</span> <span class="dv">1</span>,  <span class="at">widths =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span></code></pre></div>
+<p>Lage fig 3.5:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="r-kode.html#cb13-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(qicharts2)</span>
 <span id="cb13-2"><a href="r-kode.html#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-3"><a href="r-kode.html#cb13-3" aria-hidden="true" tabindex="-1"></a>toteam2 <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">&quot;toteam.xlsx&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb13-4"><a href="r-kode.html#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">c</span>(<span class="st">&quot;Team 1&quot;</span>, <span class="st">&quot;Team 2&quot;</span>))</span>
-<span id="cb13-5"><a href="r-kode.html#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-6"><a href="r-kode.html#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="fu">qic</span>(Nr, value,</span>
-<span id="cb13-7"><a href="r-kode.html#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> toteam2,</span>
-<span id="cb13-8"><a href="r-kode.html#cb13-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">facets =</span> <span class="sc">~</span>name,</span>
-<span id="cb13-9"><a href="r-kode.html#cb13-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">xlab =</span> <span class="st">&quot;Uke #&quot;</span>,</span>
-<span id="cb13-10"><a href="r-kode.html#cb13-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">ylab =</span> <span class="st">&quot;Antall defekter pr uke&quot;</span>,</span>
-<span id="cb13-11"><a href="r-kode.html#cb13-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;To team - like prosesser - ulik variasjon&quot;</span>)</span></code></pre></div>
+<span id="cb13-3"><a href="r-kode.html#cb13-3" aria-hidden="true" tabindex="-1"></a>regel2x <span class="ot">&lt;-</span> regel2 <span class="sc">%&gt;%</span> <span class="fu">pull</span>(<span class="dv">2</span>)</span>
+<span id="cb13-4"><a href="r-kode.html#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="r-kode.html#cb13-5" aria-hidden="true" tabindex="-1"></a>regel2y <span class="ot">&lt;-</span> regel2 <span class="sc">%&gt;%</span> <span class="fu">pull</span>(<span class="dv">3</span>)</span>
+<span id="cb13-6"><a href="r-kode.html#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="r-kode.html#cb13-7" aria-hidden="true" tabindex="-1"></a>regel2xrun <span class="ot">&lt;-</span> <span class="fu">qic</span>(regel2x, <span class="at">title =</span> <span class="st">&#39;x-verdi ved regel 2&#39;</span>, <span class="at">ylab =</span> <span class="st">&quot;verdi&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Forsøk nr.&quot;</span>)</span>
+<span id="cb13-8"><a href="r-kode.html#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="r-kode.html#cb13-9" aria-hidden="true" tabindex="-1"></a>regel2yrun <span class="ot">&lt;-</span> <span class="fu">qic</span>(regel2y, <span class="at">title =</span> <span class="st">&#39;y-verdi ved regel 2&#39;</span>, <span class="at">ylab =</span> <span class="st">&quot;verdi&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Forsøk nr.&quot;</span>)</span>
+<span id="cb13-10"><a href="r-kode.html#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-11"><a href="r-kode.html#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggarrange</span>(regel2xrun, regel2yrun <span class="sc">+</span> <span class="fu">rremove</span>(<span class="st">&quot;x.text&quot;</span>), <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">nrow =</span> <span class="dv">1</span>,  <span class="at">widths =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span></code></pre></div>
+<p>Lage fig 3.6:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="r-kode.html#cb14-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(qicharts2)</span>
+<span id="cb14-2"><a href="r-kode.html#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="r-kode.html#cb14-3" aria-hidden="true" tabindex="-1"></a>regel3x <span class="ot">&lt;-</span> regel3 <span class="sc">%&gt;%</span> <span class="fu">pull</span>(<span class="dv">2</span>)</span>
+<span id="cb14-4"><a href="r-kode.html#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="r-kode.html#cb14-5" aria-hidden="true" tabindex="-1"></a>regel3y <span class="ot">&lt;-</span> regel3 <span class="sc">%&gt;%</span> <span class="fu">pull</span>(<span class="dv">3</span>)</span>
+<span id="cb14-6"><a href="r-kode.html#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="r-kode.html#cb14-7" aria-hidden="true" tabindex="-1"></a>regel3xrun <span class="ot">&lt;-</span> <span class="fu">qic</span>(regel3x, <span class="at">title =</span> <span class="st">&#39;x-verdi ved regel 3&#39;</span>, <span class="at">ylab =</span> <span class="st">&quot;verdi&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Forsøk nr.&quot;</span>)</span>
+<span id="cb14-8"><a href="r-kode.html#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="r-kode.html#cb14-9" aria-hidden="true" tabindex="-1"></a>regel3yrun <span class="ot">&lt;-</span> <span class="fu">qic</span>(regel3y, <span class="at">title =</span> <span class="st">&#39;y-verdi ved regel 3&#39;</span>, <span class="at">ylab =</span> <span class="st">&quot;verdi&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Forsøk nr.&quot;</span>)</span>
+<span id="cb14-10"><a href="r-kode.html#cb14-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-11"><a href="r-kode.html#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggarrange</span>(regel3xrun, regel3yrun <span class="sc">+</span> <span class="fu">rremove</span>(<span class="st">&quot;x.text&quot;</span>), <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">nrow =</span> <span class="dv">1</span>,  <span class="at">widths =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span></code></pre></div>
+<p>Lage fig 3.7:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="r-kode.html#cb15-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(qicharts2)</span>
+<span id="cb15-2"><a href="r-kode.html#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="r-kode.html#cb15-3" aria-hidden="true" tabindex="-1"></a>regel4x <span class="ot">&lt;-</span> regel4 <span class="sc">%&gt;%</span> <span class="fu">pull</span>(<span class="dv">2</span>)</span>
+<span id="cb15-4"><a href="r-kode.html#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="r-kode.html#cb15-5" aria-hidden="true" tabindex="-1"></a>regel4y <span class="ot">&lt;-</span> regel4 <span class="sc">%&gt;%</span> <span class="fu">pull</span>(<span class="dv">3</span>)</span>
+<span id="cb15-6"><a href="r-kode.html#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="r-kode.html#cb15-7" aria-hidden="true" tabindex="-1"></a>regel4xrun <span class="ot">&lt;-</span> <span class="fu">qic</span>(regel4x, <span class="at">title =</span> <span class="st">&#39;x-verdi ved regel 4&#39;</span>, <span class="at">ylab =</span> <span class="st">&quot;verdi&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Forsøk nr.&quot;</span>)</span>
+<span id="cb15-8"><a href="r-kode.html#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="r-kode.html#cb15-9" aria-hidden="true" tabindex="-1"></a>regel4yrun <span class="ot">&lt;-</span> <span class="fu">qic</span>(regel4y, <span class="at">title =</span> <span class="st">&#39;y-verdi ved regel 4&#39;</span>, <span class="at">ylab =</span> <span class="st">&quot;verdi&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Forsøk nr.&quot;</span>)</span>
+<span id="cb15-10"><a href="r-kode.html#cb15-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-11"><a href="r-kode.html#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggarrange</span>(regel4xrun, regel4yrun <span class="sc">+</span> <span class="fu">rremove</span>(<span class="st">&quot;x.text&quot;</span>), <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">nrow =</span> <span class="dv">1</span>,  <span class="at">widths =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span></code></pre></div>
+<p>Lage fig 3.8:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="r-kode.html#cb16-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(xlsx, qicharts2, tidyverse, ggplot2, ggpubr)</span>
+<span id="cb16-2"><a href="r-kode.html#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="r-kode.html#cb16-3" aria-hidden="true" tabindex="-1"></a>toteam1 <span class="ot">&lt;-</span> <span class="fu">read.xlsx</span>(<span class="st">&quot;toteam.xlsx&quot;</span>, <span class="dv">1</span>)</span>
+<span id="cb16-4"><a href="r-kode.html#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="r-kode.html#cb16-5" aria-hidden="true" tabindex="-1"></a>team1 <span class="ot">&lt;-</span> <span class="fu">qic</span>(Team<span class="fl">.1</span>,</span>
+<span id="cb16-6"><a href="r-kode.html#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">data      =</span> toteam1, </span>
+<span id="cb16-7"><a href="r-kode.html#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">chart     =</span> <span class="st">&#39;i&#39;</span>,</span>
+<span id="cb16-8"><a href="r-kode.html#cb16-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">show.grid =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb16-9"><a href="r-kode.html#cb16-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">title     =</span> <span class="st">&quot;Team 1&quot;</span>,</span>
+<span id="cb16-10"><a href="r-kode.html#cb16-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">ylab      =</span> <span class="st">&quot;Antall defekter pr uke&quot;</span>,</span>
+<span id="cb16-11"><a href="r-kode.html#cb16-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">xlab      =</span> <span class="st">&quot;Uke #&quot;</span>)</span>
+<span id="cb16-12"><a href="r-kode.html#cb16-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-13"><a href="r-kode.html#cb16-13" aria-hidden="true" tabindex="-1"></a>team2 <span class="ot">&lt;-</span> <span class="fu">qic</span>(Team<span class="fl">.2</span>,</span>
+<span id="cb16-14"><a href="r-kode.html#cb16-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">data      =</span> toteam1, </span>
+<span id="cb16-15"><a href="r-kode.html#cb16-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">chart     =</span> <span class="st">&#39;i&#39;</span>,</span>
+<span id="cb16-16"><a href="r-kode.html#cb16-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">show.grid =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb16-17"><a href="r-kode.html#cb16-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">title     =</span> <span class="st">&quot;Team 2&quot;</span>,</span>
+<span id="cb16-18"><a href="r-kode.html#cb16-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">ylab      =</span> <span class="st">&quot;Antall defekter pr uke&quot;</span>,</span>
+<span id="cb16-19"><a href="r-kode.html#cb16-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">xlab      =</span> <span class="st">&quot;Uke #&quot;</span>)</span>
+<span id="cb16-20"><a href="r-kode.html#cb16-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-21"><a href="r-kode.html#cb16-21" aria-hidden="true" tabindex="-1"></a><span class="fu">ggarrange</span>(team1, team2 <span class="sc">+</span> <span class="fu">rremove</span>(<span class="st">&quot;x.text&quot;</span>), <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">nrow =</span> <span class="dv">1</span>,  <span class="at">widths =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span></code></pre></div>
+<p>Lage fig 3.9:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="r-kode.html#cb17-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(xlsx, qicharts2, tidyverse, ggplot2, ggpubr)</span>
+<span id="cb17-2"><a href="r-kode.html#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="r-kode.html#cb17-3" aria-hidden="true" tabindex="-1"></a>toteam2 <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">&quot;toteam.xlsx&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb17-4"><a href="r-kode.html#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">c</span>(<span class="st">&quot;Team 1&quot;</span>, <span class="st">&quot;Team 2&quot;</span>))</span>
+<span id="cb17-5"><a href="r-kode.html#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-6"><a href="r-kode.html#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="fu">qic</span>(Nr, value,</span>
+<span id="cb17-7"><a href="r-kode.html#cb17-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> toteam2,</span>
+<span id="cb17-8"><a href="r-kode.html#cb17-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">facets =</span> <span class="sc">~</span>name,</span>
+<span id="cb17-9"><a href="r-kode.html#cb17-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">xlab =</span> <span class="st">&quot;Uke #&quot;</span>,</span>
+<span id="cb17-10"><a href="r-kode.html#cb17-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">ylab =</span> <span class="st">&quot;Antall defekter pr uke&quot;</span>,</span>
+<span id="cb17-11"><a href="r-kode.html#cb17-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;To team - like prosesser - ulik variasjon&quot;</span>)</span></code></pre></div>
+</div>
+<div id="kapittel-4" class="section level2 unnumbered">
+<h2>Kapittel 4</h2>
+<p>Lage fig 4.1:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="r-kode.html#cb18-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse)</span>
+<span id="cb18-2"><a href="r-kode.html#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="r-kode.html#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">30</span>)</span>
+<span id="cb18-4"><a href="r-kode.html#cb18-4" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="dv">179</span>, <span class="dv">16</span>)</span>
+<span id="cb18-5"><a href="r-kode.html#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(x, <span class="at">xlab =</span> <span class="st">&quot;Høyde&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Antall&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Histogram for genererte høydedata&quot;</span>)</span></code></pre></div>
+<p>Lage fig 4.2:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="r-kode.html#cb19-1" aria-hidden="true" tabindex="-1"></a>data1 <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">165</span><span class="sc">:</span><span class="dv">175</span>, <span class="dv">50</span>, <span class="at">replace=</span><span class="cn">TRUE</span>)</span>
+<span id="cb19-2"><a href="r-kode.html#cb19-2" aria-hidden="true" tabindex="-1"></a>data2 <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">170</span><span class="sc">:</span><span class="dv">180</span>, <span class="dv">30</span>, <span class="at">replace=</span><span class="cn">TRUE</span>)</span>
+<span id="cb19-3"><a href="r-kode.html#cb19-3" aria-hidden="true" tabindex="-1"></a>data3 <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">180</span><span class="sc">:</span><span class="dv">185</span>, <span class="dv">15</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb19-4"><a href="r-kode.html#cb19-4" aria-hidden="true" tabindex="-1"></a>data4 <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">185</span><span class="sc">:</span><span class="dv">190</span>, <span class="dv">5</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb19-5"><a href="r-kode.html#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-6"><a href="r-kode.html#cb19-6" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">c</span>(data1, data2, data3, data4)</span>
+<span id="cb19-7"><a href="r-kode.html#cb19-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-8"><a href="r-kode.html#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(data, <span class="at">xlab =</span> <span class="st">&quot;Høyde&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Antall&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Histogram for genererte høydedata&quot;</span>)</span></code></pre></div>
+<p>Lage fig 4.3:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="r-kode.html#cb20-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(ggplot2, readxl, tidyverse, ggfortify)</span>
+<span id="cb20-2"><a href="r-kode.html#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="r-kode.html#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">100</span>)</span>
+<span id="cb20-4"><a href="r-kode.html#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="r-kode.html#cb20-5" aria-hidden="true" tabindex="-1"></a>normalfordeling <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb20-6"><a href="r-kode.html#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-7"><a href="r-kode.html#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(normalfordeling, </span>
+<span id="cb20-8"><a href="r-kode.html#cb20-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Genererte, normalfordelte data&quot;</span>, </span>
+<span id="cb20-9"><a href="r-kode.html#cb20-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;x&quot;</span>, </span>
+<span id="cb20-10"><a href="r-kode.html#cb20-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;f(x)&quot;</span>,</span>
+<span id="cb20-11"><a href="r-kode.html#cb20-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">border =</span> <span class="st">&quot;black&quot;</span>, </span>
+<span id="cb20-12"><a href="r-kode.html#cb20-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&quot;gray&quot;</span>,</span>
+<span id="cb20-13"><a href="r-kode.html#cb20-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">4</span>,<span class="dv">4</span>),</span>
+<span id="cb20-14"><a href="r-kode.html#cb20-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.5</span>),</span>
+<span id="cb20-15"><a href="r-kode.html#cb20-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">las =</span> <span class="dv">1</span>, </span>
+<span id="cb20-16"><a href="r-kode.html#cb20-16" aria-hidden="true" tabindex="-1"></a>     <span class="at">probability =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>Lage fig 4.4:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="r-kode.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">100</span>)</span>
+<span id="cb21-2"><a href="r-kode.html#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="r-kode.html#cb21-3" aria-hidden="true" tabindex="-1"></a>normalfordeling <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb21-4"><a href="r-kode.html#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="r-kode.html#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(normalfordeling, </span>
+<span id="cb21-6"><a href="r-kode.html#cb21-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Genererte, normalfordelte data&quot;</span>, </span>
+<span id="cb21-7"><a href="r-kode.html#cb21-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;x&quot;</span>, </span>
+<span id="cb21-8"><a href="r-kode.html#cb21-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;f(x)&quot;</span>,</span>
+<span id="cb21-9"><a href="r-kode.html#cb21-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">border =</span> <span class="st">&quot;black&quot;</span>, </span>
+<span id="cb21-10"><a href="r-kode.html#cb21-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&quot;gray&quot;</span>,</span>
+<span id="cb21-11"><a href="r-kode.html#cb21-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">4</span>,<span class="dv">4</span>),</span>
+<span id="cb21-12"><a href="r-kode.html#cb21-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.5</span>),</span>
+<span id="cb21-13"><a href="r-kode.html#cb21-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">las =</span> <span class="dv">1</span>, </span>
+<span id="cb21-14"><a href="r-kode.html#cb21-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">probability =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb21-15"><a href="r-kode.html#cb21-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-16"><a href="r-kode.html#cb21-16" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">mean</span>(normalfordeling)</span>
+<span id="cb21-17"><a href="r-kode.html#cb21-17" aria-hidden="true" tabindex="-1"></a>std <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">var</span>(normalfordeling))</span>
+<span id="cb21-18"><a href="r-kode.html#cb21-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-19"><a href="r-kode.html#cb21-19" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">dnorm</span>(x, <span class="at">mean =</span> m, <span class="at">sd =</span> std), </span>
+<span id="cb21-20"><a href="r-kode.html#cb21-20" aria-hidden="true" tabindex="-1"></a>      <span class="at">col=</span><span class="st">&quot;darkblue&quot;</span>, <span class="at">lwd =</span> <span class="dv">3</span>, <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">yaxt =</span> <span class="st">&quot;n&quot;</span>)</span></code></pre></div>
+<p>Lage fig 4.5:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="r-kode.html#cb22-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(ggplot2, readxl, tidyverse, ggfortify)</span>
+<span id="cb22-2"><a href="r-kode.html#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="r-kode.html#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">4</span>, <span class="dv">4</span>)), <span class="fu">aes</span>(x)) <span class="sc">+</span></span>
+<span id="cb22-4"><a href="r-kode.html#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_function</span>(<span class="at">fun =</span> dnorm, <span class="at">colour =</span> <span class="st">&quot;darkblue&quot;</span>, <span class="at">size =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
+<span id="cb22-5"><a href="r-kode.html#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb22-6"><a href="r-kode.html#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.5</span>), <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="fl">0.5</span>, <span class="at">by =</span> <span class="fl">0.1</span>))</span></code></pre></div>
+<p>Lage fig 4.6:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="r-kode.html#cb23-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">4</span>, <span class="dv">4</span>, <span class="at">length=</span><span class="dv">200</span>)</span>
+<span id="cb23-2"><a href="r-kode.html#cb23-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(x)</span>
+<span id="cb23-3"><a href="r-kode.html#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="r-kode.html#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">type=</span><span class="st">&quot;l&quot;</span>, <span class="at">lty=</span><span class="dv">1</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;x&quot;</span>,</span>
+<span id="cb23-5"><a href="r-kode.html#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab=</span><span class="st">&quot;f(x)&quot;</span>)</span>
+<span id="cb23-6"><a href="r-kode.html#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="r-kode.html#cb23-7" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="at">length=</span><span class="dv">100</span>)</span>
+<span id="cb23-8"><a href="r-kode.html#cb23-8" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(x)</span>
+<span id="cb23-9"><a href="r-kode.html#cb23-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-10"><a href="r-kode.html#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="fu">polygon</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,x,<span class="dv">1</span>),<span class="fu">c</span>(<span class="dv">0</span>,y,<span class="dv">0</span>),<span class="at">col=</span><span class="st">&quot;lightblue&quot;</span>)</span>
+<span id="cb23-11"><a href="r-kode.html#cb23-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-12"><a href="r-kode.html#cb23-12" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="sc">-</span><span class="dv">1</span>, <span class="at">col=</span><span class="st">&quot;green&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb23-13"><a href="r-kode.html#cb23-13" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="fl">1.3</span>, <span class="fl">0.38</span>, <span class="st">&quot;1 SD&quot;</span>, <span class="at">col =</span> <span class="st">&quot;black&quot;</span>)</span>
+<span id="cb23-14"><a href="r-kode.html#cb23-14" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="sc">-</span><span class="fl">1.35</span>, <span class="fl">0.38</span>, <span class="st">&quot;-1 SD&quot;</span>, <span class="at">col =</span> <span class="st">&quot;black&quot;</span>)</span>
+<span id="cb23-15"><a href="r-kode.html#cb23-15" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="dv">1</span>, <span class="at">col=</span><span class="st">&quot;green&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb23-16"><a href="r-kode.html#cb23-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-17"><a href="r-kode.html#cb23-17" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="dv">0</span>, <span class="fl">0.2</span>, <span class="st">&quot;68 %&quot;</span>, <span class="at">col =</span> <span class="st">&quot;black&quot;</span>)</span></code></pre></div>
+<p>Lage fig 4.7:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="r-kode.html#cb24-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">4</span>,<span class="dv">4</span>,<span class="at">length=</span><span class="dv">200</span>)</span>
+<span id="cb24-2"><a href="r-kode.html#cb24-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(x)</span>
+<span id="cb24-3"><a href="r-kode.html#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="r-kode.html#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">type=</span><span class="st">&quot;l&quot;</span>, <span class="at">lty=</span><span class="dv">1</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;x&quot;</span>,</span>
+<span id="cb24-5"><a href="r-kode.html#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab=</span><span class="st">&quot;f(x)&quot;</span>)</span>
+<span id="cb24-6"><a href="r-kode.html#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-7"><a href="r-kode.html#cb24-7" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">2</span>,<span class="dv">2</span>,<span class="at">length=</span><span class="dv">200</span>)</span>
+<span id="cb24-8"><a href="r-kode.html#cb24-8" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(x)</span>
+<span id="cb24-9"><a href="r-kode.html#cb24-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-10"><a href="r-kode.html#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="fu">polygon</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>,x,<span class="dv">2</span>),<span class="fu">c</span>(<span class="dv">0</span>,y,<span class="dv">0</span>),<span class="at">col=</span><span class="st">&quot;lightblue&quot;</span>)</span>
+<span id="cb24-11"><a href="r-kode.html#cb24-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-12"><a href="r-kode.html#cb24-12" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="sc">-</span><span class="dv">2</span>, <span class="at">col=</span><span class="st">&quot;green&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb24-13"><a href="r-kode.html#cb24-13" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="fl">2.3</span>, <span class="fl">0.38</span>, <span class="st">&quot;2 SD&quot;</span>, <span class="at">col =</span> <span class="st">&quot;black&quot;</span>)</span>
+<span id="cb24-14"><a href="r-kode.html#cb24-14" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="sc">-</span><span class="fl">2.35</span>, <span class="fl">0.38</span>, <span class="st">&quot;-2 SD&quot;</span>, <span class="at">col =</span> <span class="st">&quot;black&quot;</span>)</span>
+<span id="cb24-15"><a href="r-kode.html#cb24-15" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="dv">2</span>, <span class="at">col=</span><span class="st">&quot;green&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb24-16"><a href="r-kode.html#cb24-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-17"><a href="r-kode.html#cb24-17" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="dv">0</span>, <span class="fl">0.2</span>, <span class="st">&quot;95 %&quot;</span>, <span class="at">col =</span> <span class="st">&quot;black&quot;</span>)</span></code></pre></div>
+<p>Utregning av areal mellom to x-verdier i normalfordeling:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="r-kode.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">2</span>,<span class="at">mean=</span><span class="dv">0</span>,<span class="at">sd=</span><span class="dv">1</span>)<span class="sc">-</span><span class="fu">pnorm</span>(<span class="sc">-</span><span class="dv">2</span>,<span class="at">mean=</span><span class="dv">0</span>,<span class="at">sd=</span><span class="dv">1</span>)</span></code></pre></div>
+<p>Lage fig 4.8:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="r-kode.html#cb26-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">4</span>,<span class="dv">4</span>,<span class="at">length=</span><span class="dv">200</span>)</span>
+<span id="cb26-2"><a href="r-kode.html#cb26-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(x)</span>
+<span id="cb26-3"><a href="r-kode.html#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-4"><a href="r-kode.html#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,y,<span class="at">type=</span><span class="st">&quot;l&quot;</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">col=</span><span class="st">&quot;red&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;x&quot;</span>,</span>
+<span id="cb26-5"><a href="r-kode.html#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab=</span><span class="st">&quot;f(x)&quot;</span>)</span>
+<span id="cb26-6"><a href="r-kode.html#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-7"><a href="r-kode.html#cb26-7" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">3</span>,<span class="dv">3</span>,<span class="at">length=</span><span class="dv">200</span>)</span>
+<span id="cb26-8"><a href="r-kode.html#cb26-8" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(x)</span>
+<span id="cb26-9"><a href="r-kode.html#cb26-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-10"><a href="r-kode.html#cb26-10" aria-hidden="true" tabindex="-1"></a><span class="fu">polygon</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>,x,<span class="dv">3</span>),<span class="fu">c</span>(<span class="dv">0</span>,y,<span class="dv">0</span>),<span class="at">col=</span><span class="st">&quot;lightblue&quot;</span>)</span>
+<span id="cb26-11"><a href="r-kode.html#cb26-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-12"><a href="r-kode.html#cb26-12" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="sc">-</span><span class="dv">3</span>, <span class="at">col=</span><span class="st">&quot;green&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb26-13"><a href="r-kode.html#cb26-13" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="fl">3.3</span>, <span class="fl">0.38</span>, <span class="st">&quot;3 SD&quot;</span>, <span class="at">col =</span> <span class="st">&quot;black&quot;</span>)</span>
+<span id="cb26-14"><a href="r-kode.html#cb26-14" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="sc">-</span><span class="fl">3.35</span>, <span class="fl">0.38</span>, <span class="st">&quot;-3 SD&quot;</span>, <span class="at">col =</span> <span class="st">&quot;black&quot;</span>)</span>
+<span id="cb26-15"><a href="r-kode.html#cb26-15" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="dv">3</span>, <span class="at">col=</span><span class="st">&quot;green&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb26-16"><a href="r-kode.html#cb26-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-17"><a href="r-kode.html#cb26-17" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="dv">0</span>, <span class="fl">0.2</span>, <span class="st">&quot;99.7 %&quot;</span>, <span class="at">col =</span> <span class="st">&quot;black&quot;</span>)</span></code></pre></div>
+<p>Lage fig 4.9:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="r-kode.html#cb27-1" aria-hidden="true" tabindex="-1"></a>success <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">20</span></span>
+<span id="cb27-2"><a href="r-kode.html#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="r-kode.html#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(success,<span class="fu">dbinom</span>(success,<span class="at">size=</span><span class="dv">20</span>,<span class="at">prob=</span>.<span class="dv">5</span>),</span>
+<span id="cb27-4"><a href="r-kode.html#cb27-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">type=</span><span class="st">&#39;h&#39;</span>,</span>
+<span id="cb27-5"><a href="r-kode.html#cb27-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">&quot;Binomial distribusjon (n=20, p=0.5)&quot;</span>,</span>
+<span id="cb27-6"><a href="r-kode.html#cb27-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Sannsynlighet&quot;</span>,</span>
+<span id="cb27-7"><a href="r-kode.html#cb27-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Suksess&quot;</span>,</span>
+<span id="cb27-8"><a href="r-kode.html#cb27-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">lwd=</span><span class="dv">10</span>)</span></code></pre></div>
+<p>Lage fig 4.10:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="r-kode.html#cb28-1" aria-hidden="true" tabindex="-1"></a>success <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">20</span></span>
+<span id="cb28-2"><a href="r-kode.html#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="r-kode.html#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(success,<span class="fu">dbinom</span>(success,<span class="at">size=</span><span class="dv">20</span>,<span class="at">prob=</span>.<span class="dv">2</span>),</span>
+<span id="cb28-4"><a href="r-kode.html#cb28-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">type=</span><span class="st">&#39;h&#39;</span>,</span>
+<span id="cb28-5"><a href="r-kode.html#cb28-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">&quot;Binomial distribusjon (n=20, p=0.2)&quot;</span>,</span>
+<span id="cb28-6"><a href="r-kode.html#cb28-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Sannsynlighet&quot;</span>,</span>
+<span id="cb28-7"><a href="r-kode.html#cb28-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Suksess&quot;</span>,</span>
+<span id="cb28-8"><a href="r-kode.html#cb28-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">lwd=</span><span class="dv">10</span>)</span></code></pre></div>
+<p>Lage fig 4.11:</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="r-kode.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">32</span>)</span>
+<span id="cb29-2"><a href="r-kode.html#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-3"><a href="r-kode.html#cb29-3" aria-hidden="true" tabindex="-1"></a>terning10 <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="dv">10</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb29-4"><a href="r-kode.html#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-5"><a href="r-kode.html#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="fu">stripchart</span>(terning10, <span class="at">method =</span> <span class="st">&quot;stack&quot;</span>, <span class="at">offset =</span> .<span class="dv">5</span>, <span class="at">at =</span> <span class="dv">0</span>, <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb29-6"><a href="r-kode.html#cb29-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">col =</span> <span class="st">&quot;steelblue&quot;</span>, <span class="at">main =</span> <span class="st">&quot;10 terningkast&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Verdi på terning&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Antall&quot;</span>)<span class="er">)</span></span></code></pre></div>
+<p>Lage fig 4.12:</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="r-kode.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">33</span>)</span>
+<span id="cb30-2"><a href="r-kode.html#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-3"><a href="r-kode.html#cb30-3" aria-hidden="true" tabindex="-1"></a>terning10 <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="dv">100</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb30-4"><a href="r-kode.html#cb30-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-5"><a href="r-kode.html#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="fu">stripchart</span>(terning10, <span class="at">method =</span> <span class="st">&quot;stack&quot;</span>, <span class="at">offset =</span> .<span class="dv">5</span>, <span class="at">at =</span> <span class="dv">0</span>, <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb30-6"><a href="r-kode.html#cb30-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">col =</span> <span class="st">&quot;steelblue&quot;</span>, <span class="at">main =</span> <span class="st">&quot;100 terningkast&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Verdi på terning&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Antall&quot;</span>)</span></code></pre></div>
+<p>Lage simulering av terningkast:</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="r-kode.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">43</span>)</span>
+<span id="cb31-2"><a href="r-kode.html#cb31-2" aria-hidden="true" tabindex="-1"></a>terning_runde1 <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="dv">600</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb31-3"><a href="r-kode.html#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(terning_runde1)</span>
+<span id="cb31-4"><a href="r-kode.html#cb31-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-5"><a href="r-kode.html#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">44</span>)</span>
+<span id="cb31-6"><a href="r-kode.html#cb31-6" aria-hidden="true" tabindex="-1"></a>terning_runde2 <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="dv">600</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb31-7"><a href="r-kode.html#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(terning_runde2)</span>
+<span id="cb31-8"><a href="r-kode.html#cb31-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-9"><a href="r-kode.html#cb31-9" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">45</span>)</span>
+<span id="cb31-10"><a href="r-kode.html#cb31-10" aria-hidden="true" tabindex="-1"></a>terning_runde3 <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="dv">600</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb31-11"><a href="r-kode.html#cb31-11" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(terning_runde3)</span></code></pre></div>
+<p>Lage fig 4.13:</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="r-kode.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">46</span>)</span>
+<span id="cb32-2"><a href="r-kode.html#cb32-2" aria-hidden="true" tabindex="-1"></a>minterning <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="dv">6000000</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb32-3"><a href="r-kode.html#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-4"><a href="r-kode.html#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen=</span><span class="dv">999</span>)</span>
+<span id="cb32-5"><a href="r-kode.html#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(minterning,</span>
+<span id="cb32-6"><a href="r-kode.html#cb32-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">&quot;Histogram for 6 000 000 terningkast&quot;</span>,</span>
+<span id="cb32-7"><a href="r-kode.html#cb32-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Antall&quot;</span>,</span>
+<span id="cb32-8"><a href="r-kode.html#cb32-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Verdi på terning&quot;</span>)</span></code></pre></div>
+<p>Lage fig 4.14:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="r-kode.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Grid of X-axis values</span></span>
+<span id="cb33-2"><a href="r-kode.html#cb33-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">50</span></span>
+<span id="cb33-3"><a href="r-kode.html#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-4"><a href="r-kode.html#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="co">#-----------</span></span>
+<span id="cb33-5"><a href="r-kode.html#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="co"># lambda: 5</span></span>
+<span id="cb33-6"><a href="r-kode.html#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="co">#-----------</span></span>
+<span id="cb33-7"><a href="r-kode.html#cb33-7" aria-hidden="true" tabindex="-1"></a>lambda <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb33-8"><a href="r-kode.html#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">dpois</span>(x, lambda), <span class="at">type =</span> <span class="st">&quot;h&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>,</span>
+<span id="cb33-9"><a href="r-kode.html#cb33-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Poisson sannsynlighetsfordeling&quot;</span>,</span>
+<span id="cb33-10"><a href="r-kode.html#cb33-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;P(X = x)&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Antall hendelser&quot;</span>)</span>
+<span id="cb33-11"><a href="r-kode.html#cb33-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-12"><a href="r-kode.html#cb33-12" aria-hidden="true" tabindex="-1"></a><span class="co">#-----------</span></span>
+<span id="cb33-13"><a href="r-kode.html#cb33-13" aria-hidden="true" tabindex="-1"></a><span class="co"># lambda: 10</span></span>
+<span id="cb33-14"><a href="r-kode.html#cb33-14" aria-hidden="true" tabindex="-1"></a><span class="co">#-----------</span></span>
+<span id="cb33-15"><a href="r-kode.html#cb33-15" aria-hidden="true" tabindex="-1"></a>lambda <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb33-16"><a href="r-kode.html#cb33-16" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">dpois</span>(x, lambda), <span class="at">type =</span> <span class="st">&quot;h&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="fu">rgb</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>, <span class="fl">0.7</span>))</span>
+<span id="cb33-17"><a href="r-kode.html#cb33-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-18"><a href="r-kode.html#cb33-18" aria-hidden="true" tabindex="-1"></a><span class="co">#-----------</span></span>
+<span id="cb33-19"><a href="r-kode.html#cb33-19" aria-hidden="true" tabindex="-1"></a><span class="co"># lambda: 20</span></span>
+<span id="cb33-20"><a href="r-kode.html#cb33-20" aria-hidden="true" tabindex="-1"></a><span class="co">#-----------</span></span>
+<span id="cb33-21"><a href="r-kode.html#cb33-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-22"><a href="r-kode.html#cb33-22" aria-hidden="true" tabindex="-1"></a>lambda <span class="ot">&lt;-</span> <span class="dv">20</span></span>
+<span id="cb33-23"><a href="r-kode.html#cb33-23" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">dpois</span>(x, lambda), <span class="at">type =</span> <span class="st">&quot;h&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="fu">rgb</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="fl">0.7</span>))</span>
+<span id="cb33-24"><a href="r-kode.html#cb33-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-25"><a href="r-kode.html#cb33-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Legend</span></span>
+<span id="cb33-26"><a href="r-kode.html#cb33-26" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;5&quot;</span>, <span class="st">&quot;10&quot;</span>, <span class="st">&quot;20&quot;</span>),</span>
+<span id="cb33-27"><a href="r-kode.html#cb33-27" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="fu">expression</span>(lambda), <span class="at">title.adj =</span> <span class="fl">0.75</span>,</span>
+<span id="cb33-28"><a href="r-kode.html#cb33-28" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty =</span> <span class="dv">1</span>, <span class="at">col =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">box.lty =</span> <span class="dv">0</span>)</span></code></pre></div>
+<p>Lage fig 4.15:</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="r-kode.html#cb34-1" aria-hidden="true" tabindex="-1"></a>maal <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb34-2"><a href="r-kode.html#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-3"><a href="r-kode.html#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(maal, <span class="fu">dpois</span>(maal, <span class="at">lambda=</span><span class="fl">2.5</span>),</span>
+<span id="cb34-4"><a href="r-kode.html#cb34-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">type=</span><span class="st">&#39;h&#39;</span>,</span>
+<span id="cb34-5"><a href="r-kode.html#cb34-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">&#39;Poissonfordeling (lambda = 2.5)&#39;</span>,</span>
+<span id="cb34-6"><a href="r-kode.html#cb34-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&#39;Sannsynlighet&#39;</span>,</span>
+<span id="cb34-7"><a href="r-kode.html#cb34-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span><span class="st">&#39;# Mål&#39;</span>,</span>
+<span id="cb34-8"><a href="r-kode.html#cb34-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">lwd=</span><span class="dv">3</span>)</span></code></pre></div>
+<p>Regne ut sannsynligheter:</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="r-kode.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sannsynligheten for 0 mål</span></span>
+<span id="cb35-2"><a href="r-kode.html#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dpois</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">lambda =</span> <span class="fl">2.5</span>)</span>
+<span id="cb35-3"><a href="r-kode.html#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="r-kode.html#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Sannsynligheten for 1 mål</span></span>
+<span id="cb35-5"><a href="r-kode.html#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="fu">dpois</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">lambda =</span> <span class="fl">2.5</span>)</span>
+<span id="cb35-6"><a href="r-kode.html#cb35-6" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb35-7"><a href="r-kode.html#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Sannsynligheten for 2 mål</span></span>
+<span id="cb35-8"><a href="r-kode.html#cb35-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dpois</span>(<span class="at">x =</span> <span class="dv">2</span>, <span class="at">lambda =</span> <span class="fl">2.5</span>)</span>
+<span id="cb35-9"><a href="r-kode.html#cb35-9" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb35-10"><a href="r-kode.html#cb35-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Sannsynligheten for 3 mål</span></span>
+<span id="cb35-11"><a href="r-kode.html#cb35-11" aria-hidden="true" tabindex="-1"></a><span class="fu">dpois</span>(<span class="at">x =</span> <span class="dv">3</span>, <span class="at">lambda =</span> <span class="fl">2.5</span>)</span>
+<span id="cb35-12"><a href="r-kode.html#cb35-12" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb35-13"><a href="r-kode.html#cb35-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Sannsynligheten for 4 mål</span></span>
+<span id="cb35-14"><a href="r-kode.html#cb35-14" aria-hidden="true" tabindex="-1"></a><span class="fu">dpois</span>(<span class="at">x =</span> <span class="dv">4</span>, <span class="at">lambda =</span> <span class="fl">2.5</span>)</span>
+<span id="cb35-15"><a href="r-kode.html#cb35-15" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb35-16"><a href="r-kode.html#cb35-16" aria-hidden="true" tabindex="-1"></a><span class="co"># sannsynligheten for mellom 1 og 3 mål:</span></span>
+<span id="cb35-17"><a href="r-kode.html#cb35-17" aria-hidden="true" tabindex="-1"></a><span class="fu">dpois</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">lambda =</span> <span class="fl">2.5</span>) <span class="sc">+</span> <span class="fu">dpois</span>(<span class="at">x=</span><span class="dv">2</span>, <span class="at">lambda =</span> <span class="fl">2.5</span>) <span class="sc">+</span> <span class="fu">dpois</span>(<span class="at">x=</span><span class="dv">3</span>, <span class="at">lambda =</span> <span class="fl">2.5</span>)</span></code></pre></div>
+<p>Lage fig 4.16:</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="r-kode.html#cb36-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(ggpubr)</span>
+<span id="cb36-2"><a href="r-kode.html#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-3"><a href="r-kode.html#cb36-3" aria-hidden="true" tabindex="-1"></a>eksford <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">20</span>, <span class="at">length.out=</span><span class="dv">1000</span>)</span>
+<span id="cb36-4"><a href="r-kode.html#cb36-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-5"><a href="r-kode.html#cb36-5" aria-hidden="true" tabindex="-1"></a>dat1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x=</span>eksford, <span class="at">fx=</span><span class="fu">dexp</span>(eksford, <span class="at">rate=</span><span class="fl">0.2</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb36-6"><a href="r-kode.html#cb36-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_column</span>(<span class="at">ID =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb36-7"><a href="r-kode.html#cb36-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(<span class="dv">3</span>)</span>
+<span id="cb36-8"><a href="r-kode.html#cb36-8" aria-hidden="true" tabindex="-1"></a>             </span>
+<span id="cb36-9"><a href="r-kode.html#cb36-9" aria-hidden="true" tabindex="-1"></a>dat2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x=</span>eksford, <span class="at">fx=</span><span class="fu">dexp</span>(eksford, <span class="at">rate=</span><span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb36-10"><a href="r-kode.html#cb36-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_column</span>(<span class="at">ID =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb36-11"><a href="r-kode.html#cb36-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(<span class="dv">3</span>)</span>
+<span id="cb36-12"><a href="r-kode.html#cb36-12" aria-hidden="true" tabindex="-1"></a>             </span>
+<span id="cb36-13"><a href="r-kode.html#cb36-13" aria-hidden="true" tabindex="-1"></a>dat3 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x=</span>eksford, <span class="at">fx=</span><span class="fu">dexp</span>(eksford, <span class="at">rate=</span><span class="fl">1.5</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb36-14"><a href="r-kode.html#cb36-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_column</span>(<span class="at">ID =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb36-15"><a href="r-kode.html#cb36-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(<span class="dv">3</span>)</span>
+<span id="cb36-16"><a href="r-kode.html#cb36-16" aria-hidden="true" tabindex="-1"></a>             </span>
+<span id="cb36-17"><a href="r-kode.html#cb36-17" aria-hidden="true" tabindex="-1"></a>dat4 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x=</span>eksford, <span class="at">fx=</span><span class="fu">dexp</span>(eksford, <span class="at">rate=</span><span class="dv">2</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb36-18"><a href="r-kode.html#cb36-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_column</span>(<span class="at">ID =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb36-19"><a href="r-kode.html#cb36-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(<span class="dv">3</span>)</span>
+<span id="cb36-20"><a href="r-kode.html#cb36-20" aria-hidden="true" tabindex="-1"></a>             </span>
+<span id="cb36-21"><a href="r-kode.html#cb36-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-22"><a href="r-kode.html#cb36-22" aria-hidden="true" tabindex="-1"></a>dat1plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(dat1, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>fx)) <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="fu">expression</span>( <span class="sc">~</span> lambda <span class="sc">~</span> <span class="st">&quot; = 0.2&quot;</span>))</span>
+<span id="cb36-23"><a href="r-kode.html#cb36-23" aria-hidden="true" tabindex="-1"></a>dat2plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(dat2, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>fx)) <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="fu">expression</span>( <span class="sc">~</span> lambda <span class="sc">~</span> <span class="st">&quot; = 1.0&quot;</span>))</span>
+<span id="cb36-24"><a href="r-kode.html#cb36-24" aria-hidden="true" tabindex="-1"></a>dat3plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(dat3, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>fx)) <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="fu">expression</span>( <span class="sc">~</span> lambda <span class="sc">~</span> <span class="st">&quot; = 1.5&quot;</span>))</span>
+<span id="cb36-25"><a href="r-kode.html#cb36-25" aria-hidden="true" tabindex="-1"></a>dat4plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(dat4, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>fx)) <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="fu">expression</span>( <span class="sc">~</span> lambda <span class="sc">~</span> <span class="st">&quot; = 2.0&quot;</span>))</span>
+<span id="cb36-26"><a href="r-kode.html#cb36-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-27"><a href="r-kode.html#cb36-27" aria-hidden="true" tabindex="-1"></a><span class="fu">ggarrange</span>(dat1plot, dat2plot, dat3plot, dat4plot <span class="sc">+</span> <span class="fu">rremove</span>(<span class="st">&quot;x.text&quot;</span>), <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">nrow =</span> <span class="dv">2</span>,  <span class="at">widths =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span></code></pre></div>
 
-<div id="refs" class="references csl-bib-body hanging-indent" line-spacing="2">
-<div class="csl-entry">
-Allaire, J., Xie, Y., McPherson, J., Luraschi, J., Ushey, K., Atkins, A., Wickham, H., Cheng, J., Chang, W., &amp; Iannone, R. (2021). <em>Rmarkdown: Dynamic documents for r</em>.
-</div>
-<div class="csl-entry">
-Alwan, L. C. (1991). Time-series effects and degradation of control chart performance resulting from overadjustment. <em>Total Quality Management</em>, <em>2</em>(1), 99–112. <a href="https://doi.org/10.1080/09544129100000009">https://doi.org/10.1080/09544129100000009</a>
-</div>
-<div class="csl-entry">
-Anhøj, J. (2009). Statistisk processtyring i sundhedsvæsenet. <em>Ugeskr Læger</em>, <em>171</em>(21), 1764–1768.
-</div>
-<div class="csl-entry">
-Anhøj, J. (2021). <em>Qicharts2: Quality <span>Improvement Charts</span></em>.
-</div>
-<div class="csl-entry">
-Benneyan, J. C. (1998). Statistical quality control methods in infection control and hospital epidemiology, part <span>I</span>: Introduction and basic theory. <em>Infection Control and Hospital Epidemiology</em>, <em>19</em>(3), 194–214. <a href="https://doi.org/10.2307/30143442">https://doi.org/10.2307/30143442</a>
-</div>
-<div class="csl-entry">
-Carey, R. G. (2003). <em>Improving healthcare with control charts. <span>Basic</span> and advanced <span>SPC</span> methods and case studies</em>. <span>ASQ Quality Press</span>.
-</div>
-<div class="csl-entry">
-Crostic, M. (2015). The funnel experiment. In <em>YouTube</em>.
-</div>
-<div class="csl-entry">
-Deming, W. E. (1986). <em>Out of the crisis</em>. <span>Institute of Technology Center for Advanced Engineering Study</span>.
-</div>
-<div class="csl-entry">
-Georgantzas, N. C., &amp; Orsini, J. N. (2003). Tampering dynamics. <em>Proceedings of the 21st <span>International System Dynamics Society Conference</span></em>.
-</div>
-<div class="csl-entry">
-Leavengood, S., &amp; Reeb, J. E. (2015). <em>Statistical process control. <span>Part</span> 2: How and why <span>SPC</span> works</em>. <span>Oregon State University</span>.
-</div>
-<div class="csl-entry">
-Microsoft. (2021). <em>Microsoft excel for microsoft 365</em>.
-</div>
-<div class="csl-entry">
-Montgomery, D. C. (2020). <em>Introduction to statistical process quality control</em> (Eighth). <span>John Wiley &amp; Sons</span>.
-</div>
-<div class="csl-entry">
-Mun, J. (2008). Understanding and choosing the right probability distributions. In <em>Advanced analytical models: Over 800 models and 300 applications from the basel <span>II</span> accord to wall street and beyond</em> (pp. 899–917). <span>John Wiley &amp; Sons, Inc.</span> <a href="https://doi.org/10.1002/9781119197096.app03">https://doi.org/10.1002/9781119197096.app03</a>
-</div>
-<div class="csl-entry">
-NHS. (2009). <em>A guide to creating and interpreting run and control charts</em>. <span>NHS Institute for Innovation and Improvement</span>.
-</div>
-<div class="csl-entry">
-Nolan, T. W., &amp; Provost, L. P. (1990). Understanding variation. <em>Quality Progress</em>, <em>May</em>, 2–10.
-</div>
-<div class="csl-entry">
-Prevette, S. S. (2008). Dr. <span>Deming</span>’s funnel experiment. In <em>Symphony technologies</em>.
-</div>
-<div class="csl-entry">
-R Core Team. (2021). <em>R: A language and environment for statistical computing.</em> <span>R Foundation for Statistical Computing</span>.
-</div>
-<div class="csl-entry">
-Scrucca, L., Snow, G., &amp; Bloomfield, P. (2017). <em>Qcc: An <span>R</span> package for quality control charting and statistical process control</em>.
-</div>
-<div class="csl-entry">
-Sparks, R. S., &amp; Field, J. B. F. (2000). Using <span>Deming</span>’s <span>Funnel Experiment</span> to <span>Demonstrate Effects</span> of <span>Violating Assumptions Underlying Shewhart</span>’s <span>Control Charts</span>. <em>The American Statistician</em>, <em>54</em>(4), 291. <a href="https://doi.org/10.2307/2685781">https://doi.org/10.2307/2685781</a>
-</div>
-<div class="csl-entry">
-SPC for Excel. (2006). <em>Over-controlling a process: The funnel experiment</em>.
-</div>
-<div class="csl-entry">
-Team, R. S. (2021). <em><span>RStudio</span>: Integrated <span>Development</span> for <span>R</span></em>. RStudio Inc.
 </div>
 </div>
-</div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             </section>
 
           </div>
         </div>
       </div>
-<a href="datatyper-og-datafordelinger.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="datatyper-og-datafordelinger.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="chebyshevs-teorem.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
