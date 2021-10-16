@@ -1,0 +1,7 @@
+---
+bibliography: referanser.bib 
+---
+
+# Chebyshevs teorem {.unnumbered}
+
+1/0.035 $\approx$ 29 dager

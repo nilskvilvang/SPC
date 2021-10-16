@@ -322,9 +322,7 @@ nolan_provost <- data.frame(Områder = c("","Fokus", "Mål", "Grunnlag", "Metode
 
 nolan_provost <- flextable(nolan_provost)
 
-nolan_provost <- autofit(nolan_provost)
-
-nolan_provost
+set_table_properties(nolan_provost, width = 1, layout = "autofit")
 ```
 
 En klar svakhet ved den første tilnærmingen – som indikator på god eller dårlig ytelse – er at det tilbyr lite informasjon og grunnlag for forbedring. Likevel, mange vil nok kjenne seg igjen i fokus, mål, grunnlag og metoder i denne tilnærmingen. 
