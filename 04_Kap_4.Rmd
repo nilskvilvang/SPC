@@ -309,8 +309,7 @@ set.seed(33)
 
 terning10 <- sample(1:6, 100, replace = TRUE)
 
-stripchart(terning10, method = "stack", offset = .5, at = 0, pch = 19,
-           col = "steelblue", main = "100 terningkast", xlab = "Verdi på terning", ylab = "Antall")
+stripchart(terning10, method = "stack", offset = .5, at = 0, pch = 19, col = "steelblue", main = "100 terningkast", xlab = "Verdi på terning", ylab = "Antall")
 
 ```
 
