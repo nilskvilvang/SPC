@@ -420,9 +420,9 @@ I R kan vi også enkelt regne ut den nøyaktige sannsynligheten for x antall må
 
 * Sannsynligheten for 0 mål = `r dpois(x = 0, lambda = 2.5) `
 * Sannsynligheten for 1 mål = `r dpois(x = 1, lambda = 2.5) `
-* Sannsynligheten for 0 mål = `r dpois(x = 2, lambda = 2.5) `
-* Sannsynligheten for 0 mål = `r dpois(x = 3, lambda = 2.5) `
-* Sannsynligheten for 0 mål = `r dpois(x = 4, lambda = 2.5) `
+* Sannsynligheten for 2 mål = `r dpois(x = 2, lambda = 2.5) `
+* Sannsynligheten for 3 mål = `r dpois(x = 3, lambda = 2.5) `
+* Sannsynligheten for 4 mål = `r dpois(x = 4, lambda = 2.5) `
 
 eller f.eks. sannsynligheten for at det skåres mellom 1 og 3 mål (= `r dpois(x = 1, lambda = 2.5) + dpois(x=2, lambda = 2.5) + dpois(x=3, lambda = 2.5)`).
 

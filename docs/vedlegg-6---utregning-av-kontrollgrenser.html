@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Vedlegg 6 - Utregning av kontrollgrenser | Statistisk prosesskontroll</title>
+  <meta name="description" content="Vedlegg 6 - Utregning av kontrollgrenser | Statistisk prosesskontroll" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Vedlegg 6 - Utregning av kontrollgrenser | Statistisk prosesskontroll" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Vedlegg 6 - Utregning av kontrollgrenser | Statistisk prosesskontroll" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="vedlegg-5---tabell-med-konstanter-for-kontrolldiagram.html"/>
+
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">SPC</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduksjon</a></li>
+<li class="chapter" data-level="1" data-path="hvorfor-denne-boka.html"><a href="hvorfor-denne-boka.html"><i class="fa fa-check"></i><b>1</b> Hvorfor denne boka?</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="hvorfor-denne-boka.html"><a href="hvorfor-denne-boka.html#programvare"><i class="fa fa-check"></i><b>1.1</b> Programvare</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="hvorfor-er-tid-viktig.html"><a href="hvorfor-er-tid-viktig.html"><i class="fa fa-check"></i><b>2</b> Hvorfor er tid viktig?</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="hvorfor-er-tid-viktig.html"><a href="hvorfor-er-tid-viktig.html#hva-er-utgangspunktet-vi-skal-korrigere-fra"><i class="fa fa-check"></i><b>2.1</b> Hva er utgangspunktet vi skal korrigere fra?</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="variasjon.html"><a href="variasjon.html"><i class="fa fa-check"></i><b>3</b> Variasjon</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="variasjon.html"><a href="variasjon.html#simulering-av-trakteksperimentet-i-r"><i class="fa fa-check"></i><b>3.1</b> Simulering av trakteksperimentet i R</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="datatyper-og-datafordelinger.html"><a href="datatyper-og-datafordelinger.html"><i class="fa fa-check"></i><b>4</b> Datatyper og datafordelinger</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="datatyper-og-datafordelinger.html"><a href="datatyper-og-datafordelinger.html#normalfordeling"><i class="fa fa-check"></i><b>4.1</b> Normalfordeling</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="datatyper-og-datafordelinger.html"><a href="datatyper-og-datafordelinger.html#varians-og-standardavvik"><i class="fa fa-check"></i><b>4.1.1</b> Varians og standardavvik</a></li>
+<li class="chapter" data-level="4.1.2" data-path="datatyper-og-datafordelinger.html"><a href="datatyper-og-datafordelinger.html#normalfordeling-standardavvik-og-forventninger"><i class="fa fa-check"></i><b>4.1.2</b> Normalfordeling, standardavvik og forventninger</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="datatyper-og-datafordelinger.html"><a href="datatyper-og-datafordelinger.html#binomialfordeling"><i class="fa fa-check"></i><b>4.2</b> Binomialfordeling</a></li>
+<li class="chapter" data-level="4.3" data-path="datatyper-og-datafordelinger.html"><a href="datatyper-og-datafordelinger.html#poissonfordeling"><i class="fa fa-check"></i><b>4.3</b> Poissonfordeling</a></li>
+<li class="chapter" data-level="4.4" data-path="datatyper-og-datafordelinger.html"><a href="datatyper-og-datafordelinger.html#geometrisk-fordeling"><i class="fa fa-check"></i><b>4.4</b> Geometrisk fordeling</a></li>
+<li class="chapter" data-level="4.5" data-path="datatyper-og-datafordelinger.html"><a href="datatyper-og-datafordelinger.html#eksponensiell-fordeling"><i class="fa fa-check"></i><b>4.5</b> Eksponensiell fordeling</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="vedlegg-1---r-kode.html"><a href="vedlegg-1---r-kode.html"><i class="fa fa-check"></i>Vedlegg 1 - R kode</a></li>
+<li class="chapter" data-level="" data-path="vedlegg-2---kritiske-verdier-i-kontrolldiagram.html"><a href="vedlegg-2---kritiske-verdier-i-kontrolldiagram.html"><i class="fa fa-check"></i>Vedlegg 2 - Kritiske verdier i kontrolldiagram</a></li>
+<li class="chapter" data-level="" data-path="vedlegg-3---chebyshevs-teorem.html"><a href="vedlegg-3---chebyshevs-teorem.html"><i class="fa fa-check"></i>Vedlegg 3 - Chebyshevs teorem</a></li>
+<li class="chapter" data-level="" data-path="vedlegg-4---sentralgrenseteoremet-central-limit-theorem.html"><a href="vedlegg-4---sentralgrenseteoremet-central-limit-theorem.html"><i class="fa fa-check"></i>Vedlegg 4 - Sentralgrenseteoremet (Central Limit Theorem)</a></li>
+<li class="chapter" data-level="" data-path="vedlegg-5---tabell-med-konstanter-for-kontrolldiagram.html"><a href="vedlegg-5---tabell-med-konstanter-for-kontrolldiagram.html"><i class="fa fa-check"></i>Vedlegg 5 - Tabell med konstanter for kontrolldiagram</a></li>
+<li class="chapter" data-level="" data-path="vedlegg-6---utregning-av-kontrollgrenser.html"><a href="vedlegg-6---utregning-av-kontrollgrenser.html"><i class="fa fa-check"></i>Vedlegg 6 - Utregning av kontrollgrenser</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistisk prosesskontroll</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="vedlegg-6---utregning-av-kontrollgrenser" class="section level1 unnumbered">
+<h1>Vedlegg 6 - Utregning av kontrollgrenser</h1>
+<p>Jfr. <span class="citation">Laney (2002)</span> og <span class="citation">Montgomery (2020)</span></p>
+<p><strong>Notasjon</strong></p>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:unnamed-chunk-97">Table 4.2: </span>Table example
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+Notasjon
+</th>
+<th style="text-align:left;">
+Innhold
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+CL
+</td>
+<td style="text-align:left;width: 14cm; ">
+Sentraltendens (Central Line)
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+UCL
+</td>
+<td style="text-align:left;width: 14cm; ">
+Øvre kontrollgrense (Upper Control Limit)
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+LCL
+</td>
+<td style="text-align:left;width: 14cm; ">
+Nedre kontrollgrense (Lower Control Limit)
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+<em>n</em>
+</td>
+<td style="text-align:left;width: 14cm; ">
+Utvalgsstørrelse
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+<span class="math inline">\(\hat{\sigma}\)</span>
+</td>
+<td style="text-align:left;width: 14cm; ">
+Standardavvik i prosessen
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+<span class="math inline">\(\overline{x}\)</span>
+</td>
+<td style="text-align:left;width: 14cm; ">
+Gjennomsnitt av målinger
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+<span class="math inline">\(\overline{\overline{x}}\)</span>
+</td>
+<td style="text-align:left;width: 14cm; ">
+Gjennomsnitt av gjennomsnitt
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+<em>R</em>
+</td>
+<td style="text-align:left;width: 14cm; ">
+Spenn (Range)
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+<span class="math inline">\(\hat{R}\)</span>
+</td>
+<td style="text-align:left;width: 14cm; ">
+Gjennomsnitt av spenn (Average of Range)
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+USL
+</td>
+<td style="text-align:left;width: 14cm; ">
+Øvre spesifiseringsgrense (Upper Specification Limit)
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+LSL
+</td>
+<td style="text-align:left;width: 14cm; ">
+Nedre spesifiseringsgrense (Lower Specification Limit)
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Måledata</strong></p>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:unnamed-chunk-98">Table 4.3: </span>Table example
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+Grense
+</th>
+<th style="text-align:center;">
+X
+</th>
+<th style="text-align:center;">
+R
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+CL
+</td>
+<td style="text-align:center;width: 5cm; ">
+<span class="math display">\[\overline{\overline{x}}\]</span>
+</td>
+<td style="text-align:center;width: 5cm; ">
+<span class="math display">\[\hat{R}\]</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+UCL
+</td>
+<td style="text-align:center;width: 5cm; ">
+<span class="math display">\[\overline{\overline{x}} + A_2\hat{R}\]</span>
+</td>
+<td style="text-align:center;width: 5cm; ">
+<span class="math display">\[\hat{R}D_4\]</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+LCL
+</td>
+<td style="text-align:center;width: 5cm; ">
+<span class="math display">\[\overline{\overline{x}} - A_2\hat{R}\]</span>
+</td>
+<td style="text-align:center;width: 5cm; ">
+<span class="math display">\[\hat{R}D_3\]</span>
+</td>
+</tr>
+</tbody>
+</table>
+<p>For A<sub>2</sub>, D<sub>3</sub> og D<sub>4</sub>: Se vedlegg 5</p>
+<p>For IMR (XMR):</p>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:unnamed-chunk-99">Table 4.4: </span>Table example
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+Grense
+</th>
+<th style="text-align:center;">
+I
+</th>
+<th style="text-align:center;">
+MR
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+CL
+</td>
+<td style="text-align:center;width: 5cm; ">
+<span class="math display">\[\overline{x}\]</span>
+</td>
+<td style="text-align:center;width: 5cm; ">
+<span class="math display">\[\overline{MR}\]</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+UCL
+</td>
+<td style="text-align:center;width: 5cm; ">
+<span class="math display">\[\overline{x} + 3 \times \frac{\overline{MR}}{d_2}\]</span>
+</td>
+<td style="text-align:center;width: 5cm; ">
+<span class="math display">\[\overline{MR}D_4\]</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+LCL
+</td>
+<td style="text-align:center;width: 5cm; ">
+<span class="math display">\[\overline{x} - 3 \times \frac{\overline{MR}}{d_2}\]</span>
+</td>
+<td style="text-align:center;width: 5cm; ">
+</td>
+</tr>
+</tbody>
+</table>
+<p>Utregning av gjennomsnittlig x-verdi: <span class="math inline">\(\overline{x}\)</span> = <span class="math inline">\(\frac{\sum_{i = 1}^{m}x_i}{m}\)</span></p>
+<p>Utregning av Moving Range: <span class="math inline">\(MR_i\)</span> = <span class="math inline">\(|x_i-x_i-1|\)</span>, der <span class="math inline">\(x_i\)</span> er et datapunkt og <span class="math inline">\(x_i-1\)</span> er datapunktets foregående datapunkt.</p>
+<p>Utregning av gjennomsnittlig Moving Range: <span class="math inline">\(\overline{MR}\)</span> = <span class="math inline">\(\frac{\sum_{i = 2}^{m}MR_i}{m-1}\)</span></p>
+<p><strong>Attributtdata</strong></p>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:unnamed-chunk-100">Table 4.5: </span>Table example
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+Grense
+</th>
+<th style="text-align:center;">
+p
+</th>
+<th style="text-align:center;">
+np
+</th>
+<th style="text-align:center;">
+c
+</th>
+<th style="text-align:center;">
+u
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;font-weight: bold;width: 3cm; ">
+CL
+</td>
+<td style="text-align:center;width: 5cm; ">
+<span class="math display">\[\overline{p}\]</span>
+</td>
+<td style="text-align:center;width: 5cm; ">
+<span class="math display">\[n\overline{p}\]</span>
+</td>
+<td style="text-align:center;width: 5cm; ">
+<span class="math display">\[\overline{c}\]</span>
+</td>
+<td style="text-align:center;">
+<span class="math display">\[\overline{u}\]</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;width: 3cm; ">
+UCL
+</td>
+<td style="text-align:center;width: 5cm; ">
+<span class="math display">\[\overline{p} + 3\sqrt{\frac{\overline{p}(1-\overline{p})}{n}}\]</span>
+</td>
+<td style="text-align:center;width: 5cm; ">
+<span class="math display">\[n\overline{p} + 3\sqrt{n\overline{p}(1-\overline{p})}\]</span>
+</td>
+<td style="text-align:center;width: 5cm; ">
+<span class="math display">\[\overline{c} + 3\sqrt{\overline{c}}\]</span>
+</td>
+<td style="text-align:center;">
+<span class="math display">\[\overline{u} + 3\sqrt{\frac{\overline{u}}{n}}\]</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;width: 3cm; ">
+LCL
+</td>
+<td style="text-align:center;width: 5cm; ">
+<span class="math display">\[\overline{p} - 3\sqrt{\frac{\overline{p}(1-\overline{p})}{n}}\]</span>
+</td>
+<td style="text-align:center;width: 5cm; ">
+<span class="math display">\[n\overline{p} - 3\sqrt{n\overline{p}(1-\overline{p})}\]</span>
+</td>
+<td style="text-align:center;width: 5cm; ">
+<span class="math display">\[\overline{c} - 3\sqrt{\overline{c}}\]</span>
+</td>
+<td style="text-align:center;">
+<span class="math display">\[\overline{u} - 3\sqrt{\frac{\overline{u}}{n}}\]</span>
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:unnamed-chunk-101">Table 4.6: </span>Table example
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+Grense
+</th>
+<th style="text-align:center;">
+Laney.p.
+</th>
+<th style="text-align:center;">
+Laney.u.
+</th>
+<th style="text-align:center;">
+g
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;font-weight: bold;width: 3cm; ">
+CL
+</td>
+<td style="text-align:center;width: 5cm; ">
+<span class="math display">\[\overline{p}\]</span>
+</td>
+<td style="text-align:center;width: 5cm; ">
+<span class="math display">\[\overline{u}\]</span>
+</td>
+<td style="text-align:center;">
+<span class="math display">\[\overline{g}*0.693\]</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;width: 3cm; ">
+UCL
+</td>
+<td style="text-align:center;width: 5cm; ">
+<span class="math display">\[\overline{p} + 3\sigma_z\sqrt{\frac{\overline{p}(1-\overline{p})}{n_i}}\]</span>
+</td>
+<td style="text-align:center;width: 5cm; ">
+<span class="math display">\[\overline{u} + 3\sigma_z\sqrt{\frac{\overline{u}}{n_i}}\]</span>
+</td>
+<td style="text-align:center;">
+<span class="math display">\[\overline{g} + 3\sqrt{\overline{g}(\overline{g}+1)}\]</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;width: 3cm; ">
+LCL
+</td>
+<td style="text-align:center;width: 5cm; ">
+<span class="math display">\[\overline{p} - 3\sigma_z\sqrt{\frac{\overline{p}(1-\overline{p})}{n_i}}\]</span>
+</td>
+<td style="text-align:center;width: 5cm; ">
+<span class="math display">\[\overline{u} - 3\sigma_z\sqrt{\frac{\overline{u}}{n_i}}\]</span>
+</td>
+<td style="text-align:center;">
+<span class="math display">\[\overline{g} - 3\sqrt{\overline{g}(\overline{g}+1)}\]</span>
+</td>
+</tr>
+</tbody>
+</table>
+<p>z-konvertering for Laneys p’: <span class="math inline">\(z_i\)</span> = <span class="math inline">\(\frac{p_i-\overline{p}}{\sqrt{\frac{\overline{p}(1-\overline{p})}{n_i}}}\)</span></p>
+<p>z-konvertering for Laneys u’: <span class="math inline">\(z_i\)</span> = <span class="math inline">\(\frac{u_i-\overline{u}}{\sqrt{\frac{\overline{u}}{n_i}}}\)</span></p>
+<p>standardavvik for z: <span class="math inline">\(\sigma_z\)</span> = <span class="math inline">\(\frac{\overline{R}}{d_2}\)</span></p>
+<p>MR snitt for Laneys u’: <span class="math inline">\(M\overline{R}\)</span> = <span class="math inline">\(\frac{\sum{MR}}{(k-1)}\)</span></p>
+
+<div id="refs" class="references csl-bib-body hanging-indent" line-spacing="2">
+<div class="csl-entry">
+Allaire, J., Xie, Y., McPherson, J., Luraschi, J., Ushey, K., Atkins, A., Wickham, H., Cheng, J., Chang, W., &amp; Iannone, R. (2021). <em>Rmarkdown: Dynamic documents for r</em>.
+</div>
+<div class="csl-entry">
+Alwan, L. C. (1991). Time-series effects and degradation of control chart performance resulting from overadjustment. <em>Total Quality Management</em>, <em>2</em>(1), 99–112. <a href="https://doi.org/10.1080/09544129100000009">https://doi.org/10.1080/09544129100000009</a>
+</div>
+<div class="csl-entry">
+Anhøj, J. (2009). Statistisk processtyring i sundhedsvæsenet. <em>Ugeskr Læger</em>, <em>171</em>(21), 1764–1768.
+</div>
+<div class="csl-entry">
+Anhøj, J. (2021). <em>Qicharts2: Quality <span>Improvement Charts</span></em>.
+</div>
+<div class="csl-entry">
+Benneyan, J. C. (1998). Statistical quality control methods in infection control and hospital epidemiology, part <span>I</span>: Introduction and basic theory. <em>Infection Control and Hospital Epidemiology</em>, <em>19</em>(3), 194–214. <a href="https://doi.org/10.2307/30143442">https://doi.org/10.2307/30143442</a>
+</div>
+<div class="csl-entry">
+Carey, R. G. (2003). <em>Improving healthcare with control charts. <span>Basic</span> and advanced <span>SPC</span> methods and case studies</em>. <span>ASQ Quality Press</span>.
+</div>
+<div class="csl-entry">
+Crostic, M. (2015). The funnel experiment. In <em>YouTube</em>.
+</div>
+<div class="csl-entry">
+Deming, W. E. (1986). <em>Out of the crisis</em>. <span>Institute of Technology Center for Advanced Engineering Study</span>.
+</div>
+<div class="csl-entry">
+Fedit, B. (2018). Central <span>Limit Theorem</span> -example using <span>R</span>. In <em>Ben’s Blog</em>.
+</div>
+<div class="csl-entry">
+Field, A. (2009). <em>Discovering statistics using <span>SPSS</span></em> (Third). <span>SAGE Publications Ltd</span>.
+</div>
+<div class="csl-entry">
+Field, A., Miles, J., &amp; Field, Z. (2012). <em>Discovering statistics using r</em>. <span>SAGE Publications</span>.
+</div>
+<div class="csl-entry">
+Georgantzas, N. C., &amp; Orsini, J. N. (2003). Tampering dynamics. <em>Proceedings of the 21st <span>International System Dynamics Society Conference</span></em>.
+</div>
+<div class="csl-entry">
+Good, I. J. (1973). What are degrees of freedom? <em>The American Statistician</em>, <em>27</em>(5), 227–228. <a href="https://doi.org/10.1080/00031305.1973.10479042">https://doi.org/10.1080/00031305.1973.10479042</a>
+</div>
+<div class="csl-entry">
+Hartmann, K., Krois, J., &amp; Waske, B. (2018). Variance and <span>Standard Deviation</span>. In <em>E-Learning Project SOGA: Statistics and Geospatial Data Analysis. Department of Earth Sciences, Freie Universitaet Berlin.</em> https://www.geo.fu-berlin.de/en/v/soga/Basics-of-statistics/Descriptive-Statistics/Measures-of-Dispersion/Variance-and-Standard-Deviation/index.html.
+</div>
+<div class="csl-entry">
+Laney, D. B. (2002). Improved control charts for attributes. <em>Quality Engineering</em>, <em>14</em>(4), 531–537. <a href="https://doi.org/10.1081/QEN-120003555">https://doi.org/10.1081/QEN-120003555</a>
+</div>
+<div class="csl-entry">
+Leavengood, S., &amp; Reeb, J. E. (2015). <em>Statistical process control. <span>Part</span> 2: How and why <span>SPC</span> works</em>. <span>Oregon State University</span>.
+</div>
+<div class="csl-entry">
+Microsoft. (2021). <em>Microsoft excel for microsoft 365</em>.
+</div>
+<div class="csl-entry">
+Montgomery, D. C. (2020). <em>Introduction to statistical process quality control</em> (Eighth). <span>John Wiley &amp; Sons</span>.
+</div>
+<div class="csl-entry">
+Mun, J. (2008). Understanding and choosing the right probability distributions. In <em>Advanced analytical models: Over 800 models and 300 applications from the basel <span>II</span> accord to wall street and beyond</em> (pp. 899–917). <span>John Wiley &amp; Sons, Inc.</span> <a href="https://doi.org/10.1002/9781119197096.app03">https://doi.org/10.1002/9781119197096.app03</a>
+</div>
+<div class="csl-entry">
+NHS. (2009). <em>A guide to creating and interpreting run and control charts</em>. <span>NHS Institute for Innovation and Improvement</span>.
+</div>
+<div class="csl-entry">
+Nolan, T. W., &amp; Provost, L. P. (1990). Understanding variation. <em>Quality Progress</em>, <em>May</em>, 2–10.
+</div>
+<div class="csl-entry">
+Pandey, S., &amp; Bright, C. L. (2008). What are degrees of freedom? <em>Social Work Research</em>, <em>32</em>(2), 119–128.
+</div>
+<div class="csl-entry">
+Prevette, S. S. (2008). Dr. <span>Deming</span>’s funnel experiment. In <em>Symphony technologies</em>.
+</div>
+<div class="csl-entry">
+R Core Team. (2021). <em>R: A language and environment for statistical computing.</em> <span>R Foundation for Statistical Computing</span>.
+</div>
+<div class="csl-entry">
+Scrucca, L., Snow, G., &amp; Bloomfield, P. (2017). <em>Qcc: An <span>R</span> package for quality control charting and statistical process control</em>.
+</div>
+<div class="csl-entry">
+Soage, J. C. (2020). Poisson distribution in <span>R</span>. In <em>R Coder</em>. https://r-coder.com/poisson-distribution-r/.
+</div>
+<div class="csl-entry">
+Sparks, R. S., &amp; Field, J. B. F. (2000). Using <span>Deming</span>’s <span>Funnel Experiment</span> to <span>Demonstrate Effects</span> of <span>Violating Assumptions Underlying Shewhart</span>’s <span>Control Charts</span>. <em>The American Statistician</em>, <em>54</em>(4), 291. <a href="https://doi.org/10.2307/2685781">https://doi.org/10.2307/2685781</a>
+</div>
+<div class="csl-entry">
+SPC for Excel. (2006). <em>Over-controlling a process: The funnel experiment</em>.
+</div>
+<div class="csl-entry">
+Taboga, M. (2017). Exponential distribution. In <em>Lectures on probability theory and mathematical statistics</em> (Third). <span>Kindle Direct Publishing</span>.
+</div>
+<div class="csl-entry">
+Team, R. S. (2021). <em><span>RStudio</span>: Integrated <span>Development</span> for <span>R</span></em>. RStudio Inc.
+</div>
+<div class="csl-entry">
+Ugarte, M. D., Militino, A. F., &amp; Arnholt, A. T. (2016). <em>Probability and <span>Statistics</span> with <span>R</span></em> (Second). <span>CRC Press</span>.
+</div>
+<div class="csl-entry">
+Walker, H. M. (1940). Degrees of freedom. In <em>Journal of educational psychology</em> (No. 4; Vol. 31, pp. 253–269). <span>Warwick &amp; York</span>. <a href="https://doi.org/10.1037/h0054588">https://doi.org/10.1037/h0054588</a>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="vedlegg-5---tabell-med-konstanter-for-kontrolldiagram.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/nilskvilvang/SPC/edit/master/XX_Vedlegg_6_Utregning.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/nilskvilvang/SPC/blob/master/XX_Vedlegg_6_Utregning.Rmd",
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
