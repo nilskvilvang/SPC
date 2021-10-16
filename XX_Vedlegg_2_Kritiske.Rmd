@@ -2,7 +2,7 @@
 bibliography: referanser.bib 
 ---
 
-# Vedlegg 1 - Kritiske verdier for lengde på serier og antall krysningspunkter i seriediagram {.unnumbered}
+# Vedlegg 2 - Kritiske verdier i kontrolldiagram {.unnumbered}
 
 ```{r echo=FALSE}
 

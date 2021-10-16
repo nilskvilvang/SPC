@@ -4,7 +4,7 @@ bibliography: referanser.bib
 
 # Vedlegg 1 - R kode {.unnumbered}
 
-## Kapittel 2 {.unnumbered}
+#### Kapittel 2 {.unnumbered}
 
 Sette opp nødvendige pakker:
 ```{r echo = TRUE, eval=FALSE}
@@ -36,7 +36,7 @@ abline(v=12, col="red", lwd = 3)
 text(15.5, 40, "Endring i prosedyre", col = "red")
 ```
 
-## Kapittel 3 {.unnumbered}
+#### Kapittel 3 {.unnumbered}
 
 Lage fig 3.1:
 ```{r echo = TRUE, eval=FALSE}
@@ -244,7 +244,7 @@ qic(Nr, value,
     title = "To team - like prosesser - ulik variasjon")
 ```
 
-## Kapittel 4 {.unnumbered}
+#### Kapittel 4 {.unnumbered}
 
 Lage fig 4.1:
 
@@ -660,7 +660,7 @@ ggarrange(dat1plot, dat2plot, dat3plot, dat4plot + rremove("x.text"), ncol = 2, 
 
 
 
-## Vedlegg 2 - Kritiske verdier i seriediagram {.unnumbered}
+#### Vedlegg 2 {.unnumbered}
 
 ```{r echo = TRUE, eval=FALSE}
 
@@ -681,7 +681,7 @@ kbl(hendelser, booktabs = T,  longtable = T, caption = "Kritiske verdier", align
 ```
 
 
-## Vedlegg 3 - Chebyshevs teorem {.unnumbered}
+#### Vedlegg 3{.unnumbered}
 
 Lage generisk grafisk framstilling av Chebyshevs teorem
 
@@ -770,7 +770,7 @@ abline(v=2, col="red", lwd = 1)
 abline(h=75, col="red", lwd = 1)
 ```
 
-## Vedlegg 4 - Central Limit Theorem {.unnumbered}
+#### Vedlegg 4{.unnumbered}
 
 Lage ikke-normalfordelte data og plotte Q-Q plott
 
@@ -908,7 +908,7 @@ ggplot(myDF, aes(xbar)) +
 
 ```
 
-## Vedlegg 5 - Konstanter for kontrolldiagram {.unnumbered}
+#### Vedlegg 5{.unnumbered}
 
 ```{r echo = TRUE, eval=FALSE}
 
