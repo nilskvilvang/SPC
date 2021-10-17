@@ -2,8 +2,6 @@
 bibliography: referanser.bib 
 ---
 
-# (APPENDIX) Appendix {-} 
-
 # Vedlegg 1 - R kode {.unnumbered}
 
 #### Kapittel 2 {.unnumbered}

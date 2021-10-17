@@ -29,7 +29,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="datatyper-og-datafordelinger.html"/>
+<link rel="prev" href="er-dataene-dine-normalfordelte.html"/>
 <link rel="next" href="vedlegg-1---r-kode.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -185,8 +185,8 @@ div.csl-indent {
 <li class="chapter" data-level="4.4" data-path="datatyper-og-datafordelinger.html"><a href="datatyper-og-datafordelinger.html#geometrisk-fordeling"><i class="fa fa-check"></i><b>4.4</b> Geometrisk fordeling</a></li>
 <li class="chapter" data-level="4.5" data-path="datatyper-og-datafordelinger.html"><a href="datatyper-og-datafordelinger.html#eksponensiell-fordeling"><i class="fa fa-check"></i><b>4.5</b> Eksponensiell fordeling</a></li>
 </ul></li>
+<li class="chapter" data-level="5" data-path="er-dataene-dine-normalfordelte.html"><a href="er-dataene-dine-normalfordelte.html"><i class="fa fa-check"></i><b>5</b> Er dataene dine normalfordelte?</a></li>
 <li class="chapter" data-level="" data-path="referanser.html"><a href="referanser.html"><i class="fa fa-check"></i>Referanser</a></li>
-<li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="" data-path="vedlegg-1---r-kode.html"><a href="vedlegg-1---r-kode.html"><i class="fa fa-check"></i>Vedlegg 1 - R kode</a></li>
 <li class="chapter" data-level="" data-path="vedlegg-2---kritiske-verdier-i-kontrolldiagram.html"><a href="vedlegg-2---kritiske-verdier-i-kontrolldiagram.html"><i class="fa fa-check"></i>Vedlegg 2 - Kritiske verdier i kontrolldiagram</a></li>
 <li class="chapter" data-level="" data-path="vedlegg-3---chebyshevs-teorem.html"><a href="vedlegg-3---chebyshevs-teorem.html"><i class="fa fa-check"></i>Vedlegg 3 - Chebyshevs teorem</a></li>
@@ -241,6 +241,9 @@ Carey, R. G. (2003). <em>Improving healthcare with control charts. <span>Basic</
 Crostic, M. (2015). The funnel experiment. In <em>YouTube</em>.
 </div>
 <div class="csl-entry">
+D’Agostino, R. B., &amp; Stephens, M. A. (Eds.). (1986). <em>Goodness-of fit techniques</em>. <span>Marcel Dekker</span>.
+</div>
+<div class="csl-entry">
 Deming, W. E. (1986). <em>Out of the crisis</em>. <span>Institute of Technology Center for Advanced Engineering Study</span>.
 </div>
 <div class="csl-entry">
@@ -269,6 +272,9 @@ Laney, D. B. (2002). Improved control charts for attributes. <em>Quality Enginee
 </div>
 <div class="csl-entry">
 Leavengood, S., &amp; Reeb, J. E. (2015). <em>Statistical process control. <span>Part</span> 2: How and why <span>SPC</span> works</em>. <span>Oregon State University</span>.
+</div>
+<div class="csl-entry">
+Marsaglia, G., &amp; Marsaglia, J. (2004). Evaluating the anderson-darling distribution. <em>Journal of Statistical Software</em>, <em>9</em>(2). <a href="https://doi.org/10.18637/jss.v009.i02">https://doi.org/10.18637/jss.v009.i02</a>
 </div>
 <div class="csl-entry">
 Microsoft. (2021). <em>Microsoft excel for microsoft 365</em>.
@@ -307,7 +313,22 @@ Sparks, R. S., &amp; Field, J. B. F. (2000). Using <span>Deming</span>’s <span
 SPC for Excel. (2006). <em>Over-controlling a process: The funnel experiment</em>.
 </div>
 <div class="csl-entry">
-Stephens, M. A. (1979). The anderson-darling statistic. In <em>Technical report no. 39</em>. <span>Stanford University</span>.
+Stephens, M. A. (1974). <span>EDF</span> statistics for goodness of fit and some comparisons. <em>Journal of the American Statistical Association</em>, <em>69</em>(347), 730–737. <a href="https://doi.org/10.1080/01621459.1974.10480196">https://doi.org/10.1080/01621459.1974.10480196</a>
+</div>
+<div class="csl-entry">
+Stephens, M. A. (1976). Asymptotic results for goodness-of-fit statistics with unknown parameters. <em>The Annals of Statistics</em>, <em>4</em>(2), 357–369. <a href="https://www.jstor.org/stable/2958206">https://www.jstor.org/stable/2958206</a>
+</div>
+<div class="csl-entry">
+Stephens, M. A. (1979a). Tests of fit for the logistic distribution based on the empirical distribution function. <em>Biometrika</em>, <em>66</em>(3), 591–595. <a href="https://doi.org/10.1093/biomet/66.3.591">https://doi.org/10.1093/biomet/66.3.591</a>
+</div>
+<div class="csl-entry">
+Stephens, M. A. (1977). Goodness of fit for the extreme value distribution. <em>Biometrika</em>, <em>64</em>(3), 583–588. <a href="https://doi.org/10.1093/biomet/64.3.583">https://doi.org/10.1093/biomet/64.3.583</a>
+</div>
+<div class="csl-entry">
+Stephens, M. A. (1978). Goodness of fit with special reference to tests for exponentiality. <em>Technical Report No. 262</em>.
+</div>
+<div class="csl-entry">
+Stephens, M. A. (1979b). The anderson-darling statistic. In <em>Technical report no. 39</em>. <span>Stanford University</span>.
 </div>
 <div class="csl-entry">
 Taboga, M. (2017). Exponential distribution. In <em>Lectures on probability theory and mathematical statistics</em> (Third). <span>Kindle Direct Publishing</span>.
@@ -327,15 +348,12 @@ Zaiontz, C. (2020). One-sample anderson-darling test. In <em>Real statistics usi
 </div>
 
 </div>
-
-
-
             </section>
 
           </div>
         </div>
       </div>
-<a href="datatyper-og-datafordelinger.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="er-dataene-dine-normalfordelte.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="vedlegg-1---r-kode.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

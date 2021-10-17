@@ -185,8 +185,8 @@ div.csl-indent {
 <li class="chapter" data-level="4.4" data-path="datatyper-og-datafordelinger.html"><a href="datatyper-og-datafordelinger.html#geometrisk-fordeling"><i class="fa fa-check"></i><b>4.4</b> Geometrisk fordeling</a></li>
 <li class="chapter" data-level="4.5" data-path="datatyper-og-datafordelinger.html"><a href="datatyper-og-datafordelinger.html#eksponensiell-fordeling"><i class="fa fa-check"></i><b>4.5</b> Eksponensiell fordeling</a></li>
 </ul></li>
+<li class="chapter" data-level="5" data-path="er-dataene-dine-normalfordelte.html"><a href="er-dataene-dine-normalfordelte.html"><i class="fa fa-check"></i><b>5</b> Er dataene dine normalfordelte?</a></li>
 <li class="chapter" data-level="" data-path="referanser.html"><a href="referanser.html"><i class="fa fa-check"></i>Referanser</a></li>
-<li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="" data-path="vedlegg-1---r-kode.html"><a href="vedlegg-1---r-kode.html"><i class="fa fa-check"></i>Vedlegg 1 - R kode</a></li>
 <li class="chapter" data-level="" data-path="vedlegg-2---kritiske-verdier-i-kontrolldiagram.html"><a href="vedlegg-2---kritiske-verdier-i-kontrolldiagram.html"><i class="fa fa-check"></i>Vedlegg 2 - Kritiske verdier i kontrolldiagram</a></li>
 <li class="chapter" data-level="" data-path="vedlegg-3---chebyshevs-teorem.html"><a href="vedlegg-3---chebyshevs-teorem.html"><i class="fa fa-check"></i>Vedlegg 3 - Chebyshevs teorem</a></li>
@@ -225,7 +225,7 @@ div.csl-indent {
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-91"></span>
 <img src="SPC-book_files/figure-html/unnamed-chunk-91-1.png" alt="Ikke-normal fordeling og Q-Q plott" width="672" />
 <p class="caption">
-Figure 4.22: Ikke-normal fordeling og Q-Q plott
+Figure 5.4: Ikke-normal fordeling og Q-Q plott
 </p>
 </div>
 <p>Som sagt har vi gjort rede for Q-Q plott et annet sted i boka, så her kan vi nøye oss med å slå fast at denne variabelen definitivt ikke er normalfordelt.
@@ -233,28 +233,28 @@ Det framkommer også tydelig når vi plotter et histogram:</p>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-92"></span>
 <img src="SPC-book_files/figure-html/unnamed-chunk-92-1.png" alt="Histogram for bimodal fordeling" width="672" />
 <p class="caption">
-Figure 4.23: Histogram for bimodal fordeling
+Figure 5.5: Histogram for bimodal fordeling
 </p>
 </div>
 <p>Ut fra denne populasjonen tar vi 100 utvalg med 30 i hvert utvalg. Fordelingen ser da slik ut:</p>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-93"></span>
 <img src="SPC-book_files/figure-html/unnamed-chunk-93-1.png" alt="Histogram for 100 utvalg fra bimodal fordeling" width="672" />
 <p class="caption">
-Figure 4.24: Histogram for 100 utvalg fra bimodal fordeling
+Figure 5.6: Histogram for 100 utvalg fra bimodal fordeling
 </p>
 </div>
 <p>Vi kan allerede nå ane en tilnørming mot normalfordeling, og i hvert fall en endret form enn populasjonen viste. Vi tar nå 1000 utvalg med 30 i hvert utvalg.</p>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-94"></span>
 <img src="SPC-book_files/figure-html/unnamed-chunk-94-1.png" alt="Histogram for 1000 utvalg fra bimodal fordeling" width="672" />
 <p class="caption">
-Figure 4.25: Histogram for 1000 utvalg fra bimodal fordeling
+Figure 5.7: Histogram for 1000 utvalg fra bimodal fordeling
 </p>
 </div>
 <p>Det er videre åpenbart at dette begynner å se mer og mer ut som en normalfordeling. Til slutt øker vi til 10000 utvalg av 30.</p>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-95"></span>
 <img src="SPC-book_files/figure-html/unnamed-chunk-95-1.png" alt="Histogram for 10000 utvalg fra bimodal fordeling" width="672" />
 <p class="caption">
-Figure 4.26: Histogram for 10000 utvalg fra bimodal fordeling
+Figure 5.8: Histogram for 10000 utvalg fra bimodal fordeling
 </p>
 </div>
 <p>Det vi kan se bekrefter hva Central Limit Theorem sier vi bør forvente. Vi kan starte med en hvilken som helst fordeling (kontinuerlig eller diskret) som har et definert gjennomsnitt og definert varians (og dermed definert standardavvik) og ta tilfeldige utvalg fra denne fordelingen – og vi vil få en tilnærmet normalfordelt fordeling. I det virkelige liv har vi ofte populasjonsfordelinger som har alt annet enn normalfordeling. Likevel kan vi ta tilfeldige utvalg og få en tilnærmet normalfordelt frekvensplott (av f.eks. gjennomsnittsverdier). Størrelsen på utvalget og antallet ganger vi tar utvalg vil påvirke -&gt; jo større utvalg og jo flere utvalg, jo nærmere normalfordeling vil frekvensplottet være.</p>
