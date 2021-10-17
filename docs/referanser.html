@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Vedlegg 3 - Chebyshevs teorem | Statistisk prosesskontroll</title>
-  <meta name="description" content="Vedlegg 3 - Chebyshevs teorem | Statistisk prosesskontroll" />
+  <title>Referanser | Statistisk prosesskontroll</title>
+  <meta name="description" content="Referanser | Statistisk prosesskontroll" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Vedlegg 3 - Chebyshevs teorem | Statistisk prosesskontroll" />
+  <meta property="og:title" content="Referanser | Statistisk prosesskontroll" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Vedlegg 3 - Chebyshevs teorem | Statistisk prosesskontroll" />
+  <meta name="twitter:title" content="Referanser | Statistisk prosesskontroll" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="vedlegg-2---kritiske-verdier-i-kontrolldiagram.html"/>
-<link rel="next" href="vedlegg-4---sentralgrenseteoremet-central-limit-theorem.html"/>
+<link rel="prev" href="datatyper-og-datafordelinger.html"/>
+<link rel="next" href="vedlegg-1---r-kode.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -213,322 +213,130 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="vedlegg-3---chebyshevs-teorem" class="section level1 unnumbered">
-<h1>Vedlegg 3 - Chebyshevs teorem</h1>
-<p>Dette vedlegget er i stor grad bygget på <span class="citation">Hartmann et al. (2018)</span>.</p>
-<p>Vi diskuterte i noe detalj hvordan vi kan bruke normalfordelingen til å si noe om hvordan verdier i et datasett kan antas å falle innenfor en gitt avstand fra gjennomsnittet <span class="citation">(Hartmann et al., 2018)</span>:</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-87"></span>
-<img src="SPC-book_files/figure-html/unnamed-chunk-87-1.png" alt="Normalfordeling med standardavvik" width="672" />
-<p class="caption">
-Figure 4.19: Normalfordeling med standardavvik
-</p>
+<div id="referanser" class="section level1 unnumbered">
+<h1>Referanser</h1>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div class="csl-entry">
+Allaire, J., Xie, Y., McPherson, J., Luraschi, J., Ushey, K., Atkins, A., Wickham, H., Cheng, J., Chang, W., &amp; Iannone, R. (2021). <em>Rmarkdown: Dynamic documents for r</em>.
 </div>
-<p>Vi kan ut fra normalfordeingen si at</p>
-<ul>
-<li>68 % av observajsonene vil ligge innenfor ett standardavvik fra gjennomsnittsverdien</li>
-<li>95 % av observasjonene vil ligge innenfor to standradavvik fra gjennomsnittsverdien</li>
-<li>99.7 % av observasjonene vil ligge innenfor tre standardaavik fra gjennomsnittsverdien</li>
-</ul>
-<p>Dette kalles ofte for den empiriske regelen (“the empirical rule”), og gjelder kun normalfordelte data. Chebyshevs teorem gjelder imidlertid alle fordelinger. Normalfordelingen gir oss at datapunkter med en viss sannsynlighet ligger innenfor en viss avstand fra gjennomsnittsverdien. Det samme sier Chebyshevs teorem om datafordelinger som ikke er normalfordelte: bare en gitt mengde datapunkter kan ligge mer enn en gitt avstand fra gjennomsnittsverdien.</p>
-<p>Teoremet uttrykkes slik <span class="citation">(Hartmann et al., 2018)</span>:</p>
-<blockquote>
-<p>For ethvert nummer <em>k</em> større enn 1 vil minst <span class="math inline">\(1-1/\)</span><em>k</em><span class="math inline">\(^2\)</span> av dataverdiene ligge innenfor <em>k</em> standardavvik fra gjennomsnittet.</p>
-</blockquote>
-<p>Teoremet kan generisk kan framstilles slik:</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-88"></span>
-<img src="SPC-book_files/figure-html/unnamed-chunk-88-1.png" alt="Chebyshevs teorem" width="672" />
-<p class="caption">
-Figure 4.20: Chebyshevs teorem
-</p>
+<div class="csl-entry">
+Alwan, L. C. (1991). Time-series effects and degradation of control chart performance resulting from overadjustment. <em>Total Quality Management</em>, <em>2</em>(1), 99–112. <a href="https://doi.org/10.1080/09544129100000009">https://doi.org/10.1080/09544129100000009</a>
 </div>
-<p>For ethvert numerisk datasett gjelder:</p>
-<ol style="list-style-type: decimal">
-<li>Minst ¾ av datapunktene ligger innenfor to standardavvik av gjennomsnittet – altså i intervallet mellom endepunktene <span class="math inline">\(\overline{x}\pm2s\)</span> for et utvalg og <span class="math inline">\(\overline{x}\pm2\sigma\)</span> for populasjoner.</li>
-<li>Minst 8/9 av datapunktene ligger innenfor tre standardavvik av gjennomsnittet – altså i intervallet mellom endepunktene <span class="math inline">\(\overline{x}\pm3s\)</span> for et utvalg og <span class="math inline">\(\overline{x}\pm3\sigma\)</span> for populasjoner.</li>
-<li>Minst <span class="math inline">\(1-1/\)</span><em>k</em><span class="math inline">\(^2\)</span> av datapunktene ligger mellom k standardavvik av gjennomsnittet – altså i intervallet mellom endepunktene <span class="math inline">\(\overline{x}\pm\)</span><em>k</em><span class="math inline">\(s\)</span> for et utvalg og <span class="math inline">\(\overline{x}\pm\)</span><em>k</em><span class="math inline">\(\sigma\)</span> for populasjoner.</li>
-</ol>
-<p>Ut fra tabellen under ser vi at dersom vi velger scroller til <em>k</em> = 2 vil 75 % av verdiene ligge innenfor (altså 75 % innenfor 2 standardavvik).</p>
-<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; ">
-<table class="table table-striped lightable-paper" style="width: auto !important; margin-left: auto; margin-right: auto; font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
-k
-</th>
-<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
-auc.percent
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:right;">
-1.0
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-1.1
-</td>
-<td style="text-align:right;">
-17
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-1.2
-</td>
-<td style="text-align:right;">
-31
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-1.3
-</td>
-<td style="text-align:right;">
-41
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-1.4
-</td>
-<td style="text-align:right;">
-49
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-1.5
-</td>
-<td style="text-align:right;">
-56
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-1.6
-</td>
-<td style="text-align:right;">
-61
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-1.7
-</td>
-<td style="text-align:right;">
-65
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-1.8
-</td>
-<td style="text-align:right;">
-69
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-1.9
-</td>
-<td style="text-align:right;">
-72
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-2.0
-</td>
-<td style="text-align:right;">
-75
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-2.1
-</td>
-<td style="text-align:right;">
-77
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-2.2
-</td>
-<td style="text-align:right;">
-79
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-2.3
-</td>
-<td style="text-align:right;">
-81
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-2.4
-</td>
-<td style="text-align:right;">
-83
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-2.5
-</td>
-<td style="text-align:right;">
-84
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-2.6
-</td>
-<td style="text-align:right;">
-85
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-2.7
-</td>
-<td style="text-align:right;">
-86
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-2.8
-</td>
-<td style="text-align:right;">
-87
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-2.9
-</td>
-<td style="text-align:right;">
-88
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-3.0
-</td>
-<td style="text-align:right;">
-89
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-3.1
-</td>
-<td style="text-align:right;">
-90
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-3.2
-</td>
-<td style="text-align:right;">
-90
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-3.3
-</td>
-<td style="text-align:right;">
-91
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-3.4
-</td>
-<td style="text-align:right;">
-91
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-3.5
-</td>
-<td style="text-align:right;">
-92
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-3.6
-</td>
-<td style="text-align:right;">
-92
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-3.7
-</td>
-<td style="text-align:right;">
-93
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-3.8
-</td>
-<td style="text-align:right;">
-93
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-3.9
-</td>
-<td style="text-align:right;">
-93
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-4.0
-</td>
-<td style="text-align:right;">
-94
-</td>
-</tr>
-</tbody>
-</table>
+<div class="csl-entry">
+Anderson, T. W., &amp; Darling, D. A. (1954). A test of goodness of fit. <em>Journal of the American Statistical Association</em>, <em>49</em>(268), 765. <a href="https://doi.org/10.2307/2281537">https://doi.org/10.2307/2281537</a>
 </div>
-<p>Vi kan også vise en grafisk framstilling av Chebyshevs teorem med fokus på prosenter (y-aksen) mot <em>k</em> (x-aksen).</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-90"></span>
-<img src="SPC-book_files/figure-html/unnamed-chunk-90-1.png" alt="Chebyshevs teorem - prosent" width="672" />
-<p class="caption">
-Figure 4.21: Chebyshevs teorem - prosent
-</p>
+<div class="csl-entry">
+Anhøj, J. (2009). Statistisk processtyring i sundhedsvæsenet. <em>Ugeskr Læger</em>, <em>171</em>(21), 1764–1768.
 </div>
-<p>Når vi vet at minst 75% av distribusjonen ligger innenfor <span class="math inline">\(\overline{x}\pm2s\)</span> vet vi også at maksimalt 25% ligger utenfor. Likeledes for <span class="math inline">\(\overline{x}\pm3s\)</span> vil maksimalt 11,11 % av distribusjonen ligge utenfor. Så mens reglene for normalfordeling kun gjelder for normalfordelte eller tilnærmet-normalfordelte datasett, er Chebyshevs teorem et faktum som gjelder alle datadistribusjoner og som beskriver minimumsandelen av observasjoner/datapunkter som ligger innenfor hhv +/- 1, 2 og 3 standardavvik fra gjennomsnittet.</p>
+<div class="csl-entry">
+Anhøj, J. (2021). <em>Qicharts2: Quality <span>Improvement Charts</span></em>.
+</div>
+<div class="csl-entry">
+Benneyan, J. C. (1998). Statistical quality control methods in infection control and hospital epidemiology, part <span>I</span>: Introduction and basic theory. <em>Infection Control and Hospital Epidemiology</em>, <em>19</em>(3), 194–214. <a href="https://doi.org/10.2307/30143442">https://doi.org/10.2307/30143442</a>
+</div>
+<div class="csl-entry">
+Carey, R. G. (2003). <em>Improving healthcare with control charts. <span>Basic</span> and advanced <span>SPC</span> methods and case studies</em>. <span>ASQ Quality Press</span>.
+</div>
+<div class="csl-entry">
+Crostic, M. (2015). The funnel experiment. In <em>YouTube</em>.
+</div>
+<div class="csl-entry">
+Deming, W. E. (1986). <em>Out of the crisis</em>. <span>Institute of Technology Center for Advanced Engineering Study</span>.
+</div>
+<div class="csl-entry">
+Fedit, B. (2018). Central <span>Limit Theorem</span> -example using <span>R</span>. In <em>Ben’s Blog</em>.
+</div>
+<div class="csl-entry">
+Field, A. (2009). <em>Discovering statistics using <span>SPSS</span></em> (Third). <span>SAGE Publications Ltd</span>.
+</div>
+<div class="csl-entry">
+Field, A., Miles, J., &amp; Field, Z. (2012). <em>Discovering statistics using r</em>. <span>SAGE Publications</span>.
+</div>
+<div class="csl-entry">
+Georgantzas, N. C., &amp; Orsini, J. N. (2003). Tampering dynamics. <em>Proceedings of the 21st <span>International System Dynamics Society Conference</span></em>.
+</div>
+<div class="csl-entry">
+Good, I. J. (1973). What are degrees of freedom? <em>The American Statistician</em>, <em>27</em>(5), 227–228. <a href="https://doi.org/10.1080/00031305.1973.10479042">https://doi.org/10.1080/00031305.1973.10479042</a>
+</div>
+<div class="csl-entry">
+Hartmann, K., Krois, J., &amp; Waske, B. (2018). Variance and <span>Standard Deviation</span>. In <em>E-Learning Project SOGA: Statistics and Geospatial Data Analysis. Department of Earth Sciences, Freie Universitaet Berlin.</em> https://www.geo.fu-berlin.de/en/v/soga/Basics-of-statistics/Descriptive-Statistics/Measures-of-Dispersion/Variance-and-Standard-Deviation/index.html.
+</div>
+<div class="csl-entry">
+Jäntschi, L., &amp; Bolboacă, S. D. (2018). Computation of probability associated with <span>Anderson</span> statistic. <em>Mathematics</em>, <em>6</em>(6), 88. <a href="https://doi.org/10.3390/math6060088">https://doi.org/10.3390/math6060088</a>
+</div>
+<div class="csl-entry">
+Laney, D. B. (2002). Improved control charts for attributes. <em>Quality Engineering</em>, <em>14</em>(4), 531–537. <a href="https://doi.org/10.1081/QEN-120003555">https://doi.org/10.1081/QEN-120003555</a>
+</div>
+<div class="csl-entry">
+Leavengood, S., &amp; Reeb, J. E. (2015). <em>Statistical process control. <span>Part</span> 2: How and why <span>SPC</span> works</em>. <span>Oregon State University</span>.
+</div>
+<div class="csl-entry">
+Microsoft. (2021). <em>Microsoft excel for microsoft 365</em>.
+</div>
+<div class="csl-entry">
+Montgomery, D. C. (2020). <em>Introduction to statistical process quality control</em> (Eighth). <span>John Wiley &amp; Sons</span>.
+</div>
+<div class="csl-entry">
+Mun, J. (2008). Understanding and choosing the right probability distributions. In <em>Advanced analytical models: Over 800 models and 300 applications from the basel <span>II</span> accord to wall street and beyond</em> (pp. 899–917). <span>John Wiley &amp; Sons, Inc.</span> <a href="https://doi.org/10.1002/9781119197096.app03">https://doi.org/10.1002/9781119197096.app03</a>
+</div>
+<div class="csl-entry">
+NHS. (2009). <em>A guide to creating and interpreting run and control charts</em>. <span>NHS Institute for Innovation and Improvement</span>.
+</div>
+<div class="csl-entry">
+Nolan, T. W., &amp; Provost, L. P. (1990). Understanding variation. <em>Quality Progress</em>, <em>May</em>, 2–10.
+</div>
+<div class="csl-entry">
+Pandey, S., &amp; Bright, C. L. (2008). What are degrees of freedom? <em>Social Work Research</em>, <em>32</em>(2), 119–128.
+</div>
+<div class="csl-entry">
+Prevette, S. S. (2008). Dr. <span>Deming</span>’s funnel experiment. In <em>Symphony technologies</em>.
+</div>
+<div class="csl-entry">
+R Core Team. (2021). <em>R: A language and environment for statistical computing.</em> <span>R Foundation for Statistical Computing</span>.
+</div>
+<div class="csl-entry">
+Scrucca, L., Snow, G., &amp; Bloomfield, P. (2017). <em>Qcc: An <span>R</span> package for quality control charting and statistical process control</em>.
+</div>
+<div class="csl-entry">
+Soage, J. C. (2020). Poisson distribution in <span>R</span>. In <em>R Coder</em>. https://r-coder.com/poisson-distribution-r/.
+</div>
+<div class="csl-entry">
+Sparks, R. S., &amp; Field, J. B. F. (2000). Using <span>Deming</span>’s <span>Funnel Experiment</span> to <span>Demonstrate Effects</span> of <span>Violating Assumptions Underlying Shewhart</span>’s <span>Control Charts</span>. <em>The American Statistician</em>, <em>54</em>(4), 291. <a href="https://doi.org/10.2307/2685781">https://doi.org/10.2307/2685781</a>
+</div>
+<div class="csl-entry">
+SPC for Excel. (2006). <em>Over-controlling a process: The funnel experiment</em>.
+</div>
+<div class="csl-entry">
+Stephens, M. A. (1979). The anderson-darling statistic. In <em>Technical report no. 39</em>. <span>Stanford University</span>.
+</div>
+<div class="csl-entry">
+Taboga, M. (2017). Exponential distribution. In <em>Lectures on probability theory and mathematical statistics</em> (Third). <span>Kindle Direct Publishing</span>.
+</div>
+<div class="csl-entry">
+Team, R. S. (2021). <em><span>RStudio</span>: Integrated <span>Development</span> for <span>R</span></em>. RStudio Inc.
+</div>
+<div class="csl-entry">
+Ugarte, M. D., Militino, A. F., &amp; Arnholt, A. T. (2016). <em>Probability and <span>Statistics</span> with <span>R</span></em> (Second). <span>CRC Press</span>.
+</div>
+<div class="csl-entry">
+Walker, H. M. (1940). Degrees of freedom. In <em>Journal of educational psychology</em> (No. 4; Vol. 31, pp. 253–269). <span>Warwick &amp; York</span>. <a href="https://doi.org/10.1037/h0054588">https://doi.org/10.1037/h0054588</a>
+</div>
+<div class="csl-entry">
+Zaiontz, C. (2020). One-sample anderson-darling test. In <em>Real statistics using excel</em>.
+</div>
+</div>
 
 </div>
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="vedlegg-2---kritiske-verdier-i-kontrolldiagram.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="vedlegg-4---sentralgrenseteoremet-central-limit-theorem.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="datatyper-og-datafordelinger.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="vedlegg-1---r-kode.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -559,7 +367,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/nilskvilvang/SPC/edit/master/XX_Vedlegg_3_Chebyshev.Rmd",
+"link": "https://github.com/nilskvilvang/SPC/edit/master/XX_Vedlegg_0_Referanser.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -567,7 +375,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/nilskvilvang/SPC/blob/master/XX_Vedlegg_3_Chebyshev.Rmd",
+"link": "https://github.com/nilskvilvang/SPC/blob/master/XX_Vedlegg_0_Referanser.Rmd",
 "text": null
 },
 "download": null,

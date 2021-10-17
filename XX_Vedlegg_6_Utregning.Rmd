@@ -6,6 +6,11 @@ bibliography: referanser.bib
 
 Jfr. @Laney2002 og @Montgomery2020
 
+```{r echo=FALSE, eval=TRUE}
+pacman::p_load(knitr, tidyverse, kableExtra)
+```
+
+
 **Notasjon**
 
 ```{r echo=FALSE, eval=TRUE}
@@ -18,10 +23,10 @@ text_tbl1 <- data.frame(
 kable(text_tbl1, 
   align = "cl",
   escape = F, 
-  caption = 'Table example') %>%
+  caption = NULL) %>%
   kable_styling(latex_options = "hold_position", full_width = F) %>%
-  column_spec(1, bold = T) %>%
-  column_spec(2, width = '14cm')
+  column_spec(2, width = '4cm') %>%
+  column_spec(2, width = '10cm')
 ```
 
 
@@ -38,9 +43,8 @@ text_tbl2 <- data.frame(
 kable(text_tbl2, 
   align = "cccc",
   escape = F, 
-  caption = 'Table example') %>%
+  caption = NULL) %>%
   kable_styling(latex_options = "hold_position", full_width = F) %>%
-  column_spec(1, bold = T) %>%
   column_spec(2, width = '5cm') %>%
   column_spec(3, width = '5cm')
 ```
@@ -59,9 +63,8 @@ text_tbl3 <- data.frame(
 kable(text_tbl3, 
   align = "cccc",
   escape = F, 
-  caption = 'Table example') %>%
+  caption = NULL) %>%
   kable_styling(latex_options = "hold_position", full_width = F) %>%
-  column_spec(1, bold = T) %>%
   column_spec(2, width = "5cm") %>%
   column_spec(3, width = '5cm')
 ```
@@ -87,9 +90,8 @@ text_tbl4 <- data.frame(
 kable(text_tbl4, 
   align = "cccc",
   escape = F, 
-  caption = 'Table example') %>%
+  caption = NULL) %>%
   kable_styling(latex_options = "hold_position", full_width = F) %>%
-  column_spec(1, bold = T) %>%
   column_spec(1, width = '3cm') %>%
   column_spec(2, width = '5cm') %>%
   column_spec(3, width = '5cm') %>%
@@ -108,9 +110,8 @@ text_tbl5 <- data.frame(
 kable(text_tbl5, 
   align = "ccc",
   escape = F, 
-  caption = 'Table example') %>%
+  caption = NULL) %>%
   kable_styling(latex_options = "hold_position", full_width = F) %>%
-  column_spec(1, bold = T) %>%
   column_spec(1, width = '3cm') %>%
   column_spec(2, width = '5cm') %>%
   column_spec(3, width = '5cm')

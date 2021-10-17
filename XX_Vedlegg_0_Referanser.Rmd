@@ -1,0 +1,7 @@
+---
+bibliography: referanser.bib 
+---
+
+# Referanser {.unnumbered}
+
+<div id="refs"></div>
