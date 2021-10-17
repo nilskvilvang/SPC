@@ -53,3 +53,4 @@ poissonfordeling
 geometrisk-fordeling
 eksponensiell-fordeling
 er-dataene-dine-normalfordelte
+tab:unnamed-chunk-1
