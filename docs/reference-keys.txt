@@ -34,6 +34,7 @@ fig:unnamed-chunk-46
 fig:unnamed-chunk-48
 fig:unnamed-chunk-50
 fig:unnamed-chunk-52
+fig:unnamed-chunk-54
 tab:unnamed-chunk-105
 fig:unnamed-chunk-106
 fig:unnamed-chunk-107
@@ -60,7 +61,3 @@ eksponensiell-fordeling
 er-dataene-dine-normalfordelte
 q-q-plott
 anderson-darling-test-for-normalitet
-fig:unnamed-chunk-5
-fig:unnamed-chunk-7
-fig:unnamed-chunk-9
-tab:unnamed-chunk-14
