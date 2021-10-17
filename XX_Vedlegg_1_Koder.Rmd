@@ -658,6 +658,167 @@ ggarrange(dat1plot, dat2plot, dat3plot, dat4plot + rremove("x.text"), ncol = 2, 
 
 ```
 
+#### Kapittel 5 {.unnumbered}
+
+Lage fig 5.1:
+
+```{r echo = TRUE, eval=FALSE}
+
+pacman::p_load(tidyverse, ggplot2, writexl)
+
+# Lage normalfordelt datasett
+
+set.seed(89)
+
+qqnorm <- rnorm(10000, mean=90, sd=5)
+
+qqnorm <- as_tibble(qqnorm)
+
+# Plotte Q-Q plott
+
+qqnorm_plott <- ggplot(qqnorm, aes(sample = value)) +
+  stat_qq() +
+  stat_qq_line()
+
+print(qqnorm_plott + ggtitle("Normal Q-Q plott") + labs(x = "Teoretisk forventning", y = "Data"))
+
+```
+
+Lage fig 5.2:
+
+```{r echo = TRUE, eval=FALSE}
+
+# Lage datasett med right skew
+
+N <- 5000
+qqrightskew <- rnbinom(N, 10, .1)
+ 
+qqrightskew <- as_tibble(qqrightskew)
+
+# Plotte histogram og Q-Q plott
+
+qqrighthist <- ggplot(qqrightskew, aes(x=value)) + geom_histogram(color="black", fill="lightblue")
+
+qqrightskew_plott <- ggplot(qqrightskew, aes(sample = value)) +
+  stat_qq() +
+  stat_qq_line() +
+  ggtitle("Normal Q-Q plott - skjevhet høyre") + labs(x = "Teoretisk forventning", y = "Data")
+
+grid.arrange(qqrighthist, qqrightskew_plott, ncol=2)
+
+```
+
+Lage fig 5.3:
+
+```{r echo = TRUE, eval=FALSE}
+
+pacman::p_load(gridExtra, writexl, ggplot2, tidyverse)
+
+# Lage datasett med left skew
+
+set.seed(91)
+
+N=5000
+qqleftskew <- rbeta(N,2,0.5,ncp=2)
+
+qqleftskew <- as_tibble(qqleftskew)
+
+# Plotte histogram og Q-Q plott"
+
+qqlefthist <- ggplot(qqleftskew, aes(x=value)) + geom_histogram(color="black", fill="lightblue")
+
+qqleftskew_plott <- ggplot(qqleftskew, aes(sample = value)) +
+  stat_qq() +
+  stat_qq_line() +
+  ggtitle("Normal Q-Q plott - skjevhet venstre") + labs(x = "Teoretisk forventning", y = "Data")
+
+grid.arrange(qqlefthist, qqleftskew_plott, ncol=2)
+
+```
+
+Lage fig 5.4:
+
+```{r echo = TRUE, eval=FALSE}
+
+pacman::p_load(gridExtra, writexl, ggplot2, tidyverse, LambertW)
+
+# Lage datasett med fet hale
+
+set.seed(92)
+
+qqflat <- rLambertW(n=100, distname = "normal", beta = c(0,1), delta = 0.5)
+
+qqflat <- as_tibble(qqflat)
+
+# Plotte histogram og Q-Q plott
+
+qqflathist <- ggplot(qqflat, aes(x=value)) + geom_histogram(color="black", fill="lightblue")
+
+qqflat_plott <- ggplot(qqflat, aes(sample = value)) +
+  stat_qq() +
+  stat_qq_line() +
+  ggtitle("Q-Q plott - heavy-tail") + labs(x = "Teoretisk forventning", y = "Data")
+
+grid.arrange(qqflathist, qqflat_plott, ncol=2)
+
+```
+
+Lage fig 5.5:
+
+```{r echo = TRUE, eval=FALSE}
+
+pacman::p_load(gridExtra, writexl, ggplot2, tidyverse)
+
+# Lage datasett med tynn hale
+
+set.seed(81)
+
+qqlt <- runif(n = 1000, min = -1, max = 1)
+
+qqlt <- as_tibble(qqlt)
+
+# Plotte histogram og Q-Q plott
+
+qqlthist <- ggplot(qqlt, aes(x=value)) + geom_histogram(color="black", fill="lightblue")
+
+qqlt_plott <- ggplot(qqlt, aes(sample = value)) +
+  stat_qq() +
+  stat_qq_line() +
+  ggtitle(" Normal Q-Q plott - light-tail") + labs(x = "Teoretisk forventning", y = "Data")
+
+grid.arrange(qqlthist, qqlt_plott, ncol=2)
+
+```
+
+Lage fig 5.6:
+
+```{r echo = TRUE, eval=FALSE}
+
+pacman::p_load(gridExtra, writexl, ggplot2, tidyverse)
+
+# Lage bimodialt datasett
+
+set.seed(10) 
+
+mode1 <- rnorm(50,2,1)
+mode1 <- mode1[mode1 > 0] 
+mode2 <- rnorm(50,6,1)
+mode2 <- mode2[mode2 > 0] 
+qqbimod <- as_tibble(sort(c(mode1,mode2)))
+
+# Plotte histogram og Q-Q plott
+
+qqbimodhist <- ggplot(qqbimod, aes(x=value)) + geom_histogram(color="black", fill="lightblue")
+
+qqbimod_plott <- ggplot(qqbimod, aes(sample = value)) +
+  stat_qq() +
+  stat_qq_line() +
+  ggtitle(" Normal Q-Q plott - bimodial") + labs(x = "Teoretisk forventning", y = "Data")
+
+grid.arrange(qqbimodhist, qqbimod_plott, ncol=2)
+
+```
+
 
 
 #### Vedlegg 2 {.unnumbered}
