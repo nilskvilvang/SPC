@@ -60,3 +60,7 @@ eksponensiell-fordeling
 er-dataene-dine-normalfordelte
 q-q-plott
 anderson-darling-test-for-normalitet
+fig:unnamed-chunk-5
+fig:unnamed-chunk-7
+fig:unnamed-chunk-9
+tab:unnamed-chunk-14
