@@ -30,4 +30,11 @@ kable(text_tbl6,
 ```
 For gammafordeling  er *k* parameteret ("shape parameter") definert som $\alpha$.
 
-Kritiske verdier for Anderson-Darling test. Merk: hvis man søker på nett finner man ulike framstillinger med noen avvikende verdier – vi har basert verdiene for normalfordeling på 
+Kritiske verdier for Anderson-Darling test. Merk: hvis man søker på nett finner man ulike framstillinger med noen avvikende verdier – vi har basert verdiene for normalfordeling på @DAgostino1986 [123, tabell 4.7]. Øvrige verdier er basert på @Marsaglia2004 og Stephens [-@Stephens1974;-@Stephens1976;-@Stephens1977;-@Stephens1978;-@Stephens1979a].  
+
+Du kan laste ned tabellen i en Excel-fil her:
+```{r echo=FALSE, eval=TRUE}
+xfun::embed_file('AD-alpha.xlsx')
+```
+
+![Tabell over $\alpha$ verdier](AD-alpha.png)

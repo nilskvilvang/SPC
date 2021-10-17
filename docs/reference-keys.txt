@@ -52,3 +52,6 @@ binomialfordeling
 poissonfordeling
 geometrisk-fordeling
 eksponensiell-fordeling
+tab:unnamed-chunk-1
+tab:unnamed-chunk-4
+er-dataene-dine-normalfordelte
