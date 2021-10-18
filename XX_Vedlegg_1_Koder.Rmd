@@ -664,7 +664,7 @@ Lage fig 5.1:
 
 ```{r echo = TRUE, eval=FALSE}
 
-pacman::p_load(tidyverse, ggplot2, writexl)
+pacman::p_load(tidyverse, ggplot2, writexl, ggpubr)
 
 # Lage normalfordelt datasett
 
@@ -676,17 +676,15 @@ qqnorm <- as_tibble(qqnorm)
 
 # Plotte Q-Q plott
 
-qqnorm_plott <- ggplot(qqnorm, aes(sample = value)) +
-  stat_qq() +
-  stat_qq_line()
-
-print(qqnorm_plott + ggtitle("Normal Q-Q plott") + labs(x = "Teoretisk forventning", y = "Data"))
+ggqqplot(qqnorm$value) + ggtitle("Normal Q-Q plott") + labs(x = "Teoretisk forventning", y = "Data")
 
 ```
 
 Lage fig 5.2:
 
 ```{r echo = TRUE, eval=FALSE}
+
+pacman::p_load(gridExtra, writexl, ggplot2, tidyverse, ggpubr)
 
 # Lage datasett med right skew
 
@@ -699,10 +697,7 @@ qqrightskew <- as_tibble(qqrightskew)
 
 qqrighthist <- ggplot(qqrightskew, aes(x=value)) + geom_histogram(color="black", fill="lightblue")
 
-qqrightskew_plott <- ggplot(qqrightskew, aes(sample = value)) +
-  stat_qq() +
-  stat_qq_line() +
-  ggtitle("Normal Q-Q plott - skjevhet høyre") + labs(x = "Teoretisk forventning", y = "Data")
+qqrightskew_plott <- ggqqplot(qqrightskew$value) + ggtitle("Normal Q-Q plott - skjevhet høyre") + labs(x = "Teoretisk forventning", y = "Data")
 
 grid.arrange(qqrighthist, qqrightskew_plott, ncol=2)
 
@@ -712,7 +707,7 @@ Lage fig 5.3:
 
 ```{r echo = TRUE, eval=FALSE}
 
-pacman::p_load(gridExtra, writexl, ggplot2, tidyverse)
+pacman::p_load(gridExtra, writexl, ggplot2, tidyverse, ggpubr)
 
 # Lage datasett med left skew
 
@@ -727,10 +722,9 @@ qqleftskew <- as_tibble(qqleftskew)
 
 qqlefthist <- ggplot(qqleftskew, aes(x=value)) + geom_histogram(color="black", fill="lightblue")
 
-qqleftskew_plott <- ggplot(qqleftskew, aes(sample = value)) +
-  stat_qq() +
-  stat_qq_line() +
-  ggtitle("Normal Q-Q plott - skjevhet venstre") + labs(x = "Teoretisk forventning", y = "Data")
+qqlefthist <- ggplot(qqleftskew, aes(x=value)) + geom_histogram(color="black", fill="lightblue")
+
+qqleftskew_plott <- ggqqplot(qqleftskew$value) + ggtitle("Normal Q-Q plott - skjevhet venstre") + labs(x = "Teoretisk forventning", y = "Data")
 
 grid.arrange(qqlefthist, qqleftskew_plott, ncol=2)
 
@@ -740,26 +734,25 @@ Lage fig 5.4:
 
 ```{r echo = TRUE, eval=FALSE}
 
-pacman::p_load(gridExtra, writexl, ggplot2, tidyverse, LambertW)
+pacman::p_load(gridExtra, writexl, ggplot2, tidyverse, ggpubr)
 
 # Lage datasett med fet hale
 
-set.seed(92)
+set.seed(14)
 
-qqflat <- rLambertW(n=100, distname = "normal", beta = c(0,1), delta = 0.5)
+N=100
 
-qqflat <- as_tibble(qqflat)
+qqcauchy <- as_tibble(rcauchy(N, scale = 5))
 
 # Plotte histogram og Q-Q plott
 
-qqflathist <- ggplot(qqflat, aes(x=value)) + geom_histogram(color="black", fill="lightblue")
+qqcauchyhist <- ggplot(qqcauchy, aes(x=value)) + geom_histogram(color="black", fill="lightblue")
 
-qqflat_plott <- ggplot(qqflat, aes(sample = value)) +
-  stat_qq() +
-  stat_qq_line() +
-  ggtitle("Q-Q plott - heavy-tail") + labs(x = "Teoretisk forventning", y = "Data")
+qqcauchyhist <- ggplot(qqcauchy, aes(x=value)) + geom_histogram(color="black", fill="lightblue")
 
-grid.arrange(qqflathist, qqflat_plott, ncol=2)
+qqcauchy_plott <- ggqqplot(qqcauchy$value) + ggtitle("Normal Q-Q plott - tung hale") + labs(x = "Teoretisk forventning", y = "Data")
+
+grid.arrange(qqcauchyhist, qqcauchy_plott, ncol=2)
 
 ```
 
@@ -767,7 +760,7 @@ Lage fig 5.5:
 
 ```{r echo = TRUE, eval=FALSE}
 
-pacman::p_load(gridExtra, writexl, ggplot2, tidyverse)
+pacman::p_load(gridExtra, writexl, ggplot2, tidyverse, ggpubr)
 
 # Lage datasett med tynn hale
 
@@ -781,10 +774,7 @@ qqlt <- as_tibble(qqlt)
 
 qqlthist <- ggplot(qqlt, aes(x=value)) + geom_histogram(color="black", fill="lightblue")
 
-qqlt_plott <- ggplot(qqlt, aes(sample = value)) +
-  stat_qq() +
-  stat_qq_line() +
-  ggtitle(" Normal Q-Q plott - light-tail") + labs(x = "Teoretisk forventning", y = "Data")
+qqlt_plott <- ggqqplot(qqlt$value) + ggtitle("Normal Q-Q plott - lett hale") + labs(x = "Teoretisk forventning", y = "Data")
 
 grid.arrange(qqlthist, qqlt_plott, ncol=2)
 
@@ -794,7 +784,7 @@ Lage fig 5.6:
 
 ```{r echo = TRUE, eval=FALSE}
 
-pacman::p_load(gridExtra, writexl, ggplot2, tidyverse)
+pacman::p_load(gridExtra, writexl, ggplot2, tidyverse, ggpubr)
 
 # Lage bimodialt datasett
 
@@ -819,7 +809,130 @@ grid.arrange(qqbimodhist, qqbimod_plott, ncol=2)
 
 ```
 
+Kjøre Anderson-Darling test for normalitet:
 
+```{r echo = TRUE, eval=FALSE}
+
+pacman::p_load(nortest, readxl, tidyverse)
+
+addata <- as_tibble(read_excel("Anderson-Darling_raw.xlsx"))
+
+ad.test(addata$Values)
+```
+
+Lage fig 5.7:
+
+```{r echo = TRUE, eval=FALSE}
+
+pacman::p_load(gridExtra, writexl, ggplot2, tidyverse, readxl)
+
+addata2 <- as_tibble(read_excel("Anderson-Darling_raw.xlsx"))
+
+ggplot(addata2, aes(sample = Values)) +
+  stat_qq() +
+  stat_qq_line() +
+  ggtitle(" Normal Q-Q plott - A-D data") + labs(x = "Teoretisk forventning", y = "Data")
+
+```
+
+Kjøre Anderson-Darling test for normalitet på normalfordelte data:
+
+```{r echo = TRUE, eval=FALSE}
+pacman::p_load(nortest, readxl, tidyverse)
+
+addata3 <- as_tibble(read_excel("QQ_norm.xlsx"))
+
+ad.test(addata3$value)
+```
+
+Kjøre statistiske tester:
+
+```{r echo = TRUE, eval=FALSE}
+
+pacman::p_load(nortest, readxl, tidyverse, tseries)
+
+options(scipen=999)
+
+addata5 <- as_tibble(read_excel("Anderson-Darling_raw.xlsx"))
+
+ks.test(addata5, "pnorm")
+
+shapiro.test(addata5$Values)
+
+cvm.test(addata$Values)
+
+```
+
+Jarque-Bera test:
+
+```{r echo = TRUE, eval=FALSE}
+
+addata6 <- as_tibble(read_excel("Anderson-Darling_raw.xlsx"))
+
+pacman::p_load(tseries, normtest)
+
+jarque.bera.test(addata6$Values)
+
+ajb.norm.test(addata6$Values, nrepl=2000)
+
+```
+
+Lage fig 5.8:
+
+```{r echo = TRUE, eval=FALSE}
+
+pacman::p_load(ggpubr, tidyverse)
+
+addata7 <- as_tibble(read_excel("Anderson-Darling_raw.xlsx"))
+
+ggqqplot(addata7$Values)
+
+```
+
+#### Kapittel 6 {.unnumbered}
+
+Lage fig 6.1:
+
+```{r}
+
+pacman::p_load(qicharts2, ggplot2)
+
+set.seed(21)
+
+eksempelrun <- rnorm(24, 16)
+
+serie1 <- qic(eksempelrun, title = "Eksempel på seriediagram - normalfordelte genererte tall", ylab = "Verdi", xlab = "Hendelse",   method = "anhoej")
+
+serie1 + geom_point(size = 2)
+```
+
+Lage fig 6.2:
+
+```{r echo = FALSE, message = FALSE, warning=FALSE, fig.cap = "Eksempel seriediagram - modifiserte tall"}
+
+pacman::p_load(qicharts2, ggplot2)
+
+set.seed(43)
+
+eksempelrun[13:24] <- rpois(12, 24)  
+
+serie2 <- qic(eksempelrun, title = "Eksempel på seriediagram - modifiserte genererte tall", ylab = "Verdi", xlab = "Hendelse", method = "anhoej")
+
+serie2 + geom_point(size = 2)
+
+```
+
+Lage fig 6.3:
+
+```{r echo = FALSE, message = FALSE, warning=FALSE, fig.cap = "Eksempel seriediagram - modifiserte tall - brudd i prosess"}
+
+pacman::p_load(qicharts2, ggplot2)
+
+serie3 <- qic(eksempelrun, title = "Eksempel på seriediagram - endring i prosess", ylab = "Verdi", xlab = "Hendelse", method = "anhoej", part = 14)
+
+serie3 + geom_point(size = 2)
+
+```
 
 #### Vedlegg 2 {.unnumbered}
 

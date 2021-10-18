@@ -15,6 +15,8 @@ pacman::p_load(knitr, tidyverse, kableExtra)
 
 ```{r echo=FALSE, eval=TRUE}
 
+pacman::p_load(knitr, tidyverse, kableExtra)
+
 text_tbl1 <- data.frame(
     'Notasjon' = c("CL", "UCL", "LCL", "*n*", "$\\hat{\\sigma}$", "$\\overline{x}$", "$\\overline{\\overline{x}}$", "*R*", "$\\hat{R}$", "USL", "LSL"),
     'Innhold'= c("Sentraltendens (Central Line)", "Øvre kontrollgrense (Upper Control Limit)", "Nedre kontrollgrense (Lower Control Limit)", "Utvalgsstørrelse", "Standardavvik i prosessen", "Gjennomsnitt av målinger", "Gjennomsnitt av gjennomsnitt", "Spenn (Range)", "Gjennomsnitt av spenn (Average of Range)", "Øvre spesifiseringsgrense (Upper Specification Limit)", "Nedre spesifiseringsgrense (Lower Specification Limit)")
@@ -33,6 +35,8 @@ kable(text_tbl1,
 **Måledata**
 
 ```{r echo=FALSE, eval=TRUE}
+
+pacman::p_load(knitr, tidyverse, kableExtra)
 
 text_tbl2 <- data.frame(
     'Grense' = c("CL", "UCL", "LCL"),
@@ -53,6 +57,8 @@ For A~2~, D~3~ og D~4~: Se vedlegg 5
 For IMR (XMR):
 
 ```{r echo=FALSE, eval=TRUE}
+
+pacman::p_load(knitr, tidyverse, kableExtra)
 
 text_tbl3 <- data.frame(
     'Grense' = c("CL", "UCL", "LCL"),
@@ -79,6 +85,8 @@ Utregning av gjennomsnittlig Moving Range: $\overline{MR}$ = $\frac{\sum_{i = 2}
 
 ```{r echo=FALSE, eval=TRUE}
 
+pacman::p_load(knitr, tidyverse, kableExtra)
+
 text_tbl4 <- data.frame(
     'Grense' = c("CL", "UCL", "LCL"),
     'p'= c("$$\\overline{p}$$", "$$\\overline{p} + 3\\sqrt{\\frac{\\overline{p}(1-\\overline{p})}{n}}$$", "$$\\overline{p} - 3\\sqrt{\\frac{\\overline{p}(1-\\overline{p})}{n}}$$"),
@@ -99,6 +107,8 @@ kable(text_tbl4,
 ```
 
 ```{r echo=FALSE, eval=TRUE}
+
+pacman::p_load(knitr, tidyverse, kableExtra)
 
 text_tbl5 <- data.frame(
     'Grense' = c("CL", "UCL", "LCL"),
