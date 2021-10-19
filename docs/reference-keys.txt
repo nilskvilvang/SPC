@@ -69,3 +69,11 @@ er-dataene-dine-normalfordelte
 q-q-plott
 anderson-darling-test-for-normalitet
 seriediagram
+tab:unnamed-chunk-1
+kontrolldiagram
+tab:unnamed-chunk-3
+tab:unnamed-chunk-4
+tab:unnamed-chunk-5
+tab:unnamed-chunk-6
+telledata-attributter
+p-diagram

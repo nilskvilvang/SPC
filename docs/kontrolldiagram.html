@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>7 Kontrolldiagram | Statistisk prosesskontroll</title>
+  <meta name="description" content="7 Kontrolldiagram | Statistisk prosesskontroll" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="7 Kontrolldiagram | Statistisk prosesskontroll" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="7 Kontrolldiagram | Statistisk prosesskontroll" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="seriediagram.html"/>
+<link rel="next" href="referanser.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">SPC</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduksjon</a></li>
+<li class="chapter" data-level="1" data-path="hvorfor-denne-boka.html"><a href="hvorfor-denne-boka.html"><i class="fa fa-check"></i><b>1</b> Hvorfor denne boka?</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="hvorfor-denne-boka.html"><a href="hvorfor-denne-boka.html#programvare"><i class="fa fa-check"></i><b>1.1</b> Programvare</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="hvorfor-er-tid-viktig.html"><a href="hvorfor-er-tid-viktig.html"><i class="fa fa-check"></i><b>2</b> Hvorfor er tid viktig?</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="hvorfor-er-tid-viktig.html"><a href="hvorfor-er-tid-viktig.html#hva-er-utgangspunktet-vi-skal-korrigere-fra"><i class="fa fa-check"></i><b>2.1</b> Hva er utgangspunktet vi skal korrigere fra?</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="variasjon.html"><a href="variasjon.html"><i class="fa fa-check"></i><b>3</b> Variasjon</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="variasjon.html"><a href="variasjon.html#simulering-av-trakteksperimentet-i-r"><i class="fa fa-check"></i><b>3.1</b> Simulering av trakteksperimentet i R</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="datatyper-og-datafordelinger.html"><a href="datatyper-og-datafordelinger.html"><i class="fa fa-check"></i><b>4</b> Datatyper og datafordelinger</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="datatyper-og-datafordelinger.html"><a href="datatyper-og-datafordelinger.html#normalfordeling"><i class="fa fa-check"></i><b>4.1</b> Normalfordeling</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="datatyper-og-datafordelinger.html"><a href="datatyper-og-datafordelinger.html#varians-og-standardavvik"><i class="fa fa-check"></i><b>4.1.1</b> Varians og standardavvik</a></li>
+<li class="chapter" data-level="4.1.2" data-path="datatyper-og-datafordelinger.html"><a href="datatyper-og-datafordelinger.html#normalfordeling-standardavvik-og-forventninger"><i class="fa fa-check"></i><b>4.1.2</b> Normalfordeling, standardavvik og forventninger</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="datatyper-og-datafordelinger.html"><a href="datatyper-og-datafordelinger.html#binomialfordeling"><i class="fa fa-check"></i><b>4.2</b> Binomialfordeling</a></li>
+<li class="chapter" data-level="4.3" data-path="datatyper-og-datafordelinger.html"><a href="datatyper-og-datafordelinger.html#poissonfordeling"><i class="fa fa-check"></i><b>4.3</b> Poissonfordeling</a></li>
+<li class="chapter" data-level="4.4" data-path="datatyper-og-datafordelinger.html"><a href="datatyper-og-datafordelinger.html#geometrisk-fordeling"><i class="fa fa-check"></i><b>4.4</b> Geometrisk fordeling</a></li>
+<li class="chapter" data-level="4.5" data-path="datatyper-og-datafordelinger.html"><a href="datatyper-og-datafordelinger.html#eksponensiell-fordeling"><i class="fa fa-check"></i><b>4.5</b> Eksponensiell fordeling</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="er-dataene-dine-normalfordelte.html"><a href="er-dataene-dine-normalfordelte.html"><i class="fa fa-check"></i><b>5</b> Er dataene dine normalfordelte?</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="er-dataene-dine-normalfordelte.html"><a href="er-dataene-dine-normalfordelte.html#q-q-plott"><i class="fa fa-check"></i><b>5.1</b> Q-Q plott</a></li>
+<li class="chapter" data-level="5.2" data-path="er-dataene-dine-normalfordelte.html"><a href="er-dataene-dine-normalfordelte.html#anderson-darling-test-for-normalitet"><i class="fa fa-check"></i><b>5.2</b> Anderson-Darling test for normalitet</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="seriediagram.html"><a href="seriediagram.html"><i class="fa fa-check"></i><b>6</b> Seriediagram</a></li>
+<li class="chapter" data-level="7" data-path="kontrolldiagram.html"><a href="kontrolldiagram.html"><i class="fa fa-check"></i><b>7</b> Kontrolldiagram</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="kontrolldiagram.html"><a href="kontrolldiagram.html#telledata-attributter"><i class="fa fa-check"></i><b>7.1</b> Telledata (attributter)</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="kontrolldiagram.html"><a href="kontrolldiagram.html#p-diagram"><i class="fa fa-check"></i><b>7.1.1</b> p-diagram</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="referanser.html"><a href="referanser.html"><i class="fa fa-check"></i>Referanser</a></li>
+<li class="chapter" data-level="" data-path="vedlegg-1---r-kode.html"><a href="vedlegg-1---r-kode.html"><i class="fa fa-check"></i>Vedlegg 1 - R kode</a></li>
+<li class="chapter" data-level="" data-path="vedlegg-2---kritiske-verdier-i-kontrolldiagram.html"><a href="vedlegg-2---kritiske-verdier-i-kontrolldiagram.html"><i class="fa fa-check"></i>Vedlegg 2 - Kritiske verdier i kontrolldiagram</a></li>
+<li class="chapter" data-level="" data-path="vedlegg-3---chebyshevs-teorem.html"><a href="vedlegg-3---chebyshevs-teorem.html"><i class="fa fa-check"></i>Vedlegg 3 - Chebyshevs teorem</a></li>
+<li class="chapter" data-level="" data-path="vedlegg-4---sentralgrenseteoremet-central-limit-theorem.html"><a href="vedlegg-4---sentralgrenseteoremet-central-limit-theorem.html"><i class="fa fa-check"></i>Vedlegg 4 - Sentralgrenseteoremet (Central Limit Theorem)</a></li>
+<li class="chapter" data-level="" data-path="vedlegg-5---tabell-med-konstanter-for-kontrolldiagram.html"><a href="vedlegg-5---tabell-med-konstanter-for-kontrolldiagram.html"><i class="fa fa-check"></i>Vedlegg 5 - Tabell med konstanter for kontrolldiagram</a></li>
+<li class="chapter" data-level="" data-path="vedlegg-6---utregning-av-kontrollgrenser.html"><a href="vedlegg-6---utregning-av-kontrollgrenser.html"><i class="fa fa-check"></i>Vedlegg 6 - Utregning av kontrollgrenser</a></li>
+<li class="chapter" data-level="" data-path="vedlegg-7---anderson-darling-test-for-normalitet.html"><a href="vedlegg-7---anderson-darling-test-for-normalitet.html"><i class="fa fa-check"></i>Vedlegg 7 - Anderson-Darling test for normalitet</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistisk prosesskontroll</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="kontrolldiagram" class="section level1" number="7">
+<h1><span class="header-section-number">7</span> Kontrolldiagram</h1>
+<p>Et kontrolldiagram er mer sensitivt for å vise spesielle typer variasjon enn et run diagram. For å oppnå denne økte sensitiviteten er det imidlertid viktig at man velger riktig type kontrolldiagram ut fra hvilken type data man har. Her vil flytdiagrammet på s.xxxx kunne være til hjelp for å velge riktig type, men vi vil også gå gjennom hvert enkelt kontrolldiagram nedenfor. Man skal imidlertid ikke anta at et seriediagram er «mindre verdt» enn et kontrolldiagram. Selv om kontrolldiagram er mer sensitive ovenfor spesielle typer variasjon, er seriediagram mer sensitive ovenfor mindre skifter i dataene (under 2 SD) enn kontrolldiagrammene som typisk reagerer på større skifter i dataene (rundt 2 SD og mer) <span class="citation">(Anhøj and Olesen 2014)</span>. Et seriediagram kan derfor ofte være et viktig første steg før man tar i bruk mer sofistikerte verktøy som kontrolldiagram <span class="citation">(Perla, Provost, and Murray 2011)</span>.</p>
+<p>En spesiell egenskap ved kontrolldiagram er at den kan hjelpe oss til å se yteevnen til en stabil prosess. Med det mener vi hvilke grenser prosessen trolig vil holde seg innenfor. Dette kalles ofte for prosesskapabilitet. Dette vil vi komme nærmere tilbake til i et senere avsnitt.</p>
+<p>Så hva er et kontrolldiagram? Et kontrolldiagram er en statistisk tilnærming til å se på prosesser, variasjon i prosesser og om prosesser produserer resultater innenfor gitte akseptable grenser. Det likner på i stor grad på et seriediagram. Vi plotter inn en rekke hendelser eller observasjoner i et diagram der tiden for observasjonene plottes fortløpende i tid på x-aksen og verdien eller antall hendelser på y-aksen. Det et kontrolldiagram tilfører er at det inkluderer mer avanserte analyser gjennom å regne ut to kontrollgrenser som lar oss vurdere statistisk etter andre regler enn seriediagrammet om en prosess har normal eller unormal variasjon. I tillegg er kontrolldiagrammene basert på at sentraltendensen er gjennomsnittet, ikke median (som i seriediagrammet).</p>
+<p>Shewhart baserte sin tilnærming til kontrolldiagram på matematisk teori (se vedlegg 7 for forklaring på Chebyshevs teorem) og egne empiriske erfaringer når han satt verdiene for øvre og nedre kontrollgrenser til tre sigma (tre standardavvik). Flere tiårs erfaring fra en lang rekke områder viser at tre sigma som grenseverdier holder vann <span class="citation">(Mohammed, Worthington, and Woodall 2008)</span>.</p>
+Et kontrolldiagram kan se slik ut (R pakken <em>qicharts2</em> <span class="citation">(Anhøj 2020)</span>:
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-1"></span>
+<img src="SPC-book_files/figure-html/unnamed-chunk-1-1.png" alt="Eksempel kontrolldiagram i *qicharts*" width="672" />
+<p class="caption">
+Figure 7.1: Eksempel kontrolldiagram i <em>qicharts</em>
+</p>
+</div>
+<p>Observasjonene/målingene plottes som punkter sekvensielt i tid. Snittet er -0,2, UCL 2,2 og LCL -2,7.</p>
+Tilsvarende data ved bruk av R pakken <em>qcc</em> <span class="citation">(Scrucca, Snow, and Bloomfield 2017)</span>:
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-2"></span>
+<img src="SPC-book_files/figure-html/unnamed-chunk-2-1.png" alt="Eksempel kontrolldiagram i *qcc*" width="672" />
+<p class="caption">
+Figure 7.2: Eksempel kontrolldiagram i <em>qcc</em>
+</p>
+</div>
+<p>Alle kontrolldiagram vil ha tre horisontale linjer: En gjennomsnittsverdi, en øvre kontrollgrense og en nedre kontrollgrense (øvre og nedre kontrollgrense kan ved enkelte typer kontrolldiagram avvike fra en ren horisontal linje, men ha et horisontalt mønster.</p>
+<p>Ulike programmer eller R-pakker gir ulik grafisk framstilling.Analyse-It i Excel gir dette for samme data:</p>
+<p><img src="Eks_kontrdiagr.png" /></p>
+<p>Vi skal også være oppmerksom på at de kan opererer med ulike “regler” for når de flagger unormal variasjon. Ulike programmer kan imidlertid ha lagt inn noe ulike regler for hva som betraktes som unormal variasjon. Det er derfor lurt å sette seg inn i hvilke regler som benyttes i det programmet du bruker – alle programmene vil, på en eller annen måte, indikere unormal variasjon hvis vi ber programmet om å gjøre det. Og de fleste programmene vil også la oss velge mellom hvilke kontrollregler vi ønsker å bruke. Her må man altså sjekke opp ut fra hvilket program/R-pakke man ønsker å bruke. I det videre vil vi i hovedsak bruke <em>qicharts2</em>. Ulike sett regler har vokst fram fra det som regnes som de opprinnelige 4 reglene (1, 2, 5 og 6) <span class="citation">(Western Electric Company 1956)</span>, til <span class="citation">Nelson (1984)</span> 8 regler som er modifisert av flere, blant annet <span class="citation">Montgomery (2020)</span> (som <em>qicharts2</em> bruker).</p>
+<template id="159832ba-7c19-4f32-a70c-522a16222e18"><style>
+.tabwid table{
+  border-spacing:0px !important;
+  border-collapse:collapse;
+  line-height:1;
+  margin-left:auto;
+  margin-right:auto;
+  border-width: 0;
+  display: table;
+  margin-top: 1.275em;
+  margin-bottom: 1.275em;
+  border-color: transparent;
+}
+.tabwid_left table{
+  margin-left:0;
+}
+.tabwid_right table{
+  margin-right:0;
+}
+.tabwid td {
+    padding: 0;
+}
+.tabwid a {
+  text-decoration: none;
+}
+.tabwid thead {
+    background-color: transparent;
+}
+.tabwid tfoot {
+    background-color: transparent;
+}
+.tabwid table tr {
+background-color: transparent;
+}
+</style><div class="tabwid"><style>.cl-1fe2f6a8{table-layout:auto;width:100%;}.cl-1fb85a56{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-1fb9b8ec{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-1fba54dc{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-1fba54dd{background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-1fba54de{background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-1fe2f6a8'>
+<thead><tr style="overflow-wrap:break-word;"><td class="cl-1fba54de"><p class="cl-1fb9b8ec"><span class="cl-1fb85a56">Test</span></p></td><td class="cl-1fba54de"><p class="cl-1fb9b8ec"><span class="cl-1fb85a56">Regel</span></p></td><td class="cl-1fba54de"><p class="cl-1fb9b8ec"><span class="cl-1fb85a56">Indikasjon</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-1fba54dc"><p class="cl-1fb9b8ec"><span class="cl-1fb85a56">1</span></p></td><td class="cl-1fba54dc"><p class="cl-1fb9b8ec"><span class="cl-1fb85a56">1 punkt utenfor kontrollgrensene</span></p></td><td class="cl-1fba54dc"><p class="cl-1fb9b8ec"><span class="cl-1fb85a56">En større endring</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-1fba54dc"><p class="cl-1fb9b8ec"><span class="cl-1fb85a56">2</span></p></td><td class="cl-1fba54dc"><p class="cl-1fb9b8ec"><span class="cl-1fb85a56">2 av 3 påfølgende punkter er mer enn 2 sigma fra gjennomsnittsverdien og i samme retning</span></p></td><td class="cl-1fba54dc"><p class="cl-1fb9b8ec"><span class="cl-1fb85a56">En mindre, men vedvarende endring</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-1fba54dc"><p class="cl-1fb9b8ec"><span class="cl-1fb85a56">3</span></p></td><td class="cl-1fba54dc"><p class="cl-1fb9b8ec"><span class="cl-1fb85a56">4 av 5 påfølgende punkter er mer enn 1 sigma fra gjennomsnittsverdien og i samme retning</span></p></td><td class="cl-1fba54dc"><p class="cl-1fb9b8ec"><span class="cl-1fb85a56">En mindre, men vedvarende endring</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-1fba54dc"><p class="cl-1fb9b8ec"><span class="cl-1fb85a56">4</span></p></td><td class="cl-1fba54dc"><p class="cl-1fb9b8ec"><span class="cl-1fb85a56">8 påfølgende punkter er på samme side av gjennomsnittet</span></p></td><td class="cl-1fba54dc"><p class="cl-1fb9b8ec"><span class="cl-1fb85a56">Ikke-tilfeldig systematisk variasjon</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-1fba54dc"><p class="cl-1fb9b8ec"><span class="cl-1fb85a56">5</span></p></td><td class="cl-1fba54dc"><p class="cl-1fb9b8ec"><span class="cl-1fb85a56">6 påfølgende punkter er i stigende eller synkende trend (etter hverandre)</span></p></td><td class="cl-1fba54dc"><p class="cl-1fb9b8ec"><span class="cl-1fb85a56">En middels endring</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-1fba54dc"><p class="cl-1fb9b8ec"><span class="cl-1fb85a56">6</span></p></td><td class="cl-1fba54dc"><p class="cl-1fb9b8ec"><span class="cl-1fb85a56">15 påfølgende punkter er innenfor +/- 1 sigma fra gjennomsnittet</span></p></td><td class="cl-1fba54dc"><p class="cl-1fb9b8ec"><span class="cl-1fb85a56">En liten endring</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-1fba54dc"><p class="cl-1fb9b8ec"><span class="cl-1fb85a56">7</span></p></td><td class="cl-1fba54dc"><p class="cl-1fb9b8ec"><span class="cl-1fb85a56">14 påfølgende punkter alternerer opp og ned (annenhver opp og ned i forhold til foregående verdi)</span></p></td><td class="cl-1fba54dc"><p class="cl-1fb9b8ec"><span class="cl-1fb85a56">Stratifisering (at vi egentlig har to eller flere prosesser – et histogram vil f.eks. kunne vise en bimodal distribusjon)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-1fba54dd"><p class="cl-1fb9b8ec"><span class="cl-1fb85a56">8</span></p></td><td class="cl-1fba54dd"><p class="cl-1fb9b8ec"><span class="cl-1fb85a56">8 påfølgende punkter på samme side av gjennomsnittet og ingen innenfor +/- 1 sigma</span></p></td><td class="cl-1fba54dd"><p class="cl-1fb9b8ec"><span class="cl-1fb85a56">Blandet variasjon</span></p></td></tr></tbody></table></div></template>
+<div class="flextable-shadow-host" id="81c0d899-1817-42f5-b4bf-18efe344498e"></div>
+<script>
+var dest = document.getElementById("81c0d899-1817-42f5-b4bf-18efe344498e");
+var template = document.getElementById("159832ba-7c19-4f32-a70c-522a16222e18");
+var caption = template.content.querySelector("caption");
+if(caption) {
+  caption.style.cssText = "display:block;text-align:center;";
+  var newcapt = document.createElement("p");
+  newcapt.appendChild(caption)
+  dest.parentNode.insertBefore(newcapt, dest.previousSibling);
+}
+var fantome = dest.attachShadow({mode: 'open'});
+var templateContent = template.content;
+fantome.appendChild(templateContent);
+</script>
+
+<p>Bruk av regel 1 på en normalfordelte data vil kunne gi «falsk alarm» (vise unormal variasjon når det ikke finnes) i 1 av 370 tilfeller i gjennomsnitt. Hvis man imidlertid legger til testene 2, 5 og 6 stiger raten av feil alarmer til 1 av 91,75 tilfeller. Et godt råd som ofte gis er å velge tester før man lage kontrolldiagrammene basert på kjennskap til prosessen man holder på med. Som <span class="citation">Anhøj (2021a)</span> påpeker: “It is a common misunderstanding that control charts are superior to run charts. The confusion may stem from the fact that different sets of rules for identifying non-random variation in run charts are available, and that these sets differ significantly in their diagnostic properties.”</p>
+<p>Eksempel på kontrolldiagram med indikasjon på et eller flere brudd på regler for normal variasjon:</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-4"></span>
+<img src="SPC-book_files/figure-html/unnamed-chunk-4-1.png" alt="Oversikt regler kontrolldiagram" width="672" />
+<p class="caption">
+Figure 7.3: Oversikt regler kontrolldiagram
+</p>
+</div>
+<pre><code>##   facet1 facet2 part n.obs n.useful longest.run longest.run.max n.crossings
+## 1      1      1    1    29       29          16               8           1
+##   n.crossings.min runs.signal     aLCL       CL     aUCL sigma.signal
+## 1              10           1 1.914331 2.368895 2.823458           24</code></pre>
+<p>Vi skal i videre i dette kapittelet ta for oss ulike typer kontrolldiagrammene (ref. flytskjema for valg av kontrolldiagram). Vi vil vise et eksempel på hvert av de vanlige kontrolldiagrammene. For hvert eksempel finnes det en Excelfil med dataene som er brukt for de ulike eksemplene og en video som viser framgangsmåten i Excel. Grunnen til dette er at for mange vil Excel være et mye mer kjent grensesnitt enn R. Samtidig, ved å se på videoen og stegene som gjøres, ser man hvordan det enkelte kontrolldiagram er bygd opp. Selvsagt er dette mye mer tidkrevende enn å bare kjøre analysen i R, men det kan gi en fin innsikt i “hva som egentlig skjer.” På sikt mener vi det er mye å hente på å bruke R og pakken <em>qicharts2</em> eller pakken <em>qcc</em>. Alternativt kan man investere i et tillegg til Excel som nevnt i kapittel 1.</p>
+<div id="telledata-attributter" class="section level2" number="7.1">
+<h2><span class="header-section-number">7.1</span> Telledata (attributter)</h2>
+<p>Diagrammene i dette delkapittelet handler om data der vi kan telle og putte dataene inn i kategorier. Motsetningen er måledata som er kontinuerlige data som behandles i neste delkapittel.</p>
+<div id="p-diagram" class="section level3" number="7.1.1">
+<h3><span class="header-section-number">7.1.1</span> p-diagram</h3>
+<p>P-diagrammet er trolig det mest brukte diagrammet i helsesektoren <span class="citation">(Anhøj 2021a)</span>. Her er dataene binomiale, dvs type ja/nei. Vi kan f.eks. registrere om det er eller ikke er et avvik fra en gitt rutine. P-diagrammet og NP-diagrammet skiller seg kun fra hverandre ved at NP-diagrammet forutsetter en lik størrelse på utvalget hver måling, mens P-diagrammet brukes når utvalgsstørrelsen varierer. Hvis vi f.eks. registrerer antall avvik i en rutine pr uke og antallet gjennomføringer av rutinen varierer fra uke til uke bør vi bruke et P-diagram.</p>
+<p>La oss tenke oss at vi har følgende data som viser antall keisersnitt og totalt antall fødsler på et sykehus <span class="citation">(eksempeldata modifisert fra QIMacros 2021)</span>.</p>
+<template id="3b289066-c750-4847-9c90-fbfac536f83d"><style>
+.tabwid table{
+  border-spacing:0px !important;
+  border-collapse:collapse;
+  line-height:1;
+  margin-left:auto;
+  margin-right:auto;
+  border-width: 0;
+  display: table;
+  margin-top: 1.275em;
+  margin-bottom: 1.275em;
+  border-color: transparent;
+}
+.tabwid_left table{
+  margin-left:0;
+}
+.tabwid_right table{
+  margin-right:0;
+}
+.tabwid td {
+    padding: 0;
+}
+.tabwid a {
+  text-decoration: none;
+}
+.tabwid thead {
+    background-color: transparent;
+}
+.tabwid tfoot {
+    background-color: transparent;
+}
+.tabwid table tr {
+background-color: transparent;
+}
+</style><div class="tabwid"><style>.cl-215732ba{table-layout:auto;width:100%;}.cl-211158ee{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-21117fd6{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-2111cdc4{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2111cdc5{background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2111cdc6{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2111cdc7{background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-215732ba'>
+<thead><tr style="overflow-wrap:break-word;"><td  colspan="3"class="cl-2111cdc6"><p class="cl-21117fd6"><span class="cl-211158ee">År 1</span></p></td><td  colspan="3"class="cl-2111cdc6"><p class="cl-21117fd6"><span class="cl-211158ee">År 2</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2111cdc7"><p class="cl-21117fd6"><span class="cl-211158ee">Måned</span></p></td><td class="cl-2111cdc7"><p class="cl-21117fd6"><span class="cl-211158ee">Keisersnitt</span></p></td><td class="cl-2111cdc7"><p class="cl-21117fd6"><span class="cl-211158ee">Fødsler</span></p></td><td class="cl-2111cdc7"><p class="cl-21117fd6"><span class="cl-211158ee">Måned.</span></p></td><td class="cl-2111cdc7"><p class="cl-21117fd6"><span class="cl-211158ee">Keisersnitt.</span></p></td><td class="cl-2111cdc7"><p class="cl-21117fd6"><span class="cl-211158ee">Fødsler.</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">Jan</span></p></td><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">65</span></p></td><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">370</span></p></td><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">Jan</span></p></td><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">62</span></p></td><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">374</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">Feb</span></p></td><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">64</span></p></td><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">383</span></p></td><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">Feb</span></p></td><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">48</span></p></td><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">355</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">Mar</span></p></td><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">77</span></p></td><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">446</span></p></td><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">Mar</span></p></td><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">57</span></p></td><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">393</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">Apr</span></p></td><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">59</span></p></td><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">454</span></p></td><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">Apr</span></p></td><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">64</span></p></td><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">417</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">Mai</span></p></td><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">64</span></p></td><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">463</span></p></td><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">Mai</span></p></td><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">66</span></p></td><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">434</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">Jun</span></p></td><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">74</span></p></td><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">431</span></p></td><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">Jun</span></p></td><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">55</span></p></td><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">421</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">Jul</span></p></td><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">72</span></p></td><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">443</span></p></td><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">Jul</span></p></td><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">51</span></p></td><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">417</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">Aug</span></p></td><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">67</span></p></td><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">451</span></p></td><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">Aug</span></p></td><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">82</span></p></td><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">444</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">Sep</span></p></td><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">59</span></p></td><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">433</span></p></td><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">Sep</span></p></td><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">65</span></p></td><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">429</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">Okt</span></p></td><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">65</span></p></td><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">407</span></p></td><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">Okt</span></p></td><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">69</span></p></td><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">411</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">Nov</span></p></td><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">60</span></p></td><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">381</span></p></td><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">Nov</span></p></td><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">62</span></p></td><td class="cl-2111cdc4"><p class="cl-21117fd6"><span class="cl-211158ee">386</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2111cdc5"><p class="cl-21117fd6"><span class="cl-211158ee">Des</span></p></td><td class="cl-2111cdc5"><p class="cl-21117fd6"><span class="cl-211158ee">68</span></p></td><td class="cl-2111cdc5"><p class="cl-21117fd6"><span class="cl-211158ee">406</span></p></td><td class="cl-2111cdc5"><p class="cl-21117fd6"><span class="cl-211158ee">Des</span></p></td><td class="cl-2111cdc5"><p class="cl-21117fd6"><span class="cl-211158ee">66</span></p></td><td class="cl-2111cdc5"><p class="cl-21117fd6"><span class="cl-211158ee">357</span></p></td></tr></tbody></table></div></template>
+<div class="flextable-shadow-host" id="759a0fb2-e4bd-4ceb-a5ab-49f9e7be23db"></div>
+<script>
+var dest = document.getElementById("759a0fb2-e4bd-4ceb-a5ab-49f9e7be23db");
+var template = document.getElementById("3b289066-c750-4847-9c90-fbfac536f83d");
+var caption = template.content.querySelector("caption");
+if(caption) {
+  caption.style.cssText = "display:block;text-align:center;";
+  var newcapt = document.createElement("p");
+  newcapt.appendChild(caption)
+  dest.parentNode.insertBefore(newcapt, dest.previousSibling);
+}
+var fantome = dest.attachShadow({mode: 'open'});
+var templateContent = template.content;
+fantome.appendChild(templateContent);
+</script>
+
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="seriediagram.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="referanser.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/nilskvilvang/SPC/edit/master/07_Kap_7.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/nilskvilvang/SPC/blob/master/07_Kap_7.Rmd",
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

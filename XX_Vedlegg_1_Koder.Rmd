@@ -908,7 +908,7 @@ serie1 + geom_point(size = 2)
 
 Lage fig 6.2:
 
-```{r echo = FALSE, message = FALSE, warning=FALSE, fig.cap = "Eksempel seriediagram - modifiserte tall"}
+```{r echo = FALSE, message = FALSE, warning=FALSE}
 
 pacman::p_load(qicharts2, ggplot2)
 
@@ -924,7 +924,7 @@ serie2 + geom_point(size = 2)
 
 Lage fig 6.3:
 
-```{r echo = FALSE, message = FALSE, warning=FALSE, fig.cap = "Eksempel seriediagram - modifiserte tall - brudd i prosess"}
+```{r echo = FALSE, message = FALSE, warning=FALSE}
 
 pacman::p_load(qicharts2, ggplot2)
 
@@ -933,6 +933,61 @@ serie3 <- qic(eksempelrun, title = "Eksempel på seriediagram - endring i proses
 serie3 + geom_point(size = 2)
 
 ```
+
+#### Kapittel 7 {.unnumbered}
+
+Lage fig 7.1:
+
+```{r echo = FALSE, message = FALSE, warning=FALSE}
+
+pacman::p_load(qicharts2, tidyverse)
+
+set.seed(81)
+
+kontr_eks <- (rnorm(24))
+
+kontr1 <- qic(kontr_eks, chart = 'i', title = "Eksempel på kontrolldiagram", subtitle = "Tilfeldig genererte tall", ylab = "Verdi", xlab = "Hendelse") 
+
+kontr1 + geom_point(size = 2)
+```
+
+
+Lage fig 7.2:
+
+```{r echo = FALSE, message = FALSE, warning=FALSE, results='hide',fig.keep='all'}
+
+pacman::p_load(qcc, tidyverse)
+
+set.seed(81)
+
+kontr_eks <- (rnorm(24))
+
+kontr_eks <- as_tibble(kontr_eks)
+
+qcc(kontr_eks, type = "xbar.one", nsigmas = 3, title = "Eksempel på kontrolldiagram - Tilfeldig genererte tall", ylab = "Verdi", xlab = "Hendelse")
+```
+
+Lage fig 7.3:
+
+```{r echo = FALSE, message = FALSE, warning=FALSE}
+
+pacman::p_load(qicharts2, tidyverse)
+
+set.seed(64)
+
+mode1x <- rnorm(15,2,1)
+mode1x <- mode1x[mode1x > 0] 
+mode2x <- rnorm(15,3,2)
+mode2x <- mode2x[mode2x > 0] 
+kontr_eks2 <- (sort(c(mode1x,mode2x)))
+
+kontr2 <- qic(kontr_eks2, chart = 'i', title = "Eksempel på kontrolldiagram", subtitle = "Tilfeldig genererte tall", ylab = "Verdi", xlab = "Hendelse")
+
+kontr2
+
+summary(kontr2)
+```
+
 
 #### Vedlegg 2 {.unnumbered}
 

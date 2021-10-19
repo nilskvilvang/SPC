@@ -1,0 +1,126 @@
+# Kontrolldiagram
+
+Et kontrolldiagram er mer sensitivt for å vise spesielle typer variasjon enn et run diagram. For å oppnå denne økte sensitiviteten er det imidlertid viktig at man velger riktig type kontrolldiagram ut fra hvilken type data man har. Her vil flytdiagrammet på s.xxxx kunne være til hjelp for å velge riktig type, men vi vil også gå gjennom hvert enkelt kontrolldiagram nedenfor. Man skal imidlertid ikke anta at et seriediagram er «mindre verdt» enn et kontrolldiagram. Selv om kontrolldiagram er mer sensitive ovenfor spesielle typer variasjon, er seriediagram mer sensitive ovenfor mindre skifter i dataene (under 2 SD) enn kontrolldiagrammene som typisk reagerer på større skifter i dataene (rundt 2 SD og mer) [@anhojRunChartsRevisited2014]. Et seriediagram kan derfor ofte være et viktig første steg før man tar i bruk mer sofistikerte verktøy som kontrolldiagram [@Perla2011].
+
+En spesiell egenskap ved kontrolldiagram er at den kan hjelpe oss til å se yteevnen til en stabil prosess. Med det mener vi hvilke grenser prosessen trolig vil holde seg innenfor. Dette kalles ofte for prosesskapabilitet. Dette vil vi komme nærmere tilbake til i et senere avsnitt.
+
+Så hva er et kontrolldiagram? Et kontrolldiagram er en statistisk tilnærming til å se på prosesser, variasjon i prosesser og om prosesser produserer resultater innenfor gitte akseptable grenser. Det likner på i stor grad på et seriediagram. Vi plotter inn en rekke hendelser eller observasjoner i et diagram der tiden for observasjonene plottes fortløpende i tid på x-aksen og verdien eller antall hendelser på y-aksen. Det et kontrolldiagram tilfører er at det inkluderer mer avanserte analyser gjennom å regne ut to kontrollgrenser som lar oss vurdere statistisk etter andre regler enn seriediagrammet om en prosess har normal eller unormal variasjon. I tillegg er kontrolldiagrammene basert på at sentraltendensen er gjennomsnittet, ikke median (som i seriediagrammet). 
+
+Shewhart baserte sin tilnærming til kontrolldiagram på matematisk teori (se vedlegg 7 for forklaring på Chebyshevs teorem) og egne empiriske erfaringer når han satt verdiene for øvre og nedre kontrollgrenser til tre sigma (tre standardavvik). Flere tiårs erfaring fra en lang rekke områder viser at tre sigma som grenseverdier holder vann [@Mohammed2008].
+
+Et kontrolldiagram kan se slik ut (R pakken *qicharts2* [@anhojQicharts2QualityImprovement2020]:
+```{r echo = FALSE, message = FALSE, warning=FALSE, fig.cap = "Eksempel kontrolldiagram i *qicharts*"}
+
+pacman::p_load(qicharts2, qcc, tidyverse, gridExtra)
+
+set.seed(81)
+
+kontr_eks <- (rnorm(24))
+
+kontr1 <- qic(kontr_eks, chart = 'i', title = "Eksempel på kontrolldiagram", subtitle = "Tilfeldig genererte tall", ylab = "Verdi", xlab = "Hendelse") 
+
+kontr1 + geom_point(size = 2)
+
+```
+Observasjonene/målingene plottes som punkter sekvensielt i tid. Snittet er -0,2, UCL 2,2 og LCL -2,7.
+
+
+Tilsvarende data ved bruk av R pakken *qcc* [@Scrucca2017]:
+```{r echo = FALSE, message = FALSE, warning=FALSE, fig.cap = "Eksempel kontrolldiagram i *qcc*", results='hide',fig.keep='all'}
+
+set.seed(81)
+
+kontr_eks <- (rnorm(24))
+
+kontr_eks <- as_tibble(kontr_eks)
+
+kontr2 <- qcc(kontr_eks, type = "xbar.one", nsigmas = 3, title = "Eksempel på kontrolldiagram - Tilfeldig genererte tall", ylab = "Verdi", xlab = "Hendelse")
+
+kontr2
+
+```
+
+Alle kontrolldiagram vil ha tre horisontale linjer: En gjennomsnittsverdi, en øvre kontrollgrense og en nedre kontrollgrense (øvre og nedre kontrollgrense kan ved enkelte typer kontrolldiagram avvike fra en ren horisontal linje, men ha et horisontalt mønster.
+
+Ulike programmer eller R-pakker gir ulik grafisk framstilling.Analyse-It i Excel gir dette for samme data:
+
+![](Eks_kontrdiagr.png)
+
+Vi skal også være oppmerksom på at de kan opererer med ulike "regler" for når de flagger unormal variasjon. Ulike programmer kan imidlertid ha lagt inn noe ulike regler for hva som betraktes som unormal variasjon. Det er derfor lurt å sette seg inn i hvilke regler som benyttes i det programmet du bruker – alle programmene vil, på en eller annen måte, indikere unormal variasjon hvis vi ber programmet om å gjøre det. Og de fleste programmene vil også la oss velge mellom hvilke kontrollregler vi ønsker å bruke. Her må man altså sjekke opp ut fra hvilket program/R-pakke man ønsker å bruke. I det videre vil vi i hovedsak bruke *qicharts2*. Ulike sett regler har vokst fram fra det som regnes som de opprinnelige 4 reglene (1, 2, 5 og 6) [@WesternElectricCompany1956], til @Nelson1984 8 regler som er modifisert av flere, blant annet @Montgomery2020 (som *qicharts2* bruker).
+
+```{r echo = FALSE, message = FALSE, warning=FALSE, fig.cap = "Oversikt regler kontrolldiagram"}
+
+pacman::p_load(flextable, magrittr)
+
+set_flextable_defaults(fonts_ignore=TRUE)
+
+kontrdiagr_regler <- data.frame(Test = c("1","2", "3", "4", "5", "6", "7", "8"),
+                            Regel = c("1 punkt utenfor kontrollgrensene", "2 av 3 påfølgende punkter er mer enn 2 sigma fra gjennomsnittsverdien og i samme retning", "4 av 5 påfølgende punkter er mer enn 1 sigma fra gjennomsnittsverdien og i samme retning", "8 påfølgende punkter er på samme side av gjennomsnittet", "6 påfølgende punkter er i stigende eller synkende trend (etter hverandre)", "15 påfølgende punkter er innenfor +/- 1 sigma fra gjennomsnittet", "14 påfølgende punkter alternerer opp og ned (annenhver opp og ned i forhold til foregående verdi)", "8 påfølgende punkter på samme side av gjennomsnittet og ingen innenfor +/- 1 sigma"),
+                            Indikasjon = c("En større endring", "En mindre, men vedvarende endring", "En mindre, men vedvarende endring", "Ikke-tilfeldig systematisk variasjon", "En middels endring", "En liten endring", "Stratifisering (at vi egentlig har to eller flere prosesser – et histogram vil f.eks. kunne vise en bimodal distribusjon)", "Blandet variasjon"))
+
+kontrdiagr_regler <- flextable(kontrdiagr_regler)
+
+set_table_properties(kontrdiagr_regler, width = 1, layout = "autofit")
+```
+
+Bruk av regel 1 på en normalfordelte data vil kunne gi «falsk alarm» (vise unormal variasjon når det ikke finnes) i 1 av 370 tilfeller i gjennomsnitt. Hvis man imidlertid legger til testene 2, 5 og 6 stiger raten av feil alarmer til 1 av 91,75 tilfeller. Et godt råd som ofte gis er å velge tester før man lage kontrolldiagrammene basert på kjennskap til prosessen man holder på med. Som @anhojControlChartsQicharts2021 påpeker: "It is a common misunderstanding that control charts are superior to run charts. The confusion may stem from the fact that different sets of rules for identifying non-random variation in run charts are available, and that these sets differ significantly in their diagnostic properties." 
+
+Eksempel på kontrolldiagram med indikasjon på et eller flere brudd på regler for normal variasjon:
+
+```{r echo = FALSE, message = FALSE, warning=FALSE, fig.cap = "Oversikt regler kontrolldiagram"}
+
+set.seed(64)
+
+mode1x <- rnorm(15,2,1)
+mode1x <- mode1x[mode1x > 0] 
+mode2x <- rnorm(15,3,2)
+mode2x <- mode2x[mode2x > 0] 
+kontr_eks2 <- (sort(c(mode1x,mode2x)))
+
+kontr2 <- qic(kontr_eks2, chart = 'i', title = "Eksempel på kontrolldiagram", subtitle = "Tilfeldig genererte tall", ylab = "Verdi", xlab = "Hendelse")
+
+kontr2
+
+summary(kontr2)
+
+```
+
+Vi skal i videre i dette kapittelet ta for oss ulike typer kontrolldiagrammene (ref. flytskjema for valg av kontrolldiagram). Vi vil vise et eksempel på hvert av de vanlige kontrolldiagrammene. For hvert eksempel finnes det en Excelfil med dataene som er brukt for de ulike eksemplene og en video som viser framgangsmåten i Excel. Grunnen til dette er at for mange vil Excel være et mye mer kjent grensesnitt enn R. Samtidig, ved å se på videoen og stegene som gjøres, ser man hvordan det enkelte kontrolldiagram er bygd opp. Selvsagt er dette mye mer tidkrevende enn å bare kjøre analysen i R, men det kan gi en fin innsikt i "hva som egentlig skjer". På sikt mener vi det er mye å hente på å bruke R og pakken *qicharts2* eller pakken *qcc*. Alternativt kan man investere i et tillegg til Excel som nevnt i kapittel 1. 
+
+## Telledata (attributter)
+Diagrammene i dette delkapittelet handler om data der vi kan telle og putte dataene inn i kategorier. Motsetningen er måledata som er kontinuerlige data som behandles i neste delkapittel. 
+
+### p-diagram
+
+P-diagrammet er trolig det mest brukte diagrammet i helsesektoren [@anhojControlChartsQicharts2021]. Her er dataene binomiale, dvs type ja/nei. Vi kan f.eks. registrere om det er eller ikke er et avvik fra en gitt rutine. P-diagrammet og NP-diagrammet skiller seg kun fra hverandre ved at NP-diagrammet forutsetter en lik størrelse på utvalget hver måling, mens P-diagrammet brukes når utvalgsstørrelsen varierer. Hvis vi f.eks. registrerer antall avvik i en rutine pr uke og antallet gjennomføringer av rutinen varierer fra uke til uke bør vi bruke et P-diagram.
+
+La oss tenke oss at vi har følgende data som viser antall keisersnitt og totalt antall fødsler på et sykehus [eksempeldata modifisert fra @qimacrosSixSigmaSPC2021].
+
+```{r echo = FALSE, message = FALSE, warning=FALSE, fig.cap = "p-diagram data"}
+
+pacman::p_load(flextable, magrittr)
+
+set_flextable_defaults(fonts_ignore=TRUE)
+
+pdiagr_data <- data.frame(Måned = c("Jan", "Feb", "Mar", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Des"),
+                            Keisersnitt = c("65", "64", "77", "59", "64", "74", "72", "67", "59", "65", "60", "68"),
+                            Fødsler = c("370", "383", "446", "454", "463", "431", "443", "451", "433", "407", "381", "406"),
+                          Måned. = c("Jan", "Feb", "Mar", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Des"),
+                          Keisersnitt. = c("62", "48", "57", "64", "66", "55", "51", "82", "65", "69", "62", "66"),
+                          Fødsler. = c("374", "355", "393", "417", "434", "421", "417", "444", "429", "411", "386", "357"))
+
+pdiagr_data <- flextable(pdiagr_data)
+
+pdiagr_data <- add_header_row(pdiagr_data,
+  colwidths = c(3, 3),
+  values = c("År 1", "År 2"))
+
+pdiagr_data <- align(pdiagr_data, align = "center", part = "all")
+
+set_table_properties(pdiagr_data, width = 1, layout = "autofit")
+
+```
+
+
+
+
