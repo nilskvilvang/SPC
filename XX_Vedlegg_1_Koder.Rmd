@@ -988,6 +988,51 @@ kontr2
 summary(kontr2)
 ```
 
+Lage fig 7.4:
+
+```{r echo = FALSE, message = FALSE, warning=FALSE}
+
+pacman::p_load(qcc, tidyverse, readxl)
+
+pdiagr <- as_tibble(read_excel("P_chart.xlsx"))
+
+p_chart <- with(pdiagr, qcc(pdiagr$Keisersnitt, pdiagr$Antall_fødsler, type = "p", title = "p-diagram: Andel keisersnitt", xlab = "Måned", ylab = "Andel"))
+```
+
+Lage fig 7.5:
+
+```{r echo = FALSE, message = FALSE, warning=FALSE}
+
+pacman::p_load(qcc, tidyverse, readxl)
+
+Lpdiagr <- as_tibble(read_excel("Laneyp.xlsx"))
+
+Lp_chart <- with(Lpdiagr, qcc(Lpdiagr$Pr_telefon, Lpdiagr$Medlemmer, type = "p", title = "p-diagram: Andel kommunisert pr telefon", xlab = "Måned", ylab = "Andel"))
+```
+
+Lage fig 7.6:
+
+```{r echo = FALSE, message = FALSE, warning=FALSE}
+
+pacman::p_load(qcc, tidyverse, readxl)
+
+npdiagr <- as_tibble(read_excel("np_diagram.xlsx"))
+
+np_chart <- with(npdiagr, qcc(npdiagr$Feil, npdiagr$n, type = "np", title = "np-diagram: Andel feil", xlab = "Uke", ylab = "Andel"))
+```
+
+Lage fig 7.7:
+
+```{r echo = FALSE, message = FALSE, warning=FALSE}
+
+pacman::p_load(qcc, tidyverse, readxl)
+
+udiagr <- as_tibble(read_excel("u_diagram.xlsx"))
+
+u_chart <- with(udiagr, qcc(udiagr$Pasientfall, udiagr$Pasientdager, type = "u", title = "u-diagram: Andel feil", xlab = "Uke", ylab = "Pasientfall"))
+```
+
+
 
 #### Vedlegg 2 {.unnumbered}
 

@@ -29,7 +29,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="seriediagram.html"/>
+<link rel="prev" href="kontrolldiagram.html"/>
 <link rel="next" href="vedlegg-1---r-kode.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -191,6 +191,16 @@ div.csl-indent {
 <li class="chapter" data-level="5.2" data-path="er-dataene-dine-normalfordelte.html"><a href="er-dataene-dine-normalfordelte.html#anderson-darling-test-for-normalitet"><i class="fa fa-check"></i><b>5.2</b> Anderson-Darling test for normalitet</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="seriediagram.html"><a href="seriediagram.html"><i class="fa fa-check"></i><b>6</b> Seriediagram</a></li>
+<li class="chapter" data-level="7" data-path="kontrolldiagram.html"><a href="kontrolldiagram.html"><i class="fa fa-check"></i><b>7</b> Kontrolldiagram</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="kontrolldiagram.html"><a href="kontrolldiagram.html#telledata-attributter"><i class="fa fa-check"></i><b>7.1</b> Telledata (attributter)</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="kontrolldiagram.html"><a href="kontrolldiagram.html#p-diagram"><i class="fa fa-check"></i><b>7.1.1</b> p-diagram</a></li>
+<li class="chapter" data-level="7.1.2" data-path="kontrolldiagram.html"><a href="kontrolldiagram.html#laneys-p-diagram"><i class="fa fa-check"></i><b>7.1.2</b> Laney’s p-diagram</a></li>
+<li class="chapter" data-level="7.1.3" data-path="kontrolldiagram.html"><a href="kontrolldiagram.html#np-diagram"><i class="fa fa-check"></i><b>7.1.3</b> np-diagram</a></li>
+<li class="chapter" data-level="7.1.4" data-path="kontrolldiagram.html"><a href="kontrolldiagram.html#u-diagram"><i class="fa fa-check"></i><b>7.1.4</b> u-diagram</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="referanser.html"><a href="referanser.html"><i class="fa fa-check"></i>Referanser</a></li>
 <li class="chapter" data-level="" data-path="vedlegg-1---r-kode.html"><a href="vedlegg-1---r-kode.html"><i class="fa fa-check"></i>Vedlegg 1 - R kode</a></li>
 <li class="chapter" data-level="" data-path="vedlegg-2---kritiske-verdier-i-kontrolldiagram.html"><a href="vedlegg-2---kritiske-verdier-i-kontrolldiagram.html"><i class="fa fa-check"></i>Vedlegg 2 - Kritiske verdier i kontrolldiagram</a></li>
@@ -240,13 +250,19 @@ Anhøj, Jacob. 2009. <span>“Statistisk Processtyring i Sundhedsvæsenet.”</s
 ———. 2015. <span>“Diagnostic <span>Value</span> of <span>Run Chart Analysis</span>: Using <span>Likelihood Ratios</span> to <span>Compare Run Chart Rules</span> on <span>Simulated Data Series</span>.”</span> Edited by Robert K Hills. <em>PLOS ONE</em> 10 (3): e0121349. <a href="https://doi.org/10.1371/journal.pone.0121349">https://doi.org/10.1371/journal.pone.0121349</a>.
 </div>
 <div class="csl-entry">
+———. 2020. <span>“Qicharts2: Quality <span>Improvement Charts</span>. <span>An</span> Implementation of Statistical Process Control Charts for <span>R</span>.”</span>
+</div>
+<div class="csl-entry">
 ———. 2021a. <span>“Control <span>Charts</span> with Qicharts for <span>R</span>.”</span>
 </div>
 <div class="csl-entry">
-———. 2021b. <span>“Qicharts2: Quality <span>Improvement Charts</span>.”</span>
+———. 2021b. <span>“Quality <span>Improvement Charts</span>. <span>An</span> Implementation of Statistical Process Control Charts for <span>R</span>.”</span>
 </div>
 <div class="csl-entry">
 Anhøj, Jacob, and Brian Bjørn. 2009. <span>“Statistisk Processtyring i Sundhedsvæsenet.”</span> <em>Ugeskr Læger</em> 171 (21): 1764–68.
+</div>
+<div class="csl-entry">
+Anhøj, Jacob, and Anne Vingaard Olesen. 2014. <span>“Run <span>Charts Revisited</span>: A <span>Simulation Study</span> of <span>Run Chart Rules</span> for <span>Detection</span> of <span>Non</span>-<span>Random Variation</span> in <span>Health Care Processes</span>.”</span> Edited by Robert K. Hills. <em>PLoS ONE</em> 9 (11): e113825. <a href="https://doi.org/10.1371/journal.pone.0113825">https://doi.org/10.1371/journal.pone.0113825</a>.
 </div>
 <div class="csl-entry">
 Anhøj, Jacob, and Tore Wentzel-Larsen. 2020. <span>“Smooth Operator: Modifying the <span>Anhøj</span> Rules to Improve Runs Analysis in Statistical Process Control.”</span> Edited by Miguel Alejandro Fernández. <em>PLOS ONE</em> 15 (6): e0233920. <a href="https://doi.org/10.1371/journal.pone.0233920">https://doi.org/10.1371/journal.pone.0233920</a>.
@@ -315,10 +331,16 @@ Marsaglia, George, and John Marsaglia. 2004. <span>“Evaluating the Anderson-Da
 Microsoft. 2021. <span>“Microsoft Excel for Microsoft 365.”</span>
 </div>
 <div class="csl-entry">
+Mohammed, M. A., P. Worthington, and W. H. Woodall. 2008. <span>“Plotting Basic Control Charts: Tutorial Notes for Healthcare Practitioners.”</span> <em>Quality and Safety in Health Care</em> 17 (2): 137–45. <a href="https://doi.org/10.1136/qshc.2004.012047">https://doi.org/10.1136/qshc.2004.012047</a>.
+</div>
+<div class="csl-entry">
 Montgomery, Douglas C. 2020. <em>Introduction to Statistical Process Quality Control</em>. Eighth. <span>New York</span>: <span>John Wiley &amp; Sons</span>.
 </div>
 <div class="csl-entry">
 Mun, Jonathan. 2008. <span>“Understanding and Choosing the Right Probability Distributions.”</span> In <em>Advanced Analytical Models: Over 800 Models and 300 Applications from the Basel <span>II</span> Accord to Wall Street and Beyond</em>, 899–917. <span>Hoboken, NJ, USA</span>: <span>John Wiley &amp; Sons, Inc.</span> <a href="https://doi.org/10.1002/9781119197096.app03">https://doi.org/10.1002/9781119197096.app03</a>.
+</div>
+<div class="csl-entry">
+Nelson, Lloyd S. 1984. <span>“The Shewhart Control <span>Chart</span> for Special Causes.”</span> <em>Journal of Quality Technology</em> 16 (4): 237–39. <a href="https://doi.org/10.1080/00224065.1984.11978921">https://doi.org/10.1080/00224065.1984.11978921</a>.
 </div>
 <div class="csl-entry">
 NHS. 2009. <em>A Guide to Creating and Interpreting Run and Control Charts</em>. <span>Coventry</span>: <span>NHS Institute for Innovation and Improvement</span>.
@@ -334,6 +356,9 @@ Perla, Rocco J., Lloyd P. Provost, and Sandy K. Murray. 2011. <span>“The Run C
 </div>
 <div class="csl-entry">
 Prevette, Steven S. 2008. <span>“Dr. <span>Deming</span>’s Funnel Experiment.”</span> <em>Symphony Technologies</em>.
+</div>
+<div class="csl-entry">
+QIMacros. 2021. <span>“Six <span>Sigma</span> &amp; <span>SPC Excel Add</span>-in.”</span> <span>Denver</span>: KnowWare International, Inc.
 </div>
 <div class="csl-entry">
 R Core Team. 2021. <span>“R: A Language and Environment for Statistical Computing.”</span> <span>Vienna, Austria</span>: <span>R Foundation for Statistical Computing</span>.
@@ -352,6 +377,9 @@ Sparks, Ross S., and John B. F. Field. 2000. <span>“Using <span>Deming</span>�
 </div>
 <div class="csl-entry">
 SPC for Excel. 2006. <span>“Over-Controlling a Process: The Funnel Experiment.”</span>
+</div>
+<div class="csl-entry">
+———. 2021. <span>“<span>SPC</span> for Excel.”</span> <span>BPI Consulting, LLC</span>.
 </div>
 <div class="csl-entry">
 Stephens, M. A. 1974. <span>“<span>EDF</span> Statistics for Goodness of Fit and Some Comparisons.”</span> <em>Journal of the American Statistical Association</em> 69 (347): 730–37. <a href="https://doi.org/10.1080/01621459.1974.10480196">https://doi.org/10.1080/01621459.1974.10480196</a>.
@@ -384,6 +412,9 @@ Ugarte, Maria Dolores, Ana F. Militino, and Alan T. Arnholt. 2016. <em>Probabili
 Walker, Helen M. 1940. <span>“Degrees of Freedom.”</span> <em>Journal of Educational Psychology</em>. <span>US</span>: <span>Warwick &amp; York</span>. <a href="https://doi.org/10.1037/h0054588">https://doi.org/10.1037/h0054588</a>.
 </div>
 <div class="csl-entry">
+Western Electric Company. 1956. <em>Statistical Quality Control Handbook</em>. <span>Indianapolis</span>: <span>Western Electric Company</span>.
+</div>
+<div class="csl-entry">
 Zaiontz, Charles. 2020. <span>“One-Sample Anderson-Darling Test.”</span> <em>Real Statistics Using Excel</em>.
 </div>
 </div>
@@ -394,7 +425,7 @@ Zaiontz, Charles. 2020. <span>“One-Sample Anderson-Darling Test.”</span> <em
           </div>
         </div>
       </div>
-<a href="seriediagram.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="kontrolldiagram.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="vedlegg-1---r-kode.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
