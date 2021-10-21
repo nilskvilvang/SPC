@@ -11,7 +11,7 @@ Shewhart baserte sin tilnærming til kontrolldiagram på matematisk teori (se ve
 Et kontrolldiagram kan se slik ut (R pakken *qicharts2* [@anhojQicharts2QualityImprovement2020]:
 ```{r echo = FALSE, message = FALSE, warning=FALSE, fig.cap = "Eksempel kontrolldiagram i *qicharts*"}
 
-pacman::p_load(qicharts2, qcc, tidyverse, gridExtra)
+pacman::p_load(qicharts2, tidyverse)
 
 set.seed(81)
 
@@ -28,7 +28,7 @@ Observasjonene/målingene plottes som punkter sekvensielt i tid. Snittet er -0,2
 Tilsvarende data ved bruk av R pakken *qcc* [@Scrucca2017]:
 ```{r echo = FALSE, message = FALSE, warning=FALSE, fig.cap = "Eksempel kontrolldiagram i *qcc*", results='hide',fig.keep='all'}
 
-pacman::p_load(qicharts2, tidyverse)
+pacman::p_load(qcc, tidyverse)
 
 set.seed(81)
 
@@ -36,9 +36,9 @@ kontr_eks <- (rnorm(24))
 
 kontr_eks <- as_tibble(kontr_eks)
 
-kontr2 <- qcc(kontr_eks, type = "xbar.one", nsigmas = 3, title = "Eksempel på kontrolldiagram - Tilfeldig genererte tall", ylab = "Verdi", xlab = "Hendelse")
+kontr2 <- qcc(kontr_eks, type = "xbar.one", nsigmas = 3)
 
-kontr2
+plot(kontr2, title = "Eksempel på kontrolldiagram - Tilfeldig genererte tall", ylab = "Verdi", xlab = "Hendelse")
 
 ```
 
@@ -71,6 +71,8 @@ Eksempel på kontrolldiagram med indikasjon på et eller flere brudd på regler 
 
 ```{r echo = FALSE, message = FALSE, warning=FALSE, fig.cap = "Oversikt regler kontrolldiagram"}
 
+pacman::p_load(qcc, tidyverse)
+
 set.seed(64)
 
 mode1x <- rnorm(15,2,1)
@@ -79,11 +81,11 @@ mode2x <- rnorm(15,3,2)
 mode2x <- mode2x[mode2x > 0] 
 kontr_eks2 <- (sort(c(mode1x,mode2x)))
 
-kontr2 <- qic(kontr_eks2, chart = 'i', title = "Eksempel på kontrolldiagram", subtitle = "Tilfeldig genererte tall", ylab = "Verdi", xlab = "Hendelse")
+kontr_eks2 <- as_tibble(kontr_eks2)
 
-kontr2
+qq <- qcc(kontr_eks2, type = "xbar.one", nsigmas = 3)
 
-summary(kontr2)
+plot(qq, title = "Eksempel på kontrolldiagram - Tilfeldig genererte tall", ylab = "Verdi", xlab = "Hendelse")
 
 ```
 
@@ -136,7 +138,9 @@ pacman::p_load(qcc, tidyverse, readxl)
 
 pdiagr <- as_tibble(read_excel("P_chart.xlsx"))
 
-p_chart <- with(pdiagr, qcc(pdiagr$Keisersnitt, pdiagr$Antall_fødsler, type = "p", title = "p-diagram: Andel keisersnitt", xlab = "Måned", ylab = "Andel"))
+p_chart <- with(pdiagr, qcc(pdiagr$Keisersnitt, pdiagr$Antall_fødsler, type = "p"))
+
+plot(p_chart, title = "p-diagram: Andel keisersnitt", xlab = "Måned", ylab = "Andel")
 
 ```
 
@@ -184,8 +188,9 @@ pacman::p_load(qcc, tidyverse, readxl)
 
 Lpdiagr <- as_tibble(read_excel("Laneyp.xlsx"))
 
-Lp_chart <- with(Lpdiagr, qcc(Lpdiagr$Pr_telefon, Lpdiagr$Medlemmer, type = "p", title = "p-diagram: Andel kommunisert pr telefon", xlab = "Måned", ylab = "Andel"))
+Lp_chart <- with(Lpdiagr, qcc(Lpdiagr$Pr_telefon, Lpdiagr$Medlemmer, type = "p"))
 
+plot(Lp_chart,  title = "p-diagram: Andel kommunisert pr telefon", xlab = "Måned", ylab = "Andel")
 ```
 
 Diagrammet gir liten mening når mer eller mindre alle punktene ligger utenfor kontrollgrensene. @Laney2002 peker på at p- og u-diagrammer har forutsetninger om distribusjonen som blant annet antar at gjennomsnittet er konstant over tid. Kombinert med veldig stor utvalgsstørrelse gir dette såkalt overdispersjon, hvilket betyr at den faktiske variansen er større enn det modellen benytter. Framgangsmåten Laney foreslår kan virke noe teknisk, men innebærer å regne ut z verdien for alle punktene (z verdien forteller antallet standardavvik mellom det målte punktet og gjennomsnittet). Z-verdiene brukes så for å regne ut Moving Range (MR), som igjen brukes til å regne ut gjennomsnittlige MR, som igjen brukes til å regne ut UCL og LCL. 
@@ -202,7 +207,7 @@ Laneys p’-diagram er i realiteten veldig likt et I-diagram, med den forskjelle
 
 Forskjellen på p-diagram og np-diagram ligger i om utvalgsstørrelsen er lik eller ulik gjennom registreringene. I dette eksempelet sjekker vi om en prosedyre er korrekt gjennomført eller ikke. For å registrere dette tar vi hver uke 50 stikkprøver og registrerer hvor mange som ikke er gjennomført iht prosedyren [eksempeldata modifisert fra @qimacrosSixSigmaSPC2021].
 
-```{r echo = FALSE, message = FALSE, warning=FALSE, fig.cap = "p'-diagram data"}
+```{r echo = FALSE, message = FALSE, warning=FALSE, fig.cap = "np-diagram data"}
 
 pacman::p_load(flextable, magrittr)
 
@@ -235,8 +240,9 @@ pacman::p_load(qcc, tidyverse, readxl)
 
 npdiagr <- as_tibble(read_excel("np_diagram.xlsx"))
 
-np_chart <- with(npdiagr, qcc(npdiagr$Feil, npdiagr$n, type = "np", title = "np-diagram: Andel feil", xlab = "Uke", ylab = "Andel"))
+np_chart <- with(npdiagr, qcc(npdiagr$Feil, npdiagr$n, type = "np"))
 
+plot(np_chart, title = "np-diagram: Andel feil", xlab = "Uke", ylab = "Andel")
 ```
 
 I dette tilfellet ser vi at det ved to anledninger – uke 15 og 23 – var brudd på regel 1 (utenfor 3 sigma). 
@@ -249,7 +255,7 @@ p- og np-diagrammer teller antall defekter – en hendelse, et produkt, en tjene
 
 I eksempelet under ser vi på antall pasientfall opp mot totalt antall pasientdager [eksempeldata modifisert fra @qimacrosSixSigmaSPC2021].
 
-```{r echo = FALSE, message = FALSE, warning=FALSE, fig.cap = "p'-diagram data"}
+```{r echo = FALSE, message = FALSE, warning=FALSE, fig.cap = "u-diagram data"}
 
 pacman::p_load(flextable, magrittr)
 
@@ -259,8 +265,8 @@ udiagr_data <- data.frame(Måned = c("Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "
                             Pasientfall = c("17", "22", "23", "30", "28", "18", "44", "42", "33", "33", "33", "27"),
                             Pasientdager = c("4658", "4909", "4886", "4970", "4780", "4973", "5762", "5441", "5893", "5743", "4747", "5118"),
                           Måned. = c("Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Des", "Jan", "Feb", "Mar", "Apr", "Mai"),
-                          n. = c("42", "41", "24", "22", "50", "51", "39", "22", "31", "33", "25", "22"),
-                          Feil. = c("5609", "5722", "5261", "6071", "6072", "5335", "6483", "5752", "5731", "5017", "5158", "5040"))
+                          Pasientfall.. = c("42", "41", "24", "22", "50", "51", "39", "22", "31", "33", "25", "22"),
+                          Pasientdager. = c("5609", "5722", "5261", "6071", "6072", "5335", "6483", "5752", "5731", "5017", "5158", "5040"))
 
 udiagr_data <- flextable(udiagr_data)
 
@@ -276,15 +282,153 @@ Datasett:
 xfun::embed_file('u_diagram.xlsx')
 ```
 
-```{r echo = FALSE, message = FALSE, warning=FALSE, fig.cap = "up-diagram"}
+```{r echo = FALSE, message = FALSE, warning=FALSE, fig.cap = "u-diagram"}
 
 pacman::p_load(qcc, tidyverse, readxl)
 
 udiagr <- as_tibble(read_excel("u_diagram.xlsx"))
 
-u_chart <- with(udiagr, qcc(udiagr$Pasientfall, udiagr$Pasientdager, type = "u", title = "u-diagram: Andel feil", xlab = "Uke", ylab = "Pasientfall"))
+u_chart <- with(udiagr, qcc(udiagr$Pasientfall, udiagr$Pasientdager, type = "u"))
 
+plot(u_chart,  title = "u-diagram: Andel feil", xlab = "Uke", ylab = "Pasientfall")
 ```
 
 Video her for [Excel](https://vimeo.com/623605142)
+
+### Laney's u-diagram
+
+Som for p-diagrammet finnes det et alternativ fra @Laney2002. Se punktet om Laneys p’-diagram – samme forhold som ble diskutert for p vs p’-diagram gjelder for u vs u’-diagram.
+
+Datasett:
+```{r echo=FALSE, eval=TRUE}
+
+xfun::embed_file('ludiagram.xlsx')
+```
+
+Data [eksempeldata modifisert fra @SPCforExcel2021].
+```{r echo = FALSE, message = FALSE, warning=FALSE, fig.cap = "u-diagram data"}
+
+pacman::p_load(flextable, magrittr)
+
+set_flextable_defaults(fonts_ignore=TRUE)
+
+udiagr_data <- data.frame(Uke = c("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"),
+                            Pasienter = c("6566", "9671", "8129", "7757", "7880", "9102", "7201", "7940", "8486", "9858", "9226", "10496", "9427"),
+                            Feil = c("98", "36", "104", "90", "53", "93", "180", "51", "64", "116", "91", "69", "43"),
+                          Uke. = c("14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", ""),
+                          Pasienter. = c("6598", "10029", "8192", "9417", "7130", "5455", "5946", "10222", "8154", "5114", "6256", "6466", ""),
+                          Feil. = c("107", "43", "50", "102", "63", "58", "52", "99", "43", "46", "87", "84", ""))
+
+udiagr_data <- flextable(udiagr_data)
+
+udiagr_data <- align(udiagr_data, align = "center", part = "all")
+
+set_table_properties(udiagr_data, width = 1, layout = "autofit")
+
+```
+
+Uten Laneys korreksjon (standard u-diagram):
+![](udiagram.png)
+
+Laneys u-diagram:
+![](ludiagram.png)
+Video som viser frangangsmåte i Excel ligger [her](https://vimeo.com/624281431)
+
+### c-diagram
+
+c-diagrammet likner på u-diagrammet, men her er utvalgsstørrelsen lik. Man kan f.eks. registrere antall hendelser med personskader i en fabrikk. Fabrikken vil da utgjøre utvalget og den er lik fra periode til periode.
+
+Vi kan bruke antall feilmedisineringer i en enhet som et eksempel [eksempeldata modifisert fra @qimacrosSixSigmaSPC2021].
+
+```{r echo = FALSE, message = FALSE, warning=FALSE, fig.cap = "c-diagram data"}
+
+pacman::p_load(flextable, magrittr)
+
+set_flextable_defaults(fonts_ignore=TRUE)
+
+cdiagr_data <- data.frame(Måned = c("Jan", "Feb", "Mar", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Des"),
+                          Feilmedisinering = c("74", "70", "67", "65", "63", "82", "110", "61", "75", "78", "76", "78"),
+                          Måned. = c("Jan", "Feb", "Mar", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Des"),
+                          Feilmedisinering. = c("75", "63", "71", "59", "70", "66", "97", "71", "84", "85", "57", "60"))
+
+cdiagr_data <- flextable(cdiagr_data)
+
+cdiagr_data <- align(cdiagr_data, align = "center", part = "all")
+
+set_table_properties(cdiagr_data, width = 1, layout = "autofit")
+
+```
+
+Datasett: 
+```{r echo=FALSE, eval=TRUE}
+
+xfun::embed_file('cdiagram.xlsx')
+```
+
+```{r echo = FALSE, message = FALSE, warning=FALSE, fig.cap = "c-diagram"}
+
+pacman::p_load(qcc, tidyverse, readxl)
+
+cdiagr <- as_tibble(read_excel("cdiagram.xlsx"))
+
+c_chart <- with(cdiagr, qcc(cdiagr$Feilmedisinering, type = "c"))
+
+plot(c_chart, title = "c-diagram", xlab = "Måned", ylab = "Feilmedisinering")
+
+```
+
+Excelvideo [her](https://vimeo.com/624307745)
+
+### g-diagram
+
+g-diagrammet brukes på sjeldne hendelser. Her bruker vi dager dager mellom infeksjoner etter en viss type operasjon som eksempel [eksempeldata modifisert fra @SPCforExcel2021].
+
+```{r echo = FALSE, message = FALSE, warning=FALSE, fig.cap = "g-diagram data"}
+
+pacman::p_load(flextable, magrittr)
+
+set_flextable_defaults(fonts_ignore=TRUE)
+
+gdiagr_data <- data.frame(Dager_mellom = c("58", "22", "11", "132", "6", "16", "46", "9", "35", "25", "67", "58", "20", "11", "49", "46", "57"))
+
+gdiagr_data <- flextable(gdiagr_data)
+
+gdiagr_data <- align(gdiagr_data, align = "center", part = "all")
+
+set_table_properties(gdiagr_data, width = 1, layout = "autofit")
+
+```
+
+Datasett: 
+```{r echo=FALSE, eval=TRUE}
+
+xfun::embed_file('gdiagram.xlsx')
+```
+
+![](gdiagram.png)
+Video for [Excel](https://vimeo.com/624349171)
+
+I utregning av sentraltendensen oppgis noe ulike utregninger i forskjellige kilder. Noen bruker det aritmetiske gjennomsnittet (slik vi har gjort i de andre diagrammene hittil), mens flertallet ser ut til å bruke en beregnet medianverdi [se @Benneyan2001]. Grunnen til dette er at distribusjonen antas å være geometrisk, noe som innebærer at den er betydelig skjevfordelt. Median er dermed en mer representativ verdi for sentraltendensen enn gjennomsnittet. Det legges derfor inn en konstant på 0.693 når man regner ut CL. Samtidig brukes snittet likevel når man regner ut UCL og LCL – framgangsmåten er forklart i videoen.
+
+### Utfordringer med telledata og distribusjon på dataene
+
+Alle telledata, om det er antall eller andeler, er individuelle verdier per en eller annen tidsenhet. Som vi kan se av formlene for utregning av UCL og LCL i så vel p som np, u og c utgjør gjennomsnittet grunnlaget for utregning av kontrollgrensene. Dette baserer seg på at dataene følger enten en binomial (for p og np) eller Poisson (for c og u) sannsynlighetsfordeling (jfr kapittelet om datadistribusjon). Som @Wheeler2021 beskriver innebærer det at gjennomsnittet spesifiserer modellen og snittet er grunnlaget for både sentraltendens og spredning/variasjon, men det er uansett en teoretisk tilnærming som baserer seg på at dataene har enten binomial eller Poissonfordeling. Er dataene ikke det viser @Wheeler2021 at kontrollgrensene blir gale, og mange typer telledata har ikke verken binomial eller Poisson fordeling. Man bør derfor kjenne til distribusjonen av telledataene før man benytter p, np, c eller u diagram. 
+
+@Wheeler2021 viser at IMR (XMR) diagrammer (se neste delkapittel), som baserer utregningen av kontrollgrensene empirisk (i motsetning til teoretisk ut fra sannsynlighetsfordeling) på Moving Ranges (MR), alltid vil gi deg riktige kontrollgrenser. Kontrollgrensene med et IMR diagram vil således være empirisk utregnet fra den variasjonen du faktisk har i dataene og ikke være teoretisk beregnet ut fra en sannsynlighetsfordeling. Wheelers (2021) artikkel viser gjennom tre eksempler at kontrollgrensen i et IMR-diagram vil replikere de i p, np, c og u der disse er korrekte, og avvike (men vise de riktige) der p, np, c og u viser feil kontrollgrenser.  viser at IMR (XMR) diagrammer (se neste delkapittel), som baserer utregningen av kontrollgrensene empirisk (i motsetning til teoretisk ut fra sannsynlighetsfordeling) på Moving Ranges (MR), alltid vil gi deg riktige kontrollgrenser. Kontrollgrensene med et IMR diagram vil således være empirisk utregnet fra den variasjonen du faktisk har i dataene og ikke være teoretisk beregnet ut fra en sannsynlighetsfordeling. @Wheeler2021 artikkel viser gjennom tre eksempler at kontrollgrensen i et IMR-diagram vil replikere de i p, np, c og u der disse er korrekte, og avvike (men vise de riktige) der p, np, c og u viser feil kontrollgrenser. 
+
+Som @Wheeler2021 uttrykker det: 
+
+> In contrast to this use of theoretical models which may or may not be correct, the XmR chart provides us with empirical limits that are actually based upon the variation present in the data. This means that you can use an XmR chart with count-based data anytime you wish. Since the p-chart, the np-chart, the c-chart, and the u-chart are all special cases of the chart for individual values, the XmR chart will mimic these specialty charts when they are appropriate and will differ from them when they are wrong.
+
+@Mohammed2012 understreker at så lenge det kun finnes normal variasjon vil kontrollgrensene for IMR(XMR) og p/np/c/u-diagrammer være samsvarende. De peker videre på at dersom det er klare forskjeller mellom IMR og p/np/c/u er det en indikasjon på unormal variasjon. De anbefaler derfor at man bruker begge typene. 
+
+Vi foreslår derfor at dersom man ikke er helt sikker på distribusjonen i telledata kan man følge anbefalingen fra @Wheeler2021 anbefaling om å bruke IMR (XMR) diagram. Man kan eventuelt følge anbeflaingen fra @Mohammed2012 om å bruke IMR i kombinasjon med p/np/c/u. Man bør trolig være forsiktig med å bruke bare p/np/c/u om man ikke er sikker på distribusjonen. 
+
+Under kapittelet om distribusjoner finner du en beskrivelse av ulike aktuelle distribusjoner og hvordan man kan undersøke data med tanke på distribusjon. Et enkelt grep for å få et inntrykk av distribusjonen er et «vanlig» histogram. For dataene brukt i eksempelet over for np-diagram kan vi sammenlikne np-diagrammet med I-diagramdelen av IMR-diagram for samme data:
+![NP vs I](npimr.png)
+Vi kan se det er avvik mellom diagrammene. Np-diagrammet har trangere kontrollgrenser og viser to punkter utenfor øvre kontrollgrense. Hvis vi plotter et Q-Q plott, finner vi:
+![](qqnpi.png)
+
+Sammen med statistiske tester for normalitet (Shapiro-Wilk og Anderson-Darling) får vi klare indikasjoner på at datasettet er nærme normalfordeling. Siden et np-diagram bygger på forutsetning om en binomial fordeling virker det mest korrekt å bruke IMR-diagrammet^[Dette er nærmere drøftet i kapittel 4 og 5]. 
+
 

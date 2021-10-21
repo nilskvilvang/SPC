@@ -964,14 +964,16 @@ kontr_eks <- (rnorm(24))
 
 kontr_eks <- as_tibble(kontr_eks)
 
-qcc(kontr_eks, type = "xbar.one", nsigmas = 3, title = "Eksempel på kontrolldiagram - Tilfeldig genererte tall", ylab = "Verdi", xlab = "Hendelse")
+kontr2 <- qcc(kontr_eks, type = "xbar.one", nsigmas = 3)
+
+plot(kontr2, title = "Eksempel på kontrolldiagram - Tilfeldig genererte tall", ylab = "Verdi", xlab = "Hendelse")
 ```
 
 Lage fig 7.3:
 
 ```{r echo = FALSE, message = FALSE, warning=FALSE}
 
-pacman::p_load(qicharts2, tidyverse)
+pacman::p_load(qcc, tidyverse)
 
 set.seed(64)
 
@@ -981,11 +983,12 @@ mode2x <- rnorm(15,3,2)
 mode2x <- mode2x[mode2x > 0] 
 kontr_eks2 <- (sort(c(mode1x,mode2x)))
 
-kontr2 <- qic(kontr_eks2, chart = 'i', title = "Eksempel på kontrolldiagram", subtitle = "Tilfeldig genererte tall", ylab = "Verdi", xlab = "Hendelse")
+kontr_eks2 <- as_tibble(kontr_eks2)
 
-kontr2
+qq <- qcc(kontr_eks2, type = "xbar.one", nsigmas = 3)
 
-summary(kontr2)
+plot(qq, title = "Eksempel på kontrolldiagram - Tilfeldig genererte tall", ylab = "Verdi", xlab = "Hendelse")
+
 ```
 
 Lage fig 7.4:
@@ -996,7 +999,9 @@ pacman::p_load(qcc, tidyverse, readxl)
 
 pdiagr <- as_tibble(read_excel("P_chart.xlsx"))
 
-p_chart <- with(pdiagr, qcc(pdiagr$Keisersnitt, pdiagr$Antall_fødsler, type = "p", title = "p-diagram: Andel keisersnitt", xlab = "Måned", ylab = "Andel"))
+p_chart <- with(pdiagr, qcc(pdiagr$Keisersnitt, pdiagr$Antall_fødsler, type = "p"))
+
+plot(p_chart, title = "p-diagram: Andel keisersnitt", xlab = "Måned", ylab = "Andel")
 ```
 
 Lage fig 7.5:
@@ -1007,7 +1012,9 @@ pacman::p_load(qcc, tidyverse, readxl)
 
 Lpdiagr <- as_tibble(read_excel("Laneyp.xlsx"))
 
-Lp_chart <- with(Lpdiagr, qcc(Lpdiagr$Pr_telefon, Lpdiagr$Medlemmer, type = "p", title = "p-diagram: Andel kommunisert pr telefon", xlab = "Måned", ylab = "Andel"))
+Lp_chart <- with(Lpdiagr, qcc(Lpdiagr$Pr_telefon, Lpdiagr$Medlemmer, type = "p"))
+
+plot(Lp_chart,  title = "p-diagram: Andel kommunisert pr telefon", xlab = "Måned", ylab = "Andel")
 ```
 
 Lage fig 7.6:
@@ -1018,7 +1025,9 @@ pacman::p_load(qcc, tidyverse, readxl)
 
 npdiagr <- as_tibble(read_excel("np_diagram.xlsx"))
 
-np_chart <- with(npdiagr, qcc(npdiagr$Feil, npdiagr$n, type = "np", title = "np-diagram: Andel feil", xlab = "Uke", ylab = "Andel"))
+np_chart <- with(npdiagr, qcc(npdiagr$Feil, npdiagr$n, type = "np"))
+
+plot(np_chart, title = "np-diagram: Andel feil", xlab = "Uke", ylab = "Andel")
 ```
 
 Lage fig 7.7:
@@ -1029,10 +1038,24 @@ pacman::p_load(qcc, tidyverse, readxl)
 
 udiagr <- as_tibble(read_excel("u_diagram.xlsx"))
 
-u_chart <- with(udiagr, qcc(udiagr$Pasientfall, udiagr$Pasientdager, type = "u", title = "u-diagram: Andel feil", xlab = "Uke", ylab = "Pasientfall"))
+u_chart <- with(udiagr, qcc(udiagr$Pasientfall, udiagr$Pasientdager, type = "u"))
+
+plot(u_chart,  title = "u-diagram: Andel feil", xlab = "Uke", ylab = "Pasientfall")
 ```
 
+Lage fig 7.8:
 
+```{r echo = FALSE, message = FALSE, warning=FALSE, fig.cap = "c-diagram"}
+
+pacman::p_load(qcc, tidyverse, readxl)
+
+cdiagr <- as_tibble(read_excel("cdiagram.xlsx"))
+
+c_chart <- with(cdiagr, qcc(cdiagr$Feilmedisinering, type = "c"))
+
+plot(c_chart, title = "c-diagram", xlab = "Måned", ylab = "Feilmedisinering")
+
+```
 
 #### Vedlegg 2 {.unnumbered}
 

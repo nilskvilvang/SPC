@@ -60,3 +60,11 @@ Gjennom sin enkelhet vil et seriediagram kunne spare oss for unødvendig arbeid 
 Som @anhojControlChartsQicharts2021 uttrykker det: "It is a common misunderstanding that control charts are superior to run charts. The confusion may stem from the fact that different sets of rules for identifying non-random variation in run charts are available, and that these sets differ significantly in their diagnostic properties." Og videre: "One big advantage of run charts is that they are oblivious to assumptions on the theoretical distribution of data. Also they are easier to construct (by pen and paper) and understand than are control charts. Finally, as mentioned, the diagnostic value of run charts is independent of the number of data points, which is not the case with control charts unless one adjusts the control limits in accordance with the number of data points.In practice I always do the run chart analysis first. If, and only if, the run chart shows random variation and I need to further investigate data for outliers or to know the limits of common cause variation, I would do a control chart analysis..."
 
 @anhojControlChartsQicharts2021 påpker imidlertid et viktig unntak fra tilnærmingen om å alltid se på et seriediagram først: Om man har sjeldne data bør man heller lage et g eller t kontrolldiagram (se neste kapittel) siden seriediagram er dårlig egnet til å detektere endringer i disse tilfellene.
+
+Vi vil derfor avslutte dette kapittelet med å **sterkt** anbefale at man begynner med et seriediagram.
+
+@balestracciControlChartsSimple2014:
+
+> "Over the years, I have developed an increasing affection for the much-neglected run chart: a time plot of your process data with the median drawn in as a reference (yes, the median—not the average). It is "filter No. 1" for any process data and answers the question: "Did this process have at least one shift during this time period?" (This is generally signaled by a clump of eight consecutive data points either all above or below the median.) 
+If it did, then it makes no sense to do a control chart at this time because the overall average of all these data doesn't exist. (Sort of like: If I put my right foot in a bucket of boiling water and my left foot in a bucket of ice water, on average, I'm pretty comfortable.)"
+
