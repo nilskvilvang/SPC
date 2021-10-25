@@ -1057,6 +1057,44 @@ plot(c_chart, title = "c-diagram", xlab = "Måned", ylab = "Feilmedisinering")
 
 ```
 
+Lage fig 7.9:
+
+```{r echo = FALSE, message = FALSE, warning=FALSE, fig.cap = "IMR-diagram"}
+
+pacman::p_load(qcc, tidyverse, readxl)
+
+imrdiagr <- as_tibble(read_excel("imr_diagram.xlsx"))
+
+imr_chart <- with(imrdiagr, qcc(imrdiagr$Fødselsvekt, type = "xbar.one"))
+
+plot(imr_chart, title = "IMR-diagram", xlab = "Baby nr", ylab = "Fødselsvekt")
+
+```
+
+Lage fig 7.10:
+
+```{r echo = FALSE, message = FALSE, warning=FALSE, fig.cap = "IMR-diagram"}
+
+pacman::p_load(qicharts2, tidyverse)
+
+set.seed(43)
+
+datoer  <- seq(as.Date('2020-1-1'), as.Date('2020-12-31'), by = 'day')
+hendelser <- sort(sample(datoer, 24))
+
+t_diagram_data <- c(NA, diff(hendelser))
+
+t_diagram <- qic(t_diagram_data,
+    chart = "t",
+    title = "T-diagram",
+    xlab = "Hendelse nr.",
+    ylab = "Dager")
+
+t_diagram + geom_point()
+
+```
+
+
 #### Vedlegg 2 {.unnumbered}
 
 ```{r echo = TRUE, eval=FALSE}

@@ -204,6 +204,13 @@ div.csl-indent {
 <li class="chapter" data-level="7.1.7" data-path="kontrolldiagram.html"><a href="kontrolldiagram.html#g-diagram"><i class="fa fa-check"></i><b>7.1.7</b> g-diagram</a></li>
 <li class="chapter" data-level="7.1.8" data-path="kontrolldiagram.html"><a href="kontrolldiagram.html#utfordringer-med-telledata-og-distribusjon-på-dataene"><i class="fa fa-check"></i><b>7.1.8</b> Utfordringer med telledata og distribusjon på dataene</a></li>
 </ul></li>
+<li class="chapter" data-level="7.2" data-path="kontrolldiagram.html"><a href="kontrolldiagram.html#måledata-variabler"><i class="fa fa-check"></i><b>7.2</b> Måledata (variabler)</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="kontrolldiagram.html"><a href="kontrolldiagram.html#imr-xmr"><i class="fa fa-check"></i><b>7.2.1</b> IMR (XMR)</a></li>
+<li class="chapter" data-level="7.2.2" data-path="kontrolldiagram.html"><a href="kontrolldiagram.html#xbarr"><i class="fa fa-check"></i><b>7.2.2</b> XbarR</a></li>
+<li class="chapter" data-level="7.2.3" data-path="kontrolldiagram.html"><a href="kontrolldiagram.html#xbars"><i class="fa fa-check"></i><b>7.2.3</b> XbarS</a></li>
+<li class="chapter" data-level="7.2.4" data-path="kontrolldiagram.html"><a href="kontrolldiagram.html#t-diagram"><i class="fa fa-check"></i><b>7.2.4</b> T-diagram</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="referanser.html"><a href="referanser.html"><i class="fa fa-check"></i>Referanser</a></li>
 <li class="chapter" data-level="" data-path="vedlegg-1---r-kode.html"><a href="vedlegg-1---r-kode.html"><i class="fa fa-check"></i>Vedlegg 1 - R kode</a></li>
@@ -213,6 +220,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="vedlegg-5---tabell-med-konstanter-for-kontrolldiagram.html"><a href="vedlegg-5---tabell-med-konstanter-for-kontrolldiagram.html"><i class="fa fa-check"></i>Vedlegg 5 - Tabell med konstanter for kontrolldiagram</a></li>
 <li class="chapter" data-level="" data-path="vedlegg-6---utregning-av-kontrollgrenser.html"><a href="vedlegg-6---utregning-av-kontrollgrenser.html"><i class="fa fa-check"></i>Vedlegg 6 - Utregning av kontrollgrenser</a></li>
 <li class="chapter" data-level="" data-path="vedlegg-7---anderson-darling-test-for-normalitet.html"><a href="vedlegg-7---anderson-darling-test-for-normalitet.html"><i class="fa fa-check"></i>Vedlegg 7 - Anderson-Darling test for normalitet</a></li>
+<li class="chapter" data-level="" data-path="vedlegg-8---session-info.html"><a href="vedlegg-8---session-info.html"><i class="fa fa-check"></i>Vedlegg 8 - Session Info</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 </ul>
@@ -883,33 +891,47 @@ div.csl-indent {
 <span id="cb58-7"><a href="vedlegg-1---r-kode.html#cb58-7" aria-hidden="true" tabindex="-1"></a>serie1 <span class="ot">&lt;-</span> <span class="fu">qic</span>(eksempelrun, <span class="at">title =</span> <span class="st">&quot;Eksempel på seriediagram - normalfordelte genererte tall&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Verdi&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Hendelse&quot;</span>,   <span class="at">method =</span> <span class="st">&quot;anhoej&quot;</span>)</span>
 <span id="cb58-8"><a href="vedlegg-1---r-kode.html#cb58-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb58-9"><a href="vedlegg-1---r-kode.html#cb58-9" aria-hidden="true" tabindex="-1"></a>serie1 <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="SPC-book_files/figure-html/unnamed-chunk-135-1.png" width="672" /></p>
+<p><img src="SPC-book_files/figure-html/unnamed-chunk-144-1.png" width="672" /></p>
 <p>Lage fig 6.2:</p>
-<p><img src="SPC-book_files/figure-html/unnamed-chunk-136-1.png" width="672" /></p>
+<p><img src="SPC-book_files/figure-html/unnamed-chunk-145-1.png" width="672" /></p>
 <p>Lage fig 6.3:</p>
-<p><img src="SPC-book_files/figure-html/unnamed-chunk-137-1.png" width="672" /></p>
+<p><img src="SPC-book_files/figure-html/unnamed-chunk-146-1.png" width="672" /></p>
 </div>
 <div id="kapittel-7" class="section level4 unnumbered">
 <h4>Kapittel 7</h4>
 <p>Lage fig 7.1:</p>
-<p><img src="SPC-book_files/figure-html/unnamed-chunk-138-1.png" width="672" /></p>
+<p><img src="SPC-book_files/figure-html/unnamed-chunk-147-1.png" width="672" /></p>
 <p>Lage fig 7.2:</p>
-<p><img src="SPC-book_files/figure-html/unnamed-chunk-139-1.png" width="672" /></p>
+<p><img src="SPC-book_files/figure-html/unnamed-chunk-148-1.png" width="672" /></p>
 <p>Lage fig 7.3:</p>
-<p><img src="SPC-book_files/figure-html/unnamed-chunk-140-1.png" width="672" /></p>
+<p><img src="SPC-book_files/figure-html/unnamed-chunk-149-1.png" width="672" /></p>
 <p>Lage fig 7.4:</p>
-<p><img src="SPC-book_files/figure-html/unnamed-chunk-141-1.png" width="672" /></p>
+<p><img src="SPC-book_files/figure-html/unnamed-chunk-150-1.png" width="672" /></p>
 <p>Lage fig 7.5:</p>
-<p><img src="SPC-book_files/figure-html/unnamed-chunk-142-1.png" width="672" /></p>
+<p><img src="SPC-book_files/figure-html/unnamed-chunk-151-1.png" width="672" /></p>
 <p>Lage fig 7.6:</p>
-<p><img src="SPC-book_files/figure-html/unnamed-chunk-143-1.png" width="672" /></p>
+<p><img src="SPC-book_files/figure-html/unnamed-chunk-152-1.png" width="672" /></p>
 <p>Lage fig 7.7:</p>
-<p><img src="SPC-book_files/figure-html/unnamed-chunk-144-1.png" width="672" /></p>
+<p><img src="SPC-book_files/figure-html/unnamed-chunk-153-1.png" width="672" /></p>
 <p>Lage fig 7.8:</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-145"></span>
-<img src="SPC-book_files/figure-html/unnamed-chunk-145-1.png" alt="c-diagram" width="672" />
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-154"></span>
+<img src="SPC-book_files/figure-html/unnamed-chunk-154-1.png" alt="c-diagram" width="672" />
 <p class="caption">
-Figure 7.9: c-diagram
+Figure 7.12: c-diagram
+</p>
+</div>
+<p>Lage fig 7.9:</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-155"></span>
+<img src="SPC-book_files/figure-html/unnamed-chunk-155-1.png" alt="IMR-diagram" width="672" />
+<p class="caption">
+Figure 7.13: IMR-diagram
+</p>
+</div>
+<p>Lage fig 7.10:</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-156"></span>
+<img src="SPC-book_files/figure-html/unnamed-chunk-156-1.png" alt="IMR-diagram" width="672" />
+<p class="caption">
+Figure 7.14: IMR-diagram
 </p>
 </div>
 </div>
