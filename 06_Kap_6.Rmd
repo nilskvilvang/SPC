@@ -19,12 +19,6 @@ serie1 <- qic(eksempelrun, title = "Eksempel på seriediagram - normalfordelte g
 serie1 + geom_point(size = 2)
 
 ```
-```{r include = FALSE}
-pacman::p_load(writexl, tidyverse)
-eksempelrun <- as_tibble(eksempelrun)
-write_xlsx(eksempelrun, "seriediagram.xlsx")
-```
-
 
 Når vi skal tolke seriediagrammet finnes det flere sett av retningslinjer, f.eks. gitt av @Carey2002 og @Perla2011. Vi velger å bruke «Anhøj-reglene» [@anhojDiagnosticValueRun2015;@anhojSmoothOperatorModifying2020] på seriediagrammene. For det første er det vist at disse reglene gir en god balanse mellom type-1 og type-2 feil. For det andre er det to enkle regler å forholde seg til som gjør tolkningen enklere og raskere. Anhøj-reglene ser på to forhold: 
 

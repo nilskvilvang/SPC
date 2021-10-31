@@ -56,6 +56,70 @@
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
@@ -193,15 +257,15 @@ div.csl-indent {
 <div id="normalfordeling" class="section level2" number="4.1">
 <h2><span class="header-section-number">4.1</span> Normalfordeling</h2>
 <p>Når vi snakker om distribusjonen av et datasett tenker vi på hvordan dataene vi har samlet inn fordeler seg i forhold til hverandre etter gitte egenskaper. Vi kan for eksempel ha målt høyden på 100 mennesker. Disse dataene utgjør da en observert fordeling som vi kan sette inn i et diagram for å visualisere hvordan datasettet ser ut.</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-2"></span>
-<img src="SPC-book_files/figure-html/unnamed-chunk-2-1.png" alt="Høydefordeling for 100 tilfeldige menn, genererte data" width="672" />
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-20"></span>
+<img src="SPC-book_files/figure-html/unnamed-chunk-20-1.png" alt="Høydefordeling for 100 tilfeldige menn, genererte data" width="672" />
 <p class="caption">
 Figure 4.1: Høydefordeling for 100 tilfeldige menn, genererte data
 </p>
 </div>
 <p>Hvis vi samler inn høydedata for 100 andre tilfeldig menn kan fordelingen se slik ut:</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-3"></span>
-<img src="SPC-book_files/figure-html/unnamed-chunk-3-1.png" alt="Høydefordeling for 100 andre tilfeldige menn, genererte data" width="672" />
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-21"></span>
+<img src="SPC-book_files/figure-html/unnamed-chunk-21-1.png" alt="Høydefordeling for 100 andre tilfeldige menn, genererte data" width="672" />
 <p class="caption">
 Figure 4.2: Høydefordeling for 100 andre tilfeldige menn, genererte data
 </p>
@@ -210,22 +274,22 @@ Figure 4.2: Høydefordeling for 100 andre tilfeldige menn, genererte data
 <p>Hittil har vi snakket om observerte fordelinger. Ut fra dette kan vi si at vi kan ha visse forventninger til hvordan fordelingen av ulike populasjoner vil se ut, og vi kan snakke om teoretiske fordelinger – eller sannsynlighetsfordelinger med andre ord. Hvor sannsynlig er det at en tilfeldig x-verdi dukker opp i dataene? For høyde kan vi ha visse forventninger til hvilke sannsynligheter det er for at en tilfeldig person har en gitt høyde, eller hvor mange prosent av den mannlige befolkningen som har en høyde innenfor et gitt intervall. Det vil si at fordelingen har en viss form med visse karakteristika. Vi forventer at flest observasjoner befinner seg i nærheten av gjennomsnittet, og at vi vil se færre og færre observasjoner jo lenger unna gjennomsnittet vi beveger oss. Vi forventer å finne flere norske menn over 20 år på rundt 180 cm enn 160 cm eller 210 cm. For fordelingen av høydedata vil vi si at dette er data som er normalfordelte.</p>
 <p>En normalfordeling er en sannsynlighetsfunksjon der flesteparten av verdiene fra funksjonen samler seg om en sentral tendens, og der tettheten (hyppigheten) av verdier avtar jevnt jo lenger unna den sentrale tendensen man kommer. Grafisk framstilt får fordelingskurven en klokkeform, og normalfordeling omtales også som “bell shaped.” Overraskende mange fenomener viser seg å være nærme en normalfordeling, og den er derfor en helt sentral teoretisk sannsynlighetsfordeling i mange sammenhenger (også i statistisk prosesskontroll som vi kommer tilbake til senere). Vi bruker dermed normalfordelingen som en modell for observerte data. I en såkalt standard normalfordeling har vi en symmetrisk fordeling der den sentrale tendensen (forventingen) verdi = 0 og et standardavvik = 1.</p>
 <p>Vi skal her ikke bry oss om det matematisk uttrykket for sannsynlighetstetthetsfunksjonen. Hvis vi derimot genererer et tenkt datasett etter standard normalfordelingsfunksjon vil det kunne se slik ut:</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-4"></span>
-<img src="SPC-book_files/figure-html/unnamed-chunk-4-1.png" alt="Genererte standard normalfordelte data" width="672" />
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-22"></span>
+<img src="SPC-book_files/figure-html/unnamed-chunk-22-1.png" alt="Genererte standard normalfordelte data" width="672" />
 <p class="caption">
 Figure 4.3: Genererte standard normalfordelte data
 </p>
 </div>
 <p>Her kan vi legge på en forventningskurve – en teoretisk kurve som viser en standard normalfordeling:</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-5"></span>
-<img src="SPC-book_files/figure-html/unnamed-chunk-5-1.png" alt="Genererte standard normalfordelte data med normalfordelingskurve" width="672" />
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-23"></span>
+<img src="SPC-book_files/figure-html/unnamed-chunk-23-1.png" alt="Genererte standard normalfordelte data med normalfordelingskurve" width="672" />
 <p class="caption">
 Figure 4.4: Genererte standard normalfordelte data med normalfordelingskurve
 </p>
 </div>
 <p>Vi kan ta bort det genererte datasettet og sitte igjen med bare normalfordelingskurven:</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-6"></span>
-<img src="SPC-book_files/figure-html/unnamed-chunk-6-1.png" alt="Normalfordelingskurve" width="672" />
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-24"></span>
+<img src="SPC-book_files/figure-html/unnamed-chunk-24-1.png" alt="Normalfordelingskurve" width="672" />
 <p class="caption">
 Figure 4.5: Normalfordelingskurve
 </p>
@@ -236,7 +300,7 @@ Figure 4.5: Normalfordelingskurve
 <h3><span class="header-section-number">4.1.1</span> Varians og standardavvik</h3>
 <p>Variansen i en variabel representerer det gjennomsnittlige avviket fra gjennomsnittsverdien <span class="citation">(Field, Miles, and Field 2012)</span> og er et mål på spredningen i dataene (som navnet antyder: hvor mye dataene variere ut fra den sentrale tendensen). Under vises et eksempel basert på <span class="citation">Field (2009)</span>.</p>
 <p>La oss anta at vi har spurt 5 studenter på høgskolen hvor mange kjæledyr de har. Svarene kan settes opp i en enkel tabell. I gjennomsnitt har de 2,6 kjæledyr. Vi ønsker imidlertid å se hvor mye avviket er for den enkelte fra snittet (siden vi har regnet ut snittet kan vi se på gjennomsnittsverdien som en modell på forholdet mellom studenter og antall kjæledyr). Vi registrerer svarene vi fikk i et skjema:</p>
-<template id="59c91a30-b097-4064-9a7d-d64fb7b050ec"><style>
+<template id="9cebcb26-81bf-487d-bc7d-89411962350f"><style>
 .tabwid table{
   border-spacing:0px !important;
   border-collapse:collapse;
@@ -270,12 +334,12 @@ Figure 4.5: Normalfordelingskurve
 .tabwid table tr {
 background-color: transparent;
 }
-</style><div class="tabwid"><style>.cl-92721074{table-layout:auto;width:100%;}.cl-91e40aae{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-91e542c0{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-91e5dee2{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-91e5dee3{background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-91e5dee4{background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-92721074'>
-<thead><tr style="overflow-wrap:break-word;"><td class="cl-91e5dee4"><p class="cl-91e542c0"><span class="cl-91e40aae">Studentnr</span></p></td><td class="cl-91e5dee4"><p class="cl-91e542c0"><span class="cl-91e40aae">Antall</span></p></td><td class="cl-91e5dee4"><p class="cl-91e542c0"><span class="cl-91e40aae">Avvik</span></p></td><td class="cl-91e5dee4"><p class="cl-91e542c0"><span class="cl-91e40aae">Avvik_kvadrert</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-91e5dee2"><p class="cl-91e542c0"><span class="cl-91e40aae">1</span></p></td><td class="cl-91e5dee2"><p class="cl-91e542c0"><span class="cl-91e40aae">1</span></p></td><td class="cl-91e5dee2"><p class="cl-91e542c0"><span class="cl-91e40aae">-1.6</span></p></td><td class="cl-91e5dee2"><p class="cl-91e542c0"><span class="cl-91e40aae">2.56</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-91e5dee2"><p class="cl-91e542c0"><span class="cl-91e40aae">2</span></p></td><td class="cl-91e5dee2"><p class="cl-91e542c0"><span class="cl-91e40aae">2</span></p></td><td class="cl-91e5dee2"><p class="cl-91e542c0"><span class="cl-91e40aae">-0.6</span></p></td><td class="cl-91e5dee2"><p class="cl-91e542c0"><span class="cl-91e40aae">0.36</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-91e5dee2"><p class="cl-91e542c0"><span class="cl-91e40aae">3</span></p></td><td class="cl-91e5dee2"><p class="cl-91e542c0"><span class="cl-91e40aae">3</span></p></td><td class="cl-91e5dee2"><p class="cl-91e542c0"><span class="cl-91e40aae">0.4</span></p></td><td class="cl-91e5dee2"><p class="cl-91e542c0"><span class="cl-91e40aae">0.16</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-91e5dee2"><p class="cl-91e542c0"><span class="cl-91e40aae">4</span></p></td><td class="cl-91e5dee2"><p class="cl-91e542c0"><span class="cl-91e40aae">3</span></p></td><td class="cl-91e5dee2"><p class="cl-91e542c0"><span class="cl-91e40aae">0.4</span></p></td><td class="cl-91e5dee2"><p class="cl-91e542c0"><span class="cl-91e40aae">0.16</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-91e5dee2"><p class="cl-91e542c0"><span class="cl-91e40aae">5</span></p></td><td class="cl-91e5dee2"><p class="cl-91e542c0"><span class="cl-91e40aae">4</span></p></td><td class="cl-91e5dee2"><p class="cl-91e542c0"><span class="cl-91e40aae">1.4</span></p></td><td class="cl-91e5dee2"><p class="cl-91e542c0"><span class="cl-91e40aae">1.96</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-91e5dee2"><p class="cl-91e542c0"><span class="cl-91e40aae">Snitt</span></p></td><td class="cl-91e5dee2"><p class="cl-91e542c0"><span class="cl-91e40aae">2.6</span></p></td><td class="cl-91e5dee2"><p class="cl-91e542c0"><span class="cl-91e40aae"></span></p></td><td class="cl-91e5dee2"><p class="cl-91e542c0"><span class="cl-91e40aae"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-91e5dee3"><p class="cl-91e542c0"><span class="cl-91e40aae">Sum</span></p></td><td class="cl-91e5dee3"><p class="cl-91e542c0"><span class="cl-91e40aae"></span></p></td><td class="cl-91e5dee3"><p class="cl-91e542c0"><span class="cl-91e40aae">0</span></p></td><td class="cl-91e5dee3"><p class="cl-91e542c0"><span class="cl-91e40aae">5.20</span></p></td></tr></tbody></table></div></template>
-<div class="flextable-shadow-host" id="65e0ecef-2aaa-4d8c-95bd-44c7ff38a885"></div>
+</style><div class="tabwid"><style>.cl-f0f93498{table-layout:auto;width:100%;}.cl-f0da6888{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-f0db048c{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-f0dba0a4{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-f0dba0a5{background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-f0dba0a6{background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-f0f93498'>
+<thead><tr style="overflow-wrap:break-word;"><td class="cl-f0dba0a6"><p class="cl-f0db048c"><span class="cl-f0da6888">Studentnr</span></p></td><td class="cl-f0dba0a6"><p class="cl-f0db048c"><span class="cl-f0da6888">Antall</span></p></td><td class="cl-f0dba0a6"><p class="cl-f0db048c"><span class="cl-f0da6888">Avvik</span></p></td><td class="cl-f0dba0a6"><p class="cl-f0db048c"><span class="cl-f0da6888">Avvik_kvadrert</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-f0dba0a4"><p class="cl-f0db048c"><span class="cl-f0da6888">1</span></p></td><td class="cl-f0dba0a4"><p class="cl-f0db048c"><span class="cl-f0da6888">1</span></p></td><td class="cl-f0dba0a4"><p class="cl-f0db048c"><span class="cl-f0da6888">-1.6</span></p></td><td class="cl-f0dba0a4"><p class="cl-f0db048c"><span class="cl-f0da6888">2.56</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-f0dba0a4"><p class="cl-f0db048c"><span class="cl-f0da6888">2</span></p></td><td class="cl-f0dba0a4"><p class="cl-f0db048c"><span class="cl-f0da6888">2</span></p></td><td class="cl-f0dba0a4"><p class="cl-f0db048c"><span class="cl-f0da6888">-0.6</span></p></td><td class="cl-f0dba0a4"><p class="cl-f0db048c"><span class="cl-f0da6888">0.36</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-f0dba0a4"><p class="cl-f0db048c"><span class="cl-f0da6888">3</span></p></td><td class="cl-f0dba0a4"><p class="cl-f0db048c"><span class="cl-f0da6888">3</span></p></td><td class="cl-f0dba0a4"><p class="cl-f0db048c"><span class="cl-f0da6888">0.4</span></p></td><td class="cl-f0dba0a4"><p class="cl-f0db048c"><span class="cl-f0da6888">0.16</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-f0dba0a4"><p class="cl-f0db048c"><span class="cl-f0da6888">4</span></p></td><td class="cl-f0dba0a4"><p class="cl-f0db048c"><span class="cl-f0da6888">3</span></p></td><td class="cl-f0dba0a4"><p class="cl-f0db048c"><span class="cl-f0da6888">0.4</span></p></td><td class="cl-f0dba0a4"><p class="cl-f0db048c"><span class="cl-f0da6888">0.16</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-f0dba0a4"><p class="cl-f0db048c"><span class="cl-f0da6888">5</span></p></td><td class="cl-f0dba0a4"><p class="cl-f0db048c"><span class="cl-f0da6888">4</span></p></td><td class="cl-f0dba0a4"><p class="cl-f0db048c"><span class="cl-f0da6888">1.4</span></p></td><td class="cl-f0dba0a4"><p class="cl-f0db048c"><span class="cl-f0da6888">1.96</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-f0dba0a4"><p class="cl-f0db048c"><span class="cl-f0da6888">Snitt</span></p></td><td class="cl-f0dba0a4"><p class="cl-f0db048c"><span class="cl-f0da6888">2.6</span></p></td><td class="cl-f0dba0a4"><p class="cl-f0db048c"><span class="cl-f0da6888"></span></p></td><td class="cl-f0dba0a4"><p class="cl-f0db048c"><span class="cl-f0da6888"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-f0dba0a5"><p class="cl-f0db048c"><span class="cl-f0da6888">Sum</span></p></td><td class="cl-f0dba0a5"><p class="cl-f0db048c"><span class="cl-f0da6888"></span></p></td><td class="cl-f0dba0a5"><p class="cl-f0db048c"><span class="cl-f0da6888">0</span></p></td><td class="cl-f0dba0a5"><p class="cl-f0db048c"><span class="cl-f0da6888">5.20</span></p></td></tr></tbody></table></div></template>
+<div class="flextable-shadow-host" id="446e45f7-5c60-4d23-b8d8-24d17a11da66"></div>
 <script>
-var dest = document.getElementById("65e0ecef-2aaa-4d8c-95bd-44c7ff38a885");
-var template = document.getElementById("59c91a30-b097-4064-9a7d-d64fb7b050ec");
+var dest = document.getElementById("446e45f7-5c60-4d23-b8d8-24d17a11da66");
+var template = document.getElementById("9cebcb26-81bf-487d-bc7d-89411962350f");
 var caption = template.content.querySelector("caption");
 if(caption) {
   caption.style.cssText = "display:block;text-align:center;";
@@ -294,65 +358,65 @@ fantome.appendChild(templateContent);
 <div id="normalfordeling-standardavvik-og-forventninger" class="section level3" number="4.1.2">
 <h3><span class="header-section-number">4.1.2</span> Normalfordeling, standardavvik og forventninger</h3>
 <p>Vi kan nå se nærmere på normalfordelingen.</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-8"></span>
-<img src="SPC-book_files/figure-html/unnamed-chunk-8-1.png" alt="Normalfordeling med 1 standardavvik" width="672" />
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-26"></span>
+<img src="SPC-book_files/figure-html/unnamed-chunk-26-1.png" alt="Normalfordeling med 1 standardavvik" width="672" />
 <p class="caption">
 Figure 4.6: Normalfordeling med 1 standardavvik
 </p>
 </div>
 <p>Ett standardavvik “over og under” 0 (= det skraverte området i grafen over) innebærer at det er 68 % sannsynlighet for at en tilfeldig valgt x-verdi befinner seg i dette intervallet. Vi kan vise det samme for 2 og 3 standardavvik:</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-9"></span>
-<img src="SPC-book_files/figure-html/unnamed-chunk-9-1.png" alt="Normalfordeling med 2 standardavvik" width="672" />
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-27"></span>
+<img src="SPC-book_files/figure-html/unnamed-chunk-27-1.png" alt="Normalfordeling med 2 standardavvik" width="672" />
 <p class="caption">
 Figure 4.7: Normalfordeling med 2 standardavvik
 </p>
 </div>
-<p>To standardavvik “over og under” 0 (= det skraverte området i grafen over) innebærer at det er 95 % sannsynlighet for at en tilfeldig valgt x-verdi befinner seg i dette intervallet. Vi kan finne arealet mellom x=-2 og x=2, som er 0.9544997<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>.</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-10"></span>
-<img src="SPC-book_files/figure-html/unnamed-chunk-10-1.png" alt="Normalfordeling med 3 standardavvik" width="672" />
+<p>To standardavvik “over og under” 0 (= det skraverte området i grafen over) innebærer at det er 95 % sannsynlighet for at en tilfeldig valgt x-verdi befinner seg i dette intervallet. Vi kan finne arealet mellom x=-2 og x=2, som er 0.9544997<a href="#fn11" class="footnote-ref" id="fnref11"><sup>11</sup></a>.</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-28"></span>
+<img src="SPC-book_files/figure-html/unnamed-chunk-28-1.png" alt="Normalfordeling med 3 standardavvik" width="672" />
 <p class="caption">
 Figure 4.8: Normalfordeling med 3 standardavvik
 </p>
 </div>
-<p>Tre standardavvik “over og under” 0 (= det skraverte området i grafen over) innebærer at det er 99.7 % sannsynlighet for at en tilfeldig valgt x-verdi befinner seg i dette intervallet. Vi kan finne arealet mellom x=-3 og x=3, som er 0.9973002<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>. Dette utgjør et kjernepunkt i statistisk prosesskontroll som vi vil komme mye tilbake til.</p>
-<p>Oppsummert kan vi framstille normalfodeling og standardavvik slik <span class="citation">(Hartmann, Krois, and Waske 2018)</span>:</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-11"></span>
-<img src="SPC-book_files/figure-html/unnamed-chunk-11-1.png" alt="Normalfordeling med standardavvik" width="672" />
+<p>Tre standardavvik “over og under” 0 (= det skraverte området i grafen over) innebærer at det er 99.7 % sannsynlighet for at en tilfeldig valgt x-verdi befinner seg i dette intervallet. Vi kan finne arealet mellom x=-3 og x=3, som er 0.9973002<a href="#fn12" class="footnote-ref" id="fnref12"><sup>12</sup></a>. Dette utgjør et kjernepunkt i statistisk prosesskontroll som vi vil komme mye tilbake til.</p>
+<p>Oppsummert kan vi framstille normalfodeling og standardavvik slik <span class="citation">(Hartmann, Krois, and Waske 2018b)</span>:</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-29"></span>
+<img src="SPC-book_files/figure-html/unnamed-chunk-29-1.png" alt="Normalfordeling med standardavvik" width="672" />
 <p class="caption">
 Figure 4.9: Normalfordeling med standardavvik
 </p>
 </div>
-<p>Som nevnt er mange fenomener i hverdagen normalfordelte, eller nærme nok normalfordeling til at vi kan bruke normalfordeling som teoretisk modell for observerte data.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> Det finnes imidlertid mange tilfeller der vi ikke kan bruke normalfordelingen. Hvis dataene er sterkt asymmetriske vil ikke reglene for normalfordeling som vi har skissert ovenfor gjelde.<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a> Noen av de er viktige for statistisk prosesskontroll, og de vil vi se på i de følgende avsnittene.</p>
+<p>Som nevnt er mange fenomener i hverdagen normalfordelte, eller nærme nok normalfordeling til at vi kan bruke normalfordeling som teoretisk modell for observerte data.<a href="#fn13" class="footnote-ref" id="fnref13"><sup>13</sup></a> Det finnes imidlertid mange tilfeller der vi ikke kan bruke normalfordelingen. Hvis dataene er sterkt asymmetriske vil ikke reglene for normalfordeling som vi har skissert ovenfor gjelde.<a href="#fn14" class="footnote-ref" id="fnref14"><sup>14</sup></a> Noen av de er viktige for statistisk prosesskontroll, og de vil vi se på i de følgende avsnittene.</p>
 </div>
 </div>
 <div id="binomialfordeling" class="section level2" number="4.2">
 <h2><span class="header-section-number">4.2</span> Binomialfordeling</h2>
 <p>En distribusjon hvor det kun er to mulige utfall av en hendelse kalles en binomial fordeling. Et myntkast er en slik hendelse (gitt at vi ser bort fra den fysiske muligheten at mynten kan lande stående på høykant). Levende eller død kan også være et eksempel på dette. Det ene utfallet utelukker det andre, men de er uavhengige fordi resultatet i ett myntkast ikke påvirker resultatet i neste myntkast. Alle myntkastene må derimot være identiske, det vil si sannsynligheten for det ene eller det andre resultatet er lik hver gang forsøket eller myntkastet gjennomføres. Hvis vi har lik sannsynlighet, kan en tilfeldig generert binomial distribusjon se slik ut:</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-12"></span>
-<img src="SPC-book_files/figure-html/unnamed-chunk-12-1.png" alt="Binomialfordeling med lik sannsynlighet" width="672" />
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-30"></span>
+<img src="SPC-book_files/figure-html/unnamed-chunk-30-1.png" alt="Binomialfordeling med lik sannsynlighet" width="672" />
 <p class="caption">
 Figure 4.10: Binomialfordeling med lik sannsynlighet
 </p>
 </div>
 <p>I diagrammet over vises en sannsynlighetsfordeling for en binomial fordeling der utfallene suksess/fiasko har lik sannsynlighet. Hvis vi gjennomfører en aktivitet med disse karakteristika 20 ganger kan vi bruke sannsynlighetsfordelingen til å skape en forventning om sannsynligheten for antall suksesser/fiaskoer. Hver gang vi gjennomfører aktiviteten blir det enten suksess eller fiasko. Hvis vi har 50% sjanse for suksess eller feil hver gang vi gjennomfører aktiviteten er sannsynligheten for suksess lik som sannsynligheten for fiasko. Vi kan da forvente at det er størst sannsynlighet at vi i 10 av 20 tilfeller får suksess. Det er liten sannsynlighet for at vi enten får suksess i 0 eller 20 av 20 ganger vi gjør aktiviteten.</p>
 <p>Det er imidlertid verdt å merke seg at de to utfallene ikke trenger å ha lik sannsynlighet. Da vil den binomiale distribusjonen se annerledes ut:</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-13"></span>
-<img src="SPC-book_files/figure-html/unnamed-chunk-13-1.png" alt="Binomialfordeling med ulik sannsynlighet" width="672" />
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-31"></span>
+<img src="SPC-book_files/figure-html/unnamed-chunk-31-1.png" alt="Binomialfordeling med ulik sannsynlighet" width="672" />
 <p class="caption">
 Figure 4.11: Binomialfordeling med ulik sannsynlighet
 </p>
 </div>
 <p>Her har vi bare 20% sannsynlighet for suksess, og fordelingen av sannsynligheter vil se annerledes ut. Med 20% sannsynlighet for suksess er det veldig liten sannsynlighet for at vi vil få 10 eller flere suksesser hvis vi gjør forsøket 20 ganger. Det er størst sannsynlighet for å få 4 suksesser.</p>
 <p>Et terningkast (med en vanlig terning med 6 sider) – som ikke er tuklet med – har lik sannsynlighet for å lande på hhv 1,2,3,4,5 og 6. Det vil si det er 1/6 sannsynlighet for 1, 1/6 sannsynlighet for 2 osv. Hvis vi kaster denne terningen 10 ganger kan resultatet se slik ut:</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-14"></span>
-<img src="SPC-book_files/figure-html/unnamed-chunk-14-1.png" alt="10 terningkast" width="672" />
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-32"></span>
+<img src="SPC-book_files/figure-html/unnamed-chunk-32-1.png" alt="10 terningkast" width="672" />
 <p class="caption">
 Figure 4.12: 10 terningkast
 </p>
 </div>
 <p>Vi ser at vi ikke fikk noen 2’ere og 5’ere. Dette kan vi forvente når vi bare har 10 terningkast. Hvis vi imidlertid kaster terningen 100 ganger vil det være svært liten sannsynlighet for å ikke få «treff» på alle 6 verdiene på terningen, og vi burde kunne forvente at vi får en ganske jevn fordeling på alle 6 verdiene. Nedenfor vises resultatet av 100 terningkast.</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-15"></span>
-<img src="SPC-book_files/figure-html/unnamed-chunk-15-1.png" alt="100 terningkast" width="672" />
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-33"></span>
+<img src="SPC-book_files/figure-html/unnamed-chunk-33-1.png" alt="100 terningkast" width="672" />
 <p class="caption">
 Figure 4.13: 100 terningkast
 </p>
@@ -376,8 +440,8 @@ Figure 4.13: 100 terningkast
 ##       1       2       3       4       5       6 
 ## 1000492  998250 1000216 1000832 1001422  998788</code></pre>
 <p>Hvis vi setter resultatet fra 6 000 000 terningkast inn i et histogram ser vi at resultatet er svært nærme hva vi teoretisk vil forvente:</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-20"></span>
-<img src="SPC-book_files/figure-html/unnamed-chunk-20-1.png" alt="6 000 000 terningkast" width="672" />
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-38"></span>
+<img src="SPC-book_files/figure-html/unnamed-chunk-38-1.png" alt="6 000 000 terningkast" width="672" />
 <p class="caption">
 Figure 4.14: 6 000 000 terningkast
 </p>
@@ -388,16 +452,16 @@ Figure 4.14: 6 000 000 terningkast
 <p>Poissonfordelinger finnes i situasjoner der hendelser skjer vilkårlig i tid (og rom) hvor vi er interessert i kun antallet hendelser i et gitt tidsintervall. Vi kan f.eks. være interessert i hvor mange supporthenvendelser vi får i løpet av en time, antallet feilmedisineringer per uke, hvor mange besøk avdelingen får per dag o.l. Andre eksempler kan være antall trafikkulykker langs en angitt veistrekning, antall elgpåkjørlser på en togstrekning, eller antall av en gitt art fugler i et definert område i et definert tidsrom. En hendelse må være uavhengig tidsmessig av andre hendelser (det er altså ikke økt sannsynlighet for at en hendelse vil skje fordi en tilsvarende hendelse akkurat har skjedd), sannsynligheten for en hendelse i et kort perspektiv er lik sannsynligheten over et lengre perspektiv, og ettersom et tidsintervall blir kortere og kortere vil sannsynligheten for hendelsen gå mot null.</p>
 <p>Poissonfordeling uttrykker sannsynligheten for at et gitt antall hendelser inntreffer i et gitt tidsintervall (eller et gitt geografisk domene) <em>og</em> at vi kjenner gjennomsnittlig hvor ofte hendelsen inntreffer. Denne sannsynligheten uttrykkes som en lambdaverdi (<span class="math inline">\(\lambda\)</span>).</p>
 <p>Eksempelet under er hentet fra <span class="citation">Soage (2020)</span>:</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-21"></span>
-<img src="SPC-book_files/figure-html/unnamed-chunk-21-1.png" alt="Poissonfordelinger" width="672" />
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-39"></span>
+<img src="SPC-book_files/figure-html/unnamed-chunk-39-1.png" alt="Poissonfordelinger" width="672" />
 <p class="caption">
 Figure 4.15: Poissonfordelinger
 </p>
 </div>
 <p>Ut fra hvilken <span class="math inline">\(\lambda\)</span>-verdi vi setter kan vi si noe om sannsynligheten for at et antall hendelser inntreffer.</p>
 <p><span class="citation">Ugarte, Militino, and Arnholt (2016)</span> eksemplifiserer Poissonfordeling ved å vise til at det i gjennomsnitt skåres 2,5 mål i en VM-kamp i fotball. Denne situasjonen tilfredsstiller forutsetningene for å bruke Possionfordeling.Vi kan grafisk framstille sannsynlighetsfordeingen slik:</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-22"></span>
-<img src="SPC-book_files/figure-html/unnamed-chunk-22-1.png" alt="Poissonfordeling mål i VM-kamp fotball" width="672" />
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-40"></span>
+<img src="SPC-book_files/figure-html/unnamed-chunk-40-1.png" alt="Poissonfordeling mål i VM-kamp fotball" width="672" />
 <p class="caption">
 Figure 4.16: Poissonfordeling mål i VM-kamp fotball
 </p>
@@ -415,8 +479,8 @@ Figure 4.16: Poissonfordeling mål i VM-kamp fotball
 <div id="geometrisk-fordeling" class="section level2" number="4.4">
 <h2><span class="header-section-number">4.4</span> Geometrisk fordeling</h2>
 <p>En geometrisk fordeling er en diskret fordeling der man teller antall hendelser/forsøk inntil et gitt resultat forekommer. Resultatet er suksess eller feil, altså hvor mange ganger man har en hendelse før man får en suksess eller feil (avhengig av hva man måler). Et eksempel er hvor mange ganger man må kaste to terninger for å få 11 i sum. Man kaster da to terninger til første gang man får 11 (= suksess). En geometrisk distribusjon kan se slik ut (p = 0,4):</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-23"></span>
-<img src="SPC-book_files/figure-html/unnamed-chunk-23-1.png" alt="Geometrisk fordeling" width="672" />
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-41"></span>
+<img src="SPC-book_files/figure-html/unnamed-chunk-41-1.png" alt="Geometrisk fordeling" width="672" />
 <p class="caption">
 Figure 4.17: Geometrisk fordeling
 </p>
@@ -427,8 +491,8 @@ Figure 4.17: Geometrisk fordeling
 <div id="eksponensiell-fordeling" class="section level2" number="4.5">
 <h2><span class="header-section-number">4.5</span> Eksponensiell fordeling</h2>
 <p>En tilfeldig kontinuerlig variabel kan sies å være analog til den geometriske distribusjonen, men for kontinuerlige data. Den eksponensielle distribusjonen brukes ofte for å modellere tid mellom to hendelser. I statistisk prosesskontroll vil vi typisk bruke denne distribusjonen hvis vi måler tid mellom to sjeldne hendelser. Hvis vi f.eks. måler tiden mellom uventet dødsfall som følge av en type rutineoperasjon på et sykehus vil den ha en eksponensiell distribusjon hvis sannsynligheten for at hendelsen inntreffer innenfor t gitt tidsintervall er omtrentlig proporsjonal med lengde på tidsintervallet <span class="citation">(Taboga 2017)</span>. Eksponensielle fordelinger har samme grunnform, men kan ha ulik bratthet avhengig av den såkalte lamdaverdien (= en parameter for raten av hendelser). Lambdaverdi er en parameter for hvor ofte hendelsene forventes å skje.</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-24"></span>
-<img src="SPC-book_files/figure-html/unnamed-chunk-24-1.png" alt="Eksponensiell fordeling" width="672" />
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-42"></span>
+<img src="SPC-book_files/figure-html/unnamed-chunk-42-1.png" alt="Eksponensiell fordeling" width="672" />
 <p class="caption">
 Figure 4.18: Eksponensiell fordeling
 </p>
@@ -438,11 +502,11 @@ Figure 4.18: Eksponensiell fordeling
 </div>
 <div class="footnotes">
 <hr />
-<ol start="1">
-<li id="fn1"><p>R-kode for utregning av areal mellom to x-verdier i en normalfordeing (=sannsynlighet for at en gitt x-verdi ligger i intervallet mellom de to x-verdiene): pnorm(2,mean=0,sd=1)-pnorm(-2,mean=0,sd=1)<a href="datatyper-og-datafordelinger.html#fnref1" class="footnote-back">↩︎</a></p></li>
-<li id="fn2"><p>pnorm(3,mean=0,sd=1)-pnorm(-3,mean=0,sd=1)<a href="datatyper-og-datafordelinger.html#fnref2" class="footnote-back">↩︎</a></p></li>
-<li id="fn3"><p>Normalfordelingen er dessuten en god tilnærming til binomialfordeling med høyt antall observasjoner (høy n), og også til poissonfordeling med høy frekvens. Dette forfølger vi imidlertid ikke videre i dette kompendiet.<a href="datatyper-og-datafordelinger.html#fnref3" class="footnote-back">↩︎</a></p></li>
-<li id="fn4"><p>Chebyshevs teorem vil imidlertid gjelde for alle datasett. Teoremet belyses i eget vedlegg for de spesielt interesserte<a href="datatyper-og-datafordelinger.html#fnref4" class="footnote-back">↩︎</a></p></li>
+<ol start="11">
+<li id="fn11"><p>R-kode for utregning av areal mellom to x-verdier i en normalfordeing (=sannsynlighet for at en gitt x-verdi ligger i intervallet mellom de to x-verdiene): pnorm(2,mean=0,sd=1)-pnorm(-2,mean=0,sd=1)<a href="datatyper-og-datafordelinger.html#fnref11" class="footnote-back">↩︎</a></p></li>
+<li id="fn12"><p>pnorm(3,mean=0,sd=1)-pnorm(-3,mean=0,sd=1)<a href="datatyper-og-datafordelinger.html#fnref12" class="footnote-back">↩︎</a></p></li>
+<li id="fn13"><p>Normalfordelingen er dessuten en god tilnærming til binomialfordeling med høyt antall observasjoner (høy n), og også til poissonfordeling med høy frekvens. Dette forfølger vi imidlertid ikke videre i dette kompendiet.<a href="datatyper-og-datafordelinger.html#fnref13" class="footnote-back">↩︎</a></p></li>
+<li id="fn14"><p>Chebyshevs teorem vil imidlertid gjelde for alle datasett. Teoremet belyses i eget vedlegg for de spesielt interesserte<a href="datatyper-og-datafordelinger.html#fnref14" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
