@@ -11,7 +11,7 @@ Shewhart baserte sin tilnærming til kontrolldiagram på matematisk teori (se ve
 Et kontrolldiagram kan se slik ut (R pakken *qicharts2* [@anhojQicharts2QualityImprovement2020]:
 ```{r echo = FALSE, message = FALSE, warning=FALSE, fig.cap = "Eksempel kontrolldiagram i *qicharts*"}
 
-pacman::p_load(qicharts2, tidyverse)
+pacman::p_load(qicharts2, tidyverse, writexl)
 
 set.seed(81)
 
@@ -20,6 +20,10 @@ kontr_eks <- (rnorm(24))
 kontr1 <- qic(kontr_eks, chart = 'i', title = "Eksempel på kontrolldiagram", subtitle = "Tilfeldig genererte tall", ylab = "Verdi", xlab = "Hendelse") 
 
 kontr1 + geom_point(size = 2)
+
+kontr_eks <- as_tibble(kontr_eks)
+
+write_xlsx(kontr_eks, "kontr-eks.xlsx")
 
 ```
 Observasjonene/målingene plottes som punkter sekvensielt i tid. Snittet er -0,2, UCL 2,2 og LCL -2,7.

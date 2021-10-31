@@ -4,7 +4,7 @@ bibliography: referanser.bib
 
 # Hvorfor er tid viktig?
 
-La oss anta at et sykehus har en prosess der man har registrert antall avvik gjennom året [^kap_2-1]. I 2019 hadde man 30 avvik i snitt pr måned. Ledelsen mente mot slutten av 2019 at dette var for høyt og bestemte at man skulle innføre en ny prosedyre fra årsskiftet. Ved overgangen til 2021 så man at man gjennom 2020 hadde ca. 24 avvik pr måned i snitt ^[Eksempelet er modifisert fra @Carey2003. Se også @anhojStatistiskProcesstyringSundhedsvaesenet2009 og @NHS2009] ^[Hvis du ønsker å bruke R og koden må du laste ned fila og lagre den i samme mappe som din R-fil/ditt R-prosjekt ligger - se forøvrig vedlegg om installasjon av R/RStudio for tips om organisering av filer]:
+La oss anta at et sykehus har en prosess der man har registrert antall avvik gjennom året. I 2019 hadde man 30 avvik i snitt pr måned. Ledelsen mente mot slutten av 2019 at dette var for høyt og bestemte at man skulle innføre en ny prosedyre fra årsskiftet. Ved overgangen til 2021 så man at man gjennom 2020 hadde ca. 24 avvik pr måned i snitt ^[Eksempelet er modifisert fra @Carey2003. Se også @anhojStatistiskProcesstyringSundhedsvaesenet2009 og @NHS2009] ^[Hvis du ønsker å bruke R og koden må du laste ned fila og lagre den i samme mappe som din R-fil/ditt R-prosjekt ligger - se forøvrig vedlegg om installasjon av R/RStudio for tips om organisering av filer]:
 
 ```{r echo = FALSE, fig.cap = "Eksempel på prosess over 2 år"}
 pacman::p_load(ggplot2, readxl, tidyverse, ggpubr, dplyr, hrbrthemes)

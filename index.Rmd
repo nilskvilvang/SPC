@@ -4,6 +4,7 @@ author: ""
 date: "Siste endring `r format(Sys.time(), '%d %B, %Y')`"
 site: bookdown::bookdown_site
 bibliography: referanser.bib
+
 ---
 
 # Introduksjon {.unnumbered}
