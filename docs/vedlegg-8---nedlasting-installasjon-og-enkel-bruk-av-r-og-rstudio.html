@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | Statistisk prosesskontroll</title>
-  <meta name="description" content="Page not found | Statistisk prosesskontroll" />
+  <title>Vedlegg 8 - Nedlasting, installasjon og enkel bruk av R og RStudio | Statistisk prosesskontroll</title>
+  <meta name="description" content="Vedlegg 8 - Nedlasting, installasjon og enkel bruk av R og RStudio | Statistisk prosesskontroll" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | Statistisk prosesskontroll" />
+  <meta property="og:title" content="Vedlegg 8 - Nedlasting, installasjon og enkel bruk av R og RStudio | Statistisk prosesskontroll" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | Statistisk prosesskontroll" />
+  <meta name="twitter:title" content="Vedlegg 8 - Nedlasting, installasjon og enkel bruk av R og RStudio | Statistisk prosesskontroll" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-
+<link rel="prev" href="vedlegg-7---anderson-darling-test-for-normalitet.html"/>
+<link rel="next" href="vedlegg-9---session-info.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -184,19 +184,67 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="vedlegg-8---nedlasting-installasjon-og-enkel-bruk-av-r-og-rstudio" class="section level1 unnumbered">
+<h1>Vedlegg 8 - Nedlasting, installasjon og enkel bruk av R og RStudio</h1>
+<p>Heniskten med dette vedlegget er å vise nedlasting og installasjon av R og RStudio, samt den helt grunnleggende bruken av R i RStudio. Målet er at dere skal kunne nok om R og RStudio til å kunne hente koder i vedlegg 1 og kjøre dette selv når dere jobber dere gjennom boka. Dere skal altså kunne replikere eksemplene i boka gjennom kode i vedlegg 1 ved å kjøre disse i RStudio på egen maskin.</p>
+<p>Det finnes en god del gode ressurser for introduksjon til R, både på nett og i bokform. Ofte trekkes <a href="https://r4ds.had.co.nz/">R for Data Science</a> av Garret Grolemund og Hadley Wickham fram som et veldig godt sted å lære R. Vi har hatt stor nytte av denne boka selv, ikke minst fordi den pivoterer rundt Hadleys tilnærming til R og data gjennom pakken <em>tidyverse</em>.</p>
+<p>En annen god introduksjon til R er <a href="https://cran.r-project.org/doc/manuals/R-intro.pdf">An Introdcution to R</a> av Venables, Smith og R Core Team.</p>
+<p>De to siste ressursene vi vil nevne her er Derek Sondereggers <a href="https://dereksonderegger.github.io/570L/index.html">A Sufficient Introduction to R</a> og <a href="https://bookdown.org/ndphillips/YaRrr/">YaRrr! The Pirate’s Guide to R</a>. Det finnes som sagt mange andre nettressurser, ikke minst mange gode “how-to” videoer på YouTube og Vimeo. Dette fører oss til avslutningen på denne korte innledningen og et kjernebudskap når det gjelder R:</p>
+<ul>
+<li>Du finner <strong>alltid</strong> svar på noe du lurer på eller ikke får til i R på nett… (delekulturen er enorm)</li>
+</ul>
+<div id="nedlasting-og-installasjon-av-r" class="section level2 unnumbered">
+<h2>Nedlasting og installasjon av R</h2>
+<p>Første steg er å laste ned selve R. Det gjør du ved å gå til <a href="https://cran.uib.no/">denne nettsiden</a> og velge lenke ut fra ditt operativsystem (Windows, MacOS eller Linux):</p>
+<p><img src="cran_uib.png" /></p>
+<p>I det følgende har jeg valgt Windows. Velg deretter “install R for the first time” (antar at du ikke allerede har R på din maskin…):</p>
+<p><img src="cran_uib_firsttime.png" />
+Og deretter:</p>
+<p><img src="cran_uib_downloadr.png" />
+Deretter er det i grunnen bare å følge “vanlige” prosedyrer (= følg instruksjonene) for å installere R på din maskin. Når du har installert kan det være lurt å se at det kjører. PÅ en PC (Win 10) kan du trykke på Windowssymbolet nederst til venstre på skjermen og deretter scrolle nedover i listen over apper (hos meg ser det slik ut):</p>
+<p><img src="R_start.png" /></p>
+<p>Når du åpner R får du opp et tilsvarende skjermbilde som dette:</p>
+<p><img src="R_openingwindow.png" /></p>
+<p>Jeg kjører altså versjon 4.0.5. R oppdateres jevnlig, og i skrivende stund er nyeste versjon 4.1.2. Det er ingen krise om man ikke kjører helt nyeste versjon av R, man skal være obs på at ved oppgradering av R-versjon kan man risikere å miste pakker (ingen krise - kan reinstalleres i de fleste tilfeller så lenge pakkene støtter den nye versjonen av R). For de som er interesserte i dette kan <a href="https://rfortherestofus.com/2020/09/how-to-update-rstudio-r-packages/">How to Keep Your R Packages Up to Date</a> gi nyttig informasjon.</p>
+<p>Når du nå har fått installert R er sjansene store for at du aldri åpner R igjen - jeg har siden installasjon i hvert fall aldri hatt behov for å kjøre R i sin egen form fordi jeg heldigvis har RStudio som legger seg utenpå R som et grafisk brukergrensesnitt (og gjør R-arbeid og livet langt enklere).</p>
+</div>
+<div id="nedlasting-og-installasjon-av-rstudio" class="section level2 unnumbered">
+<h2>Nedlasting og installasjon av RStudio</h2>
+<p>RStudio er mye mer enn “bare” et grafisk brukergrensesnitt (vel, egentlig en “IDE” - “Integrated development environment”), men for oss i denne konteksten er RStudio programmet vi jobber med R i. I tillegg til å være utrolig nyttig er gratisversjonen alt vi trenger.</p>
+<p>Nedlasting skjer <a href="https://www.rstudio.com/products/rstudio/download/">her</a></p>
+<p>På denne siden velger du “RStudio Desktop”:</p>
+<p><img src="RStudio_download.png" />
+Også her finnes det versjoner for ulike operativsystemer (Windows, macOS og ulike Linuxdistribusjoner):</p>
+<p><img src="RStudio_os.png" /></p>
+<p>Deretter er det som for R bare å følge installasjonsveiledningen undervegs.</p>
+</div>
+<div id="rstudio" class="section level2 unnumbered">
+<h2>RStudio</h2>
+<p>Når du åpner RStudio første gang vil du trolig se dette:</p>
+<p><img src="RStudio_openingwindow.png" />
+Som for R vil du etter å ha tatt programmet i bruk sjeldent se akkurat dette oppsettet siden RStudio normalt vil åpne med siste økt i minnet (så lenge “ting” er lagret). Uansett - i vår kontekst ønsker vi å åpne en RMarkdown fil som vil vil bruke til å skrive inn/kopiere inn tekst og kode (hele denne boka er skrevet i RMarkdown i RStudio).</p>
+<p>Vi går da opp i menyen og velger å lage et nytt RMarkdown dokument:</p>
+<p><img src="RStudio_newRMarkdown.png" />
+Du får da opp et nytt vindu:</p>
+<p><img src="RStudio_newRMarkdown_valg.png" /></p>
+<p>Her kan du bare la alt stå som foreslått, med mindre du ønsker å lage din egen tittel. RMarkdowndokumentet opprettes og ser slik ut (jeg har uthevet en del med blått - dette vil ikke være der hos dere):</p>
+<p><img src="RStudio_newRMarkdown_defaults.png" />
+Det som er uthevet i blått er informerende tekst RStudio lager som en slags introduksjon til RMarkdown. Du kan kjøre de to eksemplene som gis og se resultatet. Etter første gang vil du trolig bare ønske å merke alt slik jeg har gjort og slette alt. Merk: Du må ikke slette det som står øverst mellom de tre horisontale strekene (title:, author:, date: og output:). Når du har blitt mer dreven i RMarkdown kan du fiffe med dette også, men inntil videre er det en fordel å bare la det være.</p>
+<div id="grunnleggende-bruk-av-rstudio" class="section level3 unnumbered">
+<h3>Grunnleggende bruk av RStudio</h3>
+<p>RStudio er organisert i fire vinduer for å forenkle arbeidet.</p>
+<p><img src="RStudio_4deler.png" /></p>
+
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-
+<a href="vedlegg-7---anderson-darling-test-for-normalitet.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="vedlegg-9---session-info.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -227,7 +275,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/nilskvilvang/SPC/edit/master/%s",
+"link": "https://github.com/nilskvilvang/SPC/edit/master/XX_Vedlegg_8_R-RStudio.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -235,7 +283,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/nilskvilvang/SPC/blob/master/%s",
+"link": "https://github.com/nilskvilvang/SPC/blob/master/XX_Vedlegg_8_R-RStudio.Rmd",
 "text": null
 },
 "download": null,
