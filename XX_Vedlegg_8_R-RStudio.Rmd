@@ -70,6 +70,28 @@ Det som er uthevet i blått er informerende tekst RStudio lager som en slags int
 
 ### Grunnleggende bruk av RStudio {.unnumbered}
 
+**Video her**
+
 RStudio er organisert i fire vinduer for å forenkle arbeidet.
 
 ![](RStudio_4deler.png)
+I tekst og kodevinduet skrives - ikke overraskende - tekst og kode. Vanlig tekst skrives rett inn som i andre teksteditorer, men formatteringen er annerledes enn i f.eks. Word, men siden formålet her er å kunne kjøre kodeeksempler går vi ikke nærmere inn på dette her. 
+Kode skrives inn i egne kodebolker. Det enkleste for å se framgangsmåten er å ta en titt på denne **videolink her** videoen som viser framgangsmåten steg for steg. 
+
+I vedlegg 1 har vi gjengitt kode for ulike analyser, plott osv. En kodeblokk i RMarkdown ser slik ut:
+
+![](RMarkdown_codechunk.png)
+For å kjøre denne kodeblokken (alle kodelinjene i blokken) kan vi trykke på Den grønne trekantpila i øverste høyre hjørne av kodeblokken. Hvis vi kun vil kjøre enkelte linjer av kodeblokken kan vi markere den/de linjene vi vil kjøre og trykke på samme trekantpil. 
+
+Noen ganger vil vi oppleve at vi får en feilmelding - R vil ikke kjøre hele koden fordi det er noe feil i den. Det kan se slik ut:
+
+![](RMarkdown_feil.png)
+RStudio vil markere med en rød strek til venstre for kodelinjene hvor den ikke forstår koden. I tillegg vil RStudio gi informajson om hva den ikke skjønner. Her kan vi umiddelbart legge til at det ikke er alltid det er så lett å forstå disse feilmeldingene. I eksempelet over vil vi imidlertid se at R ikke finner objektet "eksempelrun" som vi ber R gjøre noe med. Dette skyldes at vi lager dette objektet (datasettet) i kodeblokken over (i det virkelige tilfellet) og når vi ikke har kjørt denne tidligere kodeblokka er objektet ikke laget i vårt eksempel her. R kan naturligvis ikke behandle et objekt som ikke finnes. R er befriende logisk sånn sett...
+Når vi først kjører den tidligere kodeblokka og deretter gjentar koden på bildet over får vi:
+
+![](Rmarkdown_feil_rettet.png)
+Vi håper selvsagt dere ikke vil oppleve problemer med å kjøre eksempelkodene brukt i denne boka og som er gitt i vedlegg 1. Det kan likevel hende selvsagt, og i så fall ber vi om tilbakemelding på dette - men som sagt er hensikten i denn ekonteksten kun å kjøre eksemplene, alle andre spørsmål om R/RStudio/RMarkdown må vi nesten henvise til andre hjelpemidler (som tidligere nevnt er Google et godt sted å begynne siden det finnes et svar på de fleste R/RStudio/RMarkdown relaterte spørsmål ute på den store vebben). 
+
+
+
+

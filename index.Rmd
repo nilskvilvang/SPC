@@ -11,7 +11,7 @@ bibliography: referanser.bib
 
 Denne boka gir en introduksjon til statistisk prosesskontroll (SPC) som element i kontinuerlig kvalitetsarbeid.
 
-Innholdet er under kontinuerlig utvikling. Tilbakemeldinger og innspill bes gitt til [Nils Kvilvang](mailto:nils.kvilvang@inn.no)
+Innholdet er under utvikling og oppdateres jevnlig om enn noe uregelmessig. Tilbakemeldinger og innspill bes gitt til [Nils Kvilvang](mailto:nils.kvilvang@inn.no)
 
 ![Bilde: Colourbox.com](SPC_front_cover.JPG)
 
