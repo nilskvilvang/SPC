@@ -12,6 +12,8 @@ De to siste ressursene vi vil nevne her er Derek Sondereggers [A Sufficient Intr
 
 ## Nedlasting og installasjon av R {.unnumbered}
 
+Vi har laget en kort video som viser nedlasting og installasjon av R og RStudio som ligger [her](https://vimeo.com/646555925)
+
 Første steg er å laste ned selve R. Det gjør du ved å gå til [denne nettsiden](https://cran.uib.no/) og velge lenke ut fra ditt operativsystem (Windows, MacOS eller Linux):
 
 ![](cran_uib.png)
@@ -19,6 +21,7 @@ Første steg er å laste ned selve R. Det gjør du ved å gå til [denne nettsid
 I det følgende har jeg valgt Windows. Velg deretter "install R for the first time" (antar at du ikke allerede har R på din maskin...):
 
 ![](cran_uib_firsttime.png)
+
 Og deretter:
 
 ![](cran_uib_downloadr.png)
@@ -69,8 +72,6 @@ Her kan du bare la alt stå som foreslått, med mindre du ønsker å lage din eg
 Det som er uthevet i blått er informerende tekst RStudio lager som en slags introduksjon til RMarkdown. Du kan kjøre de to eksemplene som gis og se resultatet. Etter første gang vil du trolig bare ønske å merke alt slik jeg har gjort og slette alt. Merk: Du må ikke slette det som står øverst mellom de tre horisontale strekene (title:, author:, date: og output:). Når du har blitt mer dreven i RMarkdown kan du fiffe med dette også, men inntil videre er det en fordel å bare la det være. 
 
 ### Grunnleggende bruk av RStudio {.unnumbered}
-
-**Video her**
 
 RStudio er organisert i fire vinduer for å forenkle arbeidet.
 

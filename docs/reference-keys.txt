@@ -96,5 +96,3 @@ imr-xmr
 xbarr
 xbars
 t-diagram
-tab:unnamed-chunk-1
-nedlasting
