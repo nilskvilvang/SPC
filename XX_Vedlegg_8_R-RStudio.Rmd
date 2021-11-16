@@ -90,7 +90,8 @@ RStudio vil markere med en rød strek til venstre for kodelinjene hvor den ikke 
 Når vi først kjører den tidligere kodeblokka og deretter gjentar koden på bildet over får vi:
 
 ![](Rmarkdown_feil_rettet.png)
-Vi håper selvsagt dere ikke vil oppleve problemer med å kjøre eksempelkodene brukt i denne boka og som er gitt i vedlegg 1. Det kan likevel hende selvsagt, og i så fall ber vi om tilbakemelding på dette - men som sagt er hensikten i denn ekonteksten kun å kjøre eksemplene, alle andre spørsmål om R/RStudio/RMarkdown må vi nesten henvise til andre hjelpemidler (som tidligere nevnt er Google et godt sted å begynne siden det finnes et svar på de fleste R/RStudio/RMarkdown relaterte spørsmål ute på den store vebben). 
+
+Vi håper selvsagt dere ikke vil oppleve problemer med å kjøre eksempelkodene brukt i denne boka og som er gitt i vedlegg 1. Det kan likevel hende selvsagt, og i så fall ber vi om tilbakemelding på dette - men som sagt er hensikten i denne konteksten kun å kjøre eksemplene, alle andre spørsmål om R/RStudio/RMarkdown må vi nesten henvise til andre hjelpemidler (som tidligere nevnt er Google et godt sted å begynne siden det finnes et svar på de fleste R/RStudio/RMarkdown relaterte spørsmål ute på den store vebben). 
 
 
 
