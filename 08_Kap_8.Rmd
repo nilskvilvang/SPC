@@ -1,0 +1,28 @@
+---
+bibliography: referanser.bib  
+---
+
+# Prosesskapabilitet
+
+I figuren under illustrerer vi to fiktive prosesser. Nedre spesifikasjonsgrense (LSL) og øvre spesifikasjonsgrense (USL) er tegnet inn. Spesifikasjonsgrensene er *ikke* det samme som kontrollgrenser. Kontrollgrenser er regnet ut fra dataene prosessen faktisk gir, mens spesifikasjonsgrensene er grenser for akseptabelt avvik i produksjon/spesifikasjoner vi (eller noen andre, f.eks. en kunde) har satt. 
+
+Prosessen med blå kurve har snitt = 0 og standardavvik = 0.5, den røde prosessen har snitt = 0.5 og standardavvik = 1. Den røde prosessen er således noe usentrert. Spesifikasjonsgrensene er satt til hhv -2 og 2. 
+
+Det vi kan se er at den røde prosessen er noe usentrert (snittet er 0.5 fra 0) og spredningen (standardavviket) er noe større enn den blå prosessen. Med andre ord - gitt den akseptable grensen for spesifikasjoner som er satt ser vi at den røde prosessen vil produsere flere defekter enn den blå prosesen.
+
+```{r echo = FALSE, fig.cap = "Eksempel på to ulike prosesser"}
+
+pacman::p_load(ggplot2)
+
+ggplot(data.frame(x = c(-4, 4)), aes(x)) + 
+  stat_function(fun = dnorm, args = list(mean = 0.5, sd = 1), col='red', size = 1.1) +
+  stat_function(fun = dnorm, args = list(mean = 0, sd = 0.5), col='blue', size = 1.1) + 
+  geom_segment(aes(x = 0, y = 0, xend = 0, yend = 0.79), color="blue", linetype = "dotted", size = 1.1) +
+  geom_segment(aes(x = 0.5, y = 0, xend = 0.5, yend = 0.39), color = "red", linetype = "dotted", size = 1.1) +
+  geom_segment(aes(x = 2, y = 0, xend = 2, yend = 0.13), color = "black") +
+  geom_segment(aes(x = -2, y = 0, xend = -2, yend = 0.015), color = "black") +
+  geom_text(x=2.25, y=0.02, label="USL") +
+  geom_text(x=-2.2, y=0.02, label="LSL")
+
+```
+

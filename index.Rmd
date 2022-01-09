@@ -26,7 +26,7 @@ pacman::p_load(flextable, magrittr)
 set_flextable_defaults(fonts_ignore=TRUE)
 
 versjon <- data.frame(Dato = c("16.nov 2021", "09.jan 2022"),
-                            Endring = c("Grunnversjon", "Oppdatert forside med versjonstabell. Oppdatert vedlegg 4"))
+                            Endring = c("Grunnversjon", "Oppdatert forside med versjonstabell. Lagt til nytt delkapittel 7.1 om mønstre for kontrolldiagram. Oppdatert vedlegg 4"))
 
 versjon <- flextable(versjon)
 

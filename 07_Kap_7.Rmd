@@ -95,6 +95,118 @@ plot(qq, title = "Eksempel på kontrolldiagram - Tilfeldig genererte tall", ylab
 
 Vi skal i videre i dette kapittelet ta for oss ulike typer kontrolldiagrammene (ref. flytskjema for valg av kontrolldiagram). Vi vil vise et eksempel på hvert av de vanlige kontrolldiagrammene. For hvert eksempel finnes det en Excelfil med dataene som er brukt for de ulike eksemplene og en video som viser framgangsmåten i Excel. Grunnen til dette er at for mange vil Excel være et mye mer kjent grensesnitt enn R. Samtidig, ved å se på videoen og stegene som gjøres, ser man hvordan det enkelte kontrolldiagram er bygd opp. Selvsagt er dette mye mer tidkrevende enn å bare kjøre analysen i R, men det kan gi en fin innsikt i "hva som egentlig skjer". På sikt mener vi det er mye å hente på å bruke R og pakken *qicharts2* eller pakken *qcc*. Alternativt kan man investere i et tillegg til Excel som nevnt i kapittel 1. 
 
+Før vi går inn på kontrolldiagram for hhv telledata og måldata skal vi ta en gjennomgang av typiske mønstre som trekkes fram som kan si oss noe om tolkning av kontrolldiagram (se f.eks. @lavangnanandaClassificationTimeSeries2002 og @Montgomery2020).
+
+## Mønstre i kontrolldiagram
+
+Når vi har laget et kontrolldiagram vil det være noen åpenbare tegn vi vil legge merke til, f.eks. vil vi ganske raskt se om vi har punkter utenfor kontrollgrensene. En annen ting vi raskt kan forsøke å se på er om kontrolldiagrammet viser et gjenkjennbart mønster som kan fortelle oss noe om prosessen og dataene vi har. Vi skal her vise åtte typiske mønstre som blir av flere blir trukket fram (@lavangnanandaClassificationTimeSeries2002 snakker om ni mønster, der det siste omtales som "Mixture" - vi mener imidlertid den i praksis kan være så vanskelig å fange opp eller skille fra et normalt mønster at vi velger å se bort fra denne). Vi viser mønstrene uten mange kommentarer da de fleste er ganske åpenbare.
+
+
+```{r echo = FALSE}
+
+pacman::p_load(tidyverse, ggpubr)
+
+set.seed(89)
+
+yn <- sample(40:60, 24, replace = TRUE)
+xn <- 1:24
+
+normal <- data.frame(xn, yn)
+
+normalplot <- ggplot(normal, aes(xn, yn)) +         
+  geom_line() +
+  geom_point() + 
+  labs(title = "Normalt mønster")
+
+
+xs <- 1:24
+ys <- c(40, 42, 44, 45, 46, 49, 53, 52, 40, 42, 44, 45, 46, 49, 53, 52, 40, 42, 44, 45, 46, 49, 53, 52)
+
+syklisk <- data.frame(xs, ys)
+
+sykliskplot <- ggplot(normal, aes(xs, ys)) +         
+  geom_line() +
+  geom_point() + 
+  labs(title = "Syklisk mønster")
+
+
+xo <- 1:24
+yo <- c(40, 41, 43, 42, 45, 48, 49, 46, 49, 50, 52, 48, 49, 55, 52, 53, 54, 57, 56, 56, 58, 60, 60, 61)
+
+stigende <- data.frame(xo, yo)
+
+stigendeplot <- ggplot(normal, aes(xo, yo)) +         
+  geom_line() +
+  geom_point() + 
+  labs(title = "Stigende mønster")
+
+
+xsynk <- 1:24
+ysynk <- rev(yo)
+
+synkende <- data.frame(xs, ys)
+
+synkendeplot <- ggplot(normal, aes(xsynk, ysynk)) +         
+  geom_line() +
+  geom_point() + 
+  labs(title = "Synkende mønster")
+
+
+xskifto <- 1:24
+yskifto <- c(41, 42, 45, 43, 44, 46, 43, 46, 42, 43, 44, 50, 52, 51, 50, 52, 54, 53, 53, 52, 51, 52, 53, 51)
+
+skiftopp <- data.frame(xskifto, yskifto)
+
+skiftoppplot <- ggplot(normal, aes(xskifto, yskifto)) +         
+  geom_line() +
+  geom_point() + 
+  labs(title = "Skift opp")
+
+
+xskiftn <- 1:24
+yskiftn <- rev(yskifto)
+
+skiftned <- data.frame(xskiftn, yskiftn)
+
+skiftnedplot <- ggplot(normal, aes(xskiftn, yskiftn)) +         
+  geom_line() +
+  geom_point() + 
+  labs(title = "Skift ned")
+
+
+xstrat <- 1:24
+ystrat <- c(48, 49, 52, 51, 51, 50, 49, 51, 48, 48, 49, 50, 51, 52, 52, 50, 49, 48, 48, 50, 49, 50, 51, 49)
+
+stratifisering <- data.frame(xstrat, ystrat)
+
+stratisfiseringplot <- ggplot(normal, aes(xstrat, ystrat)) +         
+  geom_line() +
+  geom_point() + 
+  ylim(40, 60) +
+  labs(title = "Stratifisering")
+
+
+xsyst <- 1:24
+ysyst <- c(50, 55, 46, 54, 45, 53, 47, 55, 49, 54, 48, 53, 50, 55, 46, 54, 45, 53, 47, 55, 49, 54, 48, 53)
+
+systematisk <- data.frame(xsyst, ysyst)
+
+systematiskplot <- ggplot(normal, aes(xsyst, ysyst)) +         
+  geom_line() +
+  geom_point() + 
+  ylim(40, 60) +
+  labs(title = "Systematisk mønster")
+
+
+ggarrange(normalplot, sykliskplot, stigendeplot, synkendeplot + rremove("x.text"),
+ncol = 2, nrow = 2)
+
+ggarrange(skiftoppplot, skiftnedplot, stratisfiseringplot, systematiskplot + rremove("x.text"),
+ncol = 2, nrow = 2)
+```
+
+Det eneste mønsteret vi ønsker å knytte noen korte kommentarer til er "stratifisering" som kanskje ikke er helt intuitiv. Stratifisering regnes som en unormal variasjon ("a special cause") dersom 15 eller flere påfølengde punkter faller innenfor det som kalles sone C (= +/- 1 SD fra snittet). Man sier ofte at punktene "klemmer" senterlinjen, og det kan se ut som prosessen har unormalt liten variasjon. @Montgomery2020 peker på to mulige årsaker: Kontrollgrensene kan være feilkalkulert, eller målingene kan komme fra flere underliggende prosesser. Vi skal ikke gå dypere inn på dette her, men en god gjennomgang av dette er gitt av @roweUnderstandingStratificationStatistical2012 på [denne lenken](http://rowequality.com/sites/default/files/Stratification_in_SPC.pdf).
+
 ## Telledata (attributter)
 Diagrammene i dette delkapittelet handler om data der vi kan telle og putte dataene inn i kategorier. Motsetningen er måledata som er kontinuerlige data som behandles i neste delkapittel. 
 
