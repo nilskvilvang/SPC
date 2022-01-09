@@ -11,7 +11,7 @@ Dette er et noe komplisert begrep som vi ikke skal gå veldig i dybden på, men 
 1. Gjennomsnittsverdien (mean) av tilfeldige utvalg fra en populasjon vil være tilnærmet lik gjennomsnittsverdien for populasjonen hvis størrelsen på utvalgene er tilstrekkelig stort.
 2. Fordelingen til tilfeldige utvalg fra en populasjon vil være tilnærmet normalfordelt uavhengig av fordelingen på populasjonen. Dette innebærer at selv om populasjonen er langt fra normalfordelt vil et tilstrekkelig stort utvalg vise seg å være tilnærmet normalfordelt.
 
-La oss se på dette gjennom et eksempel der vi starter med en bimodal fordeling (altså langt fra normalfordeing). Vi generer et datasett og plotter et Q-Q diagram (mer om dette senere i boka, men per nå trenger vi bare vite at dette er en effektiv måte å sjekke om en variabel er normalfordelt eller ikke).
+La oss se på dette gjennom et eksempel der vi starter med en bimodal fordeling (altså langt fra normalfordeling). Vi generer et datasett og plotter et Q-Q diagram (mer om dette et annet sted i boka (se kap. 5), men per nå trenger vi bare vite at dette er en effektiv måte å sjekke om en variabel er normalfordelt eller ikke).
 
 ```{r echo = FALSE, message = FALSE, warning=FALSE, fig.cap = "Ikke-normal fordeling og Q-Q plott"}
 
@@ -147,3 +147,8 @@ ggplot(myDF, aes(xbar)) +
 
 ```
 Det vi kan se bekrefter hva Central Limit Theorem sier vi bør forvente. Vi kan starte med en hvilken som helst fordeling (kontinuerlig eller diskret) som har et definert gjennomsnitt og definert varians (og dermed definert standardavvik) og ta tilfeldige utvalg fra denne fordelingen – og vi vil få en tilnærmet normalfordelt fordeling. I det virkelige liv har vi ofte populasjonsfordelinger som har alt annet enn normalfordeling. Likevel kan vi ta tilfeldige utvalg og få en tilnærmet normalfordelt frekvensplott (av f.eks. gjennomsnittsverdier). Størrelsen på utvalget og antallet ganger vi tar utvalg vil påvirke -> jo større utvalg og jo flere utvalg, jo nærmere normalfordeling vil frekvensplottet være. 
+
+En interessant illustrasjon av CLT ligger [her](https://ihstevenson.shinyapps.io/sample_means/).
+Vi har laget en kort video som viser hvordan denne demonstrasjonssiden fungerer.
+
+**Video kommer her**

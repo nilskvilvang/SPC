@@ -16,3 +16,20 @@ Innholdet er under utvikling og oppdateres jevnlig om enn noe uregelmessig. Tilb
 ![Bilde: Colourbox.com](SPC_front_cover.JPG)
 
 Boka er laget i [R Markdown](http://rmarkdown.rstudio.com) ved hjelp av en rekke programmer og pakker til R, ikke minst [bookdown](http://https://bookdown.org/yihui/bookdown/).
+
+## Versjoner {.unnumbered}
+
+```{r echo = FALSE, message = FALSE, warning=FALSE}
+
+pacman::p_load(flextable, magrittr)
+
+set_flextable_defaults(fonts_ignore=TRUE)
+
+versjon <- data.frame(Dato = c("16.nov 2021", "09.jan 2022"),
+                            Endring = c("Grunnversjon", "Oppdatert forside med versjonstabell. Oppdatert vedlegg 4"))
+
+versjon <- flextable(versjon)
+
+set_table_properties(versjon, width = 1, layout = "autofit")
+```
+

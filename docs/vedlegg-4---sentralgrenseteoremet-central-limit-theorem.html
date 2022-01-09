@@ -160,7 +160,10 @@ div.csl-indent {
 <li><a href="./">SPC</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduksjon</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduksjon</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#versjoner"><i class="fa fa-check"></i>Versjoner</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="hvorfor-denne-boka.html"><a href="hvorfor-denne-boka.html"><i class="fa fa-check"></i><b>1</b> Hvorfor denne boka?</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="hvorfor-denne-boka.html"><a href="hvorfor-denne-boka.html#programvare"><i class="fa fa-check"></i><b>1.1</b> Programvare</a></li>
@@ -257,43 +260,46 @@ div.csl-indent {
 <li>Gjennomsnittsverdien (mean) av tilfeldige utvalg fra en populasjon vil være tilnærmet lik gjennomsnittsverdien for populasjonen hvis størrelsen på utvalgene er tilstrekkelig stort.</li>
 <li>Fordelingen til tilfeldige utvalg fra en populasjon vil være tilnærmet normalfordelt uavhengig av fordelingen på populasjonen. Dette innebærer at selv om populasjonen er langt fra normalfordelt vil et tilstrekkelig stort utvalg vise seg å være tilnærmet normalfordelt.</li>
 </ol>
-<p>La oss se på dette gjennom et eksempel der vi starter med en bimodal fordeling (altså langt fra normalfordeing). Vi generer et datasett og plotter et Q-Q diagram (mer om dette senere i boka, men per nå trenger vi bare vite at dette er en effektiv måte å sjekke om en variabel er normalfordelt eller ikke).</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-173"></span>
-<img src="SPC-book_files/figure-html/unnamed-chunk-173-1.png" alt="Ikke-normal fordeling og Q-Q plott" width="672" />
+<p>La oss se på dette gjennom et eksempel der vi starter med en bimodal fordeling (altså langt fra normalfordeling). Vi generer et datasett og plotter et Q-Q diagram (mer om dette et annet sted i boka (se kap. 5), men per nå trenger vi bare vite at dette er en effektiv måte å sjekke om en variabel er normalfordelt eller ikke).</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-174"></span>
+<img src="SPC-book_files/figure-html/unnamed-chunk-174-1.png" alt="Ikke-normal fordeling og Q-Q plott" width="672" />
 <p class="caption">
 Figure 7.18: Ikke-normal fordeling og Q-Q plott
 </p>
 </div>
 <p>Som sagt har vi gjort rede for Q-Q plott et annet sted i boka, så her kan vi nøye oss med å slå fast at denne variabelen definitivt ikke er normalfordelt.
 Det framkommer også tydelig når vi plotter et histogram:</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-174"></span>
-<img src="SPC-book_files/figure-html/unnamed-chunk-174-1.png" alt="Histogram for bimodal fordeling" width="672" />
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-175"></span>
+<img src="SPC-book_files/figure-html/unnamed-chunk-175-1.png" alt="Histogram for bimodal fordeling" width="672" />
 <p class="caption">
 Figure 7.19: Histogram for bimodal fordeling
 </p>
 </div>
 <p>Ut fra denne populasjonen tar vi 100 utvalg med 30 i hvert utvalg. Fordelingen ser da slik ut:</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-175"></span>
-<img src="SPC-book_files/figure-html/unnamed-chunk-175-1.png" alt="Histogram for 100 utvalg fra bimodal fordeling" width="672" />
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-176"></span>
+<img src="SPC-book_files/figure-html/unnamed-chunk-176-1.png" alt="Histogram for 100 utvalg fra bimodal fordeling" width="672" />
 <p class="caption">
 Figure 7.20: Histogram for 100 utvalg fra bimodal fordeling
 </p>
 </div>
 <p>Vi kan allerede nå ane en tilnørming mot normalfordeling, og i hvert fall en endret form enn populasjonen viste. Vi tar nå 1000 utvalg med 30 i hvert utvalg.</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-176"></span>
-<img src="SPC-book_files/figure-html/unnamed-chunk-176-1.png" alt="Histogram for 1000 utvalg fra bimodal fordeling" width="672" />
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-177"></span>
+<img src="SPC-book_files/figure-html/unnamed-chunk-177-1.png" alt="Histogram for 1000 utvalg fra bimodal fordeling" width="672" />
 <p class="caption">
 Figure 7.21: Histogram for 1000 utvalg fra bimodal fordeling
 </p>
 </div>
 <p>Det er videre åpenbart at dette begynner å se mer og mer ut som en normalfordeling. Til slutt øker vi til 10000 utvalg av 30.</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-177"></span>
-<img src="SPC-book_files/figure-html/unnamed-chunk-177-1.png" alt="Histogram for 10000 utvalg fra bimodal fordeling" width="672" />
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-178"></span>
+<img src="SPC-book_files/figure-html/unnamed-chunk-178-1.png" alt="Histogram for 10000 utvalg fra bimodal fordeling" width="672" />
 <p class="caption">
 Figure 7.22: Histogram for 10000 utvalg fra bimodal fordeling
 </p>
 </div>
 <p>Det vi kan se bekrefter hva Central Limit Theorem sier vi bør forvente. Vi kan starte med en hvilken som helst fordeling (kontinuerlig eller diskret) som har et definert gjennomsnitt og definert varians (og dermed definert standardavvik) og ta tilfeldige utvalg fra denne fordelingen – og vi vil få en tilnærmet normalfordelt fordeling. I det virkelige liv har vi ofte populasjonsfordelinger som har alt annet enn normalfordeling. Likevel kan vi ta tilfeldige utvalg og få en tilnærmet normalfordelt frekvensplott (av f.eks. gjennomsnittsverdier). Størrelsen på utvalget og antallet ganger vi tar utvalg vil påvirke -&gt; jo større utvalg og jo flere utvalg, jo nærmere normalfordeling vil frekvensplottet være.</p>
+<p>En interessant illustrasjon av CLT ligger <a href="https://ihstevenson.shinyapps.io/sample_means/">her</a>.
+Vi har laget en kort video som viser hvordan denne demonstrasjonssiden fungerer.</p>
+<p><strong>Video kommer her</strong></p>
 
 </div>
             </section>

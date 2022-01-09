@@ -160,7 +160,10 @@ div.csl-indent {
 <li><a href="./">SPC</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduksjon</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduksjon</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#versjoner"><i class="fa fa-check"></i>Versjoner</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="hvorfor-denne-boka.html"><a href="hvorfor-denne-boka.html"><i class="fa fa-check"></i><b>1</b> Hvorfor denne boka?</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="hvorfor-denne-boka.html"><a href="hvorfor-denne-boka.html#programvare"><i class="fa fa-check"></i><b>1.1</b> Programvare</a></li>
@@ -254,8 +257,8 @@ div.csl-indent {
 <p>Den første analysen vi gir oss i kast med etter å ha fått en forståelse av dataene våre er et seriediagram. Et seriediagram <span class="citation">(jfr. Anhøj and Bjørn 2009)</span> (ofte referert til som “run diagram” siden dette er den engelske betegnelsen)<a href="#fn17" class="footnote-ref" id="fnref17"><sup>17</sup></a> er en framstilling av en serie hendelser sekvensielt i tid. Et seriediagram er enkelt å konstruere og tolke. I dette diagrammet kan vi bruke både måledata og telledata, og det spiller ingen rolle om det er hendelser, prosenter eller andeler (i kontrolldiagrammer vil vi være nøye med å skille mellom hvilke typer data vi har slik at vi velger rett kontrolldiagram). Den eneste forutsetningen vi må ha med oss for seriediagrammer er at punktene er uavhengige, altså at verdien i et punkt ikke er påvirket av verdien på foregående punkt. I tillegg anbefales minst 10 punkter av <span class="citation">Berardinelli and Yerian (n.d.)</span>, 15 punkter <span class="citation">(Reynolds et al. 2021)</span>, mens <span class="citation">Anhøj and Bjørn (2009)</span> anbefaler mellom 20 og 30 datapunkter for å få et robust seriediagram. Anbefalingen på mellom 20 og 30 hviler på en balanse mellom å se unormal variasjon der prosessen egentlig er stabil (såkalt type-1 feil) og å ikke se unormal variasjon der den faktisk finnes (såkalt type-2 feil). Det er derfor verdt å merke seg at «mer ikke er bedre» - et stort antall datapunkter øker ikke den statistiske styrken, men øker sjansen for type-2 feil. Vi legger til grunn at anbefalingen fra <span class="citation">Anhøj and Bjørn (2009)</span> virker godt fundert.</p>
 <p>Et seriediagram vil kunne vise oss noe om variasjon, men vi kan også gå glipp av noen mer spesielle former for variasjon. Så fordelen i enkelheten må veies opp mot ulempen ved å være litt mindre sensitiv for spesiell variasjon. Plottingen av et seriediagram kan gjøres enkelt med penn og papir ved at man tiden på x-aksen og en verdi av en måling, en observasjon e.l. på y-aksen. Deretter forbinder man punktene med en linje, og legger til medianen (som er verdien av det datapunktet som deler et utvalg i to)<a href="#fn18" class="footnote-ref" id="fnref18"><sup>18</sup></a>.</p>
 <p>Hvorfor «serie» (“run”)? En serie er i denne sammenhengen definert som et antall (ett eller flere) punkter i diagrammet på samme side av medianen. I diagrammet under ser vi et eksempel på et seriediagram. Vi plotter ganske enkelt inn hver enkelt observasjon fortløpende i tid utover x-aksen og verdien iht y-aksen. Sentraltendensen er medianen, hvilket innebærer at halvparten av målingene er over og halve under medianstreken.</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-64"></span>
-<img src="SPC-book_files/figure-html/unnamed-chunk-64-1.png" alt="Eksempel seriediagram" width="672" />
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-65"></span>
+<img src="SPC-book_files/figure-html/unnamed-chunk-65-1.png" alt="Eksempel seriediagram" width="672" />
 <p class="caption">
 Figure 6.1: Eksempel seriediagram
 </p>
@@ -267,16 +270,16 @@ Figure 6.1: Eksempel seriediagram
 </ol>
 <p>Heldigvis kan det settes opp en tabell slik at vi enkelt kan lese ut de kritiske verdiene <span class="citation">(Anhøj and Wentzel-Larsen 2020)</span> (se vedlegg 2). I eksempelet under har vi igjen 24 observasjoner. Vi bør forvente minst 8 krysninger (regel 2) og siden vi har flere punkter enn 8 etter hverandre på samme side (regel 1) har vi brudd på begge reglene. Dette indikerer en prosess ute av kontroll med unormal variasjon.</p>
 <p>I et nytt eksempel kan vi provosere fram brudd på Anhøj-reglene:</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-65"></span>
-<img src="SPC-book_files/figure-html/unnamed-chunk-65-1.png" alt="Eksempel seriediagram - modifiserte tall" width="672" />
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-66"></span>
+<img src="SPC-book_files/figure-html/unnamed-chunk-66-1.png" alt="Eksempel seriediagram - modifiserte tall" width="672" />
 <p class="caption">
 Figure 6.2: Eksempel seriediagram - modifiserte tall
 </p>
 </div>
 <p>I det modifiserte seriediagrammet har vi like mange punkter som det forrige (24) så vi burde forvente minst 8 krysninger (regel 2) og siden vi har flere punkter enn 8 etter hverandre på samme side (regel 1) har vi brudd på begge reglene. Dette indikerer en prosess ute av kontroll med unormal variasjon.</p>
 <p>Man må imidlertid være observant på eventuelle endringer i prosesser. I eksempelet ovenfor kan man tenke seg en prosessendring etter hendelse 15. Hvis vi legger dette så vi får et brudd i dataserien etter hendelse 15 inn får vi et annet bilde:</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-66"></span>
-<img src="SPC-book_files/figure-html/unnamed-chunk-66-1.png" alt="Eksempel seriediagram - modifiserte tall - brudd i prosess" width="672" />
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-67"></span>
+<img src="SPC-book_files/figure-html/unnamed-chunk-67-1.png" alt="Eksempel seriediagram - modifiserte tall - brudd i prosess" width="672" />
 <p class="caption">
 Figure 6.3: Eksempel seriediagram - modifiserte tall - brudd i prosess
 </p>
