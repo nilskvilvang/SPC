@@ -1,20 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" demote-non-dropping-particle="never" page-range-format="expanded">
   <info>
-    <title>American Psychological Association 7th edition</title>
-    <title-short>APA</title-short>
-    <id>http://www.zotero.org/styles/apa</id>
-    <link href="http://www.zotero.org/styles/apa" rel="self"/>
+    <title>HVL APA 7th stil (Norsk-bokmål)</title>
+    <title-short>HVL APA</title-short>
+    <id>http://www.zotero.org/styles/apa-HVL-7-nb</id>
+    <link href="http://www.zotero.org/styles/apa-HVL-7-nb" rel="self"/>
     <link href="http://www.zotero.org/styles/apa-6th-edition" rel="template"/>
     <link href="https://apastyle.apa.org/style-grammar-guidelines/references/examples" rel="documentation"/>
-    <author>
+	<author>
       <name>Brenton M. Wiernik</name>
       <email>zotero@wiernik.org</email>
     </author>
-    <category citation-format="author-date"/>
+	<!-- Style modifications by:
+    <contributor>
+		<name>Maria Lefdal Jenssen</name>
+		<email>Maria.Lefdal.Jenssen@hvl.no</email>
+	</contributor> -->
+	<category citation-format="author-date"/>
     <category field="psychology"/>
     <category field="generic-base"/>
-    <updated>2021-11-19T02:04:15+00:00</updated>
+    <!-- Original: <updated>2020-01-03T14:43:16+00:00</updated> -->
+	<updated>2020-11-17T14:43:16+00:00</updated>
     <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
   </info>
   <locale xml:lang="en">
@@ -43,278 +49,34 @@
       </term>
     </terms>
   </locale>
-  <locale xml:lang="af">
-    <terms>
-      <term name="letter">persoonlike kommunikasie</term>
-      <term name="letter" form="short">brief</term>
-    </terms>
-  </locale>
-  <locale xml:lang="ar">
-    <terms>
-      <term name="letter">اتصال شخصي</term>
-      <term name="letter" form="short">خطاب</term>
-    </terms>
-  </locale>
-  <locale xml:lang="bg">
-    <terms>
-      <term name="letter">лична комуникация</term>
-      <term name="letter" form="short">писмо</term>
-    </terms>
-  </locale>
-  <locale xml:lang="ca">
-    <terms>
-      <term name="letter">comunicació personal</term>
-      <term name="letter" form="short">carta</term>
-    </terms>
-  </locale>
-  <locale xml:lang="cs">
-    <terms>
-      <term name="letter">osobní komunikace</term>
-      <term name="letter" form="short">dopis</term>
-    </terms>
-  </locale>
-  <locale xml:lang="cy">
-    <terms>
-      <term name="letter">cyfathrebu personol</term>
-      <term name="letter" form="short">llythyr</term>
-    </terms>
-  </locale>
   <locale xml:lang="da">
     <terms>
       <term name="et-al">et al.</term>
-      <term name="letter">personlig kommunikation</term>
-      <term name="letter" form="short">brev</term>
     </terms>
   </locale>
   <locale xml:lang="de">
     <terms>
       <term name="et-al">et al.</term>
-      <term name="letter">persönliche Kommunikation</term>
-      <term name="letter" form="short">Brief</term>
-    </terms>
-  </locale>
-  <locale xml:lang="el">
-    <terms>
-      <term name="letter">προσωπική επικοινωνία</term>
-      <term name="letter" form="short">επιστολή</term>
     </terms>
   </locale>
   <locale xml:lang="es">
     <terms>
       <term name="from">de</term>
-      <term name="letter">comunicación personal</term>
-      <term name="letter" form="short">carta</term>
-    </terms>
-  </locale>
-  <locale xml:lang="et">
-    <terms>
-      <term name="letter">isiklik suhtlus</term>
-      <term name="letter" form="short">kiri</term>
-    </terms>
-  </locale>
-  <locale xml:lang="eu">
-    <terms>
-      <term name="letter">komunikazio pertsonala</term>
-      <term name="letter" form="short">gutuna</term>
-    </terms>
-  </locale>
-  <locale xml:lang="fa">
-    <terms>
-      <term name="letter">ارتباط شخصی</term>
-      <term name="letter" form="short">نامه</term>
-    </terms>
-  </locale>
-  <locale xml:lang="fi">
-    <terms>
-      <term name="letter">henkilökohtainen viestintä</term>
-      <term name="letter" form="short">kirje</term>
-    </terms>
-  </locale>
-  <locale xml:lang="fr">
-    <terms>
-      <term name="letter">communication personnelle</term>
-      <term name="letter" form="short">lettre</term>
-      <term name="editor" form="short">
-        <single>éd.</single>
-        <multiple>éds.</multiple>
-      </term>
-    </terms>
-  </locale>
-  <locale xml:lang="he">
-    <terms>
-      <term name="letter">תקשורת אישית</term>
-      <term name="letter" form="short">מכתב</term>
-    </terms>
-  </locale>
-  <locale xml:lang="hr">
-    <terms>
-      <term name="letter">osobna komunikacija</term>
-      <term name="letter" form="short">pismo</term>
-    </terms>
-  </locale>
-  <locale xml:lang="hu">
-    <terms>
-      <term name="letter">személyes kommunikáció</term>
-      <term name="letter" form="short">levél</term>
-    </terms>
-  </locale>
-  <locale xml:lang="id">
-    <terms>
-      <term name="letter">komunikasi pribadi</term>
-      <term name="letter" form="short">surat</term>
-    </terms>
-  </locale>
-  <locale xml:lang="is">
-    <terms>
-      <term name="letter">persónuleg samskipti</term>
-      <term name="letter" form="short">bréf</term>
-    </terms>
-  </locale>
-  <locale xml:lang="it">
-    <terms>
-      <term name="letter">comunicazione personale</term>
-      <term name="letter" form="short">lettera</term>
-    </terms>
-  </locale>
-  <locale xml:lang="ja">
-    <terms>
-      <term name="letter">個人的なやり取り</term>
-      <term name="letter" form="short">手紙</term>
-    </terms>
-  </locale>
-  <locale xml:lang="ko">
-    <terms>
-      <term name="letter">개인 서신</term>
-      <term name="letter" form="short">편지</term>
-    </terms>
-  </locale>
-  <locale xml:lang="la">
-    <terms>
-      <term name="letter"/>
-      <term name="letter" form="short">epistula</term>
-    </terms>
-  </locale>
-  <locale xml:lang="lt">
-    <terms>
-      <term name="letter">communicationis personalis</term>
-      <term name="letter" form="short"/>
-    </terms>
-  </locale>
-  <locale xml:lang="lv">
-    <terms>
-      <term name="letter">personīga komunikācija</term>
-      <term name="letter" form="short">vēstule</term>
-    </terms>
-  </locale>
-  <locale xml:lang="mn">
-    <terms>
-      <term name="letter">хувийн харилцаа холбоо</term>
-      <term name="letter" form="short">захиа</term>
     </terms>
   </locale>
   <locale xml:lang="nb">
     <terms>
       <term name="et-al">et al.</term>
-      <term name="letter">personlig kommunikasjon</term>
-      <term name="letter" form="short">brev</term>
     </terms>
   </locale>
   <locale xml:lang="nl">
     <terms>
       <term name="et-al">et al.</term>
-      <term name="letter">persoonlijke communicatie</term>
-      <term name="letter" form="short">brief</term>
     </terms>
   </locale>
   <locale xml:lang="nn">
     <terms>
       <term name="et-al">et al.</term>
-      <term name="letter">personlig kommunikasjon</term>
-      <term name="letter" form="short">brev</term>
-    </terms>
-  </locale>
-  <locale xml:lang="pl">
-    <terms>
-      <term name="letter">osobista komunikacja</term>
-      <term name="letter" form="short">list</term>
-    </terms>
-  </locale>
-  <locale xml:lang="pt">
-    <terms>
-      <term name="letter">comunicação pessoal</term>
-      <term name="letter" form="short">carta</term>
-    </terms>
-  </locale>
-  <locale xml:lang="ro">
-    <terms>
-      <term name="letter">comunicare personală</term>
-      <term name="letter" form="short">scrisoare</term>
-    </terms>
-  </locale>
-  <locale xml:lang="ru">
-    <terms>
-      <term name="letter">личная переписка</term>
-      <term name="letter" form="short">письмо</term>
-    </terms>
-  </locale>
-  <locale xml:lang="sk">
-    <terms>
-      <term name="letter">osobná komunikácia</term>
-      <term name="letter" form="short">list</term>
-    </terms>
-  </locale>
-  <locale xml:lang="sl">
-    <terms>
-      <term name="letter">osebna komunikacija</term>
-      <term name="letter" form="short">pismo</term>
-    </terms>
-  </locale>
-  <locale xml:lang="sr">
-    <terms>
-      <term name="letter">лична комуникација</term>
-      <term name="letter" form="short">писмо</term>
-    </terms>
-  </locale>
-  <locale xml:lang="sv">
-    <terms>
-      <term name="letter">personlig kommunikation</term>
-      <term name="letter" form="short">brev</term>
-    </terms>
-  </locale>
-  <locale xml:lang="th">
-    <terms>
-      <term name="letter">การสื่อสารส่วนบุคคล</term>
-      <term name="letter" form="short">จดหมาย</term>
-    </terms>
-  </locale>
-  <locale xml:lang="tr">
-    <terms>
-      <term name="letter">kişisel iletişim</term>
-      <term name="letter" form="short">mektup</term>
-    </terms>
-  </locale>
-  <locale xml:lang="uk">
-    <terms>
-      <term name="letter">особисте спілкування</term>
-      <term name="letter" form="short">лист</term>
-    </terms>
-  </locale>
-  <locale xml:lang="vi">
-    <terms>
-      <term name="letter">giao tiếp cá nhân</term>
-      <term name="letter" form="short">thư</term>
-    </terms>
-  </locale>
-  <locale xml:lang="zh-CN">
-    <terms>
-      <term name="letter">的私人交流</term>
-      <term name="letter" form="short">信函</term>
-    </terms>
-  </locale>
-  <locale xml:lang="zh-TW">
-    <terms>
-      <term name="letter">私人通訊</term>
-      <term name="letter" form="short">信函</term>
     </terms>
   </locale>
   <!-- General categories of item types:
@@ -328,12 +90,12 @@
   <!-- APA references contain four parts: author, date, title, source -->
   <macro name="author-bib">
     <names variable="composer" delimiter=", ">
-      <name name-as-sort-order="all" and="symbol" sort-separator=", " initialize-with=". " delimiter=", " delimiter-precedes-last="always"/>
+      <name name-as-sort-order="all" and="symbol" sort-separator=", " initialize-with=". " delimiter=", " delimiter-precedes-last="never"/>
       <substitute>
         <names variable="author"/>
         <names variable="illustrator"/>
         <names variable="director">
-          <name name-as-sort-order="all" and="symbol" sort-separator=", " initialize-with=". " delimiter=", " delimiter-precedes-last="always"/>
+          <name name-as-sort-order="all" and="symbol" sort-separator=", " initialize-with=". " delimiter=", " delimiter-precedes-last="never"/>
           <label form="long" prefix=" (" suffix=")" text-case="title"/>
         </names>
         <choose>
@@ -357,15 +119,15 @@
         </choose>
         <!-- Test for editortranslator and put that first as that becomes available -->
         <names variable="editor" delimiter=", ">
-          <name name-as-sort-order="all" and="symbol" sort-separator=", " initialize-with=". " delimiter=", " delimiter-precedes-last="always"/>
+          <name name-as-sort-order="all" and="symbol" sort-separator=", " initialize-with=". " delimiter=", " delimiter-precedes-last="never"/>
           <label form="short" prefix=" (" suffix=")" text-case="title"/>
         </names>
         <names variable="editorial-director">
-          <name name-as-sort-order="all" and="symbol" sort-separator=", " initialize-with=". " delimiter=", " delimiter-precedes-last="always"/>
+          <name name-as-sort-order="all" and="symbol" sort-separator=", " initialize-with=". " delimiter=", " delimiter-precedes-last="never"/>
           <label form="short" prefix=" (" suffix=")" text-case="title"/>
         </names>
         <names variable="collection-editor">
-          <name name-as-sort-order="all" and="symbol" sort-separator=", " initialize-with=". " delimiter=", " delimiter-precedes-last="always"/>
+          <name name-as-sort-order="all" and="symbol" sort-separator=", " initialize-with=". " delimiter=", " delimiter-precedes-last="never"/>
           <label form="short" prefix=" (" suffix=")" text-case="title"/>
         </names>
         <choose>
@@ -387,7 +149,7 @@
       <if type="bill legal_case legislation treaty" match="any">
         <text macro="title-intext"/>
       </if>
-      <else-if type="interview personal_communication" match="any">
+      <else-if type="interview personal_communication">
         <choose>
           <!-- These variables indicate that the letter is retrievable by the reader. 
                 If not, then use the APA in-text-only personal communication format -->
@@ -452,20 +214,29 @@
             </date>
             <text variable="year-suffix"/>
             <choose>
-              <if type="article-magazine article-newspaper broadcast interview motion_picture pamphlet personal_communication post post-weblog song speech webpage" match="any">
+              <if type="article-magazine article-newspaper broadcast entry-encyclopedia interview motion_picture pamphlet personal_communication post post-weblog song speech webpage" match="any">
                 <!-- Many video and audio examples in manual give full dates. Err on the side of too much information. -->
                 <date variable="issued">
-                  <date-part prefix=", " name="month"/>
-                  <date-part prefix=" " name="day"/>
+                  <date-part prefix=", " name="day"/>
+                  <date-part prefix=". " name="month"/>
                 </date>
               </if>
-              <else-if type="paper-conference">
+              <else-if type="book"> <!-- Dette elementet er lagt inn for å få år-år på stortingsmeldinger i litteraturlista-->
+                <choose>
+                  <if variable="issued">
+                    <date variable="issued">
+                      <date-part prefix="-" name="month"/>
+                    </date>
+                  </if>
+                </choose>
+              </else-if> 
+			  <else-if type="paper-conference">
                 <!-- Capture 'speech' stored as 'paper-conference' -->
                 <choose>
                   <if variable="collection-editor editor editorial-director issue page volume" match="none">
                     <date variable="issued">
-                      <date-part prefix=", " name="month"/>
-                      <date-part prefix=" " name="day"/>
+                      <date-part prefix=", " name="day"/>
+                      <date-part prefix=". " name="month"/>
                     </date>
                   </if>
                 </choose>
@@ -481,8 +252,10 @@
             </group>
           </else-if>
           <else>
-            <text term="no date" form="short"/>
-            <text variable="year-suffix" prefix="-"/>
+            <group>
+              <text term="no date" form="short"/>
+              <text variable="year-suffix" prefix="-"/>
+            </group>
           </else>
         </choose>
       </group>
@@ -541,7 +314,7 @@
             </choose>
             <group>
               <choose>
-                <if type="interview personal_communication" match="any">
+                <if type="interview personal_communication">
                   <choose>
                     <if variable="archive container-title DOI publisher URL" match="none">
                       <!-- These variables indicate that the communication is retrievable by the reader. 
@@ -555,6 +328,16 @@
                     </else>
                   </choose>
                 </if>
+				<else-if type="book"> <!-- Dette elementet er lagt inn for å få år-år på stortingsmeldinger i teksten-->
+                <choose>
+                  <if variable="issued">
+                    <date variable="issued">
+                      <date-part name="year"/>
+					  <date-part prefix="-" name="month"/>
+                    </date>
+                  </if>
+                </choose>
+				</else-if>				
                 <else>
                   <date variable="issued">
                     <date-part name="year"/>
@@ -609,7 +392,7 @@
       </else-if>
       <else>
         <choose>
-          <if type="article-journal article-magazine article-newspaper post-weblog review review-book" match="any">
+          <if type="article-journal article-magazine article-newspaper post-weblog review review-book">
             <text variable="title" font-style="italic"/>
           </if>
           <else-if type="paper-conference">
@@ -657,13 +440,13 @@
         <text macro="bracketed-intext" prefix="[" suffix="]"/>
       </if>
       <else-if type="bill">
-        <!-- If a bill has no number or container-title, assume it is a hearing; italic -->
+        <!-- If a bill has no number or container-title, assume it is a hearing; italic and title case -->
         <choose>
           <if variable="number container-title" match="none">
             <text variable="title" form="short" font-style="italic" text-case="title"/>
           </if>
           <else-if variable="title">
-            <text variable="title" form="short" text-case="title"/>
+            <text variable="title" form="short"/>
           </else-if>
           <else>
             <group delimiter=" ">
@@ -687,18 +470,18 @@
       </else-if>
       <else-if type="legislation treaty" match="any">
         <!-- Legislation and treaties not italicized or quoted -->
-        <text variable="title" form="short" text-case="title"/>
+        <text variable="title" form="short"/>
       </else-if>
       <else-if type="post webpage" match="any">
         <!-- Webpages are always italicized -->
-        <text variable="title" form="short" font-style="italic" text-case="title"/>
+        <text variable="title" form="short" font-style="italic"/>
       </else-if>
       <else-if variable="container-title" match="any">
         <!-- Other types are italicized or quoted based on presence of container-title. As in title macro. -->
-        <text variable="title" form="short" quotes="true" text-case="title"/>
+        <text variable="title" form="short" quotes="true"/>
       </else-if>
       <else>
-        <text variable="title" form="short" font-style="italic" text-case="title"/>
+        <text variable="title" form="short" font-style="italic"/>
       </else>
     </choose>
   </macro>
@@ -721,13 +504,14 @@
             </choose>
             <group delimiter=" ">
               <!-- Replace with label variable="number" if that becomes available -->
-              <text term="issue" form="short" text-case="capitalize-first"/>
-              <text variable="number"/>
+              <text variable="number" text-case="title"/>
+			  <!--<text term="issue" form="short" text-case="capitalize-first"/>
+              <text variable="number"/>-->
             </group>
           </group>
         </if>
-        <else-if type="post webpage" match="any">
-          <!-- For post webpage, container-title is treated as publisher -->
+        <else-if type="post webpage">
+          <!-- For post webpage, container-title is treated as publisher -->       <!--HVL APA 7th-->
           <group delimiter="; ">
             <text macro="secondary-contributors"/>
             <text macro="database-location"/>
@@ -1191,8 +975,9 @@
             <choose>
               <if is-numeric="number">
                 <!-- Replace with label variable="number" if that becomes available -->
-                <text term="issue" form="short" text-case="capitalize-first"/>
-                <text variable="number"/>
+ 				<text variable="number" text-case="title"/>
+				<!--<text term="issue" form="short" text-case="capitalize-first"/>
+                <text variable="number"/>-->
               </if>
               <else>
                 <text variable="number"/>
@@ -1240,7 +1025,7 @@
     <choose>
       <if is-numeric="version">
         <group delimiter=" ">
-          <!-- replace with label variable="version" if that becomes available -->
+          <!-- replace with label variable="version" if that becomes available -->     <!--HVL APA 7th-->
           <text term="version" text-case="capitalize-first"/>
           <text variable="version"/>
         </group>
@@ -1323,11 +1108,11 @@
     <choose>
       <if variable="reviewed-title">
         <!-- Not possible to distinguish TV series episode from other reviewed works [Ex. 69] -->
-        <text variable="reviewed-title" form="short" font-style="italic" text-case="title"/>
+        <text variable="reviewed-title" form="short" font-style="italic"/>
       </if>
       <else>
         <!-- Assume title is title of reviewed work -->
-        <text variable="title" form="short" font-style="italic" text-case="title"/>
+        <text variable="title" form="short" font-style="italic"/>
       </else>
     </choose>
   </macro>
@@ -1436,7 +1221,7 @@
             </group>
           </if>
           <else>
-            <text variable="issue" font-style="italic"/>
+            <text variable="issue" prefix="(" suffix=")"/>
           </else>
         </choose>
         <choose>
@@ -1469,7 +1254,7 @@
           <group delimiter=", ">
             <names variable="editor translator" delimiter=", &amp; ">
               <!-- Change to editortranslator and move editor to substitute as that becomes available -->
-              <name and="symbol" initialize-with=". " delimiter=", "/>
+              <name and="symbol" initialize-with=". " delimiter=", " delimiter-precedes-last="never"/>
               <label form="short" text-case="title" prefix=" (" suffix=")"/>
               <substitute>
                 <names variable="editorial-director"/>
@@ -1506,7 +1291,7 @@
             </if>
           </choose>
         </if>
-        <else-if type="post webpage" match="any">
+        <else-if type="post webpage">
           <!-- For websites, treat container title like publisher -->
           <group delimiter="; ">
             <text variable="container-title" text-case="title"/>
@@ -1555,7 +1340,7 @@
             <if variable="issued status" match="none">
               <group delimiter=" ">
                 <text term="retrieved" text-case="capitalize-first"/>
-                <date variable="accessed" form="text" suffix=","/>
+                <date variable="accessed" form="text" suffix=" "/>
                 <text term="from"/>
               </group>
             </if>
@@ -1596,8 +1381,8 @@
             </if>
             <else>
               <group delimiter=" ">
-                <text value="Original work published"/>
-                <choose>
+				<text value="Opprinnelig utgitt"/>
+				<choose>
                   <if is-uncertain-date="original-date">
                     <text term="circa" form="short"/>
                   </if>
@@ -1731,7 +1516,7 @@
     </choose>
   </macro>
   <macro name="container-legal">
-    <!-- Expect legal item container-titles to be stored in short form -->
+    <!-- Expect legal item container-titles to be stored in short form -->     <!--HVL APA 7th-->
     <choose>
       <if type="legal_case">
         <group delimiter=" ">
@@ -1858,9 +1643,9 @@
       <text variable="locator"/>
     </group>
   </macro>
-  <citation et-al-min="3" et-al-use-first="1" disambiguate-add-year-suffix="true" disambiguate-add-names="true" disambiguate-add-givenname="true" collapse="year" givenname-disambiguation-rule="primary-name-with-initials">
+  <citation et-al-min="3" et-al-use-first="1" disambiguate-add-year-suffix="true" disambiguate-add-names="true" disambiguate-add-givenname="true" collapse="year" givenname-disambiguation-rule="primary-name">
     <sort>
-      <key macro="author-bib" names-min="3" names-use-first="1"/>
+      <key macro="author-bib" names-min="21" names-use-first="19"/>
       <key macro="date-sort-group"/>
       <key macro="date-sort-date" sort="ascending"/>
       <key variable="status"/>
@@ -1873,7 +1658,7 @@
       </group>
     </layout>
   </citation>
-  <bibliography hanging-indent="true" et-al-min="21" et-al-use-first="19" et-al-use-last="true" entry-spacing="0" line-spacing="2">
+  <bibliography hanging-indent="true" et-al-min="21" et-al-use-first="19" et-al-use-last="true" entry-spacing="0" line-spacing="1">
     <sort>
       <key macro="author-bib"/>
       <key macro="date-sort-group"/>
@@ -1911,4 +1696,5 @@
       </choose>
     </layout>
   </bibliography>
+<!--HVL APA 7th-->
 </style>
