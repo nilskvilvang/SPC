@@ -51,9 +51,9 @@
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -266,7 +266,7 @@ div.csl-indent {
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-176"></span>
 <img src="SPC-book_files/figure-html/unnamed-chunk-176-1.png" alt="Ikke-normal fordeling og Q-Q plott" width="672" />
 <p class="caption">
-Figure 8.8: Ikke-normal fordeling og Q-Q plott
+Figure 8.5: Ikke-normal fordeling og Q-Q plott
 </p>
 </div>
 <p>Som sagt har vi gjort rede for Q-Q plott et annet sted i boka, så her kan vi nøye oss med å slå fast at denne variabelen definitivt ikke er normalfordelt.
@@ -274,28 +274,28 @@ Det framkommer også tydelig når vi plotter et histogram:</p>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-177"></span>
 <img src="SPC-book_files/figure-html/unnamed-chunk-177-1.png" alt="Histogram for bimodal fordeling" width="672" />
 <p class="caption">
-Figure 8.9: Histogram for bimodal fordeling
+Figure 8.6: Histogram for bimodal fordeling
 </p>
 </div>
 <p>Ut fra denne populasjonen tar vi 100 utvalg med 30 i hvert utvalg. Fordelingen ser da slik ut:</p>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-178"></span>
 <img src="SPC-book_files/figure-html/unnamed-chunk-178-1.png" alt="Histogram for 100 utvalg fra bimodal fordeling" width="672" />
 <p class="caption">
-Figure 8.10: Histogram for 100 utvalg fra bimodal fordeling
+Figure 8.7: Histogram for 100 utvalg fra bimodal fordeling
 </p>
 </div>
 <p>Vi kan allerede nå ane en tilnørming mot normalfordeling, og i hvert fall en endret form enn populasjonen viste. Vi tar nå 1000 utvalg med 30 i hvert utvalg.</p>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-179"></span>
 <img src="SPC-book_files/figure-html/unnamed-chunk-179-1.png" alt="Histogram for 1000 utvalg fra bimodal fordeling" width="672" />
 <p class="caption">
-Figure 8.11: Histogram for 1000 utvalg fra bimodal fordeling
+Figure 8.8: Histogram for 1000 utvalg fra bimodal fordeling
 </p>
 </div>
 <p>Det er videre åpenbart at dette begynner å se mer og mer ut som en normalfordeling. Til slutt øker vi til 10000 utvalg av 30.</p>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-180"></span>
 <img src="SPC-book_files/figure-html/unnamed-chunk-180-1.png" alt="Histogram for 10000 utvalg fra bimodal fordeling" width="672" />
 <p class="caption">
-Figure 8.12: Histogram for 10000 utvalg fra bimodal fordeling
+Figure 8.9: Histogram for 10000 utvalg fra bimodal fordeling
 </p>
 </div>
 <p>Det vi kan se bekrefter hva Central Limit Theorem sier vi bør forvente. Vi kan starte med en hvilken som helst fordeling (kontinuerlig eller diskret) som har et definert gjennomsnitt og definert varians (og dermed definert standardavvik) og ta tilfeldige utvalg fra denne fordelingen – og vi vil få en tilnærmet normalfordelt fordeling. I det virkelige liv har vi ofte populasjonsfordelinger som har alt annet enn normalfordeling. Likevel kan vi ta tilfeldige utvalg og få en tilnærmet normalfordelt frekvensplott (av f.eks. gjennomsnittsverdier). Størrelsen på utvalget og antallet ganger vi tar utvalg vil påvirke -&gt; jo større utvalg og jo flere utvalg, jo nærmere normalfordeling vil frekvensplottet være.</p>

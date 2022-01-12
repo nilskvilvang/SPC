@@ -5,8 +5,8 @@ date: "Siste endring `r format(Sys.time(), '%d %B, %Y')`"
 site: bookdown::bookdown_site
 bibliography: referanser.bib
 csl: american-sociological-association.csl
-
 ---
+
 ---
 nocite: |
   @zhuKableExtraConstructComplex2021, @anhojQicharts2QualityImprovement2020, @anhojControlChartsQicharts2021, @auguieGridExtraMiscellaneousFunctions2017, @bacheMagrittrForwardpipeOperator2020a, @barthelmeImagerImageProcessing2021, @canoSixSigma2012, @gavrilovNormtestTestsNormality2014, @gohelFlextableFunctionsTabular2021a, @gohelOfficerManipulationMicrosoft2021, @grossNortestTestsNormality2015, @horikoshiGgfortifyDataVisualization2016, @kassambaraGgpubrGgplot2Based2020, @lemonPlotrixPackageRed2006, @mersmannTruncnormTruncatedNormal2018, @oomsWritexlExportData2021, @rudisHrbrthemesAdditionalThemes2020, @traplettiTseriesTimeSeries2021, @wickhamGgplot2ElegantGraphics2016, @wickhamWelcomeTidyverse2019, @wickhamReadxlReadExcel2019, @wickhamDplyrGrammarData2021, @xieBookdownAuthoringBooks, @Xie2019a
@@ -24,21 +24,20 @@ Boka er laget i [R Markdown](http://rmarkdown.rstudio.com) ved hjelp av en rekke
 
 ## Versjoner {.unnumbered}
 
-```{r echo = FALSE, message = FALSE, warning=FALSE}
+```{r echo = FALSE}
 
-pacman::p_load(flextable, magrittr)
+pacman::p_load(kableExtra)
 
-set_flextable_defaults(fonts_ignore=TRUE)
+versjon <- data.frame(Dato = c("16.nov 2021", "09.jan 2022", "11.jan 2022", "12.jan 2022"),
+                            Endring = c("Grunnversjon", "Oppdatert forside med versjonstabell. Lagt til nytt delkapittel 7.1 om mønstre for kontrolldiagram. Oppdatert vedlegg 4", "Oppdatert bibliografi med R-pakker som er brukt", "Rettet opp feil i vedlegg 1 (koder)"))
 
-versjon <- data.frame(Dato = c("16.nov 2021", "09.jan 2022", "11.jan 2022"),
-                            Endring = c("Grunnversjon", "Oppdatert forside med versjonstabell. Lagt til nytt delkapittel 7.1 om mønstre for kontrolldiagram. 
+kbl(versjon) %>%
+  kable_classic(full_width = F, html_font = "Cambria", font_size = 12) %>%
+  column_spec(1, width = "8em") %>%
+  column_spec(2, width = "40em")
 
-Oppdatert vedlegg 4", "Oppdatert bibliografi med R-pakker som er brukt"))
 
-versjon <- flextable(versjon)
 
-set_table_properties(versjon, width = 1, layout = "autofit")
 ```
-
 
 

@@ -893,7 +893,7 @@ ggqqplot(addata7$Values)
 
 Lage fig 6.1:
 
-```{r}
+```{r echo = TRUE, eval = FALSE}
 
 pacman::p_load(qicharts2, ggplot2)
 
@@ -908,7 +908,7 @@ serie1 + geom_point(size = 2)
 
 Lage fig 6.2:
 
-```{r echo = FALSE, message = FALSE, warning=FALSE}
+```{r echo = TRUE, eval = FALSE, message = FALSE, warning=FALSE}
 
 pacman::p_load(qicharts2, ggplot2)
 
@@ -924,7 +924,7 @@ serie2 + geom_point(size = 2)
 
 Lage fig 6.3:
 
-```{r echo = FALSE, message = FALSE, warning=FALSE}
+```{r echo = TRUE, eval = FALSE, message = FALSE, warning=FALSE}
 
 pacman::p_load(qicharts2, ggplot2)
 
@@ -938,7 +938,7 @@ serie3 + geom_point(size = 2)
 
 Lage fig 7.1:
 
-```{r echo = FALSE, message = FALSE, warning=FALSE}
+```{r echo = TRUE, eval = FALSE, message = FALSE, warning=FALSE}
 
 pacman::p_load(qicharts2, tidyverse)
 
@@ -954,7 +954,7 @@ kontr1 + geom_point(size = 2)
 
 Lage fig 7.2:
 
-```{r echo = FALSE, message = FALSE, warning=FALSE, results='hide',fig.keep='all'}
+```{r echo = TRUE, eval = FALSE, message = FALSE, warning=FALSE, results='hide',fig.keep='all'}
 
 pacman::p_load(qcc, tidyverse)
 
@@ -971,7 +971,7 @@ plot(kontr2, title = "Eksempel på kontrolldiagram - Tilfeldig genererte tall", 
 
 Lage fig 7.3:
 
-```{r echo = FALSE, message = FALSE, warning=FALSE}
+```{r echo = TRUE, eval = FALSE, message = FALSE, warning=FALSE}
 
 pacman::p_load(qcc, tidyverse)
 
@@ -993,7 +993,7 @@ plot(qq, title = "Eksempel på kontrolldiagram - Tilfeldig genererte tall", ylab
 
 Lage fig 7.4:
 
-```{r echo = FALSE, message = FALSE, warning=FALSE}
+```{r echo = TRUE, eval = FALSE, message = FALSE, warning=FALSE}
 
 pacman::p_load(qcc, tidyverse, readxl)
 
@@ -1006,7 +1006,7 @@ plot(p_chart, title = "p-diagram: Andel keisersnitt", xlab = "Måned", ylab = "A
 
 Lage fig 7.5:
 
-```{r echo = FALSE, message = FALSE, warning=FALSE}
+```{r echo = TRUE, eval = FALSE, message = FALSE, warning=FALSE}
 
 pacman::p_load(qcc, tidyverse, readxl)
 
@@ -1019,7 +1019,7 @@ plot(Lp_chart,  title = "p-diagram: Andel kommunisert pr telefon", xlab = "Måne
 
 Lage fig 7.6:
 
-```{r echo = FALSE, message = FALSE, warning=FALSE}
+```{r echo = TRUE, eval = FALSE, message = FALSE, warning=FALSE}
 
 pacman::p_load(qcc, tidyverse, readxl)
 
@@ -1032,7 +1032,7 @@ plot(np_chart, title = "np-diagram: Andel feil", xlab = "Uke", ylab = "Andel")
 
 Lage fig 7.7:
 
-```{r echo = FALSE, message = FALSE, warning=FALSE}
+```{r echo = TRUE, eval = FALSE, message = FALSE, warning=FALSE}
 
 pacman::p_load(qcc, tidyverse, readxl)
 
@@ -1045,7 +1045,7 @@ plot(u_chart,  title = "u-diagram: Andel feil", xlab = "Uke", ylab = "Pasientfal
 
 Lage fig 7.8:
 
-```{r echo = FALSE, message = FALSE, warning=FALSE, fig.cap = "c-diagram"}
+```{r echo = TRUE, eval = FALSE, message = FALSE, warning=FALSE, fig.cap = "c-diagram"}
 
 pacman::p_load(qcc, tidyverse, readxl)
 
@@ -1059,7 +1059,7 @@ plot(c_chart, title = "c-diagram", xlab = "Måned", ylab = "Feilmedisinering")
 
 Lage fig 7.9:
 
-```{r echo = FALSE, message = FALSE, warning=FALSE, fig.cap = "IMR-diagram"}
+```{r echo = TRUE, eval = FALSE, message = FALSE, warning=FALSE, fig.cap = "IMR-diagram"}
 
 pacman::p_load(qcc, tidyverse, readxl)
 
@@ -1073,7 +1073,7 @@ plot(imr_chart, title = "IMR-diagram", xlab = "Baby nr", ylab = "Fødselsvekt")
 
 Lage fig 7.10:
 
-```{r echo = FALSE, message = FALSE, warning=FALSE, fig.cap = "IMR-diagram"}
+```{r echo = TRUE, eval = FALSE, message = FALSE, warning=FALSE, fig.cap = "IMR-diagram"}
 
 pacman::p_load(qicharts2, tidyverse)
 

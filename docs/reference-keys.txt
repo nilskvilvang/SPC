@@ -52,9 +52,6 @@ fig:unnamed-chunk-94-1
 fig:unnamed-chunk-94-2
 fig:unnamed-chunk-100
 fig:unnamed-chunk-101
-fig:unnamed-chunk-158
-fig:unnamed-chunk-159
-fig:unnamed-chunk-160
 tab:unnamed-chunk-171
 fig:unnamed-chunk-172
 fig:unnamed-chunk-173
