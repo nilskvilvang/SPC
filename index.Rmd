@@ -28,8 +28,8 @@ Boka er laget i [R Markdown](http://rmarkdown.rstudio.com) ved hjelp av en rekke
 
 pacman::p_load(kableExtra)
 
-versjon <- data.frame(Dato = c("16.nov 2021", "09.jan 2022", "11.jan 2022", "12.jan 2022", "13.jan 2022"),
-                            Endring = c("Grunnversjon", "Oppdatert forside med versjonstabell. Lagt til nytt delkapittel 7.1 om mønstre for kontrolldiagram. Oppdatert vedlegg 4", "Oppdatert bibliografi med R-pakker som er brukt", "Rettet opp feil i vedlegg 1 (koder)", "Oppdatert kap 7 med nytt delkapittel om tolkning av kontrolldiagrammer"))
+versjon <- data.frame(Dato = c("16.nov 2021", "09.jan 2022", "11.jan 2022", "12.jan 2022", "13.jan 2022", "14.jan 2022"),
+                            Endring = c("Grunnversjon", "Oppdatert forside med versjonstabell. Lagt til nytt delkapittel 7.1 om mønstre for kontrolldiagram. Oppdatert vedlegg 4", "Oppdatert bibliografi med R-pakker som er brukt", "Rettet opp feil i vedlegg 1 (koder)", "Oppdatert kap 7 med nytt delkapittel om tolkning av kontrolldiagrammer", "Mindre endringer i kap 1. Ny innledning kap 2."))
 
 kbl(versjon) %>%
   kable_classic(full_width = F, html_font = "Cambria", font_size = 12) %>%

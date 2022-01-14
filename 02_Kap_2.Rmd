@@ -2,7 +2,33 @@
 bibliography: referanser.bib 
 ---
 
-# Hvorfor er tid viktig?
+# Kvalitet, kvalitetsarbeid og statistisk prosesskontroll
+
+En bok om kvalitet og kvalitetsarbeid bør selvsagt tidlig slå fast hva man mener med nettopp begrepene kvalitet og kvalitetsarbeid. Begrepet kvalitet kan gis mange definisjoner og bety ulike ting i ulike kontekster. På et veldig overordnet nivå kan man si at kvalitet er alle egenskaper og karakteristikker en tjeneste eller produkt har som bidrar til å dekke et definert behov [@alemiRiskadjustedControlCharts1996a]. @antonyKeyIngredientsEffective2000a peker på at en tjenestes/et produkts kvalitet er evnen til å oppfylle eller overgå en brukers spesifikke behov eller forventninger. Kvalitet er derfor nært knyttet til en oppfattelse av måloppnåelse [@mainzHvadErKvalitet2018], noe som understreker at kvalitet har både en objektiv og en subjektiv dimensjon. Hvis vi leverer en tjeneste eller et produkt må vi ha antakelser om mottakers forventninger og/eller forholde oss til bestemte forhåndsdefinerte objektive standarder [@elwynRespectingSubjectiveQuality2007; @wallanderQualityLifeMeasurement2001].
+
+Kvalitet kan derfor utrykkes som et forhold mellom resultat og forventninger. 
+Noen elementer av kvalitet kan vi kanskje måle relativt objektivt, mens andre elementer er av mer subjektiv eller skjønnsmessig karakter. Norsk Standard [-@standardnorgeKvalitetsledelseISO90002000] definerer kvalitet som "i hvilken grad en samling av iboende egenskaper oppfyller krav". Disse egenskapene kan være f.eks. kvalitative eller kvantitative, fysiske, sensoriske, atferdsmessige, tidsmessige, ergonomiske og/eller funksjonelle.Men uansett er kvalitet et umulig begrep å forholde seg til uten at man har en eller annen form for sammenlikning med "noe annet". 
+
+Et siste poeng vi vil nevne her er at kvalitet og kvalitesarbeid i en organisasjon må være knyttet til hva organisasjonen har en rimelig grad av kontroll over [@chinWhatQualityQuality2003].
+
+## Hva er statistisk prosesskontroll?
+
+I følge @Benneyan1998 er SPC grafisk og statistisk analyse av prosessdata i den hensikt å forstå, monitorere og forbedre prosessytelse. Kort fortalt handler SPC om å samle inn data fra en prosess, sette disse dataene i et tidsperspektiv, analysere og vurdere om prosessen har en normal eller unormal variasjon, og dermed legge grunnlaget for forbedringsarbeid. I tillegg kan SPC overvåke prosesser for å fange opp endringer i resultater på et tidlig tidspunkt. 
+
+Selv om SPC som regel spores tilbake til Walter A. Shewghart og 1930-tallet, og ikke minst til W. Edward Deming etter 2.verdenskrig, viser @Benneyan1998 til Frank Gilberths arbeid med prosessanalyser i sykehus så tidlig som i 1916. SPC, og Demings arbeid i Japan, tilskrives mye av æren for den japanske bilindustriens eventyrlige vekst. I følge @Leavengood1999 er det rikelig med dokumentasjon på at SPC kan redusere kostnader, øke produktiviteten, øke kundelojalitet, øke kundegrunnlaget og virke positivt inn på ansattes motivasjon. 
+
+I en noe forenklet språkdrakt kan SPC sies å være et virkemiddel for å [basert på @Benneyan1998a]:
+
+1. Forstå den nåværende prosessens ytelse og karakteristikker
+2. Oppnå en konsistent prosesskvalitet og -ytelse
+3. Monitorere prosesser for å fange opp begynnende forringelse
+4. Redusere prosessvariasjonen
+
+Sentralt i SPC er altså (blant annet) å forstå prosessene og variasjonen i prosessene som ligger til grunn for et eller annet produkt eller tjeneste, som utgangspunkt for forbedringsarbeid. @alemiTutorialRiskAdjusted2001a påpeker at beslutningstakere ofte feilaktig tilegner positive resultater med (deres) intervensjoner og tiltak, og negative resultater med tilfeldigheter eller eksterne hendelser. Gjennom SPC kan beslutningstakere få en forståelse av hvordan prosessene varierer, og om et dårlig resultat påvirkes av tilfeldige/unormale hendelser (som vanskelig kan kontrolleres eller påvirkes) eller er et utslag av systemet i seg selv (som **kan** kontrolleres eller påvirkes).   
+
+Vi må også fastslå at SPC er et bredt felt, og det er utenfor rekkevidden av denne boka å omfatte alle tekniske og metodiske aspekter ved SPC. 
+
+## Hvorfor er tid viktig?
 
 La oss anta at et sykehus har en prosess der man har registrert antall avvik gjennom året. I 2019 hadde man 30 avvik i snitt pr måned. Ledelsen mente mot slutten av 2019 at dette var for høyt og bestemte at man skulle innføre en ny prosedyre fra årsskiftet. Ved overgangen til 2021 så man at man gjennom 2020 hadde ca. 24 avvik pr måned i snitt ^[Eksempelet er modifisert fra @Carey2003. Se også @anhojStatistiskProcesstyringSundhedsvaesenet2009 og @NHS2009] ^[Hvis du ønsker å bruke R og koden må du laste ned fila og lagre den i samme mappe som din R-fil/ditt R-prosjekt ligger - se forøvrig vedlegg om installasjon av R/RStudio for tips om organisering av filer]:
 

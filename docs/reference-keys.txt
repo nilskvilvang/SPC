@@ -63,6 +63,8 @@ fig:unnamed-chunk-187
 fig:unnamed-chunk-188
 hvorfor-denne-boka
 programvare
+kvalitet-kvalitetsarbeid-og-statistisk-prosesskontroll
+hva-er-statistisk-prosesskontroll
 hvorfor-er-tid-viktig
 hva-er-utgangspunktet-vi-skal-korrigere-fra
 variasjon
