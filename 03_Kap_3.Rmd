@@ -163,11 +163,15 @@ regel4_2_plot
 
 ```
 
-Eksperimentet, som altså som regel refereres til som Deming’s trakteksperiment ("Funnel experiment"), men refereres også som Nelsons trakteksperiment (se f.eks. @Alwan1991) illustrerer en viktig erkjennelse i alt kvalitetsarbeid: hvis man ikke vet hva man driver med kan man i beste hensikt fort ende opp med å korrigere en prosess "ut i evigheten" vekk fra målet. Dessverre er det grunn til å tro at mange forbedringsprosesser ender opp på denne måten.
+Eksperimentet, som altså som regel refereres til som Deming’s trakteksperiment ("Funnel experiment"), men som også omtales som Nelsons trakteksperiment (se f.eks. @Alwan1991) illustrerer en viktig erkjennelse i alt kvalitetsarbeid: hvis man ikke vet hva man driver med kan man i beste hensikt fort ende opp med å korrigere en prosess "ut i evigheten" vekk fra målet. Dessverre er det grunn til å tro at mange forbedringsprosesser ender opp på denne måten.
 
-Eksperimentet illustrerer videre en viktig observasjon: alle prosesser har variasjon. Hvis vi tenker over det, vil vi lett finne eksempler fra dagliglivet. Vi sover et antall timer og minutter sammenhengende søvn hver natt som ikke vil være det samme fra natt til natt, men som regel ligge innenfor et visst intervall. Vi har en hvilepuls når vi våkner om morgenen. Måler vi den vil vi se variasjon. Vi kjører til jobben, og tidsbruken vil variere fra dag til dag. Vi tar en treningstur på kvelden. Selv om vi løper samme runde med samme utstyr vil tiden vi bruker variere. Eller strømregningen vi betaler hver måned. Hva med kostnader for en sykehusavdeling? Antall overtidstimer i en organisasjon? Mengde materialer i en bestemt produksjonslinje? Alle de ovennevnte er prosesser som har en variasjon.   
+Eksperimentet illustrerer videre en viktig observasjon: alle prosesser har variasjon. Hvis vi tenker over det, vil vi lett finne eksempler fra dagliglivet. Vi sover et antall timer og minutter sammenhengende søvn hver natt som ikke vil være det samme fra natt til natt, men som regel ligge innenfor et visst intervall. Vi har en hvilepuls når vi våkner om morgenen. Måler vi den vil vi se variasjon. Vi kjører til jobben, og tidsbruken vil variere fra dag til dag. Vi tar en treningstur på kvelden. Selv om vi løper samme runde med samme utstyr vil tiden vi bruker variere. Eller strømregningen vi betaler hver måned. Hva med kostnader for en sykehusavdeling? Antall overtidstimer i en organisasjon? Mengde materialer i en bestemt produksjonslinje? Alle de ovennevnte er prosesser som har en variasjon. 
 
-Variasjon kan være normal eller unormal. Med normal variasjon mener vi variasjon som ikke kan tilskrives en spesiell årsak (ofte omtalt som "common cause variation" og opprinnelig av Shewhart som "assignable cause"). Tilsvarende kan unormal variasjon tilskrives en eller flere spesifikke årsaker ("special cause variation", av Shewhart benevnt som "chance cause"). Normal variasjon skyldes fenomen som alltid er til stede i en prosess, og kan dermed ikke endres uten at man endrer selve prosessen. Det betyr også at normal variasjon er det som gjør prosesser forutsigbare i større eller mindre grad.
+## Normal og unormal variasjon
+
+Et sentralt poeng i organisasjonsutvikling og beslutningstaking er om den variasjonen man ser i resultatene er et tegn på endring eller "bare" tilfeldig variasjon. For beslutningstakere er det åpenbart avgjørende å kunne skille mellom de to [@Nolan2016].
+
+Variasjon kan være normal eller unormal. Med normal variasjon mener vi variasjon som ikke kan tilskrives en spesiell årsak (ofte omtalt som "common cause variation", opprinnelig av Shewhart som "assignable cause" og av f.eks. @Benneyan1998 som "systemic variation"). Tilsvarende kan unormal variasjon tilskrives en eller flere spesifikke årsaker ("special cause variation", av Shewhart benevnt som "chance cause"). Normal variasjon skyldes fenomen som alltid er til stede i en prosess [@plsekTutorialIntroductionControl23], og kan dermed ikke endres uten at man endrer selve prosessen. Det betyr også at normal variasjon er det som gjør prosesser forutsigbare i større eller mindre grad.
 
 Unormal variasjon på sin side skyldes en (eller flere) ikke-tilfeldige påvirkninger som ikke vanligvis er til stede i prosessen. Dette gjør prosessen uforutsigbar. Problemene oppstår når man ikke skiller mellom de to typene variasjon, og jager etter spesielle årsaker til variasjon når det i realiteten kun er normal variasjon man observerer. Da jager man etter å løse problemer uten å forstå årsakene. 
 
@@ -310,19 +314,21 @@ Arbeidet med statistisk prosesskontroll handler i hovedsak om dette: Forstå pro
 
 Erkjennelsen av variasjon i prosesser og om prosesser i kontrollert eller ukontrollert har klare ledelsesmessige utfordringer og konsekvenser. @Nolan2016 [s.3, figur 1] illustrerer to ulike tilnærminger til variasjon:
 
-```{r echo = FALSE, message = FALSE, warning=FALSE, fig.cap = "Fra Nolan & Provost, 1990, s.3, figur 1"}
+```{r echo = FALSE}
 
-pacman::p_load(flextable, magrittr)
+pacman::p_load(kableExtra)
 
-set_flextable_defaults(fonts_ignore=TRUE)
+nolan_provost <- data.frame(Områder = c("", "Fokus", "Mål", "Grunnlag", "Metoder"),
+                            Tradisjonell = c("Som indikator på god eller dårlig ytelse", "Resultat av prosessen (produkt, tjeneste)", "Klassifisere resultat som akseptabelt eller ikke", "Hva kunden ønsker eller trenger", "Spesifikasjoner, budsjetter, prognoser, numeriske mål, verktøy for å måle ytelse"),
+                            SPC = c("
+Som resultat av normal eller unormal variasjon", "Årsaker til variasjon i prosessen", "Gi grunnlag for endring av prosess", "Hva prosessen faktisk gir", "Kontrolldiagram"))
 
-nolan_provost <- data.frame(Områder = c("","Fokus", "Mål", "Grunnlag", "Metoder"),
-                            Variasjon1 = c("Som indikator på god eller dårlig ytelse", "Resultat av prosessen (produkt, tjeneste)", "Klassifisere resultat som akseptabelt eller ikke", "Hva kunden ønsker eller trenger", "Metoder	Spesifikasjoner, budsjetter, prognoser, numeriske mål, verktøy for å måle ytelse"),
-                            Variasjon2 = c("Som resultat av normal eller unormal variasjon", "Årsaker til variasjon i prosessen", "Gi grunnlag for endring av prosess", "Hva prosessen faktisk gir", "Kontrolldiagram"))
-
-nolan_provost <- flextable(nolan_provost)
-
-set_table_properties(nolan_provost, width = 1, layout = "autofit")
+kbl(nolan_provost) %>%
+  kable_paper("striped", full_width = F) %>%
+  column_spec(1, width = "8em") %>%
+  column_spec(2, width = "40em") %>%
+  column_spec(3, width = "40em") %>%
+  row_spec(1, bold = TRUE)
 ```
 
 En klar svakhet ved den første tilnærmingen – som indikator på god eller dårlig ytelse – er at det tilbyr lite informasjon og grunnlag for forbedring. Likevel, mange vil nok kjenne seg igjen i fokus, mål, grunnlag og metoder i denne tilnærmingen. 
@@ -330,10 +336,21 @@ En klar svakhet ved den første tilnærmingen – som indikator på god eller d�
 En kjerne i ledelse i organisasjoner må derfor være å kunne avgjøre om variasjonen fra ulike prosesser er normal eller unormal, og om svingninger indikerer en trend eller en tilfeldig variasjon som følger mønstre vi har sett tidligere. @Nolan2016 peker på mulige konsekvenser i organisasjoner av å trekke feilslutninger om variasjon: Skylden for problemer legges på ansatte som er utenfor deres kontroll, kostnader til nytt utstyr som ikke er nødvendig, bortkastet tidsbruk for å lete etter forklaringer på en antatt trend når ingenting egentlig har endret seg og gjennomføre tiltak når det ville ha vært bedre å ikke gjøre noe.   
 
 ![modifisert fra Nolan & Provost, 1990, s.9, figur 2](nolan_provost.png)
+Avslutningsvis i dette kapittelet er det på sin plass å presisere at selv om en prosess kun har naturlig variasjon og således er kontrollert betyr ikke det at verken variasjonen eller resultatet er akseptabelt [@Leavengood1999; @Benneyan2003; @fastingStatisticalProcessControl2003a]. En kontrollert prosess innebærer kun at variasjonen er forutsigbar etter statistisk etablerte grenser [@Nolan2016]. Vi kan dermed forutsi prosessens resultater inntil det skjer en fundamental endring i prosessen. Det vi også kan si er at dersom man ikke er tilfreds med variasjon og resultat fra en prosess kan man gjøre noe med dette (=forbedre prosessen) dersom prosessen er kontrollert [@Mohammed2001]. 
 
-@Deming1986 peker på at det store rommet for forbedring (94 %) ligger i endring av prosessen – altså i å jobbe med den normale variasjonen (gitt at prosessen er stabil). Kun 6 % av potensialet ligger i å fikse spesielle ting – unormal variasjon – som skjer. Her ser vi en veldig klar kobling til ledelsesaspektet og ledelsesansvaret som ligger i å realisere potensialet for forbedringer. 
+@Deming1986 peker på at det store rommet for forbedring (94 %) ligger i endring av prosessen – altså i å jobbe med den normale variasjonen (gitt at prosessen er stabil). Kun 6 % av potensialet ligger i å fikse spesielle ting – unormal variasjon – som skjer. Her ser vi en veldig klar kobling til ledelsesaspektet og ledelsesansvaret som ligger i å realisere potensialet for forbedringer. Det er imidlertid viktig å alltid huske tre "sannheter" om kvalitetsarbeid [@plsekTutorialIntroductionControl23]:
 
+1. Variasjon i resultat er naturlig i alle prosesser.
+2. Tilstedeværelse av variasjon er derfor ikke nok grunnlag for å konkludere med at prosessen er ute av kontroll eller trenger endringer.
+3. Hvis vi gjennomfører endringer uten å kjenne til hva slags variasjon vi har kan vi ende opp med å øke variasjonen.
 
+**Variasjon er med andre ord ikke synonymt med varierende kvalitet**
+
+For beslutningstakere kan vi derfor sette opp tre handlingsmønstre:
+
+1. Hvis prosessen viser unormal variasjon må vi forsøke å finne og eliminere den unormale variasjonen.
+2. Hvis prosessen viser normal variasjon og vi er tilfredse med resultetene er det best å ikke gjøre noe med prosessen ut over å monitorere variasjonen.
+3. Hvis prosessen viser normal variasjon og vi *ikke* er tilfredse med resultatene må vi jobbe med selve prosessen for å redusere variasjonen.
 
 
 

@@ -4,7 +4,7 @@ bibliography: referanser.bib
 
 # Prosesskapabilitet
 
-I figuren under illustrerer vi to fiktive prosesser. Nedre spesifikasjonsgrense (LSL) og øvre spesifikasjonsgrense (USL) er tegnet inn. Spesifikasjonsgrensene er *ikke* det samme som kontrollgrenser. Kontrollgrenser er regnet ut fra dataene prosessen faktisk gir, mens spesifikasjonsgrensene er grenser for akseptabelt avvik i produksjon/spesifikasjoner vi (eller noen andre, f.eks. en kunde) har satt. 
+I figuren under illustrerer vi to fiktive prosesser. Nedre spesifikasjonsgrense (LSL) og øvre spesifikasjonsgrense (USL) er tegnet inn. Spesifikasjonsgrensene er *ikke* det samme som kontrollgrenser. Kontrollgrenser er regnet ut fra dataene prosessen faktisk gir, mens spesifikasjonsgrensene er grenser for akseptabelt avvik i produksjon/spesifikasjoner vi (eller noen andre, f.eks. en kunde) har satt. Eller med andre ord: Spesifikasjonsgrenser sier hva vi ønsker fra prosessen, kontrollgrensene hva vi fikk.  
 
 Prosessen med blå kurve har snitt = 0 og standardavvik = 0.5, den røde prosessen har snitt = 0.5 og standardavvik = 1. Den røde prosessen er således noe usentrert. Spesifikasjonsgrensene er satt til hhv -2 og 2. 
 
@@ -25,4 +25,34 @@ ggplot(data.frame(x = c(-4, 4)), aes(x)) +
   geom_text(x=-2.2, y=0.02, label="LSL")
 
 ```
+
+## Histogrammer
+
+
+## Boxplots
+
+
+## Kapabilitetsindekser
+
+### Måledata
+
+#### *C~p~*
+
+
+#### *C~pk~*
+
+
+#### *C~pm~*
+
+
+#### *C~pmk~*
+
+### Telledata
+
+
+## Loss function
+
+
+## Ikke-normale data
+
 

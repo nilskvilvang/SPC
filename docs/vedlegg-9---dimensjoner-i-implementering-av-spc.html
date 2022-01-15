@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>6 Seriediagram | Statistisk prosesskontroll</title>
-  <meta name="description" content="6 Seriediagram | Statistisk prosesskontroll" />
+  <title>Vedlegg 9 - Dimensjoner i implementering av SPC | Statistisk prosesskontroll</title>
+  <meta name="description" content="Vedlegg 9 - Dimensjoner i implementering av SPC | Statistisk prosesskontroll" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="6 Seriediagram | Statistisk prosesskontroll" />
+  <meta property="og:title" content="Vedlegg 9 - Dimensjoner i implementering av SPC | Statistisk prosesskontroll" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="6 Seriediagram | Statistisk prosesskontroll" />
+  <meta name="twitter:title" content="Vedlegg 9 - Dimensjoner i implementering av SPC | Statistisk prosesskontroll" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="er-dataene-dine-normalfordelte.html"/>
-<link rel="next" href="kontrolldiagram.html"/>
+<link rel="prev" href="vedlegg-8---nedlasting-installasjon-og-enkel-bruk-av-r-og-rstudio.html"/>
+<link rel="next" href="vedlegg-10---formler-prosesskapabilitet.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -310,68 +310,144 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="seriediagram" class="section level1" number="6">
-<h1><span class="header-section-number">6</span> Seriediagram</h1>
-<p>Den første analysen vi gir oss i kast med etter å ha fått en forståelse av dataene våre er et seriediagram. Et seriediagram <span class="citation">(jfr. Anhøj and Bjørn 2009)</span> (ofte referert til som “run diagram” siden dette er den engelske betegnelsen)<a href="#fn19" class="footnote-ref" id="fnref19"><sup>19</sup></a> er en framstilling av en serie hendelser sekvensielt i tid. Et seriediagram er enkelt å konstruere og tolke. I dette diagrammet kan vi bruke både måledata og telledata, og det spiller ingen rolle om det er hendelser, prosenter eller andeler (i kontrolldiagrammer vil vi være nøye med å skille mellom hvilke typer data vi har slik at vi velger rett kontrolldiagram). Den eneste forutsetningen vi må ha med oss for seriediagrammer er at punktene er uavhengige, altså at verdien i et punkt ikke er påvirket av verdien på foregående punkt. I tillegg anbefales minst 10 punkter av <span class="citation">Berardinelli and Yerian (n.d.)</span>, 15 punkter <span class="citation">(Reynolds et al. 2021)</span>, mens <span class="citation">Anhøj and Bjørn (2009)</span> anbefaler mellom 20 og 30 datapunkter for å få et robust seriediagram. Anbefalingen på mellom 20 og 30 hviler på en balanse mellom å se unormal variasjon der prosessen egentlig er stabil (såkalt type-1 feil) og å ikke se unormal variasjon der den faktisk finnes (såkalt type-2 feil). Det er derfor verdt å merke seg at «mer ikke er bedre» - et stort antall datapunkter øker ikke den statistiske styrken, men øker sjansen for type-2 feil. Vi legger til grunn at anbefalingen fra <span class="citation">Anhøj and Bjørn (2009)</span> virker godt fundert.</p>
-<p>Et seriediagram vil kunne vise oss noe om variasjon, men vi kan også gå glipp av noen mer spesielle former for variasjon. Så fordelen i enkelheten må veies opp mot ulempen ved å være litt mindre sensitiv for spesiell variasjon. Plottingen av et seriediagram kan gjøres enkelt med penn og papir ved at man tiden på x-aksen og en verdi av en måling, en observasjon e.l. på y-aksen. Deretter forbinder man punktene med en linje, og legger til medianen (som er verdien av det datapunktet som deler et utvalg i to)<a href="#fn20" class="footnote-ref" id="fnref20"><sup>20</sup></a>.</p>
-<p>Hvorfor “serie” (“run”)? En serie er i denne sammenhengen definert som et antall (ett eller flere) punkter i diagrammet på samme side av medianen. I diagrammet under ser vi et eksempel på et seriediagram. Vi plotter ganske enkelt inn hver enkelt observasjon fortløpende i tid utover x-aksen og verdien iht y-aksen. Sentraltendensen er medianen, hvilket innebærer at halvparten av målingene er over og halve under medianstreken.</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-65"></span>
-<img src="SPC-book_files/figure-html/unnamed-chunk-65-1.png" alt="Eksempel seriediagram" width="672" />
-<p class="caption">
-Figure 6.1: Eksempel seriediagram
-</p>
-</div>
-<p>Når vi skal tolke seriediagrammet finnes det flere sett av retningslinjer, f.eks. gitt av <span class="citation">Carey (2002)</span> og <span class="citation">Perla, Provost, and Murray (2011)</span>. Vi velger å bruke «Anhøj-reglene» <span class="citation">(Anhøj 2015; Anhøj and Wentzel-Larsen 2020)</span> på seriediagrammene. For det første er det vist at disse reglene gir en god balanse mellom type-1 og type-2 feil. For det andre er det to enkle regler å forholde seg til som gjør tolkningen enklere og raskere. Anhøj-reglene ser på to forhold:</p>
-<ol style="list-style-type: decimal">
-<li>Uvanlig lange serier. Her kan man matematisk regne ut hvor lang serien må være for å regnes som «uvanlig lang»: <span class="math inline">\(log2(n)\)</span> der n = antall punkter/hendelser <span class="citation">(Anhøj 2015)</span>. Så for eksempelet ovenfor må serien være <span class="math inline">\(log2(30)+3=8\)</span>. Det innebærer at dersom vi har flere enn 8 datapunkter etter hverandre på samme side av senterlinjen vil indikere et skift i prosessen.</li>
-<li>Uvanlig få krysninger av senterlinjen. Også her kan vi regne ut hvor mange krysningspunkter det bør være <span class="math inline">\(b(n-1.05)\)</span><a href="#fn21" class="footnote-ref" id="fnref21"><sup>21</sup></a>. For eksempelet ovenfor blir derfor et minimum antall krysningspunkter 8. Færre enn 8 krysningspunkter vil indikere et skift i prosessen.</li>
-</ol>
-<p>Heldigvis kan det settes opp en tabell slik at vi enkelt kan lese ut de kritiske verdiene <span class="citation">(Anhøj and Wentzel-Larsen 2020)</span> (se vedlegg 2). I eksempelet under har vi igjen 24 observasjoner. Vi bør forvente minst 8 krysninger (regel 2) og siden vi har flere punkter enn 8 etter hverandre på samme side (regel 1) har vi brudd på begge reglene. Dette indikerer en prosess ute av kontroll med unormal variasjon.</p>
-<p>I et nytt eksempel kan vi provosere fram brudd på Anhøj-reglene:</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-66"></span>
-<img src="SPC-book_files/figure-html/unnamed-chunk-66-1.png" alt="Eksempel seriediagram - modifiserte tall" width="672" />
-<p class="caption">
-Figure 6.2: Eksempel seriediagram - modifiserte tall
-</p>
-</div>
-<p>I det modifiserte seriediagrammet har vi like mange punkter som det forrige (24) så vi burde forvente minst 8 krysninger (regel 2) og siden vi har flere punkter enn 8 etter hverandre på samme side (regel 1) har vi brudd på begge reglene. Dette indikerer en prosess ute av kontroll med unormal variasjon.</p>
-<p>Man må imidlertid være observant på eventuelle endringer i prosesser. I eksempelet ovenfor kan man tenke seg en prosessendring etter hendelse 15. Hvis vi legger dette så vi får et brudd i dataserien etter hendelse 15 inn får vi et annet bilde:</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-67"></span>
-<img src="SPC-book_files/figure-html/unnamed-chunk-67-1.png" alt="Eksempel seriediagram - modifiserte tall - brudd i prosess" width="672" />
-<p class="caption">
-Figure 6.3: Eksempel seriediagram - modifiserte tall - brudd i prosess
-</p>
-</div>
-<p>I første del av prosessen har vi 14 punkter. Iht vedlegg 2 bør vi da ha minst 4 krysninger og maks 7 punkter på samme side for å få en serie. I andre del har vi 10 punkter. Da skal vi ha minst 2 krysninger og maks 6 punkter på samme side. Ingen av de to delene bryter med Anhøjs regler.</p>
-<p>Gjennom sin enkelhet vil et seriediagram kunne spare oss for unødvendig arbeid med kontrolldiagrammer (se neste avsnitt). Hvis vi har tegn på unormal variasjon i et seriediagram vil det være liten grunn til å utvikle kontrolldiagram da vi allerede i seriediagrammet kan konstatere unormal variasjon. Tvert imot, som <span class="citation">Anhøj (2009)</span> påpeker, kan utviklingen av kontrolldiagrammer være påvirket av tilstedeværelsen av unormal variasjon ved at beregningen av kontrollparameterne gjennomsnitt og kontrollgrenser blir uforutsigbar. Det kan derfor være et godt tips å starte med et seriediagram, tolke det og deretter bestemme seg for hvordan man går videre.</p>
-<p>Som <span class="citation">Anhøj (2021a)</span> uttrykker det: “It is a common misunderstanding that control charts are superior to run charts. The confusion may stem from the fact that different sets of rules for identifying non-random variation in run charts are available, and that these sets differ significantly in their diagnostic properties.” Og videre:</p>
-<blockquote>
-<p>“One big advantage of run charts is that they are oblivious to assumptions on the theoretical distribution of data. Also they are easier to construct (by pen and paper) and understand than are control charts. Finally, as mentioned, the diagnostic value of run charts is independent of the number of data points, which is not the case with control charts unless one adjusts the control limits in accordance with the number of data points.In practice I always do the run chart analysis first. If, and only if, the run chart shows random variation and I need to further investigate data for outliers or to know the limits of common cause variation, I would do a control chart analysis…”</p>
-</blockquote>
-<p><span class="citation">Anhøj (2021a)</span> påpker imidlertid et viktig unntak fra tilnærmingen om å alltid se på et seriediagram først: Om man har sjeldne data bør man heller lage et g eller t kontrolldiagram (se neste kapittel) siden seriediagram er dårlig egnet til å detektere endringer i disse tilfellene.</p>
-<p>Vi vil derfor avslutte dette kapittelet med å <strong>sterkt</strong> anbefale at man begynner med et seriediagram.</p>
-<p><span class="citation">Balestracci (2014)</span>:</p>
-<blockquote>
-<p>“Over the years, I have developed an increasing affection for the much-neglected run chart: a time plot of your process data with the median drawn in as a reference (yes, the median—not the average). It is”filter No. 1" for any process data and answers the question: “Did this process have at least one shift during this time period?” (This is generally signaled by a clump of eight consecutive data points either all above or below the median.)
-If it did, then it makes no sense to do a control chart at this time because the overall average of all these data doesn’t exist. (Sort of like: If I put my right foot in a bucket of boiling water and my left foot in a bucket of ice water, on average, I’m pretty comfortable.)"</p>
-</blockquote>
+<div id="vedlegg-9---dimensjoner-i-implementering-av-spc" class="section level1 unnumbered">
+<h1>Vedlegg 9 - Dimensjoner i implementering av SPC</h1>
+<p>Basert på <span class="citation">Rungtusanatham, Anderson, and Dooley (1997)</span></p>
+<table class=" lightable-classic" style="font-size: 12px; font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Nr
+</th>
+<th style="text-align:left;">
+Dimensjon
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+Ledelsens beslutninger og retningslinjer for å støtte implementering og praktisering av SPC
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+Betydning og synlighet av kontrolldiagram som verktøy for monitorering og kontroll av prosessytelser
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+Identifikasjon av kritiske måleparametre for kritiske prosesser og/eller produktegenskaper som påvirker de kritiske prosessene
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+Måleverktøyenes teknologisk modenhet og robusthet brukt i datainnsamling
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+Operatøransvar for korrekt bruk av kontrolldiagram for prosesskontroll
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;">
+Verifisering av at forutsetningene for bruk av kontrolldiagram er tilstrekkelig ivaretatt
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+7
+</td>
+<td style="text-align:left;">
+Bruk av kontrlldiagram i kontinuerlig forbedringsarbeid
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+8
+</td>
+<td style="text-align:left;">
+Utvalgsstrategier for datainnsamling til kontrolldiagram
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+9
+</td>
+<td style="text-align:left;">
+Opplæring og trening i statistiske og kognitive metoder for prosesskontroll og -forbedringer
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:left;">
+Teknisk støtte for implementering og bruk
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11
+</td>
+<td style="text-align:left;">
+Kvalitetsforbedringsgruppe som støtte til praksis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+12
+</td>
+<td style="text-align:left;">
+Fravær av sluttinspeksjon/sluttkontroll som kvalitetsstrategi
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+13
+</td>
+<td style="text-align:left;">
+Dokumentasjon og oppdatering av prosesskompetanse
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+14
+</td>
+<td style="text-align:left;">
+Evaluering og revisjon av SPC praksis og resultater
+</td>
+</tr>
+</tbody>
+</table>
 
-</div>
-<div class="footnotes">
-<hr />
-<ol start="19">
-<li id="fn19"><p>I norsk litteratur og nettsteder brukes ofte betegnelsen «run diagram» (se f.eks. <span class="citation">Brudvik (2009)</span>). Selv om vi ikke har noe religiøst forhold til å finne norske begreper på ethvert engelsk begrep mener vi likevel begrepet seriediagram er et mer intuitivt begrep enn «run diagram».<a href="seriediagram.html#fnref19" class="footnote-back">↩︎</a></p></li>
-<li id="fn20"><p>Har man en serie med oddetall observasjoner vil medianverdien utgjøres av et punkt, mens om man har et partall observasjoner utgjør gjennomsnittet av de to nærmest midten medianverdien.<a href="seriediagram.html#fnref20" class="footnote-back">↩︎</a></p></li>
-<li id="fn21"><p>I en prosess som er tilfeldig vil det være 50-50 sjanse for å krysse medianlinjen mellom to punkter som kommer etter hverandre. Det totale antallet krysninger har således en binomialfordeling <span class="citation">(Anhøj 2015)</span><a href="seriediagram.html#fnref21" class="footnote-back">↩︎</a></p></li>
-</ol>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="er-dataene-dine-normalfordelte.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="kontrolldiagram.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="vedlegg-8---nedlasting-installasjon-og-enkel-bruk-av-r-og-rstudio.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="vedlegg-10---formler-prosesskapabilitet.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -402,7 +478,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/nilskvilvang/SPC/edit/master/06_Kap_6.Rmd",
+"link": "https://github.com/nilskvilvang/SPC/edit/master/XX_Vedlegg_J_Dimensjoner.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -410,7 +486,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/nilskvilvang/SPC/blob/master/06_Kap_6.Rmd",
+"link": "https://github.com/nilskvilvang/SPC/blob/master/XX_Vedlegg_J_Dimensjoner.Rmd",
 "text": null
 },
 "download": null,

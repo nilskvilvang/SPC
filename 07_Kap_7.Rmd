@@ -1030,3 +1030,12 @@ t_diagram + geom_point()
 ```
 
 **Video kommer her**
+
+## Spesielle kontrolldiagram (CUSUM og EWMA)
+
+### CUSUM
+
+
+### EWMA
+
+## Risikojustering av kontrolldiagram
