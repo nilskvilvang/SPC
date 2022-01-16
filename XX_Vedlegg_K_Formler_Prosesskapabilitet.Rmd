@@ -1,6 +1,6 @@
 # Vedlegg 10 - Formler prosesskapabilitet {.unnumbered}
 
-Basert på @kaneProcessCapabilityIndices1986a, @chanNewMeasureProcess1988,@taguchiQualityEngineeringProduction1989, @pearnDistributionalInferentialProperties1992a, @englishProcessCapabilityAnalysis1993a, @lucenoProcessCapabilityIndex1996, @delerydPragmaticViewProcess1999a, @tangComputingProcessCapability1999a, @wuOverviewTheoryPractice2009a, @Montgomery2020
+Basert på @kaneProcessCapabilityIndices1986a, @chanNewMeasureProcess1988,@taguchiQualityEngineeringProduction1989, @pearnDistributionalInferentialProperties1992a, @englishProcessCapabilityAnalysis1993a, @lucenoProcessCapabilityIndex1996, @delerydPragmaticViewProcess1999a, @tangComputingProcessCapability1999a, @wuOverviewTheoryPractice2009a, @wheelerProblemLongTermCapability2013, @Montgomery2020, @mcneeseWhatProcessCapability2020
 
 ## Måledata {.unnumbered}
 
@@ -14,7 +14,7 @@ der:
 
 - *USL = Øvre toleransegrense (Upper Specification Limit)*
 - *LSL = Nedre toleransegrense (Lower Specification Limit)*
-- $\sigma$ = standardavvik for prosessen
+- $\sigma$ = standardavvik for prosessen beregnet ut fra data kontrolldiagrammet
 
 Formelen over forutsetter at både USL og LSL er i bruk (tosidig). Dersom man skal ha en ensidig *C~p~* brukes:
 
@@ -30,6 +30,15 @@ der:
 
 *P = prosenten av kapabiliteten ("the specification band") prosessen bruker*
 
+### *P~p~* {.unnumbered}
+
+*P~p~* = $\frac{USL - LSL}{6s}$
+
+der:
+
+- s = standardavvik for prosessen beregnet ut fra all tidligere data for prosessen (som ikke er det samme som $\sigma$, jfr formel for *C~p~*).
+
+
 ### *C~pk~* {.unnumbered}
 
 *C~pk~ = min(C~pu~,C~pl~)*
@@ -40,13 +49,40 @@ der:
 - *C~pl~* = $\frac{\mu - LSL}{3\sigma}$
 - $\mu$ = *prosessgjennomsnitt*
 
-Alternativ form *C~pk~* av @chanNewMeasureProcess1988:
+Alternativ måte å uttrykke samme formel [@wheelerProblemLongTermCapability2013]:
+
+*C~pk~* = $\frac{2 DNS}{6\sigma}$
+
+der:
+
+- DNS = "Distance to the nearer specification", altså avstanden fra gjennomsnitt til den spesifikasjonsgrensen som ligger nærmest snittet. 
+
+Alternativ *C~pk~* av @chanNewMeasureProcess1988:
 
 *C~pk~=C~p~(1-k)*
 
 der:
 
 *k=tilfeldig variabel*
+
+### *P~pk~* {.unnumbered}
+
+*P~pk~ = min(P~pu~,P~pl~)*
+
+der:
+
+- *P~pu~* = $\frac{USL - \mu}{3s}$
+- *P~pl~* = $\frac{\mu - LSL}{3s}$
+- $\mu$ = *prosessgjennomsnitt*
+- s = standardavvik for prosessen beregnet ut fra all tidligere data for prosessen (som ikke er det samme som $\sigma$, jfr formel for *C~pk~*)
+
+Alternativ måte å uttrykke samme formel [@wheelerProblemLongTermCapability2013]:
+
+*P~pk~* = $\frac{2 DNS}{6s}$
+
+der:
+
+- DNS = "Distance to the nearer specification", altså avstanden fra gjennomsnitt til den spesifikasjonsgrensen som ligger nærmest snittet. 
 
 ### *C~pm~* {.unnumbered}
 

@@ -273,12 +273,14 @@ div.csl-indent {
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="vedlegg-9---dimensjoner-i-implementering-av-spc.html"><a href="vedlegg-9---dimensjoner-i-implementering-av-spc.html"><i class="fa fa-check"></i>Vedlegg 9 - Dimensjoner i implementering av SPC</a></li>
-<li class="chapter" data-level="" data-path="vedlegg-10---formler-prosesskapabilitet.html"><a href="vedlegg-10---formler-prosesskapabilitet.html"><i class="fa fa-check"></i>Vedlegg 10 - formler prosesskapabilitet</a>
+<li class="chapter" data-level="" data-path="vedlegg-10---formler-prosesskapabilitet.html"><a href="vedlegg-10---formler-prosesskapabilitet.html"><i class="fa fa-check"></i>Vedlegg 10 - Formler prosesskapabilitet</a>
 <ul>
 <li class="chapter" data-level="" data-path="vedlegg-10---formler-prosesskapabilitet.html"><a href="vedlegg-10---formler-prosesskapabilitet.html#måledata-1"><i class="fa fa-check"></i>Måledata</a>
 <ul>
 <li><a href="vedlegg-10---formler-prosesskapabilitet.html#cp-1"><em>C<sub>p</sub></em></a></li>
+<li><a href="vedlegg-10---formler-prosesskapabilitet.html#pp"><em>P<sub>p</sub></em></a></li>
 <li><a href="vedlegg-10---formler-prosesskapabilitet.html#cpk-1"><em>C<sub>pk</sub></em></a></li>
+<li><a href="vedlegg-10---formler-prosesskapabilitet.html#ppk"><em>P<sub>pk</sub></em></a></li>
 <li><a href="vedlegg-10---formler-prosesskapabilitet.html#cpm-1"><em>C<sub>pm</sub></em></a></li>
 <li><a href="vedlegg-10---formler-prosesskapabilitet.html#cpmk-1"><em>C<sub>pmk</sub></em></a></li>
 </ul></li>
@@ -312,7 +314,9 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="prosesskapabilitet" class="section level1" number="8">
 <h1><span class="header-section-number">8</span> Prosesskapabilitet</h1>
-<p>I figuren under illustrerer vi to fiktive prosesser. Nedre spesifikasjonsgrense (LSL) og øvre spesifikasjonsgrense (USL) er tegnet inn. Spesifikasjonsgrensene er <em>ikke</em> det samme som kontrollgrenser. Kontrollgrenser er regnet ut fra dataene prosessen faktisk gir, mens spesifikasjonsgrensene er grenser for akseptabelt avvik i produksjon/spesifikasjoner vi (eller noen andre, f.eks. en kunde) har satt. Eller med andre ord: Spesifikasjonsgrenser sier hva vi ønsker fra prosessen, kontrollgrensene hva vi fikk.</p>
+<p>Gitt at en prosess er kontrollert, altså at vi kun har normal variasjon, kan vi være interessert i å se nærmere på hvordan prosessen “leverer” (resultatene sett opp mot forventninger). Som tidligere nevnt betyr ikke en kontrollert prosess at vi er fornøyde med resultatene, men det betyr at vi ikke ser unormal variasjon. Dermed kan vi jobbe for å forbedre prosessen gjennom å addressere de normale årsakene til variasjon i prosessen, som kan være en lang rekke forhold.
+La oss understreke dette poenget med et eksempel fra <span class="citation">Leavengood and Reeb (2015b)</span>. Hvis en kunde stiller krav om et fuktighetsinnhold (i et gitt produkt) på 6% <span class="math inline">\(\pm\)</span> 1% og vi har en kontrollert prosess som gir produkter med 10% <span class="math inline">\(\pm\)</span> 5% så har vi en stabil prosess som ikke er kapabel. For en kunde kan det derfor være avgjørende at vi kan vise vår prosesskapabilitet - de vil sikre seg at vår prosess vil gi produkter (eller tjenester) som er ikke bare stabile, men kapable (møter deres forventninger og krav).</p>
+<p>La oss starte med et tenkt eksempel der vi har to prosesser som skal forholde seg til samme spesifikasjonsgrenser (basert på <span class="citation">Leavengood and Reeb (2015b)</span>). Det kan f.eks. være to like maskiner som produserer samme proodukt med samme krav til kvalitet (samme spesifikasjonsgrenser). I figuren under illustrerer vi to fiktive prosesser. Nedre spesifikasjonsgrense (LSL) og øvre spesifikasjonsgrense (USL) er tegnet inn. Spesifikasjonsgrensene er <em>ikke</em> det samme som kontrollgrenser. Kontrollgrenser er regnet ut fra dataene prosessen faktisk gir, mens spesifikasjonsgrensene er grenser for akseptabelt avvik i produksjon/spesifikasjoner vi (eller noen andre, f.eks. en kunde) har satt. Vi kunne også omtalt spesifikasjonsgrenser som toleransegrenser - hva tolererer vi av resultat fra prosessen før vi vil si at kvaliteten ikke er god nok. Differansen mellom de to spesifikasjonsgrensene (USL og LSL) er et uttrykk for hvilken toleranse vi har for resultatet av prosessen. Som <span class="citation">Wheeler (2013)</span> uttrykker det: “The difference between the specification limits, USL – LSL, is the specified tolerance. It defines the total space available for the process.” Med andre ord: Spesifikasjonsgrenser sier hva vi ønsker fra prosessen, kontrollgrensene hva vi fikk.</p>
 <p>Prosessen med blå kurve har snitt = 0 og standardavvik = 0.5, den røde prosessen har snitt = 0.5 og standardavvik = 1. Den røde prosessen er således noe usentrert. Spesifikasjonsgrensene er satt til hhv -2 og 2.</p>
 <p>Det vi kan se er at den røde prosessen er noe usentrert (snittet er 0.5 fra 0) og spredningen (standardavviket) er noe større enn den blå prosessen. Med andre ord - gitt den akseptable grensen for spesifikasjoner som er satt ser vi at den røde prosessen vil produsere flere defekter enn den blå prosesen.</p>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-109"></span>
@@ -321,8 +325,10 @@ div.csl-indent {
 Figure 8.1: Eksempel på to ulike prosesser
 </p>
 </div>
+<p>Vi skal nå se på ulike verktøy vi kan bruke for å jobbe med prosesskapabilitet.</p>
 <div id="histogrammer" class="section level2" number="8.1">
 <h2><span class="header-section-number">8.1</span> Histogrammer</h2>
+<p>Vi har tidligere i boka vært innom histogrammer, f.eks. i kapittel 4 der vi så på ulike datafordelingsmodeller (normalfordeling, binomialfordeling, geometrisk fordeling og eksponensiell fordeling). <span class="citation">Deleryd (1999)</span> påpeker at histogrammer er den enkleste måten å tilnærme seg prosesskapabilitet. Man plotter spesifikasjonsgrensene på x-aksen og lager forøvrig et vanlig histogram av dataene. Dette historgrammet vil da vise oss noe om sentrering, spredning og den generelle formen på dataene</p>
 </div>
 <div id="boxplots" class="section level2" number="8.2">
 <h2><span class="header-section-number">8.2</span> Boxplots</h2>

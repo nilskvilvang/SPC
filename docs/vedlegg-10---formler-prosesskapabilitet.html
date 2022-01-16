@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Vedlegg 10 - formler prosesskapabilitet | Statistisk prosesskontroll</title>
-  <meta name="description" content="Vedlegg 10 - formler prosesskapabilitet | Statistisk prosesskontroll" />
+  <title>Vedlegg 10 - Formler prosesskapabilitet | Statistisk prosesskontroll</title>
+  <meta name="description" content="Vedlegg 10 - Formler prosesskapabilitet | Statistisk prosesskontroll" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Vedlegg 10 - formler prosesskapabilitet | Statistisk prosesskontroll" />
+  <meta property="og:title" content="Vedlegg 10 - Formler prosesskapabilitet | Statistisk prosesskontroll" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Vedlegg 10 - formler prosesskapabilitet | Statistisk prosesskontroll" />
+  <meta name="twitter:title" content="Vedlegg 10 - Formler prosesskapabilitet | Statistisk prosesskontroll" />
   
   
   
@@ -273,12 +273,14 @@ div.csl-indent {
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="vedlegg-9---dimensjoner-i-implementering-av-spc.html"><a href="vedlegg-9---dimensjoner-i-implementering-av-spc.html"><i class="fa fa-check"></i>Vedlegg 9 - Dimensjoner i implementering av SPC</a></li>
-<li class="chapter" data-level="" data-path="vedlegg-10---formler-prosesskapabilitet.html"><a href="vedlegg-10---formler-prosesskapabilitet.html"><i class="fa fa-check"></i>Vedlegg 10 - formler prosesskapabilitet</a>
+<li class="chapter" data-level="" data-path="vedlegg-10---formler-prosesskapabilitet.html"><a href="vedlegg-10---formler-prosesskapabilitet.html"><i class="fa fa-check"></i>Vedlegg 10 - Formler prosesskapabilitet</a>
 <ul>
 <li class="chapter" data-level="" data-path="vedlegg-10---formler-prosesskapabilitet.html"><a href="vedlegg-10---formler-prosesskapabilitet.html#måledata-1"><i class="fa fa-check"></i>Måledata</a>
 <ul>
 <li><a href="vedlegg-10---formler-prosesskapabilitet.html#cp-1"><em>C<sub>p</sub></em></a></li>
+<li><a href="vedlegg-10---formler-prosesskapabilitet.html#pp"><em>P<sub>p</sub></em></a></li>
 <li><a href="vedlegg-10---formler-prosesskapabilitet.html#cpk-1"><em>C<sub>pk</sub></em></a></li>
+<li><a href="vedlegg-10---formler-prosesskapabilitet.html#ppk"><em>P<sub>pk</sub></em></a></li>
 <li><a href="vedlegg-10---formler-prosesskapabilitet.html#cpm-1"><em>C<sub>pm</sub></em></a></li>
 <li><a href="vedlegg-10---formler-prosesskapabilitet.html#cpmk-1"><em>C<sub>pmk</sub></em></a></li>
 </ul></li>
@@ -311,8 +313,8 @@ div.csl-indent {
 
             <section class="normal" id="section-">
 <div id="vedlegg-10---formler-prosesskapabilitet" class="section level1 unnumbered">
-<h1>Vedlegg 10 - formler prosesskapabilitet</h1>
-<p>Basert på <span class="citation">Kane (1986)</span>, <span class="citation">Chan, Cheng, and Spiring (1988)</span>,<span class="citation">Taguchi, Elsayed, and Hsiang (1989)</span>, <span class="citation">Pearn, Kotz, and Johnson (1992)</span>, <span class="citation">English and Taylor (1993)</span>, <span class="citation">Luceño (1996)</span>, <span class="citation">Deleryd (1999)</span>, <span class="citation">Tang and Than (1999)</span>, <span class="citation">Wu, Pearn, and Kotz (2009)</span>, <span class="citation">Montgomery (2020)</span></p>
+<h1>Vedlegg 10 - Formler prosesskapabilitet</h1>
+<p>Basert på <span class="citation">Kane (1986)</span>, <span class="citation">Chan, Cheng, and Spiring (1988)</span>,<span class="citation">Taguchi, Elsayed, and Hsiang (1989)</span>, <span class="citation">Pearn, Kotz, and Johnson (1992)</span>, <span class="citation">English and Taylor (1993)</span>, <span class="citation">Luceño (1996)</span>, <span class="citation">Deleryd (1999)</span>, <span class="citation">Tang and Than (1999)</span>, <span class="citation">Wu, Pearn, and Kotz (2009)</span>, <span class="citation">Wheeler (2013)</span>, <span class="citation">Montgomery (2020)</span>, <span class="citation">McNeese (2020)</span></p>
 <div id="måledata-1" class="section level2 unnumbered">
 <h2>Måledata</h2>
 <div id="cp-1" class="section level3 unnumbered">
@@ -323,7 +325,7 @@ div.csl-indent {
 <ul>
 <li><em>USL = Øvre toleransegrense (Upper Specification Limit)</em></li>
 <li><em>LSL = Nedre toleransegrense (Lower Specification Limit)</em></li>
-<li><span class="math inline">\(\sigma\)</span> = standardavvik for prosessen</li>
+<li><span class="math inline">\(\sigma\)</span> = standardavvik for prosessen beregnet ut fra data kontrolldiagrammet</li>
 </ul>
 <p>Formelen over forutsetter at både USL og LSL er i bruk (tosidig). Dersom man skal ha en ensidig <em>C<sub>p</sub></em> brukes:</p>
 <ul>
@@ -335,6 +337,14 @@ div.csl-indent {
 <p>der:</p>
 <p><em>P = prosenten av kapabiliteten (“the specification band”) prosessen bruker</em></p>
 </div>
+<div id="pp" class="section level3 unnumbered">
+<h3><em>P<sub>p</sub></em></h3>
+<p><em>P<sub>p</sub></em> = <span class="math inline">\(\frac{USL - LSL}{6s}\)</span></p>
+<p>der:</p>
+<ul>
+<li>s = standardavvik for prosessen beregnet ut fra all tidligere data for prosessen (som ikke er det samme som <span class="math inline">\(\sigma\)</span>, jfr formel for <em>C<sub>p</sub></em>).</li>
+</ul>
+</div>
 <div id="cpk-1" class="section level3 unnumbered">
 <h3><em>C<sub>pk</sub></em></h3>
 <p><em>C<sub>pk</sub> = min(C<sub>pu</sub>,C<sub>pl</sub>)</em></p>
@@ -344,10 +354,33 @@ div.csl-indent {
 <li><em>C<sub>pl</sub></em> = <span class="math inline">\(\frac{\mu - LSL}{3\sigma}\)</span></li>
 <li><span class="math inline">\(\mu\)</span> = <em>prosessgjennomsnitt</em></li>
 </ul>
-<p>Alternativ form <em>C<sub>pk</sub></em> av <span class="citation">Chan et al. (1988)</span>:</p>
+<p>Alternativ måte å uttrykke samme formel <span class="citation">(Wheeler 2013)</span>:</p>
+<p><em>C<sub>pk</sub></em> = <span class="math inline">\(\frac{2 DNS}{6\sigma}\)</span></p>
+<p>der:</p>
+<ul>
+<li>DNS = “Distance to the nearer specification,” altså avstanden fra gjennomsnitt til den spesifikasjonsgrensen som ligger nærmest snittet.</li>
+</ul>
+<p>Alternativ <em>C<sub>pk</sub></em> av <span class="citation">Chan et al. (1988)</span>:</p>
 <p><em>C<sub>pk</sub>=C<sub>p</sub>(1-k)</em></p>
 <p>der:</p>
 <p><em>k=tilfeldig variabel</em></p>
+</div>
+<div id="ppk" class="section level3 unnumbered">
+<h3><em>P<sub>pk</sub></em></h3>
+<p><em>P<sub>pk</sub> = min(P<sub>pu</sub>,P<sub>pl</sub>)</em></p>
+<p>der:</p>
+<ul>
+<li><em>P<sub>pu</sub></em> = <span class="math inline">\(\frac{USL - \mu}{3s}\)</span></li>
+<li><em>P<sub>pl</sub></em> = <span class="math inline">\(\frac{\mu - LSL}{3s}\)</span></li>
+<li><span class="math inline">\(\mu\)</span> = <em>prosessgjennomsnitt</em></li>
+<li>s = standardavvik for prosessen beregnet ut fra all tidligere data for prosessen (som ikke er det samme som <span class="math inline">\(\sigma\)</span>, jfr formel for <em>C<sub>pk</sub></em>)</li>
+</ul>
+<p>Alternativ måte å uttrykke samme formel <span class="citation">(Wheeler 2013)</span>:</p>
+<p><em>P<sub>pk</sub></em> = <span class="math inline">\(\frac{2 DNS}{6s}\)</span></p>
+<p>der:</p>
+<ul>
+<li>DNS = “Distance to the nearer specification,” altså avstanden fra gjennomsnitt til den spesifikasjonsgrensen som ligger nærmest snittet.</li>
+</ul>
 </div>
 <div id="cpm-1" class="section level3 unnumbered">
 <h3><em>C<sub>pm</sub></em></h3>
