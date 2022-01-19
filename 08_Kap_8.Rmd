@@ -35,6 +35,8 @@ Vi skal nå se på ulike verktøy vi kan bruke for å jobbe med prosesskapabilit
 Vi har tidligere i boka vært innom histogrammer, f.eks. i kapittel 4 der vi så på ulike datafordelingsmodeller (normalfordeling, binomialfordeling, geometrisk fordeling og eksponensiell fordeling). @delerydPragmaticViewProcess1999a påpeker at histogrammer er den enkleste måten å tilnærme seg prosesskapabilitet. Man plotter spesifikasjonsgrensene på x-aksen og lager forøvrig et vanlig histogram av dataene. Dette historgrammet vil da vise oss noe om sentrering, spredning og den generelle formen på dataene 
 
 
+
+
 ## Boxplots
 
 

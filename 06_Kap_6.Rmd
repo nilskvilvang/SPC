@@ -6,6 +6,12 @@ Et seriediagram vil kunne vise oss noe om variasjon, men vi kan også gå glipp 
 
 Hvorfor "serie" (“run”)? En serie er i denne sammenhengen definert som et antall (ett eller flere) punkter i diagrammet på samme side av medianen. I diagrammet under ser vi et eksempel på et seriediagram. Vi plotter ganske enkelt inn hver enkelt observasjon fortløpende i tid utover x-aksen og verdien iht y-aksen. Sentraltendensen er medianen, hvilket innebærer at halvparten av målingene er over og halve under medianstreken.
 
+Under finner du et eksempel på seriediagram. Vi har laget en kort video som viser hvordan du kan lage et seriediagram i Excel. Den finner du [her](https://vimeo.com/667862696). Dataene som er brukt i Excelvideoen finner du her:
+```{r echo=FALSE, eval=TRUE}
+
+xfun::embed_file('seriediagram_eksempelvideo.xlsx')
+```
+
 ```{r echo = FALSE, message = FALSE, warning=FALSE, fig.cap = "Eksempel seriediagram"}
 
 pacman::p_load(qicharts2, ggplot2)
